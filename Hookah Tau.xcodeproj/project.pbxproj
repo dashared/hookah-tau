@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F30369B5233679EA00A8EA84 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F30369B4233679EA00A8EA84 /* LaunchScreen.storyboard */; };
+		F30369BE2336924D00A8EA84 /* TabbarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30369BD2336924D00A8EA84 /* TabbarCoordinator.swift */; };
+		F30369C02336925800A8EA84 /* TabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30369BF2336925800A8EA84 /* TabbarController.swift */; };
 		F3FC7DCD2315BE610080D851 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FC7DCC2315BE610080D851 /* AppDelegate.swift */; };
 		F3FC7DCF2315BE610080D851 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FC7DCE2315BE610080D851 /* AuthViewController.swift */; };
 		F3FC7DD42315BE630080D851 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3FC7DD32315BE630080D851 /* Assets.xcassets */; };
@@ -35,6 +38,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F30369B4233679EA00A8EA84 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F30369BD2336924D00A8EA84 /* TabbarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarCoordinator.swift; sourceTree = "<group>"; };
+		F30369BF2336925800A8EA84 /* TabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarController.swift; sourceTree = "<group>"; };
 		F3FC7DC92315BE610080D851 /* Hookah Tau.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hookah Tau.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3FC7DCC2315BE610080D851 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F3FC7DCE2315BE610080D851 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
@@ -76,6 +82,66 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F30369B623367B2300A8EA84 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F30369B4233679EA00A8EA84 /* LaunchScreen.storyboard */,
+				F3FC7DD32315BE630080D851 /* Assets.xcassets */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F30369B72336841400A8EA84 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F30369BD2336924D00A8EA84 /* TabbarCoordinator.swift */,
+				F30369BF2336925800A8EA84 /* TabbarController.swift */,
+				F3FC7DFC2315C4710080D851 /* BaseCoordinator.swift */,
+				F3FC7DFA2315C25D0080D851 /* ApplicationCoordinator.swift */,
+				F30369BB2336845F00A8EA84 /* Admin */,
+				F30369BA2336845400A8EA84 /* Client */,
+				F30369B82336842600A8EA84 /* Authentication */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		F30369B82336842600A8EA84 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				F3FC7DFE2315C8D70080D851 /* AuthCoordinator.swift */,
+				F3FC7DCE2315BE610080D851 /* AuthViewController.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		F30369B92336844500A8EA84 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		F30369BA2336845400A8EA84 /* Client */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Client;
+			sourceTree = "<group>";
+		};
+		F30369BB2336845F00A8EA84 /* Admin */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Admin;
+			sourceTree = "<group>";
+		};
+		F30369BC2336861100A8EA84 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		F3FC7DC02315BE610080D851 = {
 			isa = PBXGroup;
 			children = (
@@ -100,12 +166,11 @@
 			isa = PBXGroup;
 			children = (
 				F3FC7DCC2315BE610080D851 /* AppDelegate.swift */,
-				F3FC7DFC2315C4710080D851 /* BaseCoordinator.swift */,
-				F3FC7DFA2315C25D0080D851 /* ApplicationCoordinator.swift */,
-				F3FC7DFE2315C8D70080D851 /* AuthCoordinator.swift */,
-				F3FC7DCE2315BE610080D851 /* AuthViewController.swift */,
-				F3FC7DD32315BE630080D851 /* Assets.xcassets */,
+				F30369BC2336861100A8EA84 /* Models */,
+				F30369B92336844500A8EA84 /* Components */,
+				F30369B72336841400A8EA84 /* Controllers */,
 				F3FC7DD82315BE630080D851 /* Info.plist */,
+				F30369B623367B2300A8EA84 /* Supporting Files */,
 			);
 			path = "Hookah Tau";
 			sourceTree = "<group>";
@@ -232,6 +297,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F30369B5233679EA00A8EA84 /* LaunchScreen.storyboard in Resources */,
 				F3FC7DD42315BE630080D851 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -261,7 +327,9 @@
 				F3FC7DCF2315BE610080D851 /* AuthViewController.swift in Sources */,
 				F3FC7DFB2315C25D0080D851 /* ApplicationCoordinator.swift in Sources */,
 				F3FC7DCD2315BE610080D851 /* AppDelegate.swift in Sources */,
+				F30369BE2336924D00A8EA84 /* TabbarCoordinator.swift in Sources */,
 				F3FC7DFD2315C4710080D851 /* BaseCoordinator.swift in Sources */,
+				F30369C02336925800A8EA84 /* TabbarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
