@@ -1,0 +1,578 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F3FC7DCD2315BE610080D851 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FC7DCC2315BE610080D851 /* AppDelegate.swift */; };
+		F3FC7DCF2315BE610080D851 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FC7DCE2315BE610080D851 /* AuthViewController.swift */; };
+		F3FC7DD42315BE630080D851 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3FC7DD32315BE630080D851 /* Assets.xcassets */; };
+		F3FC7DE22315BE630080D851 /* Hookah_TauTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FC7DE12315BE630080D851 /* Hookah_TauTests.swift */; };
+		F3FC7DED2315BE630080D851 /* Hookah_TauUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FC7DEC2315BE630080D851 /* Hookah_TauUITests.swift */; };
+		F3FC7DFB2315C25D0080D851 /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FC7DFA2315C25D0080D851 /* ApplicationCoordinator.swift */; };
+		F3FC7DFD2315C4710080D851 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FC7DFC2315C4710080D851 /* BaseCoordinator.swift */; };
+		F3FC7DFF2315C8D70080D851 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FC7DFE2315C8D70080D851 /* AuthCoordinator.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F3FC7DDE2315BE630080D851 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F3FC7DC12315BE610080D851 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F3FC7DC82315BE610080D851;
+			remoteInfo = "Hookah Tau";
+		};
+		F3FC7DE92315BE630080D851 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F3FC7DC12315BE610080D851 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F3FC7DC82315BE610080D851;
+			remoteInfo = "Hookah Tau";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F3FC7DC92315BE610080D851 /* Hookah Tau.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hookah Tau.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F3FC7DCC2315BE610080D851 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F3FC7DCE2315BE610080D851 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		F3FC7DD32315BE630080D851 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F3FC7DD82315BE630080D851 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F3FC7DDD2315BE630080D851 /* Hookah TauTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Hookah TauTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F3FC7DE12315BE630080D851 /* Hookah_TauTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hookah_TauTests.swift; sourceTree = "<group>"; };
+		F3FC7DE32315BE630080D851 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F3FC7DE82315BE630080D851 /* Hookah TauUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Hookah TauUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F3FC7DEC2315BE630080D851 /* Hookah_TauUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hookah_TauUITests.swift; sourceTree = "<group>"; };
+		F3FC7DEE2315BE630080D851 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F3FC7DFA2315C25D0080D851 /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
+		F3FC7DFC2315C4710080D851 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
+		F3FC7DFE2315C8D70080D851 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F3FC7DC62315BE610080D851 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F3FC7DDA2315BE630080D851 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F3FC7DE52315BE630080D851 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F3FC7DC02315BE610080D851 = {
+			isa = PBXGroup;
+			children = (
+				F3FC7DCB2315BE610080D851 /* Hookah Tau */,
+				F3FC7DE02315BE630080D851 /* Hookah TauTests */,
+				F3FC7DEB2315BE630080D851 /* Hookah TauUITests */,
+				F3FC7DCA2315BE610080D851 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F3FC7DCA2315BE610080D851 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F3FC7DC92315BE610080D851 /* Hookah Tau.app */,
+				F3FC7DDD2315BE630080D851 /* Hookah TauTests.xctest */,
+				F3FC7DE82315BE630080D851 /* Hookah TauUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F3FC7DCB2315BE610080D851 /* Hookah Tau */ = {
+			isa = PBXGroup;
+			children = (
+				F3FC7DCC2315BE610080D851 /* AppDelegate.swift */,
+				F3FC7DFC2315C4710080D851 /* BaseCoordinator.swift */,
+				F3FC7DFA2315C25D0080D851 /* ApplicationCoordinator.swift */,
+				F3FC7DFE2315C8D70080D851 /* AuthCoordinator.swift */,
+				F3FC7DCE2315BE610080D851 /* AuthViewController.swift */,
+				F3FC7DD32315BE630080D851 /* Assets.xcassets */,
+				F3FC7DD82315BE630080D851 /* Info.plist */,
+			);
+			path = "Hookah Tau";
+			sourceTree = "<group>";
+		};
+		F3FC7DE02315BE630080D851 /* Hookah TauTests */ = {
+			isa = PBXGroup;
+			children = (
+				F3FC7DE12315BE630080D851 /* Hookah_TauTests.swift */,
+				F3FC7DE32315BE630080D851 /* Info.plist */,
+			);
+			path = "Hookah TauTests";
+			sourceTree = "<group>";
+		};
+		F3FC7DEB2315BE630080D851 /* Hookah TauUITests */ = {
+			isa = PBXGroup;
+			children = (
+				F3FC7DEC2315BE630080D851 /* Hookah_TauUITests.swift */,
+				F3FC7DEE2315BE630080D851 /* Info.plist */,
+			);
+			path = "Hookah TauUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F3FC7DC82315BE610080D851 /* Hookah Tau */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F3FC7DF12315BE630080D851 /* Build configuration list for PBXNativeTarget "Hookah Tau" */;
+			buildPhases = (
+				F3FC7DC52315BE610080D851 /* Sources */,
+				F3FC7DC62315BE610080D851 /* Frameworks */,
+				F3FC7DC72315BE610080D851 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Hookah Tau";
+			productName = "Hookah Tau";
+			productReference = F3FC7DC92315BE610080D851 /* Hookah Tau.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F3FC7DDC2315BE630080D851 /* Hookah TauTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F3FC7DF42315BE630080D851 /* Build configuration list for PBXNativeTarget "Hookah TauTests" */;
+			buildPhases = (
+				F3FC7DD92315BE630080D851 /* Sources */,
+				F3FC7DDA2315BE630080D851 /* Frameworks */,
+				F3FC7DDB2315BE630080D851 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F3FC7DDF2315BE630080D851 /* PBXTargetDependency */,
+			);
+			name = "Hookah TauTests";
+			productName = "Hookah TauTests";
+			productReference = F3FC7DDD2315BE630080D851 /* Hookah TauTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F3FC7DE72315BE630080D851 /* Hookah TauUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F3FC7DF72315BE630080D851 /* Build configuration list for PBXNativeTarget "Hookah TauUITests" */;
+			buildPhases = (
+				F3FC7DE42315BE630080D851 /* Sources */,
+				F3FC7DE52315BE630080D851 /* Frameworks */,
+				F3FC7DE62315BE630080D851 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F3FC7DEA2315BE630080D851 /* PBXTargetDependency */,
+			);
+			name = "Hookah TauUITests";
+			productName = "Hookah TauUITests";
+			productReference = F3FC7DE82315BE630080D851 /* Hookah TauUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F3FC7DC12315BE610080D851 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1030;
+				LastUpgradeCheck = 1030;
+				ORGANIZATIONNAME = "Daria Rednikina";
+				TargetAttributes = {
+					F3FC7DC82315BE610080D851 = {
+						CreatedOnToolsVersion = 10.3;
+					};
+					F3FC7DDC2315BE630080D851 = {
+						CreatedOnToolsVersion = 10.3;
+						TestTargetID = F3FC7DC82315BE610080D851;
+					};
+					F3FC7DE72315BE630080D851 = {
+						CreatedOnToolsVersion = 10.3;
+						TestTargetID = F3FC7DC82315BE610080D851;
+					};
+				};
+			};
+			buildConfigurationList = F3FC7DC42315BE610080D851 /* Build configuration list for PBXProject "Hookah Tau" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F3FC7DC02315BE610080D851;
+			productRefGroup = F3FC7DCA2315BE610080D851 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F3FC7DC82315BE610080D851 /* Hookah Tau */,
+				F3FC7DDC2315BE630080D851 /* Hookah TauTests */,
+				F3FC7DE72315BE630080D851 /* Hookah TauUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F3FC7DC72315BE610080D851 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F3FC7DD42315BE630080D851 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F3FC7DDB2315BE630080D851 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F3FC7DE62315BE630080D851 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F3FC7DC52315BE610080D851 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F3FC7DFF2315C8D70080D851 /* AuthCoordinator.swift in Sources */,
+				F3FC7DCF2315BE610080D851 /* AuthViewController.swift in Sources */,
+				F3FC7DFB2315C25D0080D851 /* ApplicationCoordinator.swift in Sources */,
+				F3FC7DCD2315BE610080D851 /* AppDelegate.swift in Sources */,
+				F3FC7DFD2315C4710080D851 /* BaseCoordinator.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F3FC7DD92315BE630080D851 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F3FC7DE22315BE630080D851 /* Hookah_TauTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F3FC7DE42315BE630080D851 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F3FC7DED2315BE630080D851 /* Hookah_TauUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F3FC7DDF2315BE630080D851 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F3FC7DC82315BE610080D851 /* Hookah Tau */;
+			targetProxy = F3FC7DDE2315BE630080D851 /* PBXContainerItemProxy */;
+		};
+		F3FC7DEA2315BE630080D851 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F3FC7DC82315BE610080D851 /* Hookah Tau */;
+			targetProxy = F3FC7DE92315BE630080D851 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		F3FC7DEF2315BE630080D851 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F3FC7DF02315BE630080D851 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F3FC7DF22315BE630080D851 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9Z6LFGKA9G;
+				INFOPLIST_FILE = "Hookah Tau/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hookahtau.Hookah-Tau";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F3FC7DF32315BE630080D851 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9Z6LFGKA9G;
+				INFOPLIST_FILE = "Hookah Tau/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hookahtau.Hookah-Tau";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		F3FC7DF52315BE630080D851 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9Z6LFGKA9G;
+				INFOPLIST_FILE = "Hookah TauTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hookahtau.Hookah-TauTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Hookah Tau.app/Hookah Tau";
+			};
+			name = Debug;
+		};
+		F3FC7DF62315BE630080D851 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9Z6LFGKA9G;
+				INFOPLIST_FILE = "Hookah TauTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hookahtau.Hookah-TauTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Hookah Tau.app/Hookah Tau";
+			};
+			name = Release;
+		};
+		F3FC7DF82315BE630080D851 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9Z6LFGKA9G;
+				INFOPLIST_FILE = "Hookah TauUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hookahtau.Hookah-TauUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Hookah Tau";
+			};
+			name = Debug;
+		};
+		F3FC7DF92315BE630080D851 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9Z6LFGKA9G;
+				INFOPLIST_FILE = "Hookah TauUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hookahtau.Hookah-TauUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Hookah Tau";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F3FC7DC42315BE610080D851 /* Build configuration list for PBXProject "Hookah Tau" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F3FC7DEF2315BE630080D851 /* Debug */,
+				F3FC7DF02315BE630080D851 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F3FC7DF12315BE630080D851 /* Build configuration list for PBXNativeTarget "Hookah Tau" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F3FC7DF22315BE630080D851 /* Debug */,
+				F3FC7DF32315BE630080D851 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F3FC7DF42315BE630080D851 /* Build configuration list for PBXNativeTarget "Hookah TauTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F3FC7DF52315BE630080D851 /* Debug */,
+				F3FC7DF62315BE630080D851 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F3FC7DF72315BE630080D851 /* Build configuration list for PBXNativeTarget "Hookah TauUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F3FC7DF82315BE630080D851 /* Debug */,
+				F3FC7DF92315BE630080D851 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F3FC7DC12315BE610080D851 /* Project object */;
+}
