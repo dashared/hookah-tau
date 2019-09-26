@@ -31,7 +31,8 @@ class ApplicationCoordinator: BaseCoordinator {
     }
 
     private func runAuthFlow() {
-        let authCoordinator = AuthCoordinator(navigationController: self.navigationController)
+        let authCoordinator = AuthCoordinator(navigationController: navigationController)
+        addDependency(authCoordinator)
         authCoordinator.start()
     }
 

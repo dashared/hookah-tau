@@ -11,12 +11,14 @@ import UIKit
 class AuthCoordinator: BaseCoordinator {
 
     override func start() {
-        login()
-    }
-
-    private func login() {
         let authViewController = AuthViewController()
+        authViewController.coordinator = self
         navigationController?.viewControllers = [ authViewController ]
     }
 
+    func goToNextStep() {
+        let codeCoordinator = CodeCoordinator(navigationController: navigationController)
+        addDependency(codeCoordinator)
+        codeCoordinator.start()
+    }
 }

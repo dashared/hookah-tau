@@ -1,16 +1,16 @@
 //
-//  ViewController.swift
+//  InputViewController.swift
 //  Hookah Tau
 //
-//  Created by Daria Rednikina on 27/08/2019.
+//  Created by Daria Rednikina on 26/09/2019.
 //  Copyright © 2019 Daria Rednikina. All rights reserved.
 //
 
 import UIKit
 
-class AuthViewController: UIViewController {
+class CodeViewController: UIViewController {
 
-    var handlerAuthentication: (() -> Void)?
+    weak var coordinator: CodeCoordinator?
 
     let nextButton: UIButton = {
         let button = UIButton()
@@ -19,16 +19,12 @@ class AuthViewController: UIViewController {
         button.addTarget(self, action: #selector(tapHandlerNextButton), for: .touchUpInside)
         return button
     }()
-
-    @objc func tapHandlerNextButton() {
-        handlerAuthentication?()
-    }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.navigationItem.title = "Authentication"
-        self.view.backgroundColor = .red
+        self.view.backgroundColor = .white
+        
         self.view.addSubview(nextButton)
 
         nextButton.widthAnchor.constraint(equalToConstant: 250).isActive = true
@@ -37,6 +33,8 @@ class AuthViewController: UIViewController {
         nextButton.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
     }
 
-
+    @objc
+    func tapHandlerNextButton() {
+        coordinator?.goToNextStep()
+    }
 }
-

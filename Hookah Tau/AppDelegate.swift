@@ -20,9 +20,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
 
-        window?.rootViewController = UINavigationController()
+        let navController = UINavigationController()
+        window?.rootViewController = navController
 
-        applicationCoordinator = ApplicationCoordinator(window: window)
+        applicationCoordinator = ApplicationCoordinator(navigationController: navController)
         applicationCoordinator?.start()
 
         return true
