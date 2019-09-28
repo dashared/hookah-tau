@@ -14,6 +14,10 @@
 		F3895F4A233D323700FA6A37 /* CodeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3895F49233D323700FA6A37 /* CodeCoordinator.swift */; };
 		F3895F4C233D347E00FA6A37 /* NameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3895F4B233D347E00FA6A37 /* NameViewController.swift */; };
 		F3895F4E233D348B00FA6A37 /* NameCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3895F4D233D348B00FA6A37 /* NameCoordinator.swift */; };
+		F3895F53233D5EEB00FA6A37 /* BlackButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3895F52233D5EEB00FA6A37 /* BlackButtonStyle.swift */; };
+		F3DC59FF233E893400B5E751 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DC59FE233E893400B5E751 /* Extensions.swift */; };
+		F3DC5A01233E896300B5E751 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DC5A00233E896300B5E751 /* ButtonStyle.swift */; };
+		F3DC5A05233E89D500B5E751 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DC5A04233E89D500B5E751 /* Button.swift */; };
 		F3FC7DCD2315BE610080D851 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FC7DCC2315BE610080D851 /* AppDelegate.swift */; };
 		F3FC7DCF2315BE610080D851 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FC7DCE2315BE610080D851 /* AuthViewController.swift */; };
 		F3FC7DD42315BE630080D851 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3FC7DD32315BE630080D851 /* Assets.xcassets */; };
@@ -49,6 +53,10 @@
 		F3895F49233D323700FA6A37 /* CodeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeCoordinator.swift; sourceTree = "<group>"; };
 		F3895F4B233D347E00FA6A37 /* NameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameViewController.swift; sourceTree = "<group>"; };
 		F3895F4D233D348B00FA6A37 /* NameCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameCoordinator.swift; sourceTree = "<group>"; };
+		F3895F52233D5EEB00FA6A37 /* BlackButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackButtonStyle.swift; sourceTree = "<group>"; };
+		F3DC59FE233E893400B5E751 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		F3DC5A00233E896300B5E751 /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
+		F3DC5A04233E89D500B5E751 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		F3FC7DC92315BE610080D851 /* Hookah Tau.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hookah Tau.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3FC7DCC2315BE610080D851 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F3FC7DCE2315BE610080D851 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
@@ -126,6 +134,9 @@
 		F30369B92336844500A8EA84 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				F3DC5A00233E896300B5E751 /* ButtonStyle.swift */,
+				F3895F52233D5EEB00FA6A37 /* BlackButtonStyle.swift */,
+				F3DC5A04233E89D500B5E751 /* Button.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -202,6 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				F3FC7DCC2315BE610080D851 /* AppDelegate.swift */,
+				F3DC59FE233E893400B5E751 /* Extensions.swift */,
 				F30369BC2336861100A8EA84 /* Models */,
 				F30369B92336844500A8EA84 /* Components */,
 				F30369B72336841400A8EA84 /* Controllers */,
@@ -362,14 +374,18 @@
 				F3895F4A233D323700FA6A37 /* CodeCoordinator.swift in Sources */,
 				F3FC7DFF2315C8D70080D851 /* AuthCoordinator.swift in Sources */,
 				F3FC7DCF2315BE610080D851 /* AuthViewController.swift in Sources */,
+				F3DC5A05233E89D500B5E751 /* Button.swift in Sources */,
 				F3FC7DFB2315C25D0080D851 /* ApplicationCoordinator.swift in Sources */,
 				F3895F48233D2EEA00FA6A37 /* CodeViewController.swift in Sources */,
 				F3895F4E233D348B00FA6A37 /* NameCoordinator.swift in Sources */,
 				F3FC7DCD2315BE610080D851 /* AppDelegate.swift in Sources */,
 				F30369BE2336924D00A8EA84 /* TabbarCoordinator.swift in Sources */,
 				F3FC7DFD2315C4710080D851 /* BaseCoordinator.swift in Sources */,
+				F3DC59FF233E893400B5E751 /* Extensions.swift in Sources */,
+				F3895F53233D5EEB00FA6A37 /* BlackButtonStyle.swift in Sources */,
 				F30369C02336925800A8EA84 /* TabbarController.swift in Sources */,
 				F3895F4C233D347E00FA6A37 /* NameViewController.swift in Sources */,
+				F3DC5A01233E896300B5E751 /* ButtonStyle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

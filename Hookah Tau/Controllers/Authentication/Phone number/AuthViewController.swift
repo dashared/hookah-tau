@@ -12,10 +12,9 @@ class AuthViewController: UIViewController {
 
     weak var coordinator: AuthCoordinator?
 
-    let nextButton: UIButton = {
-        let button = UIButton()
+    let nextButton: Button = {
+        let button = Button(frame: CGRect(x: 0, y: 0, width: 250, height: 50))
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = .blue
         return button
     }()
 
@@ -33,9 +32,13 @@ class AuthViewController: UIViewController {
         nextButton.addTarget(self, action: #selector(tapHandlerNextButton), for: .touchUpInside)
 
         nextButton.widthAnchor.constraint(equalToConstant: 250).isActive = true
-        nextButton.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        nextButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         nextButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         nextButton.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+
+        nextButton.setTitle("Далее", for: .normal)
+        let style = BlackButtonStyle()
+        style.apply(to: nextButton)
     }
 
 
