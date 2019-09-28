@@ -9,8 +9,8 @@
 import UIKit
 
 class BlackButtonStyle: NSObject {
-    let cornerRadius = CGFloat(5.0)
-    let font = UIFont.smallCapsSystemFont(ofSize: 16)
+    let cornerRadius = CGFloat(20.0)
+    let font = UIFont.smallCapsSystemFont(ofSize: 17, weight: .bold)
     let backgroundColor = UIColor.black
     let fontColor = UIColor.white
 
@@ -40,18 +40,32 @@ class BlackButtonStyle: NSObject {
 
 extension BlackButtonStyle: ButtonStyle {
 
-    func apply(to button: Button) {
-        button.titleLabel?.font = font
-        button.backgroundColor = backgroundColor
-        button.titleLabel?.textColor = fontColor
-        button.layer.cornerRadius = cornerRadius
+    func apply(to button: Button, withTitle title: String? = nil) {
+        let upperButton = UIButton(frame: button.frame)
+
+        upperButton.backgroundColor = backgroundColor
+        upperButton.layer.cornerRadius = cornerRadius
+        upperButton.layer.borderWidth = 5.0
+        upperButton.layer.borderColor = UIColor.black.cgColor
 
         let replicationLayer = craeteReplicatorLayer()
-        replicationLayer.frame = button.bounds
+        replicationLayer.frame = upperButton.bounds
         replicationLayer.frame.origin.x = -100
 
-        button.layer.masksToBounds = true
-        button.layer.addSublayer(replicationLayer)
+        upperButton.layer.masksToBounds = true
+        upperButton.layer.addSublayer(replicationLayer)
+
+        upperButton.isUserInteractionEnabled = false
+        button.addSubview(upperButton)
+
+        button.layer.shadowOpacity = 1.0
+        button.layer.shadowRadius = 4.0
+        button.layer.shadowOffset = CGSize(width: 0, height: 4)
+
+        guard let title = title else { return }
+
+        let customizedText = NSMutableAttributedString.createStrokedText(withTitle: title, font: font)
+        upperButton.setAttributedTitle(customizedText, for: .normal)
     }
 }
 

@@ -13,7 +13,7 @@ class AuthViewController: UIViewController {
     weak var coordinator: AuthCoordinator?
 
     let nextButton: Button = {
-        let button = Button(frame: CGRect(x: 0, y: 0, width: 250, height: 50))
+        let button = Button(frame: CGRect(x: 0, y: 0, width: 155, height: 37))
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -26,19 +26,16 @@ class AuthViewController: UIViewController {
         super.viewDidLoad()
 
         self.navigationController?.isNavigationBarHidden = true
-        self.view.backgroundColor = .red
+        self.view.backgroundColor = .white
         self.view.addSubview(nextButton)
 
         nextButton.addTarget(self, action: #selector(tapHandlerNextButton), for: .touchUpInside)
 
-        nextButton.widthAnchor.constraint(equalToConstant: 250).isActive = true
-        nextButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         nextButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         nextButton.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
 
-        nextButton.setTitle("Далее", for: .normal)
         let style = BlackButtonStyle()
-        style.apply(to: nextButton)
+        style.apply(to: nextButton, withTitle: "ДАЛЕЕ")
     }
 
 

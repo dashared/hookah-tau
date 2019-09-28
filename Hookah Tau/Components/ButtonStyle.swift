@@ -9,5 +9,5 @@
 import Foundation
 
 protocol ButtonStyle: class {
-    func apply(to button: Button)
+    func apply(to button: Button, withTitle title: String?)
 }

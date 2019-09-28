@@ -10,6 +10,7 @@
 		F30369B5233679EA00A8EA84 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F30369B4233679EA00A8EA84 /* LaunchScreen.storyboard */; };
 		F30369BE2336924D00A8EA84 /* TabbarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30369BD2336924D00A8EA84 /* TabbarCoordinator.swift */; };
 		F30369C02336925800A8EA84 /* TabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30369BF2336925800A8EA84 /* TabbarController.swift */; };
+		F3199E5B233FE08200F3C17A /* PhoneView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3199E5A233FE08200F3C17A /* PhoneView.xib */; };
 		F3895F48233D2EEA00FA6A37 /* CodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3895F47233D2EEA00FA6A37 /* CodeViewController.swift */; };
 		F3895F4A233D323700FA6A37 /* CodeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3895F49233D323700FA6A37 /* CodeCoordinator.swift */; };
 		F3895F4C233D347E00FA6A37 /* NameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3895F4B233D347E00FA6A37 /* NameViewController.swift */; };
@@ -49,6 +50,7 @@
 		F30369B4233679EA00A8EA84 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F30369BD2336924D00A8EA84 /* TabbarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarCoordinator.swift; sourceTree = "<group>"; };
 		F30369BF2336925800A8EA84 /* TabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarController.swift; sourceTree = "<group>"; };
+		F3199E5A233FE08200F3C17A /* PhoneView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhoneView.xib; sourceTree = "<group>"; };
 		F3895F47233D2EEA00FA6A37 /* CodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeViewController.swift; sourceTree = "<group>"; };
 		F3895F49233D323700FA6A37 /* CodeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeCoordinator.swift; sourceTree = "<group>"; };
 		F3895F4B233D347E00FA6A37 /* NameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameViewController.swift; sourceTree = "<group>"; };
@@ -162,6 +164,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		F3199E59233FD7F700F3C17A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F3199E5A233FE08200F3C17A /* PhoneView.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		F3895F4F233D352400FA6A37 /* Phone number */ = {
 			isa = PBXGroup;
 			children = (
@@ -215,6 +225,7 @@
 				F3FC7DCC2315BE610080D851 /* AppDelegate.swift */,
 				F3DC59FE233E893400B5E751 /* Extensions.swift */,
 				F30369BC2336861100A8EA84 /* Models */,
+				F3199E59233FD7F700F3C17A /* Views */,
 				F30369B92336844500A8EA84 /* Components */,
 				F30369B72336841400A8EA84 /* Controllers */,
 				F3FC7DD82315BE630080D851 /* Info.plist */,
@@ -345,6 +356,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3199E5B233FE08200F3C17A /* PhoneView.xib in Resources */,
 				F30369B5233679EA00A8EA84 /* LaunchScreen.storyboard in Resources */,
 				F3FC7DD42315BE630080D851 /* Assets.xcassets in Resources */,
 			);
