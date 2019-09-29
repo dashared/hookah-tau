@@ -16,55 +16,55 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="42"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="qw0-1r-WHx">
-                    <rect key="frame" x="15.5" y="2" width="383.5" height="38"/>
+                <stackView opaque="NO" contentMode="scaleToFill" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="qw0-1r-WHx">
+                    <rect key="frame" x="31.5" y="2.5" width="351.5" height="37"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+7 (" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p7Y-Yb-Z1l">
-                            <rect key="frame" x="0.0" y="0.0" width="51" height="38"/>
-                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="28"/>
+                            <rect key="frame" x="0.0" y="0.0" width="49" height="37"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="27"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="888" borderStyle="roundedRect" textAlignment="center" minimumFontSize="28" translatesAutoresizingMaskIntoConstraints="NO" id="yZq-rN-XM8">
-                            <rect key="frame" x="55" y="0.0" width="76" height="38"/>
+                            <rect key="frame" x="50" y="0.0" width="74" height="37"/>
                             <nil key="textColor"/>
-                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="28"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="27"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=")" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kae-iJ-fBU">
-                            <rect key="frame" x="135" y="0.0" width="10.5" height="38"/>
-                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="28"/>
+                            <rect key="frame" x="125" y="0.0" width="10.5" height="37"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="27"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="888" borderStyle="roundedRect" textAlignment="center" minimumFontSize="28" translatesAutoresizingMaskIntoConstraints="NO" id="XFd-Jx-R48">
-                            <rect key="frame" x="149.5" y="0.0" width="76" height="38"/>
+                            <rect key="frame" x="136.5" y="0.0" width="74" height="37"/>
                             <nil key="textColor"/>
-                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="28"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="27"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1pT-Ec-3JW">
-                            <rect key="frame" x="229.5" y="0.0" width="13" height="38"/>
-                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="28"/>
+                            <rect key="frame" x="211.5" y="0.0" width="12.5" height="37"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="27"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="88" borderStyle="roundedRect" textAlignment="center" minimumFontSize="28" translatesAutoresizingMaskIntoConstraints="NO" id="pJH-Ha-6Jt">
-                            <rect key="frame" x="246.5" y="0.0" width="58" height="38"/>
+                            <rect key="frame" x="225" y="0.0" width="56" height="37"/>
                             <nil key="textColor"/>
-                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="28"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="27"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZPo-tM-kGX">
-                            <rect key="frame" x="308.5" y="0.0" width="13" height="38"/>
-                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="28"/>
+                            <rect key="frame" x="282" y="0.0" width="12.5" height="37"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="27"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="88" borderStyle="roundedRect" textAlignment="center" minimumFontSize="28" translatesAutoresizingMaskIntoConstraints="NO" id="bKj-En-aIa">
-                            <rect key="frame" x="325.5" y="0.0" width="58" height="38"/>
+                            <rect key="frame" x="295.5" y="0.0" width="56" height="37"/>
                             <nil key="textColor"/>
-                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="28"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="27"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                     </subviews>

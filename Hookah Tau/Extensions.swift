@@ -44,7 +44,23 @@ extension NSMutableAttributedString {
     }
 }
 
-extension UIView {
+public protocol LoadableNib: UIView {}
+
+private extension LoadableNib {
+    static func fromNib() -> Self? {
+        guard let className = String(describing: self).components(separatedBy: ".").last else {
+            assert(false, "Unable to create \(self)")
+            return UIView() as? Self
+        }
+
+        let bundle = Bundle(for: self)
+
+        return bundle.loadNibNamed(className, owner: nil)?.first as? Self
+    }
+}
+
+extension UIView: LoadableNib {
+    
     func addSubviewThatFills(_ view: UIView?) {
         guard let view = view else {
             assert(false, "View mustn't be nil")
@@ -70,14 +86,7 @@ extension UIView {
         layoutIfNeeded()
     }
 
-    static func loadFromNib() -> UIView? {
-        guard let className = String(describing: self).components(separatedBy: ".").last else {
-            assert(false, "Unable to create \(self)")
-            return UIView()
-        }
-
-        let bundle = Bundle(for: self)
-
-        return bundle.loadNibNamed(className, owner: nil)?.first as? UIView
+    public static func loadFromNib() -> Self? {
+        return self.fromNib()
     }
 }

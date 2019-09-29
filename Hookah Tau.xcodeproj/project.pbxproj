@@ -23,6 +23,8 @@
 		F3DC59FF233E893400B5E751 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DC59FE233E893400B5E751 /* Extensions.swift */; };
 		F3DC5A01233E896300B5E751 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DC5A00233E896300B5E751 /* ButtonStyle.swift */; };
 		F3DC5A05233E89D500B5E751 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DC5A04233E89D500B5E751 /* Button.swift */; };
+		F3EBE2452340FDA7000FEE1A /* NameTextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3EBE2442340FDA7000FEE1A /* NameTextView.xib */; };
+		F3EBE2472340FE87000FEE1A /* NameTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EBE2462340FE87000FEE1A /* NameTextView.swift */; };
 		F3FC7DCD2315BE610080D851 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FC7DCC2315BE610080D851 /* AppDelegate.swift */; };
 		F3FC7DCF2315BE610080D851 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FC7DCE2315BE610080D851 /* AuthViewController.swift */; };
 		F3FC7DD42315BE630080D851 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3FC7DD32315BE630080D851 /* Assets.xcassets */; };
@@ -67,6 +69,8 @@
 		F3DC59FE233E893400B5E751 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		F3DC5A00233E896300B5E751 /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
 		F3DC5A04233E89D500B5E751 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		F3EBE2442340FDA7000FEE1A /* NameTextView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NameTextView.xib; sourceTree = "<group>"; };
+		F3EBE2462340FE87000FEE1A /* NameTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameTextView.swift; sourceTree = "<group>"; };
 		F3FC7DC92315BE610080D851 /* Hookah Tau.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hookah Tau.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3FC7DCC2315BE610080D851 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F3FC7DCE2315BE610080D851 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
@@ -135,8 +139,8 @@
 			isa = PBXGroup;
 			children = (
 				F3895F4F233D352400FA6A37 /* Phone number */,
-				F3895F50233D353600FA6A37 /* Code from sms */,
 				F3895F51233D354300FA6A37 /* Name */,
+				F3895F50233D353600FA6A37 /* Code from sms */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -176,6 +180,7 @@
 		F3199E59233FD7F700F3C17A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F3EBE2482340FFA4000FEE1A /* Name */,
 				F3851B312340A5D5009EE0B6 /* TitleText */,
 				F3851B2A2340A21C009EE0B6 /* Phone */,
 			);
@@ -223,6 +228,15 @@
 			children = (
 				F3895F4D233D348B00FA6A37 /* NameCoordinator.swift */,
 				F3895F4B233D347E00FA6A37 /* NameViewController.swift */,
+			);
+			path = Name;
+			sourceTree = "<group>";
+		};
+		F3EBE2482340FFA4000FEE1A /* Name */ = {
+			isa = PBXGroup;
+			children = (
+				F3EBE2442340FDA7000FEE1A /* NameTextView.xib */,
+				F3EBE2462340FE87000FEE1A /* NameTextView.swift */,
 			);
 			path = Name;
 			sourceTree = "<group>";
@@ -388,6 +402,7 @@
 				F3851B2C2340A280009EE0B6 /* TitleTextView.xib in Resources */,
 				F30369B5233679EA00A8EA84 /* LaunchScreen.storyboard in Resources */,
 				F3FC7DD42315BE630080D851 /* Assets.xcassets in Resources */,
+				F3EBE2452340FDA7000FEE1A /* NameTextView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,6 +443,7 @@
 				F30369C02336925800A8EA84 /* TabbarController.swift in Sources */,
 				F3851B302340A513009EE0B6 /* RegistationViewModel.swift in Sources */,
 				F3895F4C233D347E00FA6A37 /* NameViewController.swift in Sources */,
+				F3EBE2472340FE87000FEE1A /* NameTextView.swift in Sources */,
 				F3DC5A01233E896300B5E751 /* ButtonStyle.swift in Sources */,
 				F3851B2923409F8A009EE0B6 /* PhoneView.swift in Sources */,
 			);

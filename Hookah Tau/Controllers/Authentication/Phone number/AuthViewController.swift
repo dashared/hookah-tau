@@ -14,10 +14,12 @@ class AuthViewController: UIViewController {
 
     var phoneView: UIView?
 
-    let contentView: TitleTextView = {
-        let view = TitleTextView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 256))
+    let contentView: UIView = {
+        let view = UIView(frame: CGRect(x: 10, y: 60, width: UIScreen.main.bounds.width-20, height: 259))
         return view
     }()
+
+    var titleTextView: TitleTextView?
 
     let nextButton: Button = {
         let button = Button(frame: CGRect(x: 0, y: 0, width: 155, height: 37))
@@ -44,10 +46,12 @@ class AuthViewController: UIViewController {
         let style = BlackButtonStyle()
         style.apply(to: nextButton, withTitle: "ДАЛЕЕ")
 
+        titleTextView = TitleTextView.loadFromNib()
         phoneView = PhoneView.loadFromNib()
-        contentView.bind(model: RegistationViewModel(title: "Введите Ваш номер телефона", view: phoneView))
+        titleTextView?.bind(model: RegistationViewModel(title: "Введите Ваш номер телефона", view: phoneView))
         self.view.addSubview(contentView)
 
+        contentView.addSubviewThatFills(titleTextView)
     }
 
 
