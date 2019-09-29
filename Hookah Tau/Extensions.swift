@@ -43,3 +43,41 @@ extension NSMutableAttributedString {
         return customizedText
     }
 }
+
+extension UIView {
+    func addSubviewThatFills(_ view: UIView?) {
+        guard let view = view else {
+            assert(false, "View mustn't be nil")
+            return
+        }
+
+        view.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(view)
+
+        let horizontal = NSLayoutConstraint.constraints(withVisualFormat: "H:|-(0)-[v]-(0)-|",
+                                                        options: [],
+                                                        metrics: nil,
+                                                        views: ["v": view])
+        let vertical = NSLayoutConstraint.constraints(withVisualFormat: "V:|-(0)-[v]-(0)-|",
+                                                      options: [],
+                                                      metrics: nil,
+                                                      views: ["v": view])
+
+        addConstraints(horizontal)
+        addConstraints(vertical)
+
+        setNeedsLayout()
+        layoutIfNeeded()
+    }
+
+    static func loadFromNib() -> UIView? {
+        guard let className = String(describing: self).components(separatedBy: ".").last else {
+            assert(false, "Unable to create \(self)")
+            return UIView()
+        }
+
+        let bundle = Bundle(for: self)
+
+        return bundle.loadNibNamed(className, owner: nil)?.first as? UIView
+    }
+}

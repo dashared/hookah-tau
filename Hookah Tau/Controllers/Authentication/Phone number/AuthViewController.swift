@@ -12,6 +12,13 @@ class AuthViewController: UIViewController {
 
     weak var coordinator: AuthCoordinator?
 
+    var phoneView: UIView?
+
+    let contentView: TitleTextView = {
+        let view = TitleTextView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 256))
+        return view
+    }()
+
     let nextButton: Button = {
         let button = Button(frame: CGRect(x: 0, y: 0, width: 155, height: 37))
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -36,6 +43,11 @@ class AuthViewController: UIViewController {
 
         let style = BlackButtonStyle()
         style.apply(to: nextButton, withTitle: "ДАЛЕЕ")
+
+        phoneView = PhoneView.loadFromNib()
+        contentView.bind(model: RegistationViewModel(title: "Введите Ваш номер телефона", view: phoneView))
+        self.view.addSubview(contentView)
+
     }
 
 

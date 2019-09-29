@@ -11,6 +11,10 @@
 		F30369BE2336924D00A8EA84 /* TabbarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30369BD2336924D00A8EA84 /* TabbarCoordinator.swift */; };
 		F30369C02336925800A8EA84 /* TabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30369BF2336925800A8EA84 /* TabbarController.swift */; };
 		F3199E5B233FE08200F3C17A /* PhoneView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3199E5A233FE08200F3C17A /* PhoneView.xib */; };
+		F3851B2923409F8A009EE0B6 /* PhoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3851B2823409F8A009EE0B6 /* PhoneView.swift */; };
+		F3851B2C2340A280009EE0B6 /* TitleTextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3851B2B2340A280009EE0B6 /* TitleTextView.xib */; };
+		F3851B2E2340A444009EE0B6 /* TitleTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3851B2D2340A444009EE0B6 /* TitleTextView.swift */; };
+		F3851B302340A513009EE0B6 /* RegistationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3851B2F2340A513009EE0B6 /* RegistationViewModel.swift */; };
 		F3895F48233D2EEA00FA6A37 /* CodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3895F47233D2EEA00FA6A37 /* CodeViewController.swift */; };
 		F3895F4A233D323700FA6A37 /* CodeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3895F49233D323700FA6A37 /* CodeCoordinator.swift */; };
 		F3895F4C233D347E00FA6A37 /* NameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3895F4B233D347E00FA6A37 /* NameViewController.swift */; };
@@ -51,6 +55,10 @@
 		F30369BD2336924D00A8EA84 /* TabbarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarCoordinator.swift; sourceTree = "<group>"; };
 		F30369BF2336925800A8EA84 /* TabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarController.swift; sourceTree = "<group>"; };
 		F3199E5A233FE08200F3C17A /* PhoneView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhoneView.xib; sourceTree = "<group>"; };
+		F3851B2823409F8A009EE0B6 /* PhoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneView.swift; sourceTree = "<group>"; };
+		F3851B2B2340A280009EE0B6 /* TitleTextView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleTextView.xib; sourceTree = "<group>"; };
+		F3851B2D2340A444009EE0B6 /* TitleTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTextView.swift; sourceTree = "<group>"; };
+		F3851B2F2340A513009EE0B6 /* RegistationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistationViewModel.swift; sourceTree = "<group>"; };
 		F3895F47233D2EEA00FA6A37 /* CodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeViewController.swift; sourceTree = "<group>"; };
 		F3895F49233D323700FA6A37 /* CodeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeCoordinator.swift; sourceTree = "<group>"; };
 		F3895F4B233D347E00FA6A37 /* NameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameViewController.swift; sourceTree = "<group>"; };
@@ -160,6 +168,7 @@
 		F30369BC2336861100A8EA84 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F3851B2F2340A513009EE0B6 /* RegistationViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -167,9 +176,28 @@
 		F3199E59233FD7F700F3C17A /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				F3199E5A233FE08200F3C17A /* PhoneView.xib */,
+				F3851B312340A5D5009EE0B6 /* TitleText */,
+				F3851B2A2340A21C009EE0B6 /* Phone */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		F3851B2A2340A21C009EE0B6 /* Phone */ = {
+			isa = PBXGroup;
+			children = (
+				F3199E5A233FE08200F3C17A /* PhoneView.xib */,
+				F3851B2823409F8A009EE0B6 /* PhoneView.swift */,
+			);
+			path = Phone;
+			sourceTree = "<group>";
+		};
+		F3851B312340A5D5009EE0B6 /* TitleText */ = {
+			isa = PBXGroup;
+			children = (
+				F3851B2B2340A280009EE0B6 /* TitleTextView.xib */,
+				F3851B2D2340A444009EE0B6 /* TitleTextView.swift */,
+			);
+			path = TitleText;
 			sourceTree = "<group>";
 		};
 		F3895F4F233D352400FA6A37 /* Phone number */ = {
@@ -357,6 +385,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3199E5B233FE08200F3C17A /* PhoneView.xib in Resources */,
+				F3851B2C2340A280009EE0B6 /* TitleTextView.xib in Resources */,
 				F30369B5233679EA00A8EA84 /* LaunchScreen.storyboard in Resources */,
 				F3FC7DD42315BE630080D851 /* Assets.xcassets in Resources */,
 			);
@@ -384,6 +413,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3895F4A233D323700FA6A37 /* CodeCoordinator.swift in Sources */,
+				F3851B2E2340A444009EE0B6 /* TitleTextView.swift in Sources */,
 				F3FC7DFF2315C8D70080D851 /* AuthCoordinator.swift in Sources */,
 				F3FC7DCF2315BE610080D851 /* AuthViewController.swift in Sources */,
 				F3DC5A05233E89D500B5E751 /* Button.swift in Sources */,
@@ -396,8 +426,10 @@
 				F3DC59FF233E893400B5E751 /* Extensions.swift in Sources */,
 				F3895F53233D5EEB00FA6A37 /* BlackButtonStyle.swift in Sources */,
 				F30369C02336925800A8EA84 /* TabbarController.swift in Sources */,
+				F3851B302340A513009EE0B6 /* RegistationViewModel.swift in Sources */,
 				F3895F4C233D347E00FA6A37 /* NameViewController.swift in Sources */,
 				F3DC5A01233E896300B5E751 /* ButtonStyle.swift in Sources */,
+				F3851B2923409F8A009EE0B6 /* PhoneView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
