@@ -11,18 +11,12 @@ import UIKit
 
 class CodeCoordinator: BaseCoordinator {
 
-    weak var parentCoordinator: AuthCoordinator?
+    weak var parentCoordinator: PhoneCoordinator?
 
     override func start() {
         let smsInput = CodeViewController()
         smsInput.coordinator = self
         navigationController?.pushViewController(smsInput, animated: true)
-    }
-
-    func goToNextStep() {
-        let nameCoordinator = NameCoordinator(navigationController: navigationController)
-        addDependency(nameCoordinator)
-        nameCoordinator.start()
     }
 
     func goBack() {

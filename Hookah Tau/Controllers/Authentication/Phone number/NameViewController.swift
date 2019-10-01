@@ -8,9 +8,9 @@
 
 import UIKit
 
-class AuthViewController: UIViewController {
+class NameViewController: UIViewController {
 
-    weak var coordinator: AuthCoordinator?
+    weak var coordinator: NameCoordinator?
 
     var phoneView: UIView?
 

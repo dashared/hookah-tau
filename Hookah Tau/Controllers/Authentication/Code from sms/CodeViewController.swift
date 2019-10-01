@@ -12,29 +12,11 @@ class CodeViewController: UIViewController {
 
     weak var coordinator: CodeCoordinator?
 
-    let nextButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = .blue
-        button.addTarget(self, action: #selector(tapHandlerNextButton), for: .touchUpInside)
-        return button
-    }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.view.backgroundColor = .white
-        
-        self.view.addSubview(nextButton)
-
-        nextButton.widthAnchor.constraint(equalToConstant: 250).isActive = true
-        nextButton.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        nextButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        nextButton.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+        // Do any additional setup after loading the view.
     }
-
-    @objc
-    func tapHandlerNextButton() {
-        coordinator?.goToNextStep()
-    }
+    
 }

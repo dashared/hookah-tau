@@ -17,8 +17,8 @@
 		F3851B302340A513009EE0B6 /* RegistationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3851B2F2340A513009EE0B6 /* RegistationViewModel.swift */; };
 		F3895F48233D2EEA00FA6A37 /* CodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3895F47233D2EEA00FA6A37 /* CodeViewController.swift */; };
 		F3895F4A233D323700FA6A37 /* CodeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3895F49233D323700FA6A37 /* CodeCoordinator.swift */; };
-		F3895F4C233D347E00FA6A37 /* NameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3895F4B233D347E00FA6A37 /* NameViewController.swift */; };
-		F3895F4E233D348B00FA6A37 /* NameCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3895F4D233D348B00FA6A37 /* NameCoordinator.swift */; };
+		F3895F4C233D347E00FA6A37 /* PhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3895F4B233D347E00FA6A37 /* PhoneNumberViewController.swift */; };
+		F3895F4E233D348B00FA6A37 /* PhoneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3895F4D233D348B00FA6A37 /* PhoneCoordinator.swift */; };
 		F3895F53233D5EEB00FA6A37 /* BlackButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3895F52233D5EEB00FA6A37 /* BlackButtonStyle.swift */; };
 		F3DC59FF233E893400B5E751 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DC59FE233E893400B5E751 /* Extensions.swift */; };
 		F3DC5A01233E896300B5E751 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DC5A00233E896300B5E751 /* ButtonStyle.swift */; };
@@ -26,13 +26,13 @@
 		F3EBE2452340FDA7000FEE1A /* NameTextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3EBE2442340FDA7000FEE1A /* NameTextView.xib */; };
 		F3EBE2472340FE87000FEE1A /* NameTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EBE2462340FE87000FEE1A /* NameTextView.swift */; };
 		F3FC7DCD2315BE610080D851 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FC7DCC2315BE610080D851 /* AppDelegate.swift */; };
-		F3FC7DCF2315BE610080D851 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FC7DCE2315BE610080D851 /* AuthViewController.swift */; };
+		F3FC7DCF2315BE610080D851 /* NameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FC7DCE2315BE610080D851 /* NameViewController.swift */; };
 		F3FC7DD42315BE630080D851 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3FC7DD32315BE630080D851 /* Assets.xcassets */; };
 		F3FC7DE22315BE630080D851 /* Hookah_TauTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FC7DE12315BE630080D851 /* Hookah_TauTests.swift */; };
 		F3FC7DED2315BE630080D851 /* Hookah_TauUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FC7DEC2315BE630080D851 /* Hookah_TauUITests.swift */; };
 		F3FC7DFB2315C25D0080D851 /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FC7DFA2315C25D0080D851 /* ApplicationCoordinator.swift */; };
 		F3FC7DFD2315C4710080D851 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FC7DFC2315C4710080D851 /* BaseCoordinator.swift */; };
-		F3FC7DFF2315C8D70080D851 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FC7DFE2315C8D70080D851 /* AuthCoordinator.swift */; };
+		F3FC7DFF2315C8D70080D851 /* NameCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FC7DFE2315C8D70080D851 /* NameCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,8 +63,8 @@
 		F3851B2F2340A513009EE0B6 /* RegistationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistationViewModel.swift; sourceTree = "<group>"; };
 		F3895F47233D2EEA00FA6A37 /* CodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeViewController.swift; sourceTree = "<group>"; };
 		F3895F49233D323700FA6A37 /* CodeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeCoordinator.swift; sourceTree = "<group>"; };
-		F3895F4B233D347E00FA6A37 /* NameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameViewController.swift; sourceTree = "<group>"; };
-		F3895F4D233D348B00FA6A37 /* NameCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameCoordinator.swift; sourceTree = "<group>"; };
+		F3895F4B233D347E00FA6A37 /* PhoneNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberViewController.swift; sourceTree = "<group>"; };
+		F3895F4D233D348B00FA6A37 /* PhoneCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneCoordinator.swift; sourceTree = "<group>"; };
 		F3895F52233D5EEB00FA6A37 /* BlackButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackButtonStyle.swift; sourceTree = "<group>"; };
 		F3DC59FE233E893400B5E751 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		F3DC5A00233E896300B5E751 /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
@@ -73,7 +73,7 @@
 		F3EBE2462340FE87000FEE1A /* NameTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameTextView.swift; sourceTree = "<group>"; };
 		F3FC7DC92315BE610080D851 /* Hookah Tau.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hookah Tau.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3FC7DCC2315BE610080D851 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F3FC7DCE2315BE610080D851 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		F3FC7DCE2315BE610080D851 /* NameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameViewController.swift; sourceTree = "<group>"; };
 		F3FC7DD32315BE630080D851 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F3FC7DD82315BE630080D851 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F3FC7DDD2315BE630080D851 /* Hookah TauTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Hookah TauTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,7 +84,7 @@
 		F3FC7DEE2315BE630080D851 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F3FC7DFA2315C25D0080D851 /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
 		F3FC7DFC2315C4710080D851 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
-		F3FC7DFE2315C8D70080D851 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
+		F3FC7DFE2315C8D70080D851 /* NameCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,8 +208,8 @@
 		F3895F4F233D352400FA6A37 /* Phone number */ = {
 			isa = PBXGroup;
 			children = (
-				F3FC7DFE2315C8D70080D851 /* AuthCoordinator.swift */,
-				F3FC7DCE2315BE610080D851 /* AuthViewController.swift */,
+				F3FC7DFE2315C8D70080D851 /* NameCoordinator.swift */,
+				F3FC7DCE2315BE610080D851 /* NameViewController.swift */,
 			);
 			path = "Phone number";
 			sourceTree = "<group>";
@@ -226,8 +226,8 @@
 		F3895F51233D354300FA6A37 /* Name */ = {
 			isa = PBXGroup;
 			children = (
-				F3895F4D233D348B00FA6A37 /* NameCoordinator.swift */,
-				F3895F4B233D347E00FA6A37 /* NameViewController.swift */,
+				F3895F4D233D348B00FA6A37 /* PhoneCoordinator.swift */,
+				F3895F4B233D347E00FA6A37 /* PhoneNumberViewController.swift */,
 			);
 			path = Name;
 			sourceTree = "<group>";
@@ -429,12 +429,12 @@
 			files = (
 				F3895F4A233D323700FA6A37 /* CodeCoordinator.swift in Sources */,
 				F3851B2E2340A444009EE0B6 /* TitleTextView.swift in Sources */,
-				F3FC7DFF2315C8D70080D851 /* AuthCoordinator.swift in Sources */,
-				F3FC7DCF2315BE610080D851 /* AuthViewController.swift in Sources */,
+				F3FC7DFF2315C8D70080D851 /* NameCoordinator.swift in Sources */,
+				F3FC7DCF2315BE610080D851 /* NameViewController.swift in Sources */,
 				F3DC5A05233E89D500B5E751 /* Button.swift in Sources */,
 				F3FC7DFB2315C25D0080D851 /* ApplicationCoordinator.swift in Sources */,
 				F3895F48233D2EEA00FA6A37 /* CodeViewController.swift in Sources */,
-				F3895F4E233D348B00FA6A37 /* NameCoordinator.swift in Sources */,
+				F3895F4E233D348B00FA6A37 /* PhoneCoordinator.swift in Sources */,
 				F3FC7DCD2315BE610080D851 /* AppDelegate.swift in Sources */,
 				F30369BE2336924D00A8EA84 /* TabbarCoordinator.swift in Sources */,
 				F3FC7DFD2315C4710080D851 /* BaseCoordinator.swift in Sources */,
@@ -442,7 +442,7 @@
 				F3895F53233D5EEB00FA6A37 /* BlackButtonStyle.swift in Sources */,
 				F30369C02336925800A8EA84 /* TabbarController.swift in Sources */,
 				F3851B302340A513009EE0B6 /* RegistationViewModel.swift in Sources */,
-				F3895F4C233D347E00FA6A37 /* NameViewController.swift in Sources */,
+				F3895F4C233D347E00FA6A37 /* PhoneNumberViewController.swift in Sources */,
 				F3EBE2472340FE87000FEE1A /* NameTextView.swift in Sources */,
 				F3DC5A01233E896300B5E751 /* ButtonStyle.swift in Sources */,
 				F3851B2923409F8A009EE0B6 /* PhoneView.swift in Sources */,
