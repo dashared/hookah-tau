@@ -138,8 +138,8 @@
 		F30369B82336842600A8EA84 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
-				F3895F4F233D352400FA6A37 /* Phone number */,
-				F3895F51233D354300FA6A37 /* Name */,
+				F3895F4F233D352400FA6A37 /* Name */,
+				F3895F51233D354300FA6A37 /* Phone */,
 				F3895F50233D353600FA6A37 /* Code from sms */,
 			);
 			path = Authentication;
@@ -205,13 +205,13 @@
 			path = TitleText;
 			sourceTree = "<group>";
 		};
-		F3895F4F233D352400FA6A37 /* Phone number */ = {
+		F3895F4F233D352400FA6A37 /* Name */ = {
 			isa = PBXGroup;
 			children = (
 				F3FC7DFE2315C8D70080D851 /* NameCoordinator.swift */,
 				F3FC7DCE2315BE610080D851 /* NameViewController.swift */,
 			);
-			path = "Phone number";
+			path = Name;
 			sourceTree = "<group>";
 		};
 		F3895F50233D353600FA6A37 /* Code from sms */ = {
@@ -223,13 +223,13 @@
 			path = "Code from sms";
 			sourceTree = "<group>";
 		};
-		F3895F51233D354300FA6A37 /* Name */ = {
+		F3895F51233D354300FA6A37 /* Phone */ = {
 			isa = PBXGroup;
 			children = (
 				F3895F4D233D348B00FA6A37 /* PhoneCoordinator.swift */,
 				F3895F4B233D347E00FA6A37 /* PhoneNumberViewController.swift */,
 			);
-			path = Name;
+			path = Phone;
 			sourceTree = "<group>";
 		};
 		F3EBE2482340FFA4000FEE1A /* Name */ = {
