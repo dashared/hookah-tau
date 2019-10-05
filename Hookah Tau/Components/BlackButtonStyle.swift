@@ -14,6 +14,49 @@ class BlackButtonStyle: NSObject {
     let backgroundColor = UIColor.black
     let fontColor = UIColor.white
 
+    func changeToLoadingStyle(button: Button) {
+        let upperButton = UIButton(frame: button.frame)
+
+        upperButton.backgroundColor = backgroundColor
+        upperButton.layer.cornerRadius = cornerRadius
+        upperButton.layer.borderWidth = 5.0
+        upperButton.layer.borderColor = UIColor.black.cgColor
+
+        let replicationLayer = craeteReplicatorLayer()
+        replicationLayer.frame = upperButton.bounds
+        replicationLayer.frame.origin.x = -100
+
+        upperButton.layer.masksToBounds = true
+        upperButton.layer.addSublayer(replicationLayer)
+
+        upperButton.isUserInteractionEnabled = false
+        button.addSubview(upperButton)
+    }
+}
+
+extension BlackButtonStyle: ButtonStyle {
+
+    /// Basic style for button: color, corner radius, title
+    func apply(to button: Button, withTitle title: String? = nil) {
+        button.style = self
+        button.layer.cornerRadius = cornerRadius
+        button.layer.borderWidth = 5.0
+        button.layer.borderColor = UIColor.black.cgColor
+        button.backgroundColor = .black
+        button.layer.shadowOpacity = 1.0
+        button.layer.shadowRadius = 4.0
+        button.layer.shadowOffset = CGSize(width: 0, height: 4)
+
+        guard let title = title else { return }
+
+        let customizedText = NSMutableAttributedString.createStrokedText(withTitle: title, font: font)
+        button.setAttributedTitle(customizedText, for: .normal)
+    }
+}
+
+// MARK: - Private
+
+extension BlackButtonStyle {
     private func craeteReplicatorLayer() -> CAReplicatorLayer {
         let replicatorLayer = CAReplicatorLayer()
 
@@ -35,37 +78,6 @@ class BlackButtonStyle: NSObject {
         replicatorLayer.addSublayer(stripe)
 
         return replicatorLayer
-    }
-}
-
-extension BlackButtonStyle: ButtonStyle {
-
-    func apply(to button: Button, withTitle title: String? = nil) {
-        let upperButton = UIButton(frame: button.frame)
-
-        upperButton.backgroundColor = backgroundColor
-        upperButton.layer.cornerRadius = cornerRadius
-        upperButton.layer.borderWidth = 5.0
-        upperButton.layer.borderColor = UIColor.black.cgColor
-
-        let replicationLayer = craeteReplicatorLayer()
-        replicationLayer.frame = upperButton.bounds
-        replicationLayer.frame.origin.x = -100
-
-        upperButton.layer.masksToBounds = true
-        upperButton.layer.addSublayer(replicationLayer)
-
-        upperButton.isUserInteractionEnabled = false
-        button.addSubview(upperButton)
-
-        button.layer.shadowOpacity = 1.0
-        button.layer.shadowRadius = 4.0
-        button.layer.shadowOffset = CGSize(width: 0, height: 4)
-
-        guard let title = title else { return }
-
-        let customizedText = NSMutableAttributedString.createStrokedText(withTitle: title, font: font)
-        upperButton.setAttributedTitle(customizedText, for: .normal)
     }
 }
 

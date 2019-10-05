@@ -8,18 +8,20 @@
 
 import UIKit
 
-class NameViewController: UIViewController {
+class NameViewController: AuthorizationViewController {
+
+    // MARK: - Properties
 
     weak var coordinator: NameCoordinator?
 
-    var phoneView: UIView?
-
-    let contentView: UIView = {
-        let view = UIView(frame: CGRect(x: 10, y: 60, width: UIScreen.main.bounds.width-20, height: 259))
-        return view
-    }()
+    var nameView: UIView?
 
     var titleTextView: TitleTextView?
+
+    let contentView: UIView = {
+        let view = UIView(frame: CGRect.zero)
+        return view
+    }()
 
     let nextButton: Button = {
         let button = Button(frame: CGRect(x: 0, y: 0, width: 155, height: 37))
@@ -27,33 +29,37 @@ class NameViewController: UIViewController {
         return button
     }()
 
-    @objc func tapHandlerNextButton() {
-        coordinator?.goToNextStep()
-    }
+    // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.navigationController?.isNavigationBarHidden = true
         self.view.backgroundColor = .white
+
         self.view.addSubview(nextButton)
 
-        nextButton.addTarget(self, action: #selector(tapHandlerNextButton), for: .touchUpInside)
-
-        nextButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        nextButton.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+        constaintContentViewToSuperview(view: contentView, superview: view)
 
         let style = BlackButtonStyle()
         style.apply(to: nextButton, withTitle: "ДАЛЕЕ")
 
+        nextButton.addTarget(self, action: #selector(tapHandlerNextButton), for: .touchUpInside)
+        nextButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        nextButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        nextButton.widthAnchor.constraint(equalToConstant: 155).isActive = true
+        nextButton.heightAnchor.constraint(equalToConstant: 37).isActive = true
+
         titleTextView = TitleTextView.loadFromNib()
-        phoneView = PhoneView.loadFromNib()
-        titleTextView?.bind(model: RegistationViewModel(title: "Введите Ваш номер телефона", view: phoneView))
-        self.view.addSubview(contentView)
+        nameView = NameTextView.loadFromNib()
+        titleTextView?.bind(model: RegistationViewModel(title: "Как Вас зовут?", view: nameView))
 
         contentView.addSubviewThatFills(titleTextView)
     }
 
-
+    @objc func tapHandlerNextButton() {
+        //coordinator?.goToNextStep()
+        nextButton.loading = true
+    }
 }
 

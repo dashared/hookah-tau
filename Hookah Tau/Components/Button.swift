@@ -9,6 +9,11 @@
 import UIKit
 
 class Button: UIButton {
+
+    // MARK: - Properties
+
+    var style: BlackButtonStyle?
+
     public var loading = false {
         willSet {
             willUpdateLoadingState(newValue: newValue)
@@ -21,17 +26,15 @@ class Button: UIButton {
         }
     }
 
+    // MARK :- Private
+
     private func willUpdateLoadingState(newValue loading: Bool) {
         isEnabled = loading
 
         if loading {
-            //
+            style?.changeToLoadingStyle(button: self)
         } else {
             //
         }
-    }
-
-    private func createAnimation() {
-        
     }
 }

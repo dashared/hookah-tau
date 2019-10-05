@@ -11,6 +11,8 @@
 		F30369BE2336924D00A8EA84 /* TabbarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30369BD2336924D00A8EA84 /* TabbarCoordinator.swift */; };
 		F30369C02336925800A8EA84 /* TabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30369BF2336925800A8EA84 /* TabbarController.swift */; };
 		F3199E5B233FE08200F3C17A /* PhoneView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3199E5A233FE08200F3C17A /* PhoneView.xib */; };
+		F31E20C72348DDB900BEA215 /* Extensions+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31E20C62348DDB900BEA215 /* Extensions+UIView.swift */; };
+		F31E20C92348E0F300BEA215 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31E20C82348E0F300BEA215 /* AuthorizationViewController.swift */; };
 		F3851B2923409F8A009EE0B6 /* PhoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3851B2823409F8A009EE0B6 /* PhoneView.swift */; };
 		F3851B2C2340A280009EE0B6 /* TitleTextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3851B2B2340A280009EE0B6 /* TitleTextView.xib */; };
 		F3851B2E2340A444009EE0B6 /* TitleTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3851B2D2340A444009EE0B6 /* TitleTextView.swift */; };
@@ -20,7 +22,7 @@
 		F3895F4C233D347E00FA6A37 /* PhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3895F4B233D347E00FA6A37 /* PhoneNumberViewController.swift */; };
 		F3895F4E233D348B00FA6A37 /* PhoneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3895F4D233D348B00FA6A37 /* PhoneCoordinator.swift */; };
 		F3895F53233D5EEB00FA6A37 /* BlackButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3895F52233D5EEB00FA6A37 /* BlackButtonStyle.swift */; };
-		F3DC59FF233E893400B5E751 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DC59FE233E893400B5E751 /* Extensions.swift */; };
+		F3DC59FF233E893400B5E751 /* Extensions+UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DC59FE233E893400B5E751 /* Extensions+UIFont.swift */; };
 		F3DC5A01233E896300B5E751 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DC5A00233E896300B5E751 /* ButtonStyle.swift */; };
 		F3DC5A05233E89D500B5E751 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DC5A04233E89D500B5E751 /* Button.swift */; };
 		F3EBE2452340FDA7000FEE1A /* NameTextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3EBE2442340FDA7000FEE1A /* NameTextView.xib */; };
@@ -57,6 +59,8 @@
 		F30369BD2336924D00A8EA84 /* TabbarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarCoordinator.swift; sourceTree = "<group>"; };
 		F30369BF2336925800A8EA84 /* TabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarController.swift; sourceTree = "<group>"; };
 		F3199E5A233FE08200F3C17A /* PhoneView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhoneView.xib; sourceTree = "<group>"; };
+		F31E20C62348DDB900BEA215 /* Extensions+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+UIView.swift"; sourceTree = "<group>"; };
+		F31E20C82348E0F300BEA215 /* AuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
 		F3851B2823409F8A009EE0B6 /* PhoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneView.swift; sourceTree = "<group>"; };
 		F3851B2B2340A280009EE0B6 /* TitleTextView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleTextView.xib; sourceTree = "<group>"; };
 		F3851B2D2340A444009EE0B6 /* TitleTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTextView.swift; sourceTree = "<group>"; };
@@ -66,7 +70,7 @@
 		F3895F4B233D347E00FA6A37 /* PhoneNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberViewController.swift; sourceTree = "<group>"; };
 		F3895F4D233D348B00FA6A37 /* PhoneCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneCoordinator.swift; sourceTree = "<group>"; };
 		F3895F52233D5EEB00FA6A37 /* BlackButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackButtonStyle.swift; sourceTree = "<group>"; };
-		F3DC59FE233E893400B5E751 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		F3DC59FE233E893400B5E751 /* Extensions+UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+UIFont.swift"; sourceTree = "<group>"; };
 		F3DC5A00233E896300B5E751 /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
 		F3DC5A04233E89D500B5E751 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		F3EBE2442340FDA7000FEE1A /* NameTextView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NameTextView.xib; sourceTree = "<group>"; };
@@ -138,6 +142,7 @@
 		F30369B82336842600A8EA84 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
+				F31E20C82348E0F300BEA215 /* AuthorizationViewController.swift */,
 				F3895F4F233D352400FA6A37 /* Name */,
 				F3895F51233D354300FA6A37 /* Phone */,
 				F3895F50233D353600FA6A37 /* Code from sms */,
@@ -265,7 +270,8 @@
 			isa = PBXGroup;
 			children = (
 				F3FC7DCC2315BE610080D851 /* AppDelegate.swift */,
-				F3DC59FE233E893400B5E751 /* Extensions.swift */,
+				F3DC59FE233E893400B5E751 /* Extensions+UIFont.swift */,
+				F31E20C62348DDB900BEA215 /* Extensions+UIView.swift */,
 				F30369BC2336861100A8EA84 /* Models */,
 				F3199E59233FD7F700F3C17A /* Views */,
 				F30369B92336844500A8EA84 /* Components */,
@@ -438,13 +444,15 @@
 				F3FC7DCD2315BE610080D851 /* AppDelegate.swift in Sources */,
 				F30369BE2336924D00A8EA84 /* TabbarCoordinator.swift in Sources */,
 				F3FC7DFD2315C4710080D851 /* BaseCoordinator.swift in Sources */,
-				F3DC59FF233E893400B5E751 /* Extensions.swift in Sources */,
+				F3DC59FF233E893400B5E751 /* Extensions+UIFont.swift in Sources */,
 				F3895F53233D5EEB00FA6A37 /* BlackButtonStyle.swift in Sources */,
 				F30369C02336925800A8EA84 /* TabbarController.swift in Sources */,
+				F31E20C72348DDB900BEA215 /* Extensions+UIView.swift in Sources */,
 				F3851B302340A513009EE0B6 /* RegistationViewModel.swift in Sources */,
 				F3895F4C233D347E00FA6A37 /* PhoneNumberViewController.swift in Sources */,
 				F3EBE2472340FE87000FEE1A /* NameTextView.swift in Sources */,
 				F3DC5A01233E896300B5E751 /* ButtonStyle.swift in Sources */,
+				F31E20C92348E0F300BEA215 /* AuthorizationViewController.swift in Sources */,
 				F3851B2923409F8A009EE0B6 /* PhoneView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
