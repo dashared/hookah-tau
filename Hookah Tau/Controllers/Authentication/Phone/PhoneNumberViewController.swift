@@ -18,11 +18,6 @@ class PhoneNumberViewController: AuthorizationViewController {
 
     var titleTextView: TitleTextView?
 
-    let contentView: UIView = {
-        let view = UIView(frame: CGRect.zero)
-        return view
-    }()
-
     let nextButton: Button = {
         let button = Button(frame: CGRect(x: 0, y: 0, width: 155, height: 37))
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -35,7 +30,6 @@ class PhoneNumberViewController: AuthorizationViewController {
         self.view.backgroundColor = .white
         
         self.view.addSubview(nextButton)
-        constaintContentViewToSuperview(view: contentView, superview: view)
 
         titleTextView = TitleTextView.loadFromNib()
         phoneView = PhoneView.loadFromNib()

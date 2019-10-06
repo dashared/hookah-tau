@@ -18,11 +18,6 @@ class NameViewController: AuthorizationViewController {
 
     var titleTextView: TitleTextView?
 
-    let contentView: UIView = {
-        let view = UIView(frame: CGRect.zero)
-        return view
-    }()
-
     let nextButton: Button = {
         let button = Button(frame: CGRect(x: 0, y: 0, width: 155, height: 37))
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -39,23 +34,31 @@ class NameViewController: AuthorizationViewController {
 
         self.view.addSubview(nextButton)
 
-        constaintContentViewToSuperview(view: contentView, superview: view)
 
         let style = BlackButtonStyle()
         style.apply(to: nextButton, withTitle: "ДАЛЕЕ")
 
         nextButton.addTarget(self, action: #selector(tapHandlerNextButton), for: .touchUpInside)
-        nextButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        nextButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        //nextButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        //nextButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         nextButton.widthAnchor.constraint(equalToConstant: 155).isActive = true
         nextButton.heightAnchor.constraint(equalToConstant: 37).isActive = true
-
+        
+        addStackViewWithButtons(rightBtn: nextButton)
+        setUpContentView()
+    }
+    
+    // MARK: - Setup
+    
+    func setUpContentView() {
         titleTextView = TitleTextView.loadFromNib()
         nameView = NameTextView.loadFromNib()
         titleTextView?.bind(model: RegistationViewModel(title: "Как Вас зовут?", view: nameView))
 
         contentView.addSubviewThatFills(titleTextView)
     }
+    
+    // MARK: - Handlers
 
     @objc func tapHandlerNextButton() {
         //coordinator?.goToNextStep()
