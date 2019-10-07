@@ -25,8 +25,21 @@ class Button: UIButton {
             alpha = isEnabled ? 1 : 0.8
         }
     }
+    
+    // MARK: - Init
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
 
-    // MARK :- Private
+        self.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    // MARK: - Private
 
     private func willUpdateLoadingState(newValue loading: Bool) {
         isEnabled = loading

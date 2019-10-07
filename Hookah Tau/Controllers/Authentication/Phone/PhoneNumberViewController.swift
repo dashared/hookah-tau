@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PhoneNumberViewController: AuthorizationViewController {
+final class PhoneNumberViewController: AuthorizationViewController {
 
     // MARK: - Properties
 
@@ -19,32 +19,62 @@ class PhoneNumberViewController: AuthorizationViewController {
     var titleTextView: TitleTextView?
 
     let nextButton: Button = {
-        let button = Button(frame: CGRect(x: 0, y: 0, width: 155, height: 37))
-        button.translatesAutoresizingMaskIntoConstraints = false
+        let button = Button(frame: CGRect.zero)
         return button
     }()
+    
+    let returnButton: Button = {
+        let button = Button(frame: CGRect.zero)
+        return button
+    }()
+    
+    // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.view.backgroundColor = .white
         
-        self.view.addSubview(nextButton)
-
+        setUpButtons()
+        setUpMainView()
+    }
+    
+    // MARK: - Setup
+    
+    func setUpButtons() {
+        let style = BlackButtonStyle()
+        style.apply(to: returnButton, withTitle: "НАЗАД")
+        style.apply(to: nextButton, withTitle: "ДАЛЕЕ")
+        
+        NSLayoutConstraint.activate([
+            returnButton.widthAnchor.constraint(equalToConstant: 155),
+            nextButton.widthAnchor.constraint(equalToConstant: 155)
+        ])
+        
+        addStackViewWithButtons(leftBtn: returnButton, rightBtn: nextButton)
+        
+        nextButton.addTarget(self, action: #selector(tapHandlerNextButton), for: .touchUpInside)
+        returnButton.addTarget(self, action: #selector(tapHandlerReturnButton), for: .touchUpInside)
+    }
+    
+    func setUpMainView() {
         titleTextView = TitleTextView.loadFromNib()
         phoneView = PhoneView.loadFromNib()
         titleTextView?.bind(model: RegistationViewModel(title: "Введите Ваш номер телефона", view: phoneView))
-
+        
         contentView.addSubviewThatFills(titleTextView)
-
-        nextButton.widthAnchor.constraint(equalToConstant: 250).isActive = true
-        nextButton.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        nextButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        nextButton.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+        addStackViewWithButtons(leftBtn: returnButton, rightBtn: nextButton)
     }
-
+    
+    // MARK: - Handlers
+ 
     @objc
     func tapHandlerNextButton() {
         coordinator?.goToNextStep()
+    }
+    
+    @objc
+    func tapHandlerReturnButton() {
+        coordinator?.goBack()
     }
 }

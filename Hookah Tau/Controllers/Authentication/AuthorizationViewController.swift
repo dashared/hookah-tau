@@ -28,6 +28,9 @@ class AuthorizationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController?.isNavigationBarHidden = true
+        self.view.backgroundColor = .white
+        
         constaintContentViewToSuperview(authView: contentView)
         
         setUpKeyboard()
@@ -54,14 +57,14 @@ class AuthorizationViewController: UIViewController {
         stackView.backgroundColor = .red
         view.addSubview(stackView)
         
-        bottomConstraint = NSLayoutConstraint(item: stackView, attribute: .bottom, relatedBy: .equal, toItem: view.safeAreaLayoutGuide, attribute: .bottom, multiplier: 1, constant: 0)
+        bottomConstraint = NSLayoutConstraint(item: stackView, attribute: .bottom, relatedBy: .equal, toItem: view.safeAreaLayoutGuide, attribute: .bottom, multiplier: 1, constant: -20)
         guard let bottomContraint = bottomConstraint else { return }
         view.addConstraint(bottomContraint)
         
         NSLayoutConstraint.activate([
-            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            stackView.heightAnchor.constraint(equalToConstant: 50)
+            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            stackView.heightAnchor.constraint(equalToConstant: 40)
         ])
         
         switch (leftBtn, rightBtn) {
@@ -80,7 +83,7 @@ class AuthorizationViewController: UIViewController {
         stackView.addArrangedSubview(leftBtn)
         stackView.addArrangedSubview(rightBtn)
         
-        stackView.spacing = 10
+        stackView.distribution = .equalSpacing
     }
     
     private func setUpLeftButton(_ leftBtn: UIButton, _ stackView: UIStackView) {
@@ -90,7 +93,10 @@ class AuthorizationViewController: UIViewController {
     
     private func setUpRightButton(_ rightBtn: UIButton, _ stackView: UIStackView) {
         stackView.addArrangedSubview(rightBtn)
-        stackView.alignment = .leading
+
+        stackView.axis = .vertical
+        stackView.alignment = .trailing
+        stackView.distribution = .fillProportionally
     }
     
     // MARK: - Keyboard
@@ -103,9 +109,9 @@ class AuthorizationViewController: UIViewController {
     
     @objc
     private func handleKeyboardNotifications(notification: NSNotification){
-        if let userInfo = notification.userInfo{
+        if let userInfo = notification.userInfo {
             let keyBoardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
-            bottomConstraint?.constant = notification.name == UIResponder.keyboardWillShowNotification ? -keyBoardFrame.height + view.safeAreaInsets.bottom : 0
+            bottomConstraint?.constant = notification.name == UIResponder.keyboardWillShowNotification ? -keyBoardFrame.height + view.safeAreaInsets.bottom - 20 : 0
             
             UIView.animate(withDuration: 0, delay: 0, options: .curveEaseOut, animations: {
                 self.view.layoutIfNeeded()

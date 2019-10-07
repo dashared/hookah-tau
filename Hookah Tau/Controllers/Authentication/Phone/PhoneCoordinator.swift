@@ -25,5 +25,6 @@ class PhoneCoordinator: BaseCoordinator {
 
     func goBack() {
         parentCoordinator?.removeDependency(self)
+        navigationController?.popViewController(animated: true)
     }
 }

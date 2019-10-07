@@ -39,6 +39,7 @@ extension BlackButtonStyle: ButtonStyle {
     /// Basic style for button: color, corner radius, title
     func apply(to button: Button, withTitle title: String? = nil) {
         button.style = self
+        
         button.layer.cornerRadius = cornerRadius
         button.layer.borderWidth = 5.0
         button.layer.borderColor = UIColor.black.cgColor
