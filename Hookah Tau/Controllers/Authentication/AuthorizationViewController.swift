@@ -18,6 +18,8 @@ class AuthorizationViewController: UIViewController {
     
     var bottomConstraint: NSLayoutConstraint?
     
+    var titleTextView: TitleTextView?
+    
     let contentView: UIView = {
         let view = UIView(frame: CGRect.zero)
         return view
@@ -36,17 +38,26 @@ class AuthorizationViewController: UIViewController {
         setUpKeyboard()
     }
 
-    // MARK: - Methods
+    // MARK: - Views
 
     private func constaintContentViewToSuperview(authView: UIView) {
         view.addSubview(authView)
 
         authView.translatesAutoresizingMaskIntoConstraints = false
-
-        authView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        authView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30).isActive = true
-        authView.widthAnchor.constraint(equalToConstant: 374).isActive = true
-        authView.heightAnchor.constraint(equalToConstant: 219).isActive = true
+        
+        NSLayoutConstraint.activate([
+            authView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            authView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
+            authView.widthAnchor.constraint(equalToConstant: 374),
+            authView.heightAnchor.constraint(equalToConstant: 219)
+        ])
+    }
+    
+    func setUpContentView(withModel model: RegistationViewModel) {
+        titleTextView = TitleTextView.loadFromNib()
+        
+        titleTextView?.bind(model: model)
+        contentView.addSubviewThatFills(titleTextView)
     }
     
     // MARK: - Buttons

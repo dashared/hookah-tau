@@ -1,5 +1,5 @@
 //
-//  NameViewController.swift
+//  InputViewController.swift
 //  Hookah Tau
 //
 //  Created by Daria Rednikina on 26/09/2019.
@@ -8,14 +8,14 @@
 
 import UIKit
 
-final class PhoneNumberViewController: AuthorizationViewController {
-
+final class CodeSmsViewController: AuthorizationViewController {
+    
     // MARK: - Properties
 
-    weak var coordinator: PhoneCoordinator?
-
-    var phoneView: UIView?
+    weak var coordinator: CodeCoordinator?
     
+    weak var codeView: UIView?
+
     let nextButton: Button = {
         let button = Button(frame: CGRect.zero)
         return button
@@ -27,7 +27,7 @@ final class PhoneNumberViewController: AuthorizationViewController {
     }()
     
     // MARK: - Lifecycle
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -39,7 +39,7 @@ final class PhoneNumberViewController: AuthorizationViewController {
     
     // MARK: - Setup
     
-    func setUpButtons() {
+    private func setUpButtons() {
         let style = BlackButtonStyle()
         style.apply(to: returnButton, withTitle: "НАЗАД")
         style.apply(to: nextButton, withTitle: "ДАЛЕЕ")
@@ -55,14 +55,15 @@ final class PhoneNumberViewController: AuthorizationViewController {
         returnButton.addTarget(self, action: #selector(tapHandlerReturnButton), for: .touchUpInside)
     }
     
-    func setUpContentView() {
-        phoneView = PhoneView.loadFromNib()
-        setUpContentView(withModel: RegistationViewModel(title: "Введите Ваш номер телефона",
-                                                         view: phoneView))
+    private func setUpContentView() {
+        codeView = CodeView.loadFromNib()
+        setUpContentView(withModel:
+            RegistationViewModel(title: "Вам должно придти сообщение.\nКакой в нем код?",
+                                 view: codeView))
     }
     
     // MARK: - Handlers
- 
+    
     @objc
     func tapHandlerNextButton() {
         coordinator?.goToNextStep()
@@ -72,4 +73,5 @@ final class PhoneNumberViewController: AuthorizationViewController {
     func tapHandlerReturnButton() {
         coordinator?.goBack()
     }
+    
 }

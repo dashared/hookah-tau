@@ -16,8 +16,6 @@ class NameViewController: AuthorizationViewController {
 
     var nameView: UIView?
 
-    var titleTextView: TitleTextView?
-
     let nextButton: Button = {
         let button = Button(frame: CGRect.zero)
         return button
@@ -45,11 +43,9 @@ class NameViewController: AuthorizationViewController {
     }
     
     func setUpContentView() {
-        titleTextView = TitleTextView.loadFromNib()
         nameView = NameTextView.loadFromNib()
-        titleTextView?.bind(model: RegistationViewModel(title: "Как Вас зовут?", view: nameView))
-
-        contentView.addSubviewThatFills(titleTextView)
+        setUpContentView(withModel: RegistationViewModel(title: "Как Вас зовут?",
+                                                         view: nameView))
     }
     
     // MARK: - Handlers

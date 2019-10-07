@@ -14,13 +14,18 @@ class CodeCoordinator: BaseCoordinator {
     weak var parentCoordinator: PhoneCoordinator?
 
     override func start() {
-        let smsInput = CodeViewController()
+        let smsInput = CodeSmsViewController()
         smsInput.coordinator = self
         navigationController?.pushViewController(smsInput, animated: true)
     }
 
     func goBack() {
         parentCoordinator?.removeDependency(self)
+        navigationController?.popViewController(animated: true)
+    }
+    
+    func goToNextStep() {
+        print("Start Main Flow...")
     }
 
 }
