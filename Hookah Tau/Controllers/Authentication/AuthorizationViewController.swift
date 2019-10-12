@@ -36,6 +36,8 @@ class AuthorizationViewController: UIViewController {
         constaintContentViewToSuperview(authView: contentView)
         
         setUpKeyboard()
+        
+        view.layoutIfNeeded()
     }
 
     // MARK: - Views
@@ -88,6 +90,8 @@ class AuthorizationViewController: UIViewController {
         case (.none, .none):
             return;
         }
+        
+        view.layoutIfNeeded()
     }
     
     private func setUpTwoButtons(_ leftBtn: UIButton, _ rightBtn: UIButton, _ stackView: UIStackView) {
@@ -112,10 +116,10 @@ class AuthorizationViewController: UIViewController {
     
     // MARK: - Keyboard
     
-    private func setUpKeyboard() {
+    func setUpKeyboard() {
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotifications), name: UIResponder.keyboardWillShowNotification, object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotifications), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotifications), name: UIResponder.keyboardDidHideNotification, object: nil)
     }
     
     @objc

@@ -14,7 +14,7 @@ final class CodeSmsViewController: AuthorizationViewController {
 
     weak var coordinator: CodeCoordinator?
     
-    weak var codeView: UIView?
+    weak var codeView: CodeView?
 
     let nextButton: Button = {
         let button = Button(frame: CGRect.zero)
@@ -30,11 +30,20 @@ final class CodeSmsViewController: AuthorizationViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.view.backgroundColor = .white
         
         setUpButtons()
         setUpContentView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        codeView?.fst?.becomeFirstResponder()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        codeView?.fst?.resignFirstResponder()
     }
     
     // MARK: - Setup

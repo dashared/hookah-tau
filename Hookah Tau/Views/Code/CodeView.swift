@@ -10,6 +10,8 @@ import UIKit
 
 class CodeView: UIView {
     
+    // MARK: - Properties
+    
     @IBOutlet weak var fst: UITextField?
     
     @IBOutlet weak var snd: UITextField?
@@ -21,5 +23,22 @@ class CodeView: UIView {
     @IBOutlet weak var fif: UITextField?
 
     @IBOutlet weak var six: UITextField?
+    
+    private var allNumbers: [UITextField] = []
+    
+    // MARK: - Lifecycle
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        allNumbers = [fst,
+                     snd,
+                     trd,
+                     frt,
+                     fif,
+                     six].compactMap{ $0 }
+        
+        _ = allNumbers.map { $0.keyboardType = .numberPad }
+    }
     
 }

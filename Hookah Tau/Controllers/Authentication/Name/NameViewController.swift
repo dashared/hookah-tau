@@ -14,7 +14,7 @@ class NameViewController: AuthorizationViewController {
 
     weak var coordinator: NameCoordinator?
 
-    var nameView: UIView?
+    var nameView: NameTextView?
 
     let nextButton: Button = {
         let button = Button(frame: CGRect.zero)
@@ -26,8 +26,20 @@ class NameViewController: AuthorizationViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setUpButtons()
         setUpContentView()
+        setUpButtons()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    
+        nameView?.nameTextField?.becomeFirstResponder()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        nameView?.nameTextField?.resignFirstResponder()
     }
     
     // MARK: - Setup
@@ -52,7 +64,7 @@ class NameViewController: AuthorizationViewController {
 
     @objc func tapHandlerNextButton() {
         coordinator?.goToNextStep()
-        //nextButton.loading = true
+        //nextButton.loading = !nextButton.loading
     }
 }
 

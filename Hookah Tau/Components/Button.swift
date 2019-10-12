@@ -22,7 +22,7 @@ class Button: UIButton {
 
     override var isEnabled: Bool {
         didSet {
-            alpha = isEnabled ? 1 : 0.8
+            //alpha = isEnabled ? 1 : 0.8
         }
     }
     
@@ -31,7 +31,7 @@ class Button: UIButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        self.translatesAutoresizingMaskIntoConstraints = false
+        translatesAutoresizingMaskIntoConstraints = false
     }
     
 
@@ -42,12 +42,12 @@ class Button: UIButton {
     // MARK: - Private
 
     private func willUpdateLoadingState(newValue loading: Bool) {
-        isEnabled = loading
+        isEnabled = !loading
 
         if loading {
             style?.changeToLoadingStyle(button: self)
         } else {
-            //
+            style?.backToNormalStyle(button: self)
         }
     }
 }

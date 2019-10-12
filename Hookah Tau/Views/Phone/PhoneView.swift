@@ -19,5 +19,20 @@ class PhoneView: UIView {
     @IBOutlet weak var thirdRange: UITextField?
 
     @IBOutlet weak var forthRange: UITextField?
+    
+    private var allRanges: [UITextField] = []
+    
+    // MARK: - Lifecycle
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        allRanges = [firstRange,
+                     secondRange,
+                     thirdRange,
+                     forthRange].compactMap{ $0 }
+        
+        _ = allRanges.map { $0.keyboardType = .numberPad }
+    }
 
 }

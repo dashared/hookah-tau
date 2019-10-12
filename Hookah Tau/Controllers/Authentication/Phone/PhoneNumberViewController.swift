@@ -14,7 +14,7 @@ final class PhoneNumberViewController: AuthorizationViewController {
 
     weak var coordinator: PhoneCoordinator?
 
-    var phoneView: UIView?
+    var phoneView: PhoneView?
     
     let nextButton: Button = {
         let button = Button(frame: CGRect.zero)
@@ -31,10 +31,20 @@ final class PhoneNumberViewController: AuthorizationViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.view.backgroundColor = .white
-        
         setUpButtons()
         setUpContentView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    
+        phoneView?.firstRange?.becomeFirstResponder()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        phoneView?.firstRange?.resignFirstResponder()
     }
     
     // MARK: - Setup

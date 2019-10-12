@@ -9,8 +9,18 @@
 import UIKit
 
 class NameTextView: UIView {
+    
+    // MARK: - Properties
 
     @IBOutlet weak var nameTextField: UITextField?
+    
+    // MARK: - Lifecycle
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        nameTextField?.keyboardType = .alphabet
+    }
 
     // TODO: - change in future
     func bind(withModel model: String) {

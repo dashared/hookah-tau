@@ -13,24 +13,34 @@ class BlackButtonStyle: NSObject {
     let font = UIFont.smallCapsSystemFont(ofSize: 17, weight: .bold)
     let backgroundColor = UIColor.black
     let fontColor = UIColor.white
+    let borderWidth = CGFloat(5.0)
+    var subviewLayer: UIView?
 
     func changeToLoadingStyle(button: Button) {
-        let upperButton = UIButton(frame: button.frame)
+        let view = UIView(frame: button.frame)
+        subviewLayer = view
+        
+        view.layer.frame = button.frame
+        view.layer.cornerRadius = cornerRadius
+        view.layer.borderWidth = borderWidth
+        view.layer.borderColor = backgroundColor.cgColor
 
-        upperButton.backgroundColor = backgroundColor
-        upperButton.layer.cornerRadius = cornerRadius
-        upperButton.layer.borderWidth = 5.0
-        upperButton.layer.borderColor = UIColor.black.cgColor
-
-        let replicationLayer = craeteReplicatorLayer()
-        replicationLayer.frame = upperButton.bounds
+        let replicationLayer = createReplicatorLayer()
+        replicationLayer.frame = button.bounds
         replicationLayer.frame.origin.x = -100
 
-        upperButton.layer.masksToBounds = true
-        upperButton.layer.addSublayer(replicationLayer)
+        view.layer.masksToBounds = true
+        view.layer.addSublayer(replicationLayer)
 
-        upperButton.isUserInteractionEnabled = false
-        button.addSubview(upperButton)
+        view.backgroundColor = .clear
+        view.layer.addSublayer(replicationLayer)
+        view.isUserInteractionEnabled = false
+        
+        button.addSubviewThatFills(view)
+    }
+    
+    func backToNormalStyle(button: Button) {
+        subviewLayer?.removeFromSuperview()
     }
 }
 
@@ -58,12 +68,12 @@ extension BlackButtonStyle: ButtonStyle {
 // MARK: - Private
 
 extension BlackButtonStyle {
-    private func craeteReplicatorLayer() -> CAReplicatorLayer {
+    private func createReplicatorLayer() -> CAReplicatorLayer {
         let replicatorLayer = CAReplicatorLayer()
 
         let stripe = CALayer()
 
-        let animation =  CABasicAnimation.init(keyPath: "position.x")
+        let animation = CABasicAnimation.init(keyPath: "position.x")
         animation.fromValue = stripe.position.x
         animation.toValue = stripe.position.x + 100
         animation.duration = 2
