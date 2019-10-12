@@ -7,17 +7,36 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		12387337234BB98700D1F1AB /* CodeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12387336234BB98700D1F1AB /* CodeView.xib */; };
+		12EE4A76234BB8FE005B4D1A /* CodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12EE4A75234BB8FE005B4D1A /* CodeView.swift */; };
 		F30369B5233679EA00A8EA84 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F30369B4233679EA00A8EA84 /* LaunchScreen.storyboard */; };
 		F30369BE2336924D00A8EA84 /* TabbarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30369BD2336924D00A8EA84 /* TabbarCoordinator.swift */; };
 		F30369C02336925800A8EA84 /* TabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30369BF2336925800A8EA84 /* TabbarController.swift */; };
+		F3199E5B233FE08200F3C17A /* PhoneView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3199E5A233FE08200F3C17A /* PhoneView.xib */; };
+		F31E20C72348DDB900BEA215 /* Extensions+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31E20C62348DDB900BEA215 /* Extensions+UIView.swift */; };
+		F31E20C92348E0F300BEA215 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31E20C82348E0F300BEA215 /* AuthorizationViewController.swift */; };
+		F3851B2923409F8A009EE0B6 /* PhoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3851B2823409F8A009EE0B6 /* PhoneView.swift */; };
+		F3851B2C2340A280009EE0B6 /* TitleTextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3851B2B2340A280009EE0B6 /* TitleTextView.xib */; };
+		F3851B2E2340A444009EE0B6 /* TitleTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3851B2D2340A444009EE0B6 /* TitleTextView.swift */; };
+		F3851B302340A513009EE0B6 /* RegistationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3851B2F2340A513009EE0B6 /* RegistationViewModel.swift */; };
+		F3895F48233D2EEA00FA6A37 /* CodeSmsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3895F47233D2EEA00FA6A37 /* CodeSmsViewController.swift */; };
+		F3895F4A233D323700FA6A37 /* CodeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3895F49233D323700FA6A37 /* CodeCoordinator.swift */; };
+		F3895F4C233D347E00FA6A37 /* PhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3895F4B233D347E00FA6A37 /* PhoneNumberViewController.swift */; };
+		F3895F4E233D348B00FA6A37 /* PhoneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3895F4D233D348B00FA6A37 /* PhoneCoordinator.swift */; };
+		F3895F53233D5EEB00FA6A37 /* BlackButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3895F52233D5EEB00FA6A37 /* BlackButtonStyle.swift */; };
+		F3DC59FF233E893400B5E751 /* Extensions+UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DC59FE233E893400B5E751 /* Extensions+UIFont.swift */; };
+		F3DC5A01233E896300B5E751 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DC5A00233E896300B5E751 /* ButtonStyle.swift */; };
+		F3DC5A05233E89D500B5E751 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DC5A04233E89D500B5E751 /* Button.swift */; };
+		F3EBE2452340FDA7000FEE1A /* NameTextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3EBE2442340FDA7000FEE1A /* NameTextView.xib */; };
+		F3EBE2472340FE87000FEE1A /* NameTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EBE2462340FE87000FEE1A /* NameTextView.swift */; };
 		F3FC7DCD2315BE610080D851 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FC7DCC2315BE610080D851 /* AppDelegate.swift */; };
-		F3FC7DCF2315BE610080D851 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FC7DCE2315BE610080D851 /* AuthViewController.swift */; };
+		F3FC7DCF2315BE610080D851 /* NameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FC7DCE2315BE610080D851 /* NameViewController.swift */; };
 		F3FC7DD42315BE630080D851 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3FC7DD32315BE630080D851 /* Assets.xcassets */; };
 		F3FC7DE22315BE630080D851 /* Hookah_TauTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FC7DE12315BE630080D851 /* Hookah_TauTests.swift */; };
 		F3FC7DED2315BE630080D851 /* Hookah_TauUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FC7DEC2315BE630080D851 /* Hookah_TauUITests.swift */; };
 		F3FC7DFB2315C25D0080D851 /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FC7DFA2315C25D0080D851 /* ApplicationCoordinator.swift */; };
 		F3FC7DFD2315C4710080D851 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FC7DFC2315C4710080D851 /* BaseCoordinator.swift */; };
-		F3FC7DFF2315C8D70080D851 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FC7DFE2315C8D70080D851 /* AuthCoordinator.swift */; };
+		F3FC7DFF2315C8D70080D851 /* NameCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FC7DFE2315C8D70080D851 /* NameCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,12 +57,31 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		12387336234BB98700D1F1AB /* CodeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CodeView.xib; sourceTree = "<group>"; };
+		12EE4A75234BB8FE005B4D1A /* CodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeView.swift; sourceTree = "<group>"; };
 		F30369B4233679EA00A8EA84 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F30369BD2336924D00A8EA84 /* TabbarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarCoordinator.swift; sourceTree = "<group>"; };
 		F30369BF2336925800A8EA84 /* TabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarController.swift; sourceTree = "<group>"; };
+		F3199E5A233FE08200F3C17A /* PhoneView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhoneView.xib; sourceTree = "<group>"; };
+		F31E20C62348DDB900BEA215 /* Extensions+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+UIView.swift"; sourceTree = "<group>"; };
+		F31E20C82348E0F300BEA215 /* AuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
+		F3851B2823409F8A009EE0B6 /* PhoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneView.swift; sourceTree = "<group>"; };
+		F3851B2B2340A280009EE0B6 /* TitleTextView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleTextView.xib; sourceTree = "<group>"; };
+		F3851B2D2340A444009EE0B6 /* TitleTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTextView.swift; sourceTree = "<group>"; };
+		F3851B2F2340A513009EE0B6 /* RegistationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistationViewModel.swift; sourceTree = "<group>"; };
+		F3895F47233D2EEA00FA6A37 /* CodeSmsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeSmsViewController.swift; sourceTree = "<group>"; };
+		F3895F49233D323700FA6A37 /* CodeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeCoordinator.swift; sourceTree = "<group>"; };
+		F3895F4B233D347E00FA6A37 /* PhoneNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberViewController.swift; sourceTree = "<group>"; };
+		F3895F4D233D348B00FA6A37 /* PhoneCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneCoordinator.swift; sourceTree = "<group>"; };
+		F3895F52233D5EEB00FA6A37 /* BlackButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackButtonStyle.swift; sourceTree = "<group>"; };
+		F3DC59FE233E893400B5E751 /* Extensions+UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+UIFont.swift"; sourceTree = "<group>"; };
+		F3DC5A00233E896300B5E751 /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
+		F3DC5A04233E89D500B5E751 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		F3EBE2442340FDA7000FEE1A /* NameTextView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NameTextView.xib; sourceTree = "<group>"; };
+		F3EBE2462340FE87000FEE1A /* NameTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameTextView.swift; sourceTree = "<group>"; };
 		F3FC7DC92315BE610080D851 /* Hookah Tau.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hookah Tau.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3FC7DCC2315BE610080D851 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F3FC7DCE2315BE610080D851 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		F3FC7DCE2315BE610080D851 /* NameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameViewController.swift; sourceTree = "<group>"; };
 		F3FC7DD32315BE630080D851 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F3FC7DD82315BE630080D851 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F3FC7DDD2315BE630080D851 /* Hookah TauTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Hookah TauTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -54,7 +92,7 @@
 		F3FC7DEE2315BE630080D851 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F3FC7DFA2315C25D0080D851 /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
 		F3FC7DFC2315C4710080D851 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
-		F3FC7DFE2315C8D70080D851 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
+		F3FC7DFE2315C8D70080D851 /* NameCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +120,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		12EE4A77234BB942005B4D1A /* Code */ = {
+			isa = PBXGroup;
+			children = (
+				12EE4A75234BB8FE005B4D1A /* CodeView.swift */,
+				12387336234BB98700D1F1AB /* CodeView.xib */,
+			);
+			path = Code;
+			sourceTree = "<group>";
+		};
 		F30369B623367B2300A8EA84 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -108,8 +155,10 @@
 		F30369B82336842600A8EA84 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
-				F3FC7DFE2315C8D70080D851 /* AuthCoordinator.swift */,
-				F3FC7DCE2315BE610080D851 /* AuthViewController.swift */,
+				F31E20C82348E0F300BEA215 /* AuthorizationViewController.swift */,
+				F3895F4F233D352400FA6A37 /* Name */,
+				F3895F51233D354300FA6A37 /* Phone */,
+				F3895F50233D353600FA6A37 /* Code from sms */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -117,6 +166,9 @@
 		F30369B92336844500A8EA84 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				F3DC5A00233E896300B5E751 /* ButtonStyle.swift */,
+				F3895F52233D5EEB00FA6A37 /* BlackButtonStyle.swift */,
+				F3DC5A04233E89D500B5E751 /* Button.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -138,8 +190,74 @@
 		F30369BC2336861100A8EA84 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F3851B2F2340A513009EE0B6 /* RegistationViewModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		F3199E59233FD7F700F3C17A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				12EE4A77234BB942005B4D1A /* Code */,
+				F3EBE2482340FFA4000FEE1A /* Name */,
+				F3851B312340A5D5009EE0B6 /* TitleText */,
+				F3851B2A2340A21C009EE0B6 /* Phone */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F3851B2A2340A21C009EE0B6 /* Phone */ = {
+			isa = PBXGroup;
+			children = (
+				F3199E5A233FE08200F3C17A /* PhoneView.xib */,
+				F3851B2823409F8A009EE0B6 /* PhoneView.swift */,
+			);
+			path = Phone;
+			sourceTree = "<group>";
+		};
+		F3851B312340A5D5009EE0B6 /* TitleText */ = {
+			isa = PBXGroup;
+			children = (
+				F3851B2B2340A280009EE0B6 /* TitleTextView.xib */,
+				F3851B2D2340A444009EE0B6 /* TitleTextView.swift */,
+			);
+			path = TitleText;
+			sourceTree = "<group>";
+		};
+		F3895F4F233D352400FA6A37 /* Name */ = {
+			isa = PBXGroup;
+			children = (
+				F3FC7DFE2315C8D70080D851 /* NameCoordinator.swift */,
+				F3FC7DCE2315BE610080D851 /* NameViewController.swift */,
+			);
+			path = Name;
+			sourceTree = "<group>";
+		};
+		F3895F50233D353600FA6A37 /* Code from sms */ = {
+			isa = PBXGroup;
+			children = (
+				F3895F49233D323700FA6A37 /* CodeCoordinator.swift */,
+				F3895F47233D2EEA00FA6A37 /* CodeSmsViewController.swift */,
+			);
+			path = "Code from sms";
+			sourceTree = "<group>";
+		};
+		F3895F51233D354300FA6A37 /* Phone */ = {
+			isa = PBXGroup;
+			children = (
+				F3895F4D233D348B00FA6A37 /* PhoneCoordinator.swift */,
+				F3895F4B233D347E00FA6A37 /* PhoneNumberViewController.swift */,
+			);
+			path = Phone;
+			sourceTree = "<group>";
+		};
+		F3EBE2482340FFA4000FEE1A /* Name */ = {
+			isa = PBXGroup;
+			children = (
+				F3EBE2442340FDA7000FEE1A /* NameTextView.xib */,
+				F3EBE2462340FE87000FEE1A /* NameTextView.swift */,
+			);
+			path = Name;
 			sourceTree = "<group>";
 		};
 		F3FC7DC02315BE610080D851 = {
@@ -166,7 +284,10 @@
 			isa = PBXGroup;
 			children = (
 				F3FC7DCC2315BE610080D851 /* AppDelegate.swift */,
+				F3DC59FE233E893400B5E751 /* Extensions+UIFont.swift */,
+				F31E20C62348DDB900BEA215 /* Extensions+UIView.swift */,
 				F30369BC2336861100A8EA84 /* Models */,
+				F3199E59233FD7F700F3C17A /* Views */,
 				F30369B92336844500A8EA84 /* Components */,
 				F30369B72336841400A8EA84 /* Controllers */,
 				F3FC7DD82315BE630080D851 /* Info.plist */,
@@ -297,8 +418,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3199E5B233FE08200F3C17A /* PhoneView.xib in Resources */,
+				12387337234BB98700D1F1AB /* CodeView.xib in Resources */,
+				F3851B2C2340A280009EE0B6 /* TitleTextView.xib in Resources */,
 				F30369B5233679EA00A8EA84 /* LaunchScreen.storyboard in Resources */,
 				F3FC7DD42315BE630080D851 /* Assets.xcassets in Resources */,
+				F3EBE2452340FDA7000FEE1A /* NameTextView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,13 +448,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F3FC7DFF2315C8D70080D851 /* AuthCoordinator.swift in Sources */,
-				F3FC7DCF2315BE610080D851 /* AuthViewController.swift in Sources */,
+				F3895F4A233D323700FA6A37 /* CodeCoordinator.swift in Sources */,
+				F3851B2E2340A444009EE0B6 /* TitleTextView.swift in Sources */,
+				F3FC7DFF2315C8D70080D851 /* NameCoordinator.swift in Sources */,
+				F3FC7DCF2315BE610080D851 /* NameViewController.swift in Sources */,
+				F3DC5A05233E89D500B5E751 /* Button.swift in Sources */,
 				F3FC7DFB2315C25D0080D851 /* ApplicationCoordinator.swift in Sources */,
+				F3895F48233D2EEA00FA6A37 /* CodeSmsViewController.swift in Sources */,
+				F3895F4E233D348B00FA6A37 /* PhoneCoordinator.swift in Sources */,
 				F3FC7DCD2315BE610080D851 /* AppDelegate.swift in Sources */,
 				F30369BE2336924D00A8EA84 /* TabbarCoordinator.swift in Sources */,
 				F3FC7DFD2315C4710080D851 /* BaseCoordinator.swift in Sources */,
+				F3DC59FF233E893400B5E751 /* Extensions+UIFont.swift in Sources */,
+				F3895F53233D5EEB00FA6A37 /* BlackButtonStyle.swift in Sources */,
 				F30369C02336925800A8EA84 /* TabbarController.swift in Sources */,
+				F31E20C72348DDB900BEA215 /* Extensions+UIView.swift in Sources */,
+				F3851B302340A513009EE0B6 /* RegistationViewModel.swift in Sources */,
+				F3895F4C233D347E00FA6A37 /* PhoneNumberViewController.swift in Sources */,
+				12EE4A76234BB8FE005B4D1A /* CodeView.swift in Sources */,
+				F3EBE2472340FE87000FEE1A /* NameTextView.swift in Sources */,
+				F3DC5A01233E896300B5E751 /* ButtonStyle.swift in Sources */,
+				F31E20C92348E0F300BEA215 /* AuthorizationViewController.swift in Sources */,
+				F3851B2923409F8A009EE0B6 /* PhoneView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -488,7 +628,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9Z6LFGKA9G;
 				INFOPLIST_FILE = "Hookah Tau/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -507,7 +647,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9Z6LFGKA9G;
 				INFOPLIST_FILE = "Hookah Tau/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

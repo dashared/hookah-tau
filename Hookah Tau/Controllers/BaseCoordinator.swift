@@ -13,7 +13,8 @@ import UIKit
 protocol Coordinator: class {
 
     var navigationController: UINavigationController? { get set }
-    var didEndFlow: (() -> Void)? { get set }
+
+    var childCoordinators: [Coordinator] { get set }
 
     func start()
 
@@ -22,19 +23,39 @@ protocol Coordinator: class {
 
 /// Main base class for inheritance
 class BaseCoordinator: Coordinator {
-    private(set) var window: UIWindow?
-    var navigationController: UINavigationController?
-
-    var didEndFlow: (() -> Void)?
-
-    func start() { } // should be overriden
 
     required init(navigationController: UINavigationController?) {
         self.navigationController = navigationController
     }
 
-    convenience init(window: UIWindow?) {
-        self.init(navigationController: window?.rootViewController as? UINavigationController)
-        self.window = window
+    var childCoordinators = [Coordinator]()
+
+    var navigationController: UINavigationController?
+
+    func start() { } // should be overriden
+
+    // add only unique object
+    func addDependency(_ coordinator: Coordinator) {
+        guard !childCoordinators.contains(where: { $0 === coordinator }) else {  return }
+        childCoordinators.append(coordinator)
     }
+
+    func removeDependency(_ coordinator: Coordinator?) {
+        guard
+            childCoordinators.isEmpty == false,
+            let coordinator = coordinator
+            else { return }
+
+        // Clear child-coordinators recursively
+        if let coordinator = coordinator as? BaseCoordinator, !coordinator.childCoordinators.isEmpty {
+            coordinator.childCoordinators
+                .filter({ $0 !== coordinator })
+                .forEach({ coordinator.removeDependency($0) })
+        }
+        for (index, element) in childCoordinators.enumerated() where element === coordinator {
+            childCoordinators.remove(at: index)
+            break
+        }
+    }
+
 }
