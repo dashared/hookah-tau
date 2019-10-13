@@ -10,6 +10,8 @@ import UIKit
 
 
 class CodeCoordinator: BaseCoordinator {
+    
+    var didEndFlow: (() -> Void)?
 
     weak var parentCoordinator: PhoneCoordinator?
 
@@ -25,7 +27,8 @@ class CodeCoordinator: BaseCoordinator {
     }
     
     func goToNextStep() {
-        print("Start Main Flow...")
+        print("Did end auth flow...")
+        didEndFlow?()
     }
 
 }
