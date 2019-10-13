@@ -9,6 +9,9 @@
 import Foundation
 
 class PhoneCoordinator: BaseCoordinator {
+    
+    var didEndFlow: (() -> Void)?
+    
     weak var parentCoordinator: NameCoordinator?
 
     override func start() {
@@ -19,6 +22,7 @@ class PhoneCoordinator: BaseCoordinator {
     
     func goToNextStep() {
         let codeCoordinator = CodeCoordinator(navigationController: navigationController)
+        codeCoordinator.didEndFlow = { [weak self] in self?.didEndFlow?() }
         addDependency(codeCoordinator)
         codeCoordinator.start()
     }

@@ -32,6 +32,11 @@ class ApplicationCoordinator: BaseCoordinator {
 
     private func runAuthFlow() {
         let nameCoordinator = NameCoordinator(navigationController: navigationController)
+        nameCoordinator.didEndFlow = { [weak self] in
+            self?.launch = LaunchOptions.main // TESTING
+            self?.start()
+            self?.removeDependency(nameCoordinator)
+        }
         addDependency(nameCoordinator)
         nameCoordinator.start()
     }
@@ -41,7 +46,13 @@ class ApplicationCoordinator: BaseCoordinator {
     }
 
     private func runClientFlow() {
-
+        let tabBarCoordinator = ClientTabbarCoordinator(navigationController: nil)
+        tabBarCoordinator.didEndFlow = { [weak self, weak tabBarCoordinator] in
+            self?.start()
+            self?.removeDependency(tabBarCoordinator)
+        }
+        addDependency(tabBarCoordinator)
+        tabBarCoordinator.start()
     }
 }
 

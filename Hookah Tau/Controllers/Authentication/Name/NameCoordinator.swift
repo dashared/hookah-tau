@@ -9,6 +9,8 @@
 import UIKit
 
 class NameCoordinator: BaseCoordinator {
+    
+    var didEndFlow: (() -> Void)?
 
     override func start() {
         let nameViewController = NameViewController()
@@ -18,6 +20,7 @@ class NameCoordinator: BaseCoordinator {
 
     func goToNextStep() {
         let phoneCoordinator = PhoneCoordinator(navigationController: navigationController)
+        phoneCoordinator.didEndFlow = { [weak self] in self?.didEndFlow?() }
         addDependency(phoneCoordinator)
         phoneCoordinator.start()
     }
