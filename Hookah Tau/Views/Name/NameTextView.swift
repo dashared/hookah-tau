@@ -20,6 +20,7 @@ class NameTextView: UIView {
         super.awakeFromNib()
         
         nameTextField?.keyboardType = .alphabet
+        nameTextField?.attributedPlaceholder = NSAttributedString(string:"Стасик", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
     }
 
     // TODO: - change in future

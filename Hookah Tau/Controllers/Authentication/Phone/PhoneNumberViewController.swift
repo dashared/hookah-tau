@@ -38,13 +38,13 @@ final class PhoneNumberViewController: AuthorizationViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     
-        phoneView?.firstRange?.becomeFirstResponder()
+        phoneView?.phone?.becomeFirstResponder()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        phoneView?.firstRange?.resignFirstResponder()
+        phoneView?.phone?.resignFirstResponder()
     }
     
     // MARK: - Setup
