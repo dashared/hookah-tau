@@ -15,7 +15,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="+7 " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="agL-on-Q6H">
-                    <rect key="frame" x="20" y="0.0" width="374" height="42"/>
+                    <rect key="frame" x="8" y="0.0" width="398" height="42"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
@@ -25,8 +25,8 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="agL-on-Q6H" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="Dfr-KD-ATT"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="agL-on-Q6H" secondAttribute="trailing" constant="20" id="c83-Rt-Xb0"/>
-                <constraint firstItem="agL-on-Q6H" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="nRE-DB-twl"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="agL-on-Q6H" secondAttribute="trailing" constant="8" id="c83-Rt-Xb0"/>
+                <constraint firstItem="agL-on-Q6H" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="nRE-DB-twl"/>
                 <constraint firstItem="agL-on-Q6H" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="nf3-Mk-Vqb"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

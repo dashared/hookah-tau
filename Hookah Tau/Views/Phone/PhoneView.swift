@@ -22,5 +22,10 @@ class PhoneView: UIView {
         phone?.keyboardType = .numberPad
         phone?.attributedPlaceholder = NSAttributedString(string:"+ 7 901 733 01 79", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
     }
+    
+    // TODO: - change in future
+    func bind(withModel model: String) {
+        phone?.text = model
+    }
 
 }

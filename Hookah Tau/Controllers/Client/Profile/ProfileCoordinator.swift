@@ -10,7 +10,7 @@ import UIKit
 
 class ProfileCoordinator: BaseCoordinator {
     override func start() {
-        let profileViewController = ProfileViewController()
+        let profileViewController = ProfileClientViewController()
         navigationController?.viewControllers = [profileViewController]
     }
 }
