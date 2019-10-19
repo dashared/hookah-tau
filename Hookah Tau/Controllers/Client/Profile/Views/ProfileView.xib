@@ -76,11 +76,11 @@
                         </stackView>
                     </subviews>
                 </stackView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oKK-WM-xZ3">
-                    <rect key="frame" x="20" y="446" width="374" height="42"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oKK-WM-xZ3" customClass="Button" customModule="Hookah_Tau" customModuleProvider="target">
+                    <rect key="frame" x="20" y="446" width="374" height="37"/>
                     <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="42" id="I8c-3h-mMu"/>
+                        <constraint firstAttribute="height" constant="37" id="I8c-3h-mMu"/>
                     </constraints>
                     <state key="normal" title="Button"/>
                 </button>

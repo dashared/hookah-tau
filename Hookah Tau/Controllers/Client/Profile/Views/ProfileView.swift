@@ -44,7 +44,14 @@ class ProfileView: UIView {
     
     @IBOutlet weak var inviteStackView: UIStackView?
     
-    @IBOutlet weak var logOutButton: UIButton?
+    @IBOutlet weak var logOutButton: Button? {
+        didSet {
+            let style = BlackButtonStyle()
+            style.apply(to: logOutButton!, withTitle: "ВЫЙТИ")
+        }
+    }
+    
+    var nameChangeHandler: (() -> Void)?
     
     // MARK: - Lifecycle
     
@@ -55,13 +62,15 @@ class ProfileView: UIView {
         inviteAdminPhoneView = PhoneView.loadFromNib()
         nameView = NameTextView.loadFromNib()
         
+        logOutButton?.addTarget(self, action: #selector(nameChangeAction), for: .touchUpInside)
+        
         nameContainerView?.addSubviewThatFills(nameView)
         phoneContainerView?.addSubviewThatFills(phoneView)
         invitationContainerView?.addSubviewThatFills(inviteAdminPhoneView)
     }
     
     // TODO: - change in future
-    func bind(withModel model: (isAdmin: Bool, name: String, phone: String)) {
+    func bind(withModel model: (isAdmin: Bool, name: String, phone: String, nameHandler: (()->Void))) {
         
         nameView?.bind(withModel: model.name)
         phoneView?.bind(withModel: model.phone)
@@ -69,6 +78,11 @@ class ProfileView: UIView {
         if !model.isAdmin {
             inviteStackView?.isHidden = true
         }
+        
+        nameChangeHandler = model.nameHandler
     }
     
+    @objc func nameChangeAction() {
+        nameChangeHandler?()
+    }
 }
