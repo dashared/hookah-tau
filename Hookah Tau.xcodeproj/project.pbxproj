@@ -11,11 +11,17 @@
 		123615CF235510BC00D1122A /* ProfileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 123615CE235510BC00D1122A /* ProfileView.xib */; };
 		123615D12355141600D1122A /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123615D02355141600D1122A /* ProfileView.swift */; };
 		12387337234BB98700D1F1AB /* CodeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12387336234BB98700D1F1AB /* CodeView.xib */; };
+		12B6A60F235B857A00898B31 /* ProfileChangeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B6A60E235B857A00898B31 /* ProfileChangeCoordinator.swift */; };
+		12B6A611235B8EC500898B31 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B6A610235B8EC500898B31 /* UserModel.swift */; };
+		12B6A613235B9B4300898B31 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B6A612235B9B4300898B31 /* BaseViewController.swift */; };
+		12B6A615235BB36C00898B31 /* ChangeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12B6A614235BB36C00898B31 /* ChangeView.xib */; };
+		12B6A617235BB37D00898B31 /* ChangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B6A616235BB37D00898B31 /* ChangeView.swift */; };
 		12C72EDF23537D1B00AD7004 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C72EDE23537D1B00AD7004 /* ProfileCoordinator.swift */; };
 		12C72EE1235380D400AD7004 /* ProfileClientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C72EE0235380D400AD7004 /* ProfileClientViewController.swift */; };
 		12C72EE3235380EB00AD7004 /* ReservationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C72EE2235380EB00AD7004 /* ReservationsViewController.swift */; };
 		12DBEEB223539F2100AF1BB6 /* Client.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12DBEEB123539F2100AF1BB6 /* Client.storyboard */; };
 		12EE4A76234BB8FE005B4D1A /* CodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12EE4A75234BB8FE005B4D1A /* CodeView.swift */; };
+		12F73B022357AD7B007D4476 /* ProfileChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F73B012357AD7B007D4476 /* ProfileChangeViewController.swift */; };
 		F30369B5233679EA00A8EA84 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F30369B4233679EA00A8EA84 /* LaunchScreen.storyboard */; };
 		F30369BE2336924D00A8EA84 /* ClientTabbarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30369BD2336924D00A8EA84 /* ClientTabbarCoordinator.swift */; };
 		F30369C02336925800A8EA84 /* ClientTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30369BF2336925800A8EA84 /* ClientTabbarController.swift */; };
@@ -68,11 +74,17 @@
 		123615CE235510BC00D1122A /* ProfileView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileView.xib; sourceTree = "<group>"; };
 		123615D02355141600D1122A /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		12387336234BB98700D1F1AB /* CodeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CodeView.xib; sourceTree = "<group>"; };
+		12B6A60E235B857A00898B31 /* ProfileChangeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileChangeCoordinator.swift; sourceTree = "<group>"; };
+		12B6A610235B8EC500898B31 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		12B6A612235B9B4300898B31 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		12B6A614235BB36C00898B31 /* ChangeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangeView.xib; sourceTree = "<group>"; };
+		12B6A616235BB37D00898B31 /* ChangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeView.swift; sourceTree = "<group>"; };
 		12C72EDE23537D1B00AD7004 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
 		12C72EE0235380D400AD7004 /* ProfileClientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileClientViewController.swift; sourceTree = "<group>"; };
 		12C72EE2235380EB00AD7004 /* ReservationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationsViewController.swift; sourceTree = "<group>"; };
 		12DBEEB123539F2100AF1BB6 /* Client.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Client.storyboard; sourceTree = "<group>"; };
 		12EE4A75234BB8FE005B4D1A /* CodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeView.swift; sourceTree = "<group>"; };
+		12F73B012357AD7B007D4476 /* ProfileChangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileChangeViewController.swift; sourceTree = "<group>"; };
 		F30369B4233679EA00A8EA84 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F30369BD2336924D00A8EA84 /* ClientTabbarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientTabbarCoordinator.swift; sourceTree = "<group>"; };
 		F30369BF2336925800A8EA84 /* ClientTabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientTabbarController.swift; sourceTree = "<group>"; };
@@ -137,8 +149,11 @@
 		1212F1312353A5F6005BEF8A /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				123615D22355141D00D1122A /* Views */,
 				12C72EDE23537D1B00AD7004 /* ProfileCoordinator.swift */,
+				12B6A60E235B857A00898B31 /* ProfileChangeCoordinator.swift */,
 				12C72EE0235380D400AD7004 /* ProfileClientViewController.swift */,
+				12F73B012357AD7B007D4476 /* ProfileChangeViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -152,13 +167,15 @@
 			path = Reservations;
 			sourceTree = "<group>";
 		};
-		123615D22355141D00D1122A /* Profile  */ = {
+		123615D22355141D00D1122A /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				123615D02355141600D1122A /* ProfileView.swift */,
 				123615CE235510BC00D1122A /* ProfileView.xib */,
+				12B6A616235BB37D00898B31 /* ChangeView.swift */,
+				12B6A614235BB36C00898B31 /* ChangeView.xib */,
 			);
-			path = "Profile ";
+			path = Views;
 			sourceTree = "<group>";
 		};
 		12C72EDB235367CF00AD7004 /* Tab bar */ = {
@@ -194,6 +211,7 @@
 			children = (
 				F3FC7DFC2315C4710080D851 /* BaseCoordinator.swift */,
 				F3FC7DFA2315C25D0080D851 /* ApplicationCoordinator.swift */,
+				12B6A612235B9B4300898B31 /* BaseViewController.swift */,
 				F30369BB2336845F00A8EA84 /* Admin */,
 				F30369BA2336845400A8EA84 /* Client */,
 				F30369B82336842600A8EA84 /* Authentication */,
@@ -243,6 +261,7 @@
 			isa = PBXGroup;
 			children = (
 				F3851B2F2340A513009EE0B6 /* RegistationViewModel.swift */,
+				12B6A610235B8EC500898B31 /* UserModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -250,7 +269,6 @@
 		F3199E59233FD7F700F3C17A /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				123615D22355141D00D1122A /* Profile  */,
 				12EE4A77234BB942005B4D1A /* Code */,
 				F3EBE2482340FFA4000FEE1A /* Name */,
 				F3851B312340A5D5009EE0B6 /* TitleText */,
@@ -474,6 +492,7 @@
 				F3199E5B233FE08200F3C17A /* PhoneView.xib in Resources */,
 				12DBEEB223539F2100AF1BB6 /* Client.storyboard in Resources */,
 				12387337234BB98700D1F1AB /* CodeView.xib in Resources */,
+				12B6A615235BB36C00898B31 /* ChangeView.xib in Resources */,
 				F3851B2C2340A280009EE0B6 /* TitleTextView.xib in Resources */,
 				F30369B5233679EA00A8EA84 /* LaunchScreen.storyboard in Resources */,
 				F3FC7DD42315BE630080D851 /* Assets.xcassets in Resources */,
@@ -505,7 +524,9 @@
 			files = (
 				F3895F4A233D323700FA6A37 /* CodeCoordinator.swift in Sources */,
 				123615D12355141600D1122A /* ProfileView.swift in Sources */,
+				12F73B022357AD7B007D4476 /* ProfileChangeViewController.swift in Sources */,
 				F3851B2E2340A444009EE0B6 /* TitleTextView.swift in Sources */,
+				12B6A613235B9B4300898B31 /* BaseViewController.swift in Sources */,
 				F3FC7DFF2315C8D70080D851 /* NameCoordinator.swift in Sources */,
 				F3FC7DCF2315BE610080D851 /* NameViewController.swift in Sources */,
 				F3DC5A05233E89D500B5E751 /* Button.swift in Sources */,
@@ -513,6 +534,7 @@
 				F3895F48233D2EEA00FA6A37 /* CodeSmsViewController.swift in Sources */,
 				12219CEF2353A63F0057DDEE /* ReservationsCoordinator.swift in Sources */,
 				F3895F4E233D348B00FA6A37 /* PhoneCoordinator.swift in Sources */,
+				12B6A617235BB37D00898B31 /* ChangeView.swift in Sources */,
 				F3FC7DCD2315BE610080D851 /* AppDelegate.swift in Sources */,
 				F30369BE2336924D00A8EA84 /* ClientTabbarCoordinator.swift in Sources */,
 				F3FC7DFD2315C4710080D851 /* BaseCoordinator.swift in Sources */,
@@ -530,6 +552,8 @@
 				F31E20C92348E0F300BEA215 /* AuthorizationViewController.swift in Sources */,
 				F3851B2923409F8A009EE0B6 /* PhoneView.swift in Sources */,
 				12C72EE3235380EB00AD7004 /* ReservationsViewController.swift in Sources */,
+				12B6A611235B8EC500898B31 /* UserModel.swift in Sources */,
+				12B6A60F235B857A00898B31 /* ProfileChangeCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

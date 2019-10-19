@@ -17,7 +17,7 @@ class NameViewController: AuthorizationViewController {
     var nameView: NameTextView?
 
     let nextButton: Button = {
-        let button = Button(frame: CGRect.zero)
+        let button = Button()
         return button
     }()
 
@@ -49,7 +49,6 @@ class NameViewController: AuthorizationViewController {
         style.apply(to: nextButton, withTitle: "ДАЛЕЕ")
 
         nextButton.addTarget(self, action: #selector(tapHandlerNextButton), for: .touchUpInside)
-        nextButton.widthAnchor.constraint(equalToConstant: 155).isActive = true
         
         addStackViewWithButtons(rightBtn: nextButton)
     }

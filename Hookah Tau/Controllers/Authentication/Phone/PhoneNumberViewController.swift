@@ -17,12 +17,12 @@ final class PhoneNumberViewController: AuthorizationViewController {
     var phoneView: PhoneView?
     
     let nextButton: Button = {
-        let button = Button(frame: CGRect.zero)
+        let button = Button()
         return button
     }()
     
     let returnButton: Button = {
-        let button = Button(frame: CGRect.zero)
+        let button = Button()
         return button
     }()
     
@@ -53,11 +53,6 @@ final class PhoneNumberViewController: AuthorizationViewController {
         let style = BlackButtonStyle()
         style.apply(to: returnButton, withTitle: "НАЗАД")
         style.apply(to: nextButton, withTitle: "ДАЛЕЕ")
-        
-        NSLayoutConstraint.activate([
-            returnButton.widthAnchor.constraint(equalToConstant: 155),
-            nextButton.widthAnchor.constraint(equalToConstant: 155)
-        ])
         
         addStackViewWithButtons(leftBtn: returnButton, rightBtn: nextButton)
         

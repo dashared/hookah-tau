@@ -51,8 +51,6 @@ class ProfileView: UIView {
         }
     }
     
-    var nameChangeHandler: (() -> Void)?
-    
     // MARK: - Lifecycle
     
     override func awakeFromNib() {
@@ -62,27 +60,18 @@ class ProfileView: UIView {
         inviteAdminPhoneView = PhoneView.loadFromNib()
         nameView = NameTextView.loadFromNib()
         
-        logOutButton?.addTarget(self, action: #selector(nameChangeAction), for: .touchUpInside)
-        
         nameContainerView?.addSubviewThatFills(nameView)
         phoneContainerView?.addSubviewThatFills(phoneView)
         invitationContainerView?.addSubviewThatFills(inviteAdminPhoneView)
     }
     
     // TODO: - change in future
-    func bind(withModel model: (isAdmin: Bool, name: String, phone: String, nameHandler: (()->Void))) {
-        
+    func bind(withModel model: UserModel) {
         nameView?.bind(withModel: model.name)
         phoneView?.bind(withModel: model.phone)
         
         if !model.isAdmin {
             inviteStackView?.isHidden = true
         }
-        
-        nameChangeHandler = model.nameHandler
-    }
-    
-    @objc func nameChangeAction() {
-        nameChangeHandler?()
     }
 }

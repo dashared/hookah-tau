@@ -7,3 +7,9 @@
 //
 
 import Foundation
+
+struct UserModel {
+    var name: String
+    var phone: String
+    var isAdmin: Bool
+}

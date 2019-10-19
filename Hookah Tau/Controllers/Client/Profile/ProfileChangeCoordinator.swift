@@ -8,20 +8,40 @@
 
 import Foundation
 
+enum EditingOption {
+    case name, phone, invite
+}
+
 class ProfileChangeCoordinator: BaseCoordinator {
+    
+    // MARK: - Properties
+    
+    var didEndFlow: (() -> Void)?
+    
+    var changeModel: ChangeModel?
+    
+    // MARK: - Lifecycle
+    
     override func start() {
         let changeViewController = ProfileChangeViewController()
+        changeViewController.coordinator = self
+        changeViewController.changeModel = changeModel
         changeViewController.modalPresentationStyle = .popover
         navigationController?.present(changeViewController, animated: true)
     }
     
     /// Done
-    func doneChanging() {
+    func update(withModel model: UserModel) {
+        for controller in navigationController?.viewControllers ?? [] {
+            guard let updatableController = controller as? UserUpdate else { continue }
+            updatableController.updateUser(withModel: model)
+        }
         
+        didEndFlow?()
     }
     
     /// Cancel
     func discardChange() {
-        
+        didEndFlow?()
     }
 }
