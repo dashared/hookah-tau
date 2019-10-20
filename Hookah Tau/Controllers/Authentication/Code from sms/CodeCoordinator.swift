@@ -11,6 +11,8 @@ import UIKit
 
 class CodeCoordinator: BaseCoordinator {
     
+    // MARK: - Properties
+    
     var didEndFlow: (() -> Void)?
 
     weak var parentCoordinator: PhoneCoordinator?
@@ -26,9 +28,12 @@ class CodeCoordinator: BaseCoordinator {
         navigationController?.popViewController(animated: true)
     }
     
+    /// - warning: Depends on weather is authorized or not, mb need parameter
     func goToNextStep() {
-        print("Did end auth flow...")
-        didEndFlow?()
+        let nameCoordinator = NameCoordinator(navigationController: navigationController)
+        nameCoordinator.didEndFlow = { [weak self] in self?.didEndFlow?() }
+        nameCoordinator.parentCoordinator = self
+        addDependency(nameCoordinator)
+        nameCoordinator.start()
     }
-
 }

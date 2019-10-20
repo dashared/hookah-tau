@@ -43,6 +43,7 @@ final class CodeSmsViewController: AuthorizationViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
         codeView?.fst?.resignFirstResponder()
     }
     

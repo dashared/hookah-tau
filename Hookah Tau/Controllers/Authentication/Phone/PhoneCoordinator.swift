@@ -10,25 +10,21 @@ import Foundation
 
 class PhoneCoordinator: BaseCoordinator {
     
-    var didEndFlow: (() -> Void)?
+    // MARK: - Properties
     
-    weak var parentCoordinator: NameCoordinator?
+    var didEndFlow: (() -> Void)?
 
     override func start() {
         let phoneVC = PhoneNumberViewController()
         phoneVC.coordinator = self
-        navigationController?.pushViewController(phoneVC, animated: true)
+        navigationController?.viewControllers = [ phoneVC ]
     }
     
     func goToNextStep() {
         let codeCoordinator = CodeCoordinator(navigationController: navigationController)
         codeCoordinator.didEndFlow = { [weak self] in self?.didEndFlow?() }
+        codeCoordinator.parentCoordinator = self
         addDependency(codeCoordinator)
         codeCoordinator.start()
-    }
-
-    func goBack() {
-        parentCoordinator?.removeDependency(self)
-        navigationController?.popViewController(animated: true)
     }
 }

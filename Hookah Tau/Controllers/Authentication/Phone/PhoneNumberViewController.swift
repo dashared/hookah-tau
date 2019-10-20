@@ -21,10 +21,6 @@ final class PhoneNumberViewController: AuthorizationViewController {
         return button
     }()
     
-    let returnButton: Button = {
-        let button = Button()
-        return button
-    }()
     
     // MARK: - Lifecycle
     
@@ -51,13 +47,10 @@ final class PhoneNumberViewController: AuthorizationViewController {
     
     func setUpButtons() {
         let style = BlackButtonStyle()
-        style.apply(to: returnButton, withTitle: "НАЗАД")
         style.apply(to: nextButton, withTitle: "ДАЛЕЕ")
         
-        addStackViewWithButtons(leftBtn: returnButton, rightBtn: nextButton)
-        
+        addStackViewWithButtons(rightBtn: nextButton)
         nextButton.addTarget(self, action: #selector(tapHandlerNextButton), for: .touchUpInside)
-        returnButton.addTarget(self, action: #selector(tapHandlerReturnButton), for: .touchUpInside)
     }
     
     func setUpContentView() {
@@ -71,10 +64,5 @@ final class PhoneNumberViewController: AuthorizationViewController {
     @objc
     func tapHandlerNextButton() {
         coordinator?.goToNextStep()
-    }
-    
-    @objc
-    func tapHandlerReturnButton() {
-        coordinator?.goBack()
     }
 }
