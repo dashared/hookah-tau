@@ -47,7 +47,7 @@ class ProfileView: UIView {
     @IBOutlet weak var logOutButton: Button? {
         didSet {
             let style = BlackButtonStyle()
-            style.apply(to: logOutButton!, withTitle: "ВЫЙТИ")
+            style.apply(to: logOutButton, withTitle: "ВЫЙТИ")
         }
     }
     

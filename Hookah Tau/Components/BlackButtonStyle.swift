@@ -47,7 +47,8 @@ class BlackButtonStyle: NSObject {
 extension BlackButtonStyle: ButtonStyle {
 
     /// Basic style for button: color, corner radius, title
-    func apply(to button: Button, withTitle title: String? = nil) {
+    func apply(to button: Button?, withTitle title: String? = nil) {
+        guard let button = button else { return }
         button.style = self
         
         button.layer.cornerRadius = cornerRadius

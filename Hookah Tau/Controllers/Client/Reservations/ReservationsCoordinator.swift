@@ -11,6 +11,11 @@ import UIKit
 class ReservationsCoordinator: BaseCoordinator {
     override func start() {
         let reservationsViewController = ReservationsViewController()
+        reservationsViewController.coordinator = self
         navigationController?.viewControllers = [reservationsViewController]
+    }
+    
+    func makeReservation() {
+        print("TODO making reservation ...")
     }
 }
