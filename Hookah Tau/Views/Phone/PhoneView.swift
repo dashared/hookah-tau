@@ -12,27 +12,20 @@ class PhoneView: UIView {
 
     // MARK:- Properties
 
-    @IBOutlet weak var firstRange: UITextField?
-
-    @IBOutlet weak var secondRange: UITextField?
-
-    @IBOutlet weak var thirdRange: UITextField?
-
-    @IBOutlet weak var forthRange: UITextField?
-    
-    private var allRanges: [UITextField] = []
+    @IBOutlet weak var phone: UITextField?
     
     // MARK: - Lifecycle
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        allRanges = [firstRange,
-                     secondRange,
-                     thirdRange,
-                     forthRange].compactMap{ $0 }
-        
-        _ = allRanges.map { $0.keyboardType = .numberPad }
+        phone?.keyboardType = .numberPad
+        phone?.attributedPlaceholder = NSAttributedString(string:"+ 7 901 733 01 79", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+    }
+    
+    // TODO: - change in future
+    func bind(withModel model: String) {
+        phone?.text = model
     }
 
 }

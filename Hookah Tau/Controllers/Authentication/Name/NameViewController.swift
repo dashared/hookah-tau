@@ -17,7 +17,12 @@ class NameViewController: AuthorizationViewController {
     var nameView: NameTextView?
 
     let nextButton: Button = {
-        let button = Button(frame: CGRect.zero)
+        let button = Button()
+        return button
+    }()
+    
+    let returnButton: Button = {
+        let button = Button()
         return button
     }()
 
@@ -47,11 +52,11 @@ class NameViewController: AuthorizationViewController {
     func setUpButtons() {
         let style = BlackButtonStyle()
         style.apply(to: nextButton, withTitle: "ДАЛЕЕ")
-
-        nextButton.addTarget(self, action: #selector(tapHandlerNextButton), for: .touchUpInside)
-        nextButton.widthAnchor.constraint(equalToConstant: 155).isActive = true
+        style.apply(to: returnButton, withTitle: "НАЗАД")
+        addStackViewWithButtons(leftBtn: returnButton, rightBtn: nextButton)
         
-        addStackViewWithButtons(rightBtn: nextButton)
+        returnButton.addTarget(self, action: #selector(tapHandlerReturnButton), for: .touchUpInside)
+        nextButton.addTarget(self, action: #selector(tapHandlerNextButton), for: .touchUpInside)
     }
     
     func setUpContentView() {
@@ -65,6 +70,10 @@ class NameViewController: AuthorizationViewController {
     @objc func tapHandlerNextButton() {
         coordinator?.goToNextStep()
         //nextButton.loading = !nextButton.loading
+    }
+    
+    @objc func tapHandlerReturnButton() {
+        coordinator?.goBack()
     }
 }
 

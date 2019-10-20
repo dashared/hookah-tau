@@ -10,18 +10,25 @@ import UIKit
 
 class NameCoordinator: BaseCoordinator {
     
+    // MARK: - Properties
+    
     var didEndFlow: (() -> Void)?
+    
+    var parentCoordinator: CodeCoordinator?
 
     override func start() {
         let nameViewController = NameViewController()
         nameViewController.coordinator = self
-        navigationController?.viewControllers = [ nameViewController ]
+        navigationController?.pushViewController(nameViewController, animated: true)
     }
 
     func goToNextStep() {
-        let phoneCoordinator = PhoneCoordinator(navigationController: navigationController)
-        phoneCoordinator.didEndFlow = { [weak self] in self?.didEndFlow?() }
-        addDependency(phoneCoordinator)
-        phoneCoordinator.start()
+        print("Did end auth flow...")
+        didEndFlow?()
+    }
+    
+    func goBack() {
+        parentCoordinator?.removeDependency(self)
+        navigationController?.popViewController(animated: true)
     }
 }

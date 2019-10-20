@@ -22,7 +22,7 @@ final class CodeSmsViewController: AuthorizationViewController {
     }()
     
     let returnButton: Button = {
-        let button = Button(frame: CGRect.zero)
+        let button = Button()
         return button
     }()
     
@@ -43,6 +43,7 @@ final class CodeSmsViewController: AuthorizationViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
         codeView?.fst?.resignFirstResponder()
     }
     
@@ -52,11 +53,6 @@ final class CodeSmsViewController: AuthorizationViewController {
         let style = BlackButtonStyle()
         style.apply(to: returnButton, withTitle: "НАЗАД")
         style.apply(to: nextButton, withTitle: "ДАЛЕЕ")
-        
-        NSLayoutConstraint.activate([
-            returnButton.widthAnchor.constraint(equalToConstant: 155),
-            nextButton.widthAnchor.constraint(equalToConstant: 155)
-        ])
         
         addStackViewWithButtons(leftBtn: returnButton, rightBtn: nextButton)
         

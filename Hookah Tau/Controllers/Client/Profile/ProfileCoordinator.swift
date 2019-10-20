@@ -8,9 +8,31 @@
 
 import UIKit
 
+protocol UserUpdate: class {
+    func updateUser(withModel model: UserModel)
+}
+
 class ProfileCoordinator: BaseCoordinator {
+    
     override func start() {
-        let profileViewController = ProfileViewController()
+        let profileViewController = ProfileClientViewController()
+        profileViewController.coordinator = self
         navigationController?.viewControllers = [profileViewController]
+    }
+    
+    func presentEditMode(withModel model: ChangeModel) {
+        let changeCoordinator = ProfileChangeCoordinator(navigationController: navigationController)
+        changeCoordinator.changeModel = model
+        changeCoordinator.didEndFlow = {
+            [weak self] in
+            self?.navigationController?.dismiss(animated: true)
+            self?.removeDependency(changeCoordinator)
+        }
+        addDependency(changeCoordinator)
+        changeCoordinator.start()
+    }
+    
+    func logout() {
+        
     }
 }

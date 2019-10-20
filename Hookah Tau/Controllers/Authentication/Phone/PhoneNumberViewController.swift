@@ -17,14 +17,10 @@ final class PhoneNumberViewController: AuthorizationViewController {
     var phoneView: PhoneView?
     
     let nextButton: Button = {
-        let button = Button(frame: CGRect.zero)
+        let button = Button()
         return button
     }()
     
-    let returnButton: Button = {
-        let button = Button(frame: CGRect.zero)
-        return button
-    }()
     
     // MARK: - Lifecycle
     
@@ -38,31 +34,23 @@ final class PhoneNumberViewController: AuthorizationViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     
-        phoneView?.firstRange?.becomeFirstResponder()
+        phoneView?.phone?.becomeFirstResponder()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        phoneView?.firstRange?.resignFirstResponder()
+        phoneView?.phone?.resignFirstResponder()
     }
     
     // MARK: - Setup
     
     func setUpButtons() {
         let style = BlackButtonStyle()
-        style.apply(to: returnButton, withTitle: "НАЗАД")
         style.apply(to: nextButton, withTitle: "ДАЛЕЕ")
         
-        NSLayoutConstraint.activate([
-            returnButton.widthAnchor.constraint(equalToConstant: 155),
-            nextButton.widthAnchor.constraint(equalToConstant: 155)
-        ])
-        
-        addStackViewWithButtons(leftBtn: returnButton, rightBtn: nextButton)
-        
+        addStackViewWithButtons(rightBtn: nextButton)
         nextButton.addTarget(self, action: #selector(tapHandlerNextButton), for: .touchUpInside)
-        returnButton.addTarget(self, action: #selector(tapHandlerReturnButton), for: .touchUpInside)
     }
     
     func setUpContentView() {
@@ -76,10 +64,5 @@ final class PhoneNumberViewController: AuthorizationViewController {
     @objc
     func tapHandlerNextButton() {
         coordinator?.goToNextStep()
-    }
-    
-    @objc
-    func tapHandlerReturnButton() {
-        coordinator?.goBack()
     }
 }

@@ -31,14 +31,14 @@ class ApplicationCoordinator: BaseCoordinator {
     }
 
     private func runAuthFlow() {
-        let nameCoordinator = NameCoordinator(navigationController: navigationController)
-        nameCoordinator.didEndFlow = { [weak self] in
+        let phoneCoordinator = PhoneCoordinator(navigationController: navigationController)
+        phoneCoordinator.didEndFlow = { [weak self] in
             self?.launch = LaunchOptions.main // TESTING
             self?.start()
-            self?.removeDependency(nameCoordinator)
+            self?.removeDependency(phoneCoordinator)
         }
-        addDependency(nameCoordinator)
-        nameCoordinator.start()
+        addDependency(phoneCoordinator)
+        phoneCoordinator.start()
     }
 
     private func runAdminFlow() {

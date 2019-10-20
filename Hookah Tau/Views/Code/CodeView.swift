@@ -38,7 +38,10 @@ class CodeView: UIView {
                      fif,
                      six].compactMap{ $0 }
         
-        _ = allNumbers.map { $0.keyboardType = .numberPad }
+        _ = allNumbers.map {
+            $0.keyboardType = .numberPad
+            $0.attributedPlaceholder = NSAttributedString(string:"8", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        }
     }
     
 }
