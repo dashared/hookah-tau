@@ -20,6 +20,9 @@ class NameTextView: UIView {
         super.awakeFromNib()
         
         nameTextField?.keyboardType = .alphabet
+        nameTextField?.autocorrectionType = .no
+        nameTextField?.spellCheckingType = .no
+        
         nameTextField?.attributedPlaceholder = NSAttributedString(string:"Стасик", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
     }
 
