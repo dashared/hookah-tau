@@ -8,11 +8,13 @@
 
 import UIKit
 
+let reservationCell = "ReservationCell"
+
 class ReservationsViewController: UIViewController {
     
     // MARK: - Properties
     
-    var activeReservations = [Int]()
+    var activeReservations = [1]
     
     weak var coordinator: ReservationsCoordinator?
     
@@ -30,13 +32,18 @@ class ReservationsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setUpContentView()
+        
+        tableView?.delegate = self
+        tableView?.dataSource = self
+        
+        tableView?.register(ReservationCell.self, forCellReuseIdentifier: reservationCell)
 
         view.backgroundColor = .white
         navigationItem.title = "Брони"
         
         navigationController?.navigationBar.prefersLargeTitles = true
-        
-        setUpContentView()
     }
     
     // MARK: - Setup
@@ -49,7 +56,8 @@ class ReservationsViewController: UIViewController {
             contentView.addSubviewThatFills(noReservationsView)
             noReservationsView?.makeReservationButton?.addTarget(self, action: #selector(tapToMakeReservation), for: .touchUpInside)
         } else {
-            print("TODO")
+            tableView = UITableView()
+            contentView.addSubviewThatFills(tableView)
         }
     }
     
@@ -61,14 +69,23 @@ class ReservationsViewController: UIViewController {
     
 }
 
-//extension ReservationsViewController: UITableViewDelegate, UITableViewDataSource {
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return activeReservations.count
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell =
-//    }
-//
-//
-//}
+extension ReservationsViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return activeReservations.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: reservationCell, for: indexPath) as! ReservationCell
+        cell.bind(withModel: activeReservations[indexPath.row])
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 180.0
+    }
+}
