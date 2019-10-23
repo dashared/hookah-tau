@@ -20,6 +20,8 @@ class ReservationCell: UITableViewCell {
         
         reservationCellView = ReservationCellView.loadFromNib()
         self.contentView.addSubviewThatFills(reservationCellView)
+        
+        self.selectionStyle = .none
     }
     
     required init?(coder aDecoder: NSCoder)
