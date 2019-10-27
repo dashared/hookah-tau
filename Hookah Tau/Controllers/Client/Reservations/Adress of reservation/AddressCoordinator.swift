@@ -17,7 +17,7 @@ class AddressCoordinator: BaseCoordinator {
     // MARK: - Lifecycle
     
     override func start() {
-        let addressViewController = AddressViewController()
+        let addressViewController = AddresViewController()
         addressViewController.coordinator = self
         navigationController?.pushViewController(addressViewController, animated: true)
     }
