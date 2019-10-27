@@ -43,7 +43,8 @@ class ReservationsViewController: UIViewController {
         view.backgroundColor = .white
         navigationItem.title = "Брони"
         
-        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.rightBarButtonItem =
+            UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(tapToMakeReservation))
     }
     
     // MARK: - Setup

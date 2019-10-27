@@ -1,36 +1,36 @@
 //
-//  ReservationCell.swift
+//  AddressTableViewCell.swift
 //  Hookah Tau
 //
-//  Created by cstore on 20/10/2019.
+//  Created by cstore on 27/10/2019.
 //  Copyright © 2019 Daria Rednikina. All rights reserved.
 //
 
 import UIKit
 
-class ReservationCell: UITableViewCell {
+let addressCellIdentifier = "AddressCell"
+
+class AddressCell: UITableViewCell {
     
     // MARK: - Properties
+    
+    var addressView: AddressView?
 
-    var reservationCellView: ReservationCellView?
+    // MARK: - Init
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?)
     {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        reservationCellView = ReservationCellView.loadFromNib()
-        self.contentView.addSubviewThatFills(reservationCellView)
+        addressView = AddressView.loadFromNib()
+        contentView.addSubviewThatFills(addressView)
         
-        self.selectionStyle = .none
+        selectionStyle = .none
     }
     
     required init?(coder aDecoder: NSCoder)
     {
         fatalError("init(coder:) has not been implemented")
-    }
-
-    func bind(withModel model: Int) {
-        
     }
 
 }

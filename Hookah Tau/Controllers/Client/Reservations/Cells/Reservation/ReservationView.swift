@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ReservationCellView: UIView {
+class ReservationView: UIView {
     
     // MARK: - Properties
     
