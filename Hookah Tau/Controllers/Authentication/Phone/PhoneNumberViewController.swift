@@ -16,6 +16,8 @@ final class PhoneNumberViewController: AuthorizationViewController {
 
     var phoneView: PhoneView?
     
+    var authService: AuthorizationService?
+    
     let nextButton: Button = {
         let button = Button()
         return button
@@ -29,6 +31,8 @@ final class PhoneNumberViewController: AuthorizationViewController {
 
         setUpButtons()
         setUpContentView()
+        
+        authService = AuthorizationService(apiClient: APIClient())
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -64,5 +68,8 @@ final class PhoneNumberViewController: AuthorizationViewController {
     @objc
     func tapHandlerNextButton() {
         coordinator?.goToNextStep()
+        authService?.authenticate(withPhone: "8888888888", completion: { (result) in
+            print(result)
+        })
     }
 }
