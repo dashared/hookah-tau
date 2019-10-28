@@ -63,7 +63,7 @@ extension ApplicationCoordinator {
 
         static func configure() -> LaunchOptions {
             print("configuring...")
-            return .auth
+            return .main
         }
     }
 }
