@@ -16,10 +16,10 @@ class AuthorizationService {
         self.apiClient = apiClient
     }
     
+    /// Check if phone number is registered and send verification code to that number.
     func authenticate(withPhone phoneNumber: String,
                       completion: @escaping (Result<Bool, Error>) -> Void) {
         let resolver = AuthResolver(phoneNumber: phoneNumber)
-
         let request = ApiRequest(resolver: resolver, httpMethod: .post)
         
         apiClient.load(request: request.request) { (result) in
@@ -42,11 +42,54 @@ class AuthorizationService {
         }
     }
     
-    func phonecode() {
-        //let resolver = PhoneCodeResolver()
+    /// Verify login of  **already existing user** with phone number and verification code.
+    func phonecode(phoneNumber: String,
+                   code: String,
+                   completion: @escaping (Result<User, Error>) -> Void) {
+        let resolver = PhoneCodeResolver(phoneNumber: phoneNumber, code: code)
+        let request = ApiRequest(resolver: resolver, httpMethod: .post)
+        
+        apiClient.load(request: request.request) { result in
+            switch result {
+            case .failure(let err):
+                completion(.failure(err))
+            case .success(let data):
+                guard
+                    let unwrappedData = data as? Data,
+                    let decodedData = resolver.targetClass().fromJSONToSelf(data: unwrappedData) as? User
+                else {
+                    completion(.failure(ServerError.decodeError))
+                    return
+                }
+                
+                completion(.success(decodedData))
+            }
+        }
     }
     
-    func register() {
-        //let resolver = RegistrationResolver()
+    
+    /// Register new user with a given name, phone number and verification code.
+    func register(name: String,
+                  code: String,
+                  phoneNumber: String, completion: @escaping (Result<User, Error>) -> Void) {
+        let resolver = RegistrationResolver(name: name, code: code, phoneNumber: phoneNumber)
+        let request = ApiRequest(resolver: resolver, httpMethod: .post)
+        
+        apiClient.load(request: request.request) { result in
+            switch result {
+            case .failure(let err):
+                completion(.failure(err))
+            case .success(let data):
+                guard
+                    let unwrappedData = data as? Data,
+                    let decodedData = resolver.targetClass().fromJSONToSelf(data: unwrappedData) as? User
+                else {
+                    completion(.failure(ServerError.decodeError))
+                    return
+                }
+                
+                completion(.success(decodedData))
+            }
+        }
     }
 }

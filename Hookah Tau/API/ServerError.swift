@@ -11,4 +11,5 @@ import Foundation
 
 enum ServerError: Error {
     case internalServerError
+    case decodeError
 }

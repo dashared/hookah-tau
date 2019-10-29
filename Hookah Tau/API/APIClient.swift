@@ -9,6 +9,7 @@
 import Foundation
 import Alamofire
 
+/// http://iko.soy/hookah-tau-docs/latest/index.html
 class APIClient {
     typealias CompletionBlock = (Result<Codable, Error>) -> Void
      
