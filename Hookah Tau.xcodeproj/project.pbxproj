@@ -354,8 +354,8 @@
 			children = (
 				F31E20C82348E0F300BEA215 /* AuthorizationViewController.swift */,
 				F3895F51233D354300FA6A37 /* Phone */,
-				F3895F50233D353600FA6A37 /* Code from sms */,
 				F3895F4F233D352400FA6A37 /* Name */,
+				F3895F50233D353600FA6A37 /* Code from sms */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";

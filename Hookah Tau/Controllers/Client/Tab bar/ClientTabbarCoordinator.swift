@@ -12,10 +12,6 @@ class ClientTabbarCoordinator: BaseCoordinator {
     
     typealias TabbarClosure = ((UINavigationController) -> ())
     
-    // MARK: - Properties
-    
-    var didEndFlow: (()-> Void)?
-    
     // MARK: - Lifecycle
     
     override func start() {

@@ -16,7 +16,10 @@ class AuthorizationService {
         self.apiClient = apiClient
     }
     
+    
     /// Check if phone number is registered and send verification code to that number.
+    /// - Parameter phoneNumber: (_xx) xxx xx xx - 9 numbers withount +7 9...
+    /// - Parameter completion: isUserRegistered and Error
     func authenticate(withPhone phoneNumber: String,
                       completion: @escaping (Result<Bool, Error>) -> Void) {
         let resolver = AuthResolver(phoneNumber: phoneNumber)

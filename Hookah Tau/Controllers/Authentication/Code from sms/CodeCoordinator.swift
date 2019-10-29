@@ -12,10 +12,6 @@ import UIKit
 class CodeCoordinator: BaseCoordinator {
     
     // MARK: - Properties
-    
-    var didEndFlow: (() -> Void)?
-
-    weak var parentCoordinator: PhoneCoordinator?
 
     override func start() {
         let smsInput = CodeSmsViewController()
@@ -28,12 +24,9 @@ class CodeCoordinator: BaseCoordinator {
         navigationController?.popViewController(animated: true)
     }
     
-    /// - warning: Depends on weather is authorized or not, mb need parameter
+    /// Last step of authorization process
     func goToNextStep() {
-        let nameCoordinator = NameCoordinator(navigationController: navigationController)
-        nameCoordinator.didEndFlow = { [weak self] in self?.didEndFlow?() }
-        nameCoordinator.parentCoordinator = self
-        addDependency(nameCoordinator)
-        nameCoordinator.start()
+        print("Did end auth flow...")
+        didEndFlow?()
     }
 }

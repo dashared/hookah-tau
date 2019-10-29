@@ -16,8 +16,6 @@ class ProfileChangeCoordinator: BaseCoordinator {
     
     // MARK: - Properties
     
-    var didEndFlow: (() -> Void)?
-    
     var changeModel: ChangeModel?
     
     // MARK: - Lifecycle
