@@ -8,8 +8,8 @@
 
 import Foundation
 
-struct UserModel {
+struct User: MyCodable {
     var name: String
-    var phone: String
+    var phoneNumber: String
     var isAdmin: Bool
 }

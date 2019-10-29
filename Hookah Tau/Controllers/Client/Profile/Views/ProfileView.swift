@@ -66,9 +66,9 @@ class ProfileView: UIView {
     }
     
     // TODO: - change in future
-    func bind(withModel model: UserModel) {
+    func bind(withModel model: User) {
         nameView?.bind(withModel: model.name)
-        phoneView?.bind(withModel: model.phone)
+        phoneView?.bind(withModel: model.phoneNumber)
         
         if !model.isAdmin {
             inviteStackView?.isHidden = true

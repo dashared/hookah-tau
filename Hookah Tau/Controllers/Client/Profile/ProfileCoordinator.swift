@@ -9,7 +9,7 @@
 import UIKit
 
 protocol UserUpdate: class {
-    func updateUser(withModel model: UserModel)
+    func updateUser(withModel model: User)
 }
 
 class ProfileCoordinator: BaseCoordinator {

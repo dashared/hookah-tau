@@ -12,17 +12,17 @@ class AuthResolver: ApiResolver {
 
     // MARK: - Request/Response types
     
-    struct AuthRequest: MyCodable {
+    struct Request: MyCodable {
         var phoneNumber: String
     }
     
-    struct AuthResponse: MyCodable {
+    struct Response: MyCodable {
         var isUserRegistered: Bool
     }
     
     // MARK: - Properties
     
-    private var phone: String
+    private var phoneNumber: String
     
     var name: String {
         return "/login"
@@ -34,23 +34,17 @@ class AuthResolver: ApiResolver {
     
     // MARK: - Init
     
-    init(phone: String) {
-        self.phone = phone
+    init(phoneNumber: String) {
+        self.phoneNumber = phoneNumber
     }
     
     func parameters() -> MyCodable {
-        return AuthRequest(phoneNumber: self.phone)
+        return Request(phoneNumber: phoneNumber)
     }
     
     func targetClass() -> MyCodable.Type {
-        return AuthResponse.self
+        return Response.self
     }
 }
 
-//class RegistrationResolver: ApiResolver {
-//
-//}
-//
-//class PhoneCodeResolver: ApiResolver {
-//
-//}
+

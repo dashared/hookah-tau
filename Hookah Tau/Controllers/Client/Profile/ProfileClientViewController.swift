@@ -14,7 +14,7 @@ class ProfileClientViewController: UIViewController {
     
     weak var coordinator: ProfileCoordinator?
     
-    var model: UserModel = UserModel(name: "Стасик", phone: "+ 8 901 733 01 79", isAdmin: false) {
+    var model: User = User(name: "Стасик", phoneNumber: "+ 8 901 733 01 79", isAdmin: false) {
         didSet {
             profileContentView?.bind(withModel: model)
         }
@@ -59,7 +59,7 @@ class ProfileClientViewController: UIViewController {
 // MARK: - UserUpdate ext
 
 extension ProfileClientViewController: UserUpdate {
-    func updateUser(withModel model: UserModel) {
+    func updateUser(withModel model: User) {
         self.model = model
     }
 }

@@ -27,7 +27,7 @@ class ChangeView: UIView {
             textField?.keyboardType = .alphabet
         case .phone:
             titleLabel?.text = "Номер телефона"
-            textField?.text = model.userModel.phone
+            textField?.text = model.userModel.phoneNumber
             textField?.keyboardType = .numberPad
         }
     }

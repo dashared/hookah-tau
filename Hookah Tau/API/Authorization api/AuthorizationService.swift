@@ -18,7 +18,7 @@ class AuthorizationService {
     
     func authenticate(withPhone phoneNumber: String,
                       completion: @escaping (Result<Bool, Error>) -> Void) {
-        let resolver = AuthResolver(phone: phoneNumber)
+        let resolver = AuthResolver(phoneNumber: phoneNumber)
 
         let request = ApiRequest(resolver: resolver, httpMethod: .post)
         
@@ -31,7 +31,7 @@ class AuthorizationService {
                 
                 guard
                     let d = data as? Data,
-                    let decodedData = resolver.targetClass().fromJSONToSelf(data: d) as? AuthResolver.AuthResponse
+                    let decodedData = resolver.targetClass().fromJSONToSelf(data: d) as? AuthResolver.Response
                 else {
                     completion(.failure(ServerError.internalServerError))
                     return
