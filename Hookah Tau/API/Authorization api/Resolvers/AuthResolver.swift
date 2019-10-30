@@ -8,16 +8,16 @@
 
 import Foundation
 
-class AuthResolver: ApiResolver {
+struct AuthResponse: MyCodable {
+    var isUserRegistered: Bool
+}
 
+class AuthResolver<Response: MyCodable>: ApiResolver {
+    
     // MARK: - Request/Response types
     
     struct Request: MyCodable {
         var phoneNumber: String
-    }
-    
-    struct Response: MyCodable {
-        var isUserRegistered: Bool
     }
     
     // MARK: - Properties
@@ -42,7 +42,7 @@ class AuthResolver: ApiResolver {
         return Request(phoneNumber: phoneNumber)
     }
     
-    func targetClass() -> MyCodable.Type {
+    func targetClass() -> Response.Type {
         return Response.self
     }
 }

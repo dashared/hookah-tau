@@ -16,13 +16,12 @@ class AuthorizationService {
         self.apiClient = apiClient
     }
     
-    
     /// Check if phone number is registered and send verification code to that number.
     /// - Parameter phoneNumber: (_xx) xxx xx xx - 9 numbers withount +7 9...
     /// - Parameter completion: isUserRegistered and Error
     func authenticate(withPhone phoneNumber: String,
-                      completion: @escaping (Result<Bool, Error>) -> Void) {
-        let resolver = AuthResolver(phoneNumber: phoneNumber)
+                      completion: @escaping (Result<Bool, GeneralError>) -> Void) {
+        let resolver = AuthResolver<AuthResponse>(phoneNumber: phoneNumber)
         let request = ApiRequest(resolver: resolver, httpMethod: .post)
         
         apiClient.load(request: request.request) { (result) in
@@ -30,13 +29,11 @@ class AuthorizationService {
             case .failure(let err):
                 completion(.failure(err))
             case .success(let data):
-                print(data) // TODO remove
-                
                 guard
                     let d = data as? Data,
-                    let decodedData = resolver.targetClass().fromJSONToSelf(data: d) as? AuthResolver.Response
+                    let decodedData = resolver.targetClass().fromJSONToSelf(data: d)
                 else {
-                    completion(.failure(ServerError.internalServerError))
+                    completion(.failure(GeneralError.decodeError))
                     return
                 }
                 
@@ -49,7 +46,7 @@ class AuthorizationService {
     func phonecode(phoneNumber: String,
                    code: String,
                    completion: @escaping (Result<User, Error>) -> Void) {
-        let resolver = PhoneCodeResolver(phoneNumber: phoneNumber, code: code)
+        let resolver = PhoneCodeResolver<User>(phoneNumber: phoneNumber, code: code)
         let request = ApiRequest(resolver: resolver, httpMethod: .post)
         
         apiClient.load(request: request.request) { result in
@@ -59,9 +56,9 @@ class AuthorizationService {
             case .success(let data):
                 guard
                     let unwrappedData = data as? Data,
-                    let decodedData = resolver.targetClass().fromJSONToSelf(data: unwrappedData) as? User
+                    let decodedData = resolver.targetClass().fromJSONToSelf(data: unwrappedData)
                 else {
-                    completion(.failure(ServerError.decodeError))
+                    completion(.failure(GeneralError.decodeError))
                     return
                 }
                 
@@ -75,7 +72,7 @@ class AuthorizationService {
     func register(name: String,
                   code: String,
                   phoneNumber: String, completion: @escaping (Result<User, Error>) -> Void) {
-        let resolver = RegistrationResolver(name: name, code: code, phoneNumber: phoneNumber)
+        let resolver = RegistrationResolver<User>(name: name, code: code, phoneNumber: phoneNumber)
         let request = ApiRequest(resolver: resolver, httpMethod: .post)
         
         apiClient.load(request: request.request) { result in
@@ -85,9 +82,9 @@ class AuthorizationService {
             case .success(let data):
                 guard
                     let unwrappedData = data as? Data,
-                    let decodedData = resolver.targetClass().fromJSONToSelf(data: unwrappedData) as? User
+                    let decodedData = resolver.targetClass().fromJSONToSelf(data: unwrappedData)
                 else {
-                    completion(.failure(ServerError.decodeError))
+                    completion(.failure(GeneralError.decodeError))
                     return
                 }
                 

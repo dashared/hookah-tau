@@ -8,8 +8,12 @@
 
 import Foundation
 
+struct SE: MyCodable {
+    var error: String?
+}
 
-enum ServerError: Error {
-    case internalServerError
+enum GeneralError: Error {
+    case serverError(SE)
     case decodeError
+    case somethingWentCompletelyWrong
 }

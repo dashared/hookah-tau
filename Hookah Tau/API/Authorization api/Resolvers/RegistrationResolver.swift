@@ -8,7 +8,8 @@
 
 import Foundation
 
-class RegistrationResolver: ApiResolver {
+class RegistrationResolver<Response: MyCodable>: ApiResolver {
+    
     // MARK: - types
     
     struct Request: MyCodable {
@@ -45,7 +46,7 @@ class RegistrationResolver: ApiResolver {
                        code: code)
     }
     
-    func targetClass() -> MyCodable.Type {
-        return User.self
+    func targetClass() -> Response.Type {
+        return Response.self
     }
 }

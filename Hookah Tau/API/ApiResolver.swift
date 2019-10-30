@@ -8,12 +8,12 @@
 
 import Foundation
 
-protocol ApiResolver {
+protocol ApiResolver: class {
+    
     var name: String { get }
     
     var groupName: String? { get }
     
+    /// Parameter for request
     func parameters() -> MyCodable
-    
-    func targetClass() -> MyCodable.Type
 }
