@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 
 /// Слой методов для авторизации пользователя в приложении
 class AuthorizationService {
@@ -28,9 +29,9 @@ class AuthorizationService {
             switch result {
             case .failure(let err):
                 completion(.failure(err))
-            case .success(let data):
+            case .success(let response):
                 guard
-                    let d = data as? Data,
+                    let d = response.data,
                     let decodedData = resolver.targetClass().fromJSONToSelf(data: d)
                 else {
                     completion(.failure(GeneralError.decodeError))
@@ -45,7 +46,7 @@ class AuthorizationService {
     /// Verify login of  **already existing user** with phone number and verification code.
     func phonecode(phoneNumber: String,
                    code: String,
-                   completion: @escaping (Result<User, Error>) -> Void) {
+                   completion: @escaping (Result<User, GeneralError>) -> Void) {
         let resolver = PhoneCodeResolver<User>(phoneNumber: phoneNumber, code: code)
         let request = ApiRequest(resolver: resolver, httpMethod: .post)
         
@@ -53,15 +54,16 @@ class AuthorizationService {
             switch result {
             case .failure(let err):
                 completion(.failure(err))
-            case .success(let data):
+            case .success(let response):
                 guard
-                    let unwrappedData = data as? Data,
+                    let unwrappedData = response.data,
                     let decodedData = resolver.targetClass().fromJSONToSelf(data: unwrappedData)
                 else {
                     completion(.failure(GeneralError.decodeError))
                     return
                 }
                 
+                self.setCookies(response: response)
                 completion(.success(decodedData))
             }
         }
@@ -71,7 +73,7 @@ class AuthorizationService {
     /// Register new user with a given name, phone number and verification code.
     func register(name: String,
                   code: String,
-                  phoneNumber: String, completion: @escaping (Result<User, Error>) -> Void) {
+                  phoneNumber: String, completion: @escaping (Result<User, GeneralError>) -> Void) {
         let resolver = RegistrationResolver<User>(name: name, code: code, phoneNumber: phoneNumber)
         let request = ApiRequest(resolver: resolver, httpMethod: .post)
         
@@ -79,17 +81,29 @@ class AuthorizationService {
             switch result {
             case .failure(let err):
                 completion(.failure(err))
-            case .success(let data):
+            case .success(let response):
                 guard
-                    let unwrappedData = data as? Data,
+                    let unwrappedData = response.data,
                     let decodedData = resolver.targetClass().fromJSONToSelf(data: unwrappedData)
                 else {
                     completion(.failure(GeneralError.decodeError))
                     return
                 }
                 
+                self.setCookies(response: response)
                 completion(.success(decodedData))
             }
         }
+    }
+    
+    // MARK: - Helpers
+    
+    private func setCookies(response: AFDataResponse<Data?>) {
+        let fields = response.response?.allHeaderFields as? [String :String]
+        guard let fieldss = fields, let url = response.response?.url else {
+            return
+        }
+        let cookies = HTTPCookie.cookies(withResponseHeaderFields: fieldss, for: url)
+        HTTPCookieStorage.shared.setCookie(cookies[0])
     }
 }

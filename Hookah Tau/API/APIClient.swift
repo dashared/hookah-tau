@@ -11,8 +11,13 @@ import Alamofire
 
 /// http://iko.soy/hookah-tau-docs/latest/index.html
 class APIClient {
-    typealias CompletionBlock = (Result<Codable, GeneralError>) -> Void
+    typealias CompletionBlock = (Result<AFDataResponse<Data?>, GeneralError>) -> Void
      
+    private init() {}
+    
+    /// Shared instance of the client
+    static let shared = APIClient()
+    
     enum BaseUrls {
         static let staging = "https://hookah-tau-staging.herokuapp.com"
         // static let production = ""
@@ -27,7 +32,7 @@ class APIClient {
                 return
             }
             
-            completion(.success(response.data))
+            completion(.success(response))
         }
     }
     
@@ -37,6 +42,12 @@ class APIClient {
             switch statusCode {
             case 200...299:
                 return nil
+            case 400:
+                // спасибо илья я печатаю ошибки хаскеля в консоль ура
+                if let data = response.data {
+                    let json = String(data: data, encoding: String.Encoding.utf8)
+                    print("Failure Response: \(String(describing: json))")
+                }
             case 422:
                 if let data = response.data, let error = SE.fromJSONToSelf(data: data) {
                     return GeneralError.serverError(error)

@@ -32,7 +32,7 @@ final class PhoneNumberViewController: AuthorizationViewController {
         setUpButtons()
         setUpContentView()
         
-        authService = AuthorizationService(apiClient: APIClient())
+        authService = AuthorizationService(apiClient: APIClient.shared)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -68,7 +68,7 @@ final class PhoneNumberViewController: AuthorizationViewController {
     @objc
     func tapHandlerNextButton() {
         nextButton.loading = true
-        authService?.authenticate(withPhone: "888878888", completion: { [weak self] (result) in
+        authService?.authenticate(withPhone: "888888888", completion: { [weak self] (result) in
             self?.nextButton.loading = false
             
             switch result {

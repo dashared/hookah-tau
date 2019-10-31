@@ -15,6 +15,10 @@ final class CodeSmsViewController: AuthorizationViewController {
     weak var coordinator: CodeCoordinator?
     
     weak var codeView: CodeView?
+    
+    var userName: String?
+    
+    var authService: AuthorizationService?
 
     let nextButton: Button = {
         let button = Button(frame: CGRect.zero)
@@ -33,6 +37,8 @@ final class CodeSmsViewController: AuthorizationViewController {
         
         setUpButtons()
         setUpContentView()
+        
+        authService = AuthorizationService(apiClient: APIClient.shared)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -71,7 +77,34 @@ final class CodeSmsViewController: AuthorizationViewController {
     
     @objc
     func tapHandlerNextButton() {
-        coordinator?.goToNextStep()
+        guard let phonecode = codeView?.getFullCode() else {
+            displayAlert(forError: GeneralError.noData)
+            return
+        }
+        
+        let handleCompletion: (Result<User, GeneralError>) -> Void = { [weak self] result in
+            self?.nextButton.loading = false
+            switch result {
+            case .failure(let err):
+                self?.displayAlert(forError: err)
+            case .success:
+                self?.coordinator?.goToNextStep()
+            }
+        }
+        
+        nextButton.loading = true
+        
+        if let name = userName {
+            authService?.register(name: name,
+                                  code: phonecode,
+                                  phoneNumber: "888888888",
+                                  completion: handleCompletion)
+            return
+        }
+        
+        authService?.phonecode(phoneNumber: "888888888",
+                               code: phonecode,
+                               completion: handleCompletion)
     }
     
     @objc

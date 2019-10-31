@@ -15,5 +15,7 @@ struct SE: MyCodable {
 enum GeneralError: Error {
     case serverError(SE)
     case decodeError
+    case noData
+    case Error400
     case somethingWentCompletelyWrong
 }

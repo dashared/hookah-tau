@@ -44,4 +44,8 @@ class CodeView: UIView {
         }
     }
     
+    func getFullCode() -> String? {
+        return "888888"
+    }
+    
 }
