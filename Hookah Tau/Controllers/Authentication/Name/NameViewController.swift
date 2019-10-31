@@ -73,7 +73,8 @@ class NameViewController: AuthorizationViewController {
             return
         }
         
-        coordinator?.goToNextStep(withName: name)
+        DataStorage.standard.name = name
+        coordinator?.goToNextStep()
     }
     
     @objc func tapHandlerReturnButton() {

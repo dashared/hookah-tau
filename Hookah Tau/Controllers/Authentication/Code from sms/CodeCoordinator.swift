@@ -12,12 +12,9 @@ import UIKit
 class CodeCoordinator: BaseCoordinator {
     
     // MARK: - Properties
-    
-    var userName: String?
 
     override func start() {
         let smsInput = CodeSmsViewController()
-        smsInput.userName = userName
         smsInput.coordinator = self
         navigationController?.pushViewController(smsInput, animated: true)
     }

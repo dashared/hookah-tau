@@ -68,13 +68,17 @@ final class PhoneNumberViewController: AuthorizationViewController {
     @objc
     func tapHandlerNextButton() {
         nextButton.loading = true
-        authService?.authenticate(withPhone: "888888888", completion: { [weak self] (result) in
+        
+        guard let phoneText = phoneView?.phone?.text else { return /* add error handling */ }
+        
+        authService?.authenticate(withPhone: phoneText, completion: { [weak self] (result) in
             self?.nextButton.loading = false
             
             switch result {
             case .failure(let err):
                 self?.displayAlert(forError: err)
             case .success(let isUserRegistered):
+                DataStorage.standard.phone = phoneText
                 self?.coordinator?.goToNextStep(isUserRegistered: isUserRegistered)
             }
         })

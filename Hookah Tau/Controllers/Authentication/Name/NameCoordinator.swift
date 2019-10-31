@@ -18,9 +18,8 @@ class NameCoordinator: BaseCoordinator {
         navigationController?.pushViewController(nameViewController, animated: true)
     }
 
-    func goToNextStep(withName name: String) {
+    func goToNextStep() {
         let codeCoordinator = CodeCoordinator(navigationController: navigationController)
-        codeCoordinator.userName = name
         codeCoordinator.didEndFlow = { [weak self] in self?.didEndFlow?() }
         codeCoordinator.parentCoordinator = self
         addDependency(codeCoordinator)

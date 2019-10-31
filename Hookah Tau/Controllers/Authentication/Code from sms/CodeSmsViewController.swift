@@ -16,8 +16,6 @@ final class CodeSmsViewController: AuthorizationViewController {
     
     weak var codeView: CodeView?
     
-    var userName: String?
-    
     var authService: AuthorizationService?
 
     let nextButton: Button = {
@@ -77,33 +75,35 @@ final class CodeSmsViewController: AuthorizationViewController {
     
     @objc
     func tapHandlerNextButton() {
-        guard let phonecode = codeView?.getFullCode() else {
+        guard let code = codeView?.getFullCode() else {
             displayAlert(forError: GeneralError.noData)
             return
         }
+        
+        guard let phone = DataStorage.standard.phone else { return /* TODO обработка */ }
         
         let handleCompletion: (Result<User, GeneralError>) -> Void = { [weak self] result in
             self?.nextButton.loading = false
             switch result {
             case .failure(let err):
                 self?.displayAlert(forError: err)
-            case .success:
+            case .success(let user):
+                DataStorage.standard.saveUserModel(user)
                 self?.coordinator?.goToNextStep()
             }
         }
         
         nextButton.loading = true
-        
-        if let name = userName {
+        if let name = DataStorage.standard.name {
             authService?.register(name: name,
-                                  code: phonecode,
-                                  phoneNumber: "888888888",
+                                  code: code,
+                                  phoneNumber: phone,
                                   completion: handleCompletion)
             return
         }
         
-        authService?.phonecode(phoneNumber: "888888888",
-                               code: phonecode,
+        authService?.phonecode(phoneNumber: phone,
+                               code: code,
                                completion: handleCompletion)
     }
     

@@ -42,6 +42,7 @@
 		12EB698123661CB300E4D1CE /* AddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12EB698023661CB300E4D1CE /* AddressCell.swift */; };
 		12EE4A76234BB8FE005B4D1A /* CodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12EE4A75234BB8FE005B4D1A /* CodeView.swift */; };
 		12F73B022357AD7B007D4476 /* ProfileChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F73B012357AD7B007D4476 /* ProfileChangeViewController.swift */; };
+		12FE4042236B8B050012391E /* DataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FE4041236B8B050012391E /* DataStorage.swift */; };
 		F30369B5233679EA00A8EA84 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F30369B4233679EA00A8EA84 /* LaunchScreen.storyboard */; };
 		F30369BE2336924D00A8EA84 /* ClientTabbarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30369BD2336924D00A8EA84 /* ClientTabbarCoordinator.swift */; };
 		F30369C02336925800A8EA84 /* ClientTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30369BF2336925800A8EA84 /* ClientTabbarController.swift */; };
@@ -124,6 +125,7 @@
 		12EB698023661CB300E4D1CE /* AddressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCell.swift; sourceTree = "<group>"; };
 		12EE4A75234BB8FE005B4D1A /* CodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeView.swift; sourceTree = "<group>"; };
 		12F73B012357AD7B007D4476 /* ProfileChangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileChangeViewController.swift; sourceTree = "<group>"; };
+		12FE4041236B8B050012391E /* DataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorage.swift; sourceTree = SOURCE_ROOT; };
 		F30369B4233679EA00A8EA84 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F30369BD2336924D00A8EA84 /* ClientTabbarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientTabbarCoordinator.swift; sourceTree = "<group>"; };
 		F30369BF2336925800A8EA84 /* ClientTabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientTabbarController.swift; sourceTree = "<group>"; };
@@ -484,10 +486,11 @@
 		F3FC7DCB2315BE610080D851 /* Hookah Tau */ = {
 			isa = PBXGroup;
 			children = (
-				12838EB923679AEB00CEF108 /* API */,
+				12FE4041236B8B050012391E /* DataStorage.swift */,
 				F3FC7DCC2315BE610080D851 /* AppDelegate.swift */,
 				F3DC59FE233E893400B5E751 /* Extensions+UIFont.swift */,
 				F31E20C62348DDB900BEA215 /* Extensions+UIView.swift */,
+				12838EB923679AEB00CEF108 /* API */,
 				F30369BC2336861100A8EA84 /* Models */,
 				F3199E59233FD7F700F3C17A /* Views */,
 				F30369B92336844500A8EA84 /* Components */,
@@ -681,6 +684,7 @@
 				F3895F48233D2EEA00FA6A37 /* CodeSmsViewController.swift in Sources */,
 				12219CEF2353A63F0057DDEE /* ReservationsCoordinator.swift in Sources */,
 				12838EB2236779A000CEF108 /* AuthResolver.swift in Sources */,
+				12FE4042236B8B050012391E /* DataStorage.swift in Sources */,
 				1246B71C235CDF3A004CBFA1 /* ReservationCell.swift in Sources */,
 				1246B720235CDF9E004CBFA1 /* ReservationView.swift in Sources */,
 				F3895F4E233D348B00FA6A37 /* PhoneCoordinator.swift in Sources */,
