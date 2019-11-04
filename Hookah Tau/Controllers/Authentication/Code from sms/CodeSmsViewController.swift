@@ -38,6 +38,7 @@ final class CodeSmsViewController: AuthorizationViewController {
         
         authService = AuthorizationService(apiClient: APIClient.shared)
         
+        codeView?.onComplete = tapHandlerNextButton
         codeView?.firstTextField?.becomeFirstResponder()
     }
     

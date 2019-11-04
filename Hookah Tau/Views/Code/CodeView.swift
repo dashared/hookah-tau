@@ -18,7 +18,7 @@ class CodeView: UIView {
     
     @IBOutlet var codeTextFields: [UITextField]?
 
-    var onComplete: ((String?) -> Void)?
+    var onComplete: (() -> Void)?
     
     // MARK: - Lifecycle
     
@@ -66,7 +66,7 @@ extension CodeView: UITextFieldDelegate {
         if let nextTextField = textField.superview?.viewWithTag(textField.tag + 1) {
             nextTextField.becomeFirstResponder()
         } else {
-            onComplete?(getFullCode())
+            onComplete?()
         }
     }
     
