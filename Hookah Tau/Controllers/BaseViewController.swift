@@ -97,5 +97,20 @@ class BaseViewController: UIViewController {
             })
         }
     }
-
+    
+    // MARK: - Alert
+     
+    func displayAlert(forError error: GeneralError) {
+        var title: String? = "MEOW"
+        switch error {
+        case .serverError(let se):
+            title = se.error
+            fallthrough // да тоже произведение искусства
+        default:
+            let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
 }

@@ -68,8 +68,16 @@ class NameViewController: AuthorizationViewController {
     // MARK: - Handlers
 
     @objc func tapHandlerNextButton() {
+        guard
+            let name = nameView?.nameTextField?.text,
+            name.count > 1
+        else {
+            displayAlert(forError: GeneralError.noData)
+            return
+        }
+        
+        DataStorage.standard.name = name
         coordinator?.goToNextStep()
-        //nextButton.loading = !nextButton.loading
     }
     
     @objc func tapHandlerReturnButton() {

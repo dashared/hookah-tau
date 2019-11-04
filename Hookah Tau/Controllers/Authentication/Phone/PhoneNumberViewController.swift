@@ -16,6 +16,8 @@ final class PhoneNumberViewController: AuthorizationViewController {
 
     var phoneView: PhoneView?
     
+    var authService: AuthorizationService?
+    
     let nextButton: Button = {
         let button = Button()
         return button
@@ -29,6 +31,8 @@ final class PhoneNumberViewController: AuthorizationViewController {
 
         setUpButtons()
         setUpContentView()
+        
+        authService = AuthorizationService(apiClient: APIClient.shared)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,6 +67,24 @@ final class PhoneNumberViewController: AuthorizationViewController {
  
     @objc
     func tapHandlerNextButton() {
-        coordinator?.goToNextStep()
+        nextButton.loading = true
+        
+        guard let phoneText = phoneView?.getFormattedNumber() else {
+            self.displayAlert(forError: GeneralError.noData)
+            nextButton.loading = false
+            return
+        }
+        
+        authService?.authenticate(withPhone: phoneText, completion: { [weak self] (result) in
+            self?.nextButton.loading = false
+            
+            switch result {
+            case .failure(let err):
+                self?.displayAlert(forError: err)
+            case .success(let isUserRegistered):
+                DataStorage.standard.phone = phoneText
+                self?.coordinator?.goToNextStep(isUserRegistered: isUserRegistered)
+            }
+        })
     }
 }

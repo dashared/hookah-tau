@@ -10,9 +10,7 @@ import Foundation
 
 class PhoneCoordinator: BaseCoordinator {
     
-    // MARK: - Properties
-    
-    var didEndFlow: (() -> Void)?
+    // MARK: - Lifecycle
 
     override func start() {
         let phoneVC = PhoneNumberViewController()
@@ -20,11 +18,20 @@ class PhoneCoordinator: BaseCoordinator {
         navigationController?.viewControllers = [ phoneVC ]
     }
     
-    func goToNextStep() {
-        let codeCoordinator = CodeCoordinator(navigationController: navigationController)
-        codeCoordinator.didEndFlow = { [weak self] in self?.didEndFlow?() }
-        codeCoordinator.parentCoordinator = self
-        addDependency(codeCoordinator)
-        codeCoordinator.start()
+    /// Method chooses next step. Depends on weather user was previously registered
+    /// - Parameter isUserRegistered: was user registered
+    func goToNextStep(isUserRegistered: Bool) {
+        let coordinator: BaseCoordinator!
+        
+        if isUserRegistered {
+            coordinator = CodeCoordinator(navigationController: navigationController)
+        } else {
+            coordinator = NameCoordinator(navigationController: navigationController)
+        }
+        
+        coordinator.didEndFlow = { [weak self] in self?.didEndFlow?() }
+        coordinator.parentCoordinator = self
+        addDependency(coordinator)
+        coordinator.start()
     }
 }

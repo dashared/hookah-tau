@@ -15,69 +15,69 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="AvJ-ix-PaS">
-                    <rect key="frame" x="68" y="4" width="238" height="34"/>
+                    <rect key="frame" x="32" y="3" width="310" height="36"/>
                     <subviews>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="28" translatesAutoresizingMaskIntoConstraints="NO" id="bN8-Dx-tUT">
-                            <rect key="frame" x="0.0" y="0.0" width="33" height="34"/>
+                        <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="28" translatesAutoresizingMaskIntoConstraints="NO" id="bN8-Dx-tUT">
+                            <rect key="frame" x="0.0" y="0.0" width="45" height="36"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="33" id="Nob-jT-cth"/>
-                                <constraint firstAttribute="height" constant="34" id="ifR-1l-U2V"/>
+                                <constraint firstAttribute="width" constant="45" id="Nob-jT-cth"/>
+                                <constraint firstAttribute="height" constant="36" id="ifR-1l-U2V"/>
                             </constraints>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="28" translatesAutoresizingMaskIntoConstraints="NO" id="FY0-pn-fCC">
-                            <rect key="frame" x="41" y="0.0" width="33" height="34"/>
+                        <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="28" translatesAutoresizingMaskIntoConstraints="NO" id="FY0-pn-fCC">
+                            <rect key="frame" x="53" y="0.0" width="45" height="36"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="34" id="Ucv-mT-fyj"/>
-                                <constraint firstAttribute="width" constant="33" id="ck1-wZ-IBT"/>
+                                <constraint firstAttribute="height" constant="36" id="Ucv-mT-fyj"/>
+                                <constraint firstAttribute="width" constant="45" id="ck1-wZ-IBT"/>
                             </constraints>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="28" translatesAutoresizingMaskIntoConstraints="NO" id="JKD-8I-UNU">
-                            <rect key="frame" x="82" y="0.0" width="33" height="34"/>
+                        <textField opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="28" translatesAutoresizingMaskIntoConstraints="NO" id="JKD-8I-UNU">
+                            <rect key="frame" x="106" y="0.0" width="45" height="36"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="34" id="ACy-Gx-Fuc"/>
-                                <constraint firstAttribute="width" constant="33" id="N0g-Tj-jiT"/>
+                                <constraint firstAttribute="height" constant="36" id="ACy-Gx-Fuc"/>
+                                <constraint firstAttribute="width" constant="45" id="N0g-Tj-jiT"/>
                             </constraints>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="28" translatesAutoresizingMaskIntoConstraints="NO" id="m6q-G8-Kj1">
-                            <rect key="frame" x="123" y="0.0" width="33" height="34"/>
+                        <textField opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="28" translatesAutoresizingMaskIntoConstraints="NO" id="m6q-G8-Kj1">
+                            <rect key="frame" x="159" y="0.0" width="45" height="36"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="33" id="doW-6X-9HY"/>
-                                <constraint firstAttribute="height" constant="34" id="yjR-7R-KES"/>
+                                <constraint firstAttribute="width" constant="45" id="doW-6X-9HY"/>
+                                <constraint firstAttribute="height" constant="36" id="yjR-7R-KES"/>
                             </constraints>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="28" translatesAutoresizingMaskIntoConstraints="NO" id="FEc-xO-TH4">
-                            <rect key="frame" x="164" y="0.0" width="33" height="34"/>
+                        <textField opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="28" translatesAutoresizingMaskIntoConstraints="NO" id="FEc-xO-TH4">
+                            <rect key="frame" x="212" y="0.0" width="45" height="36"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="33" id="7tz-Mb-4xo"/>
-                                <constraint firstAttribute="height" constant="34" id="sLJ-BN-xvF"/>
+                                <constraint firstAttribute="width" constant="45" id="7tz-Mb-4xo"/>
+                                <constraint firstAttribute="height" constant="36" id="sLJ-BN-xvF"/>
                             </constraints>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="28" translatesAutoresizingMaskIntoConstraints="NO" id="apy-G3-6LG">
-                            <rect key="frame" x="205" y="0.0" width="33" height="34"/>
+                        <textField opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="28" translatesAutoresizingMaskIntoConstraints="NO" id="apy-G3-6LG">
+                            <rect key="frame" x="265" y="0.0" width="45" height="36"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="33" id="2jK-JD-vJb"/>
-                                <constraint firstAttribute="height" constant="34" id="vmy-eE-VGc"/>
+                                <constraint firstAttribute="width" constant="45" id="2jK-JD-vJb"/>
+                                <constraint firstAttribute="height" constant="36" id="vmy-eE-VGc"/>
                             </constraints>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
@@ -94,12 +94,14 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
-                <outlet property="fif" destination="FEc-xO-TH4" id="c6h-yp-y1w"/>
-                <outlet property="frt" destination="m6q-G8-Kj1" id="FOj-Db-SUl"/>
-                <outlet property="fst" destination="bN8-Dx-tUT" id="Poq-KO-RY3"/>
-                <outlet property="six" destination="apy-G3-6LG" id="Mkt-JK-pQ3"/>
-                <outlet property="snd" destination="FY0-pn-fCC" id="BVY-Ym-f69"/>
-                <outlet property="trd" destination="JKD-8I-UNU" id="aFJ-hK-7k7"/>
+                <outlet property="firstTextField" destination="bN8-Dx-tUT" id="NtS-pl-Cv9"/>
+                <outlet property="lastTextField" destination="apy-G3-6LG" id="k3e-7U-of7"/>
+                <outletCollection property="codeTextFields" destination="bN8-Dx-tUT" collectionClass="NSMutableArray" id="HVa-7S-Mbr"/>
+                <outletCollection property="codeTextFields" destination="FY0-pn-fCC" collectionClass="NSMutableArray" id="Yg8-ng-V2S"/>
+                <outletCollection property="codeTextFields" destination="JKD-8I-UNU" collectionClass="NSMutableArray" id="fN4-Ah-Adg"/>
+                <outletCollection property="codeTextFields" destination="m6q-G8-Kj1" collectionClass="NSMutableArray" id="CyO-Lm-FRN"/>
+                <outletCollection property="codeTextFields" destination="FEc-xO-TH4" collectionClass="NSMutableArray" id="2Ep-c4-qGM"/>
+                <outletCollection property="codeTextFields" destination="apy-G3-6LG" collectionClass="NSMutableArray" id="BuX-CG-0tX"/>
             </connections>
             <point key="canvasLocation" x="138.40000000000001" y="372.41379310344831"/>
         </view>

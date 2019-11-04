@@ -31,6 +31,10 @@ class BaseCoordinator: Coordinator {
     var childCoordinators = [Coordinator]()
 
     var navigationController: UINavigationController?
+    
+    var didEndFlow: (() -> Void)?
+    
+    weak var parentCoordinator: BaseCoordinator?
 
     func start() { } // should be overriden
 

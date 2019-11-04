@@ -9,7 +9,7 @@
 import UIKit
 
 struct ChangeModel {
-    var userModel: UserModel
+    var userModel: User
     var editingOption: EditingOption
 }
 
@@ -91,7 +91,7 @@ class ProfileChangeViewController: BaseViewController {
         case .name:
             userModel.name = text
         case .phone:
-            userModel.phone = text
+            userModel.phoneNumber = text
         }
         
         coordinator?.update(withModel: userModel)

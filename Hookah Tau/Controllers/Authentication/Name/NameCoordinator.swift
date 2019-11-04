@@ -10,11 +10,7 @@ import UIKit
 
 class NameCoordinator: BaseCoordinator {
     
-    // MARK: - Properties
-    
-    var didEndFlow: (() -> Void)?
-    
-    var parentCoordinator: CodeCoordinator?
+    // MARK: - Lifecycle
 
     override func start() {
         let nameViewController = NameViewController()
@@ -23,8 +19,11 @@ class NameCoordinator: BaseCoordinator {
     }
 
     func goToNextStep() {
-        print("Did end auth flow...")
-        didEndFlow?()
+        let codeCoordinator = CodeCoordinator(navigationController: navigationController)
+        codeCoordinator.didEndFlow = { [weak self] in self?.didEndFlow?() }
+        codeCoordinator.parentCoordinator = self
+        addDependency(codeCoordinator)
+        codeCoordinator.start()
     }
     
     func goBack() {

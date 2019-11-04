@@ -15,6 +15,8 @@ final class CodeSmsViewController: AuthorizationViewController {
     weak var coordinator: CodeCoordinator?
     
     weak var codeView: CodeView?
+    
+    var authService: AuthorizationService?
 
     let nextButton: Button = {
         let button = Button(frame: CGRect.zero)
@@ -33,18 +35,22 @@ final class CodeSmsViewController: AuthorizationViewController {
         
         setUpButtons()
         setUpContentView()
+        
+        authService = AuthorizationService(apiClient: APIClient.shared)
+        
+        codeView?.onComplete = tapHandlerNextButton
+        codeView?.firstTextField?.becomeFirstResponder()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        codeView?.fst?.becomeFirstResponder()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        codeView?.fst?.resignFirstResponder()
+        codeView?.lastTextField?.resignFirstResponder()
     }
     
     // MARK: - Setup
@@ -71,7 +77,36 @@ final class CodeSmsViewController: AuthorizationViewController {
     
     @objc
     func tapHandlerNextButton() {
-        coordinator?.goToNextStep()
+        guard let code = codeView?.getFullCode() else {
+            displayAlert(forError: GeneralError.noData)
+            return
+        }
+        
+        guard let phone = DataStorage.standard.phone else { return /* TODO обработка */ }
+        
+        let handleCompletion: (Result<User, GeneralError>) -> Void = { [weak self] result in
+            self?.nextButton.loading = false
+            switch result {
+            case .failure(let err):
+                self?.displayAlert(forError: err)
+            case .success(let user):
+                DataStorage.standard.saveUserModel(user)
+                self?.coordinator?.goToNextStep()
+            }
+        }
+        
+        nextButton.loading = true
+        if let name = DataStorage.standard.name {
+            authService?.register(name: name,
+                                  code: code,
+                                  phoneNumber: phone,
+                                  completion: handleCompletion)
+            return
+        }
+        
+        authService?.phonecode(phoneNumber: phone,
+                               code: code,
+                               completion: handleCompletion)
     }
     
     @objc

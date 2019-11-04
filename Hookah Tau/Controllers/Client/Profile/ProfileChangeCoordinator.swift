@@ -16,8 +16,6 @@ class ProfileChangeCoordinator: BaseCoordinator {
     
     // MARK: - Properties
     
-    var didEndFlow: (() -> Void)?
-    
     var changeModel: ChangeModel?
     
     // MARK: - Lifecycle
@@ -31,7 +29,7 @@ class ProfileChangeCoordinator: BaseCoordinator {
     }
     
     /// Done
-    func update(withModel model: UserModel) {
+    func update(withModel model: User) {
         for controller in navigationController?.viewControllers ?? [] {
             guard let updatableController = controller as? UserUpdate else { continue }
             updatableController.updateUser(withModel: model)
