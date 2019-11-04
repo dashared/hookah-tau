@@ -69,7 +69,11 @@ final class PhoneNumberViewController: AuthorizationViewController {
     func tapHandlerNextButton() {
         nextButton.loading = true
         
-        guard let phoneText = phoneView?.phone?.text else { return /* add error handling */ }
+        guard let phoneText = phoneView?.getFormattedNumber() else {
+            self.displayAlert(forError: GeneralError.noData)
+            nextButton.loading = false
+            return
+        }
         
         authService?.authenticate(withPhone: phoneText, completion: { [weak self] (result) in
             self?.nextButton.loading = false

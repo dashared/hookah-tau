@@ -37,18 +37,19 @@ final class CodeSmsViewController: AuthorizationViewController {
         setUpContentView()
         
         authService = AuthorizationService(apiClient: APIClient.shared)
+        
+        codeView?.firstTextField?.becomeFirstResponder()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        codeView?.fst?.becomeFirstResponder()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        codeView?.fst?.resignFirstResponder()
+        codeView?.lastTextField?.resignFirstResponder()
     }
     
     // MARK: - Setup
