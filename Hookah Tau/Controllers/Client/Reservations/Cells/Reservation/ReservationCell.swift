@@ -33,8 +33,8 @@ class ReservationCell: UITableViewCell {
     
     // MARK: - Data
 
-    func bind(withModel model: Int) {
-        
+    func bind(withModel model: Reservation) {
+        self.reservationCellView?.maxPeopleLabel?.text = "\(model.numberOfGuests)"
     }
 
 }

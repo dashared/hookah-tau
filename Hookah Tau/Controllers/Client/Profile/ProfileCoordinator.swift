@@ -33,6 +33,7 @@ class ProfileCoordinator: BaseCoordinator {
     }
     
     func logout() {
-        
+        DataStorage.standard.setLoggedInState(false)
+        didEndFlow?()
     }
 }

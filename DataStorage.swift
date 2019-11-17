@@ -6,7 +6,7 @@
 //  Copyright © 2019 Daria Rednikina. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 /// Класс для хранения промежуточного состояния регистрации,
 /// данных пользователя, ...
@@ -52,4 +52,11 @@ class DataStorage {
         return User(name: name, phoneNumber: phone, isAdmin: isAdmin)
     }
     
+    func isLoggedIn() -> Bool {
+        return UserDefaults.standard.bool(forKey: Keys.loggedIn.rawValue)
+    }
+    
+    func setLoggedInState(_ value: Bool) {
+        UserDefaults.standard.set(value, forKey: Keys.loggedIn.rawValue)
+    }
 }

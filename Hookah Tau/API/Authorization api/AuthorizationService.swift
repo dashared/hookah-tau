@@ -100,7 +100,7 @@ class AuthorizationService {
     
     private func setCookies(response: AFDataResponse<Data?>) {
         let fields = response.response?.allHeaderFields as? [String :String]
-        guard let fieldss = fields, let url = response.response?.url else {
+        guard let fieldss = fields, let url = URL(string: APIClient.BaseUrls.staging) else {
             return
         }
         let cookies = HTTPCookie.cookies(withResponseHeaderFields: fieldss, for: url)

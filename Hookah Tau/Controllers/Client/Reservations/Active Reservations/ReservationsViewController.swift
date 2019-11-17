@@ -10,11 +10,17 @@ import UIKit
 
 let reservationCell = "ReservationCell"
 
-class ReservationsViewController: UIViewController {
+class ReservationsViewController: BaseViewController {
     
     // MARK: - Properties
     
-    var activeReservations = [1]
+    var activeReservations: [Reservation] = [] {
+        didSet {
+            setUpContentView()
+        }
+    }
+    
+    var reservationsService: ReservationsService?
     
     weak var coordinator: ReservationsCoordinator?
     
@@ -33,18 +39,11 @@ class ReservationsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setUpContentView()
+        setUpNavigationBar()
         
-        tableView?.delegate = self
-        tableView?.dataSource = self
+        reservationsService = ReservationsService(apiClient: APIClient.shared)
         
-        tableView?.register(ReservationCell.self, forCellReuseIdentifier: reservationCell)
-
-        view.backgroundColor = .white
-        navigationItem.title = "Брони"
-        
-        navigationItem.rightBarButtonItem =
-            UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(tapToMakeReservation))
+        performUpdate()
     }
     
     // MARK: - Setup
@@ -59,13 +58,44 @@ class ReservationsViewController: UIViewController {
         } else {
             tableView = UITableView()
             contentView.addSubviewThatFills(tableView)
+            tableView?.reloadData()
         }
+    
+        setUpTableView()
+    }
+    
+    func setUpTableView() {
+        tableView?.delegate = self
+        tableView?.dataSource = self
+        
+        tableView?.register(ReservationCell.self, forCellReuseIdentifier: reservationCell)
+    }
+    
+    func setUpNavigationBar() {
+        view.backgroundColor = .white
+        navigationItem.title = "Брони"
+        
+        navigationItem.rightBarButtonItem =
+            UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(tapToMakeReservation))
     }
     
     // MARK: - handlers
     
     @objc func tapToMakeReservation() {
         coordinator?.makeReservation()
+    }
+    
+    // MARK: - Update
+    
+    func performUpdate() {
+        reservationsService?.loadUsersReservations(completion: { [weak self] (result) in
+            switch result {
+            case .success(let reservations):
+                self?.activeReservations = reservations
+            case .failure(let err):
+                self?.displayAlert(forError: err)
+            }
+        })
     }
     
 }

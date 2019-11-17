@@ -10,7 +10,9 @@ import UIKit
 
 class ApplicationCoordinator: BaseCoordinator {
 
-    var launch: LaunchOptions?
+    var launch: LaunchOptions? {
+        return LaunchOptions.configure()
+    }
 
     override func start() {
         guard let launch = launch else { return }
@@ -27,13 +29,11 @@ class ApplicationCoordinator: BaseCoordinator {
 
     required init(navigationController: UINavigationController?) {
         super.init(navigationController: navigationController)
-        self.launch = LaunchOptions.configure()
     }
 
     private func runAuthFlow() {
         let phoneCoordinator = PhoneCoordinator(navigationController: navigationController)
         phoneCoordinator.didEndFlow = { [weak self] in
-            self?.launch = LaunchOptions.main // TESTING
             self?.start()
             self?.removeDependency(phoneCoordinator)
         }
@@ -62,8 +62,18 @@ extension ApplicationCoordinator {
         case auth, admin, main
 
         static func configure() -> LaunchOptions {
-            print("configuring...")
-            return .auth
+            let isAuthorized = DataStorage.standard.isLoggedIn()
+            let isAdmin = DataStorage.standard.getUserModel()?.isAdmin ?? false
+            
+            if !isAuthorized {
+                return .auth
+            }
+            
+            if isAdmin {
+                return .admin
+            }
+            
+            return .main
         }
     }
 }

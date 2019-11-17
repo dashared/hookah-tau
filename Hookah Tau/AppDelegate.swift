@@ -21,12 +21,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
 
         let navController = UINavigationController()
-        window?.rootViewController = navController
 
         applicationCoordinator = ApplicationCoordinator(navigationController: navController)
         applicationCoordinator?.start()
 
         return true
+    }
+    
+    func relaunch(){
+        applicationCoordinator?.start()
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

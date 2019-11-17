@@ -37,7 +37,7 @@ class PhoneCodeResolver<Response: MyCodable>: ApiResolver {
         self.code = code
     }
     
-    func parameters() -> MyCodable {
+    func parameters() -> MyCodable? {
         return Request(phoneNumber: phoneNumber,
                        code: code)
     }

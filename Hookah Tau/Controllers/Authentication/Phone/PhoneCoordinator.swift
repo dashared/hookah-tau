@@ -6,7 +6,7 @@
 //  Copyright © 2019 Daria Rednikina. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class PhoneCoordinator: BaseCoordinator {
     
@@ -15,7 +15,12 @@ class PhoneCoordinator: BaseCoordinator {
     override func start() {
         let phoneVC = PhoneNumberViewController()
         phoneVC.coordinator = self
-        navigationController?.viewControllers = [ phoneVC ]
+        
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        guard let appD = appDelegate else { return }
+        appD.window?.rootViewController = navigationController
+        
+        navigationController?.pushViewController(phoneVC, animated: false)
     }
     
     /// Method chooses next step. Depends on weather user was previously registered

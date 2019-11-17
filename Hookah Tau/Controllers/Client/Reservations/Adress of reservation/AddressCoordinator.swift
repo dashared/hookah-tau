@@ -29,7 +29,13 @@ class AddressCoordinator: BaseCoordinator {
     
     /// continue with reservation
     /// TODO: pass some data
-    func chooseTableAndTime() {
-        
+    func chooseTableAndTime(inEstablishment id: Int) {
+        let reservationCoordinator = ReservationCoordinator(navigationController: navigationController)
+        addDependency(reservationCoordinator)
+        reservationCoordinator.didFinish = { [weak self] in
+            self?.removeDependency(reservationCoordinator)
+            self?.navigationController?.popViewController(animated: true)
+        }
+        reservationCoordinator.start()
     }
 }

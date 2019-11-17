@@ -59,6 +59,10 @@ class APIClient {
             }
         }
         
+        if let _ = response.error {
+            return GeneralError.alamofireError
+        }
+        
         return GeneralError.somethingWentCompletelyWrong
     }
 }

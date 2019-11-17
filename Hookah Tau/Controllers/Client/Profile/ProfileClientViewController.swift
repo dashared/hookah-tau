@@ -14,8 +14,9 @@ class ProfileClientViewController: UIViewController {
     
     weak var coordinator: ProfileCoordinator?
     
-    var model: User = User(name: "Стасик", phoneNumber: "+ 8 901 733 01 79", isAdmin: false) {
+    var model: User? {
         didSet {
+            guard let model = model else { return }
             profileContentView?.bind(withModel: model)
         }
     }
@@ -33,7 +34,9 @@ class ProfileClientViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
     
         profileContentView = ProfileView.loadFromNib()
-        profileContentView?.bind(withModel: model)
+        profileContentView?.logOutButton?.addTarget(self, action: #selector(logout), for: .touchUpInside)
+        
+        model = DataStorage.standard.getUserModel()
         
         view.addSubviewThatFills(profileContentView)
         
@@ -41,18 +44,25 @@ class ProfileClientViewController: UIViewController {
     }
     
     @objc func presentChangeViewPhone() {
+        guard let model = model else { return }
         let changeModel = ChangeModel(userModel: model, editingOption: .phone)
         coordinator?.presentEditMode(withModel: changeModel)
     }
     
     @objc func presentChangeViewInvite() {
+        guard let model = model else { return }
         let changeModel = ChangeModel(userModel: model, editingOption: .invite)
         coordinator?.presentEditMode(withModel: changeModel)
     }
     
     @objc func presentChangeViewName() {
+        guard let model = model else { return }
         let changeModel = ChangeModel(userModel: model, editingOption: .name)
         coordinator?.presentEditMode(withModel: changeModel)
+    }
+    
+    @objc func logout() {
+        coordinator?.logout()
     }
 }
 

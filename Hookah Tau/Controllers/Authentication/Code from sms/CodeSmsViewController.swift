@@ -91,6 +91,7 @@ final class CodeSmsViewController: AuthorizationViewController {
                 self?.displayAlert(forError: err)
             case .success(let user):
                 DataStorage.standard.saveUserModel(user)
+                DataStorage.standard.setLoggedInState(true)
                 self?.coordinator?.goToNextStep()
             }
         }

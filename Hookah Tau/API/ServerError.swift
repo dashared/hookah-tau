@@ -18,4 +18,5 @@ enum GeneralError: Error {
     case noData
     case Error400
     case somethingWentCompletelyWrong
+    case alamofireError
 }

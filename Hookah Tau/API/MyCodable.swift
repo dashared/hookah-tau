@@ -16,10 +16,20 @@ protocol MyCodable: Codable {
 
 extension MyCodable {
     func toJSONData() -> Data? {
-        return try? JSONEncoder().encode(self)
+        let encoder = JSONEncoder()
+        encoder.dateEncodingStrategy = .formatted(DateFormatter.iso8601Full)
+        return try? encoder.encode(self)
     }
     
     static func fromJSONToSelf(data: Data) -> Self? {
-        return try? JSONDecoder().decode(self, from: data)
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .formatted(DateFormatter.iso8601Full)
+        return try? decoder.decode(self, from: data)
+    }
+    
+    static func fromJSONToSelfArray<T: MyCodable>(data : Data) -> [T]? {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .formatted(DateFormatter.iso8601Full)
+        return try? decoder.decode([T].self, from: data)
     }
 }

@@ -60,4 +60,13 @@ extension AddresViewController: UITableViewDelegate, UITableViewDataSource {
         return 168.0
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let establishment = dataSource?[indexPath.row]
+        guard let id = establishment else { return }
+        
+        coordinator?.chooseTableAndTime(inEstablishment: id)
+    }
+    
+    
+    
 }

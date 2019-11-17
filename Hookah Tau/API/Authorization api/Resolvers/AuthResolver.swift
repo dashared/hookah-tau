@@ -38,7 +38,7 @@ class AuthResolver<Response: MyCodable>: ApiResolver {
         self.phoneNumber = phoneNumber
     }
     
-    func parameters() -> MyCodable {
+    func parameters() -> MyCodable? {
         return Request(phoneNumber: phoneNumber)
     }
     

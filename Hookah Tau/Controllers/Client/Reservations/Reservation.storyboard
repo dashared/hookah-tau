@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Reservation View Controller-->
+        <scene sceneID="EKz-nU-dQ1">
+            <objects>
+                <viewController storyboardIdentifier="ReservationViewController" id="Fha-pE-okd" customClass="ReservationViewController" customModule="Hookah_Tau" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cwG-Fa-gXD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RRF-jh-Xme">
+                                <rect key="frame" x="0.0" y="671" width="414" height="225"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="225" id="43Q-xl-4hv"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="RRF-jh-Xme" firstAttribute="leading" secondItem="MXi-ad-tf6" secondAttribute="leading" id="Bs8-yy-Zht"/>
+                            <constraint firstAttribute="bottom" secondItem="RRF-jh-Xme" secondAttribute="bottom" id="KZv-en-hrr"/>
+                            <constraint firstItem="RRF-jh-Xme" firstAttribute="trailing" secondItem="MXi-ad-tf6" secondAttribute="trailing" id="ehP-xe-Opz"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="MXi-ad-tf6"/>
+                    </view>
+                    <connections>
+                        <outlet property="childContentView" destination="RRF-jh-Xme" id="blV-8a-srQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TB1-Hv-wQ6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-140.57971014492756" y="-38.169642857142854"/>
+        </scene>
+    </scenes>
+</document>
