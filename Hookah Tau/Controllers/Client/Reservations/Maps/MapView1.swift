@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol MapHandler {
+protocol MapHandler: class {
     func handleTap(withId id: Int)
 }
 
@@ -16,35 +16,75 @@ class MapView1: MapImageScroll, UIScrollViewDelegate {
     
     // MARK: - Properties
     
-    var handler: MapHandler?
-    
     @IBOutlet weak var scrollView: UIScrollView! {
         didSet {
             super.scrollViewParent = scrollView
         }
     }
     
-    @IBOutlet weak var image: UIImageView!
-    
-    @IBOutlet weak var firstTable: UIButton! {
+    @IBOutlet weak var image: UIImageView! {
         didSet {
-            firstTable.transform = CGAffineTransform(rotationAngle: CGFloat(-Double.pi / 4));
+            super.img = image
         }
     }
     
-    @IBOutlet weak var secondTable: UIButton!
+    @IBOutlet weak var firstTable: TableButton! {
+        didSet {
+            let style = TableButtonStyle()
+            style.apply(to: firstTable)
+            firstTable.transform = CGAffineTransform(rotationAngle: CGFloat(-Double.pi / 4));
+            firstTable.select()
+        }
+    }
     
-    @IBOutlet weak var trirdTable: UIButton!
+    @IBOutlet weak var secondTable: TableButton! {
+        didSet {
+            let style = TableButtonStyle()
+            style.apply(to: secondTable)
+        }
+    }
     
-    @IBOutlet weak var forthTable: UIButton!
+    @IBOutlet weak var trirdTable: TableButton! {
+        didSet {
+            let style = TableButtonStyle()
+            style.apply(to: trirdTable)
+        }
+    }
     
-    @IBOutlet weak var fifthTable: UIButton!
+    @IBOutlet weak var forthTable: TableButton! {
+        didSet {
+            let style = TableButtonStyle()
+            style.apply(to: forthTable)
+        }
+    }
     
-    @IBOutlet weak var sixthTable: UIButton!
+    @IBOutlet weak var fifthTable: TableButton! {
+        didSet {
+            let style = TableButtonStyle()
+            style.apply(to: fifthTable)
+        }
+    }
     
-    @IBOutlet weak var seventhTable: UIButton!
+    @IBOutlet weak var sixthTable: TableButton! {
+        didSet {
+            let style = TableButtonStyle()
+            style.apply(to: sixthTable)
+        }
+    }
     
-    @IBOutlet weak var eighthTable: UIButton!
+    @IBOutlet weak var seventhTable: TableButton! {
+        didSet {
+            let style = TableButtonStyle()
+            style.apply(to: seventhTable)
+        }
+    }
+    
+    @IBOutlet weak var eighthTable: TableButton! {
+        didSet {
+            let style = TableButtonStyle()
+            style.apply(to: eighthTable)
+        }
+    }
     
     // MARK: - Lifecycle
     
@@ -52,6 +92,7 @@ class MapView1: MapImageScroll, UIScrollViewDelegate {
         super.awakeFromNib()
         
         self.scrollView.delegate = self
+        self.scrollView.delaysContentTouches = false
         
         image.addSubview(firstTable)
         image.addSubview(secondTable)
@@ -74,55 +115,53 @@ class MapView1: MapImageScroll, UIScrollViewDelegate {
         configureFor(image.frame.size)
     }
     
-    @IBAction func chooseSecondTable(_ sender: UIButton) {
+    @IBAction func chooseSecondTable(_ sender: TableButton) {
+        tables.values.forEach { $0.unselect() }
+        secondTable.select()
         handler?.handleTap(withId: 2)
     }
     
-    // MARK: - Scroll view
-    
-    func configureFor(_ imageSize: CGSize) {
-        self.scrollView.contentSize = imageSize
-        setMaxMinZoomScaleForCurrentBounds()
+    @IBAction func chooseFifthTable(_ sender: TableButton) {
+        tables.values.forEach { $0.unselect() }
+        fifthTable.select()
+        handler?.handleTap(withId: 5)
     }
+    
+    @IBAction func choseSeventhTable(_ sender: TableButton) {
+    }
+    
+    @IBAction func chooseFirstTable(_ sender: TableButton) {
+        tables.values.forEach { $0.unselect() }
+        firstTable.select()
+        handler?.handleTap(withId: 1)
+    }
+    
+    @IBAction func chooseThirdTable(_ sender: TableButton) {
+    }
+    
+    @IBAction func choose4thTable(_ sender: TableButton) {
+    }
+    
+    @IBAction func choose6thTable(_ sender: TableButton) {
+    }
+    
+    @IBAction func choose8thTable(_ sender: TableButton) {
+    }
+    
+    
+    // MARK: - Scroll view
     
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         self.image
     }
     
-    func setMaxMinZoomScaleForCurrentBounds() {
-        let boundsSize = self.scrollView.bounds.size
-        let imageSize = image.bounds.size
+    
+    override func scrollToTable(table: Int) {
+        guard let tableButton = tables[table] else { return }
         
-        //1. calculate minimumZoomscale
-        let xScale = boundsSize.width  / imageSize.width
-        let yScale = boundsSize.height / imageSize.height
-        var minScale = min(xScale, yScale)
+        scrollView.setZoomScale(1.2, animated: true)
+        scrollView.setContentOffset(tableButton.frame.origin, animated: true)
         
-        //2. calculate maximumZoomscale
-        var maxScale: CGFloat = 1.0
-        if minScale < 0.1 {
-            maxScale = 0.3
-        }
-        if minScale >= 0.1 && minScale < 0.5 {
-            maxScale = 0.7
-        }
-        if minScale >= 0.5 {
-            maxScale = max(1.0, minScale)
-        }
-        
-        if image.frame.width < frame.width {
-            let scaleW = frame.width / image.frame.width
-            minScale = scaleW
-        }
-        
-        if image.frame.height < frame.height {
-            let scaleH = frame.height / image.frame.height
-            maxScale = scaleH
-        }
-        
-        image.transform = CGAffineTransform(scaleX: minScale, y: minScale)
-        
-        self.scrollView.maximumZoomScale = maxScale
-        self.scrollView.minimumZoomScale = minScale
+        scrollView.scrollRectToVisible(tableButton.frame, animated: true)
     }
 }

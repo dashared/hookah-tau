@@ -20,6 +20,8 @@ class TimePointView: UIView {
     
     @IBOutlet weak var heightTimePoint: NSLayoutConstraint!
     
+    
+    
     @IBOutlet weak var timePointContainer: UIView! {
         didSet {
             timePointContainer.layer.masksToBounds = false

@@ -12,7 +12,7 @@ class DateView: UIView {
 
     @IBOutlet weak var dateLabel: UILabel!
     
-    func setUp(with date: IntervalDate) {
-        dateLabel.text = "\(date.day)"
+    func setUp(with date: Date) {
+        dateLabel.text = "\(date.getDay())"
     }
 }

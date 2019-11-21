@@ -8,17 +8,17 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Reservation View Controller-->
+        <!--First Step Reservation View Controller-->
         <scene sceneID="EKz-nU-dQ1">
             <objects>
-                <viewController storyboardIdentifier="ReservationViewController" id="Fha-pE-okd" customClass="ReservationViewController" customModule="Hookah_Tau" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ReservationViewController" id="Fha-pE-okd" customClass="FirstStepReservationViewController" customModule="Hookah_Tau" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cwG-Fa-gXD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RRF-jh-Xme">
                                 <rect key="frame" x="0.0" y="671" width="414" height="225"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="225" id="43Q-xl-4hv"/>
                                 </constraints>
@@ -39,6 +39,38 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TB1-Hv-wQ6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-140.57971014492756" y="-38.169642857142854"/>
+        </scene>
+        <!--Second Step Reservation View Controller-->
+        <scene sceneID="NON-tn-ls5">
+            <objects>
+                <viewController storyboardIdentifier="SecondStepReservationViewController" id="OAC-Ui-1o4" customClass="SecondStepReservationViewController" customModule="Hookah_Tau" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dZe-8U-Rs6">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NBJ-7w-vpV">
+                                <rect key="frame" x="0.0" y="502" width="414" height="394"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="394" id="KKm-d5-Srx"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="NBJ-7w-vpV" firstAttribute="leading" secondItem="YKO-1X-SYz" secondAttribute="leading" id="ZCK-Y0-Dnb"/>
+                            <constraint firstItem="NBJ-7w-vpV" firstAttribute="trailing" secondItem="YKO-1X-SYz" secondAttribute="trailing" id="ulb-DD-Mmh"/>
+                            <constraint firstAttribute="bottom" secondItem="NBJ-7w-vpV" secondAttribute="bottom" id="zEI-rl-4r7"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="YKO-1X-SYz"/>
+                    </view>
+                    <connections>
+                        <outlet property="childContentView" destination="NBJ-7w-vpV" id="aa6-nY-PUA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rVf-H4-jP0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="706" y="-38"/>
         </scene>
     </scenes>
 </document>

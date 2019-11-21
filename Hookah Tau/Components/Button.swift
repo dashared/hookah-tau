@@ -26,6 +26,12 @@ class Button: UIButton {
         }
     }
     
+    public var availiable = true {
+        willSet {
+            willUpdateBookingState(newValue: availiable)
+        }
+    }
+    
     // MARK: - Init
     
     override func awakeFromNib() {
@@ -41,6 +47,16 @@ class Button: UIButton {
             style?.changeToLoadingStyle(button: self)
         } else {
             style?.backToNormalStyle(button: self)
+        }
+    }
+    
+    private func willUpdateBookingState(newValue avaliable: Bool) {
+        isEnabled = !avaliable
+        
+        if availiable {
+            style?.changeToAvailiableState(button: self)
+        } else {
+            style?.changeToBookedState(button: self)
         }
     }
 }

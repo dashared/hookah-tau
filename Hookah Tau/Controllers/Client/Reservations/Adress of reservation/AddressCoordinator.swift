@@ -30,7 +30,7 @@ class AddressCoordinator: BaseCoordinator {
     /// continue with reservation
     /// TODO: pass some data
     func chooseTableAndTime(inEstablishment id: Int) {
-        let reservationCoordinator = ReservationCoordinator(navigationController: navigationController)
+        let reservationCoordinator = FirstStepReservationCoordinator(navigationController: navigationController)
         addDependency(reservationCoordinator)
         reservationCoordinator.didFinish = { [weak self] in
             self?.removeDependency(reservationCoordinator)

@@ -9,7 +9,7 @@
 import UIKit
 
 protocol MapUpdater: class {
-    func update(_ date: IntervalDate)
+    func update(_ date: Date)
 }
 
 class FirstStepView: UIView {
@@ -18,19 +18,42 @@ class FirstStepView: UIView {
     
     var chosenPoint: Int? = 0 {
         didSet {
-            guard let point = chosenPoint, let date = chosenDate else { return }
-            let newIntervalDate = IntervalDate(day: date.day,
-                                               month: date.month,
-                                               year: date.year,
-                                               minutes: point)
-            mapUpdater?.update(newIntervalDate)
+            guard
+                let periods = chosenPoint,
+                let dateInt = date,
+                let newDate = Date.getDateFromCurrent(days: dateInt, periods: periods)
+            else { return }
+            fullDate = newDate
         }
     }
     
-    var chosenDate: IntervalDate? = Date.getDateFromCurrent() {
+    var fullDate: Date? = Date.getDateFromCurrent() {
         didSet {
-            guard let date = chosenDate, let _ = chosenPoint else { return }
+            guard let date = fullDate, let _ = chosenPoint else { return }
             mapUpdater?.update(date)
+        }
+    }
+    
+    var date: Int? {
+        didSet {
+            guard
+                let dateInt = date,
+                let periods = chosenPoint,
+                let newDate = Date.getDateFromCurrent(days: dateInt, periods: periods)
+            else { return }
+            fullDate = newDate
+            
+            guard
+                let date = fullDate?.getDMY()
+            else { return }
+            setUpBookingsForIntervals(reservations: bookingsForDates[date] ?? [])
+        }
+    }
+    
+    var bookingsForDates: [Date: [ReservationPeriod]] = [:] {
+        didSet {
+            guard let date = fullDate?.getDMY(), let reservPeriods = bookingsForDates[date] else { return }
+            setUpBookingsForIntervals(reservations: reservPeriods)
         }
     }
 
@@ -42,12 +65,19 @@ class FirstStepView: UIView {
     
     @IBOutlet weak var datesScrollView: UIScrollView!
     
+    @IBOutlet weak var earlierThan12Label: UILabel!
+    
+    @IBOutlet weak var laterThan3Label: UILabel!
+    
+    
+    var bookingsViewsForDate: [UIView] = []
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.scrollViewIntervals.delegate = self
-        self.datesScrollView.delegate = self
+        scrollViewIntervals.delegate = self
+        datesScrollView.delegate = self
         
         scrollViewIntervals.showsHorizontalScrollIndicator = false
         datesScrollView.showsHorizontalScrollIndicator = false
@@ -67,26 +97,53 @@ class FirstStepView: UIView {
         }
     }
     
-    func addBusyPeriods() {
+    func setUpBookingsForIntervals(reservations: [ReservationPeriod]) {
+        bookingsViewsForDate.forEach { $0.removeFromSuperview() }
+        bookingsViewsForDate = []
         
+        for reservation in reservations {
+            let uiview = UIView(frame: CGRect(x: 0, y: 0, width: Constants.widthTimePoint * reservation.duration, height: 71))
+            uiview.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.5)
+            
+            uiview.translatesAutoresizingMaskIntoConstraints = false
+            scrollViewIntervals.addSubview(uiview)
+            
+            guard let date = date else { return }
+            let startDate = Date.getDateFromCurrent(days: date)!.set(hours: 12, minutes: 0, seconds: 0)!
+            
+            NSLayoutConstraint.activate([
+                uiview.topAnchor.constraint(equalToSystemSpacingBelow: scrollViewIntervals.topAnchor, multiplier: 0),
+                uiview.bottomAnchor.constraint(equalToSystemSpacingBelow: scrollViewIntervals.bottomAnchor, multiplier: 0),
+                uiview.leftAnchor.constraint(equalTo: scrollViewIntervals.leftAnchor,
+                                             constant: CGFloat(Constants.widthTimePoint / 2 + Constants.widthTimePoint * reservation.startTime.getMinutesPeriods(fromStart: startDate))),
+                uiview.widthAnchor.constraint(equalToConstant: CGFloat(Constants.widthTimePoint * reservation.duration))
+            ])
+            
+            bookingsViewsForDate.append(uiview)
+        }
     }
     
     func setContent() {
         scrollViewIntervals.contentSize = stackViewIntervals.frame.size
         datesScrollView.contentSize = datesStackView.frame.size
         
-        let edges = UIEdgeInsets(top: 0, left: self.frame.size.width / 2, bottom: 0, right: self.frame.size.width / 2)
+        let halfWidth = frame.size.width / 2
+        let edges = UIEdgeInsets(top: 0, left: halfWidth, bottom: 0, right: halfWidth)
+        
         scrollViewIntervals.contentInset = edges
         datesScrollView.contentInset = edges
         
-        datesScrollView.setContentOffset(CGPoint(x: abs(Constants.widthDate * Constants.daysCount / 2 - Int(edges.left)), y: 0), animated: true)
-        scrollViewIntervals.setContentOffset(CGPoint(x: abs(Constants.widthTimePoint * Constants.day10MinPeriods / 2 - Int(edges.left)), y: 0), animated: true)
+        datesScrollView.setContentOffset(CGPoint(x: abs(Constants.widthDate * Constants.daysCount / 2 - Int(edges.left)) + 8, y: 0),
+                                         animated: true)
+        scrollViewIntervals.setContentOffset(CGPoint(x: abs(Constants.widthTimePoint * Constants.day10MinPeriods / 2 - Int(edges.left)) + 5, y: 0),
+                                             animated: true)
     }
     
-    func setUp(_ data: AllReservations) {
-        //let sortedDates = data.intervals.keys.sorted()
-        
-        // setUpDateStackView()
+    
+    /// Method for setting up `stackViewIntervals` with appropriate busy intervals of chosen table
+    /// - Parameter data: Map of booked periods by key - date - is provided
+    func setUp(_ data: [Date: [ReservationPeriod]]) {
+        bookingsForDates = data
     }
     
     func setUpDateStackView() {
@@ -115,21 +172,18 @@ extension FirstStepView: UIScrollViewDelegate {
     }
     
     func intervalsDidScroll() {
+        let inset = scrollViewIntervals.contentInset.left
+        let alpha12 = 1 / (abs(inset + scrollViewIntervals.contentOffset.x) / inset)
+        let alpha3 = 1 / (abs(inset + scrollViewIntervals.contentOffset.x - stackViewIntervals.frame.width) / inset)
+        
+        earlierThan12Label.textColor = earlierThan12Label.textColor.withAlphaComponent(alpha12)
+        laterThan3Label.textColor = laterThan3Label.textColor.withAlphaComponent(alpha3)
+        
         for (index, stack) in stackViewIntervals.subviews.enumerated() {
             if let intervalStack = stack.subviews[0] as? TimePointView  {
                 let positionToSelf = intervalStack.convert(intervalStack.frame, to: self)
-            
-//                var isBusy = false
-//                let positionToScrollView = intervalStack.convert(intervalStack.frame, to: self.scrollViewIntervals)
-                
-//                for busyView in busyViews {
-//                    if busyView.frame.contains(positionToScrollView) {
-//                        isBusy = true
-//                    }
-//                }
                 
                 if abs((positionToSelf.minX + positionToSelf.maxX) / 2 - frame.size.width / 2) < 5.5
-                    //,!isBusy
                 {
                     intervalStack.timePoint.backgroundColor = .darkGray
                     chosenPoint = index
@@ -147,7 +201,7 @@ extension FirstStepView: UIScrollViewDelegate {
                 
                 if abs((positionToSelf.minX + positionToSelf.maxX) / 2  - frame.size.width / 2) < 15.5 {
                     dateView.dateLabel.textColor = .black
-                    chosenDate = Date.getDateFromCurrent(days: Int((datesScrollView.contentInset.left + datesScrollView.contentOffset.x) / 31), period: chosenPoint)
+                    date = Int(datesScrollView.contentInset.left + datesScrollView.contentOffset.x) / 31
                 } else {
                     dateView.dateLabel.textColor = .lightGray
                 }

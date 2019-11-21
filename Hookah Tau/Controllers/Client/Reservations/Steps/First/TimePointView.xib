@@ -40,9 +40,8 @@
                             </constraints>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" red="0.8901960784313725" green="0.8901960784313725" blue="0.8901960784313725" alpha="0.14999999999999999" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.8901960784313725" green="0.8901960784313725" blue="0.8901960784313725" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="71" id="1YF-9X-fzU"/>
                         <constraint firstItem="yHi-OK-OdD" firstAttribute="leading" secondItem="pWD-hx-gp6" secondAttribute="leading" id="B0T-9H-BtD"/>
                         <constraint firstItem="yHi-OK-OdD" firstAttribute="top" secondItem="pWD-hx-gp6" secondAttribute="top" id="RNc-ds-Sgr"/>
                         <constraint firstAttribute="trailing" secondItem="xmA-Sn-VW1" secondAttribute="trailing" id="UwV-GZ-ZJm"/>
@@ -68,6 +67,7 @@
                 <constraint firstItem="pWD-hx-gp6" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="KBo-cb-dAz"/>
                 <constraint firstItem="pWD-hx-gp6" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="NHW-lH-rza"/>
                 <constraint firstItem="iIa-WK-OHd" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="Pfd-58-VXn"/>
+                <constraint firstItem="pWD-hx-gp6" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="21" id="Wpp-se-wxM"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

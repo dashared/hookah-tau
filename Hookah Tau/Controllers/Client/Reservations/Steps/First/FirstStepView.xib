@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -55,6 +56,23 @@
                                         <constraint firstAttribute="height" constant="1" id="me1-hs-aWn"/>
                                     </constraints>
                                 </view>
+                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="kS7-N4-kdg">
+                                    <rect key="frame" x="16" y="9" width="382" height="53"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Для брони времени раньше 12:00 свяжитесь с администратором" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6DK-77-Npa">
+                                            <rect key="frame" x="0.0" y="0.0" width="187" height="53"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Для брони времени позже 3:00 свяжитесь с администратором" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qz5-ce-S3I">
+                                            <rect key="frame" x="195" y="0.0" width="187" height="53"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </stackView>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zqK-OT-P26">
                                     <rect key="frame" x="0.0" y="70" width="414" height="1"/>
                                     <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -64,12 +82,16 @@
                                     </constraints>
                                 </view>
                             </subviews>
-                            <color key="backgroundColor" red="0.8901960784313725" green="0.8901960784313725" blue="0.8901960784313725" alpha="0.70716502568493156" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="0.8901960784313725" green="0.8901960784313725" blue="0.8901960784313725" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstItem="nqq-Xp-Lig" firstAttribute="top" secondItem="dh5-kt-LFH" secondAttribute="top" id="6xZ-TR-tvC"/>
                                 <constraint firstAttribute="trailing" secondItem="zqK-OT-P26" secondAttribute="trailing" id="SeY-dj-8cT"/>
                                 <constraint firstAttribute="trailing" secondItem="nqq-Xp-Lig" secondAttribute="trailing" id="XtL-jd-AZH"/>
+                                <constraint firstItem="kS7-N4-kdg" firstAttribute="leading" secondItem="dh5-kt-LFH" secondAttribute="leading" constant="16" id="d0b-bx-btq"/>
+                                <constraint firstItem="zqK-OT-P26" firstAttribute="top" secondItem="kS7-N4-kdg" secondAttribute="bottom" constant="8" id="eNz-f4-nlO"/>
                                 <constraint firstAttribute="bottom" secondItem="zqK-OT-P26" secondAttribute="bottom" id="m0O-4r-wfZ"/>
+                                <constraint firstItem="kS7-N4-kdg" firstAttribute="top" secondItem="nqq-Xp-Lig" secondAttribute="bottom" constant="8" id="o6k-wD-gGp"/>
+                                <constraint firstAttribute="trailing" secondItem="kS7-N4-kdg" secondAttribute="trailing" constant="16" id="qfN-XY-Uqq"/>
                                 <constraint firstItem="nqq-Xp-Lig" firstAttribute="leading" secondItem="dh5-kt-LFH" secondAttribute="leading" id="qr9-52-TNC"/>
                                 <constraint firstAttribute="height" constant="71" id="tcS-2U-ecA"/>
                                 <constraint firstItem="zqK-OT-P26" firstAttribute="leading" secondItem="dh5-kt-LFH" secondAttribute="leading" id="yUf-Cj-HmN"/>
@@ -178,6 +200,8 @@
             <connections>
                 <outlet property="datesScrollView" destination="Y9G-UI-WV7" id="dbT-BM-Ckq"/>
                 <outlet property="datesStackView" destination="52e-LM-cF6" id="6Ni-IN-sm4"/>
+                <outlet property="earlierThan12Label" destination="6DK-77-Npa" id="ftP-Jz-gzw"/>
+                <outlet property="laterThan3Label" destination="qz5-ce-S3I" id="dzR-7k-uDq"/>
                 <outlet property="scrollViewIntervals" destination="a6N-9A-8y5" id="uDW-QY-gNF"/>
                 <outlet property="stackViewIntervals" destination="z9p-OK-tL7" id="0Mj-wX-kq7"/>
             </connections>
