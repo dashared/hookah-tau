@@ -25,6 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         applicationCoordinator = ApplicationCoordinator(navigationController: navController)
         applicationCoordinator?.start()
 
+        FeedbackGenerator.initialize()
+        
         return true
     }
     

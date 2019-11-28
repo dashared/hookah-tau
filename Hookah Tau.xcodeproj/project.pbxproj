@@ -77,6 +77,10 @@
 		12F9652E23869F3100FCA696 /* SecondStepReservationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F9652D23869F3100FCA696 /* SecondStepReservationCoordinator.swift */; };
 		12FC40382382C93D00AB593B /* TableButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FC40372382C93C00AB593B /* TableButtonStyle.swift */; };
 		12FC403A2382CB6F00AB593B /* TableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FC40392382CB6F00AB593B /* TableButton.swift */; };
+		711C6E442390601B00ACD4E9 /* click1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 711C6E432390601A00ACD4E9 /* click1.mp3 */; };
+		711C6E462390602000ACD4E9 /* click2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 711C6E452390602000ACD4E9 /* click2.mp3 */; };
+		711C6E482390602400ACD4E9 /* click3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 711C6E472390602400ACD4E9 /* click3.mp3 */; };
+		711C6E4A2390603900ACD4E9 /* FeedbackGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711C6E492390603800ACD4E9 /* FeedbackGenerator.swift */; };
 		F30369B5233679EA00A8EA84 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F30369B4233679EA00A8EA84 /* LaunchScreen.storyboard */; };
 		F30369BE2336924D00A8EA84 /* ClientTabbarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30369BD2336924D00A8EA84 /* ClientTabbarCoordinator.swift */; };
 		F30369C02336925800A8EA84 /* ClientTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30369BF2336925800A8EA84 /* ClientTabbarController.swift */; };
@@ -194,6 +198,10 @@
 		12F9652D23869F3100FCA696 /* SecondStepReservationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondStepReservationCoordinator.swift; sourceTree = "<group>"; };
 		12FC40372382C93C00AB593B /* TableButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableButtonStyle.swift; sourceTree = "<group>"; };
 		12FC40392382CB6F00AB593B /* TableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableButton.swift; sourceTree = "<group>"; };
+		711C6E432390601A00ACD4E9 /* click1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = click1.mp3; sourceTree = "<group>"; };
+		711C6E452390602000ACD4E9 /* click2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = click2.mp3; sourceTree = "<group>"; };
+		711C6E472390602400ACD4E9 /* click3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = click3.mp3; sourceTree = "<group>"; };
+		711C6E492390603800ACD4E9 /* FeedbackGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackGenerator.swift; sourceTree = "<group>"; };
 		F30369B4233679EA00A8EA84 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F30369BD2336924D00A8EA84 /* ClientTabbarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientTabbarCoordinator.swift; sourceTree = "<group>"; };
 		F30369BF2336925800A8EA84 /* ClientTabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientTabbarController.swift; sourceTree = "<group>"; };
@@ -529,9 +537,20 @@
 			path = 2;
 			sourceTree = "<group>";
 		};
+		711C6E4223905FC700ACD4E9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				711C6E432390601A00ACD4E9 /* click1.mp3 */,
+				711C6E472390602400ACD4E9 /* click3.mp3 */,
+				711C6E452390602000ACD4E9 /* click2.mp3 */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		F30369B623367B2300A8EA84 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				711C6E4223905FC700ACD4E9 /* Resources */,
 				F30369B4233679EA00A8EA84 /* LaunchScreen.storyboard */,
 				F3FC7DD32315BE630080D851 /* Assets.xcassets */,
 			);
@@ -692,6 +711,7 @@
 			children = (
 				12230AF823901000004A01E5 /* DB */,
 				F3FC7DCC2315BE610080D851 /* AppDelegate.swift */,
+				711C6E492390603800ACD4E9 /* FeedbackGenerator.swift */,
 				F3DC59FE233E893400B5E751 /* Extensions+UIFont.swift */,
 				F31E20C62348DDB900BEA215 /* Extensions+UIView.swift */,
 				12050568238048CE00801618 /* Extensions+Date.swift */,
@@ -835,6 +855,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				711C6E442390601B00ACD4E9 /* click1.mp3 in Resources */,
 				F3199E5B233FE08200F3C17A /* PhoneView.xib in Resources */,
 				12DBEEB223539F2100AF1BB6 /* Client.storyboard in Resources */,
 				12D8FA2D237F003800305F57 /* DateView.xib in Resources */,
@@ -844,6 +865,7 @@
 				12F9652A23868E6000FCA696 /* SecondStepView.xib in Resources */,
 				120BFC7E23891975001EBE89 /* ThirdStepView.xib in Resources */,
 				12230AEA238FD8B3004A01E5 /* MapView2.xib in Resources */,
+				711C6E462390602000ACD4E9 /* click2.mp3 in Resources */,
 				1246B71E235CDF8A004CBFA1 /* ReservationView.xib in Resources */,
 				12BD95B6237ED8AC009614D8 /* TimePointView.xib in Resources */,
 				12A075F9237353F500D749BB /* MapView1.xib in Resources */,
@@ -854,6 +876,7 @@
 				F3FC7DD42315BE630080D851 /* Assets.xcassets in Resources */,
 				12EA994C2362F8EF005D9FE9 /* AddressView.xib in Resources */,
 				F3EBE2452340FDA7000FEE1A /* NameTextView.xib in Resources */,
+				711C6E482390602400ACD4E9 /* click3.mp3 in Resources */,
 				123615CF235510BC00D1122A /* ProfileView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -909,6 +932,7 @@
 				12A075F72373535C00D749BB /* FirstStepReservationViewController.swift in Sources */,
 				1246B71C235CDF3A004CBFA1 /* ReservationCell.swift in Sources */,
 				12A075FD237357E900D749BB /* FirstStepReservationCoordinator.swift in Sources */,
+				711C6E4A2390603900ACD4E9 /* FeedbackGenerator.swift in Sources */,
 				124D0081237222C900AE76B9 /* ReservationsService.swift in Sources */,
 				1246B720235CDF9E004CBFA1 /* ReservationView.swift in Sources */,
 				12050569238048CE00801618 /* Extensions+Date.swift in Sources */,

@@ -18,12 +18,16 @@ class FirstStepView: UIView {
     
     var chosenPoint: Int? = 0 {
         didSet {
+            if chosenPoint == oldValue {
+                return
+            }
             guard
                 let periods = chosenPoint,
                 let dateInt = date,
                 let newDate = Date.getDateFromCurrent(days: dateInt, periods: periods)
             else { return }
             fullDate = newDate
+            FeedbackGenerator.play(style: .extraLight)
         }
     }
     
@@ -107,6 +111,8 @@ class FirstStepView: UIView {
         
         setUpDateStackView()
         setUpIntervalStackView()
+        
+        FeedbackGenerator.prepare(for: .extraLight)
     }
     
     func setUpIntervalStackView() {
