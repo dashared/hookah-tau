@@ -18,8 +18,6 @@ class AddressView: UIView {
     
     @IBOutlet weak var tableCountLabel: UILabel?
     
-    @IBOutlet weak var callAdminButton: UIButton?
-    
     @IBOutlet weak var mapImageView: UIImageView?
     
     func bind(withModel model: TotalStorage.EstablishmentData) {

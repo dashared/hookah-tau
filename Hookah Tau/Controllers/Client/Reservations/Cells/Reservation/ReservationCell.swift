@@ -34,7 +34,6 @@ class ReservationCell: UITableViewCell {
     // MARK: - Data
 
     func bind(withModel model: Reservation) {
-        self.reservationCellView?.maxPeopleLabel?.text = "\(model.numberOfGuests)"
+        reservationCellView?.bind(withModel: model)
     }
-
 }

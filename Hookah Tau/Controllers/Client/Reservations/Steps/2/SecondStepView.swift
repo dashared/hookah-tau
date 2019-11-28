@@ -9,6 +9,7 @@
 import UIKit
 
 struct SecondStepModel {
+    var establishment: Int
     var table: Int
     var startTime: Date
     var reservedintervals: [ReservationPeriod]
@@ -150,6 +151,10 @@ class SecondStepView: UIView {
 
     func bind(model: SecondStepModel) {
         self.model = model
+        
+        guard let table = TotalStorage.standard.getTable(establishment: model.establishment,
+                                                         table: model.table) else { return }
+        self.guestSlider.maximumValue = Float(table.maxGuestNumber)
     }
     
     // MARK: - Pan

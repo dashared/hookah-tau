@@ -78,6 +78,8 @@ class FirstStepReservationViewController: BaseViewController {
         reservationsService = ReservationsService(apiClient: APIClient.shared)
         
         performUpdate()
+        
+        navigationItem.title = TotalStorage.standard.getEstablishment(establishmentId)?.address
     }
     
     func setupButtons() {
@@ -140,7 +142,8 @@ class FirstStepReservationViewController: BaseViewController {
         
         let reservPeriods = allReservations?.reservations[tableId]?[startTime.getDMY()] ?? []
         
-        let model = SecondStepModel(table: tableId,
+        let model = SecondStepModel(establishment: establishmentId,
+                                    table: tableId,
                                     startTime: startTime,
                                     reservedintervals: reservPeriods)
         

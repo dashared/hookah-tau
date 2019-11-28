@@ -28,8 +28,8 @@ class TotalStorage {
         return establishments[id]
     }
     
-    func getTable(establishment eId: Int, table tId: Int) -> Table {
-        return imagesForTables[eId]![tId]!
+    func getTable(establishment eId: Int, table tId: Int) -> Table? {
+        return imagesForTables[eId]?[tId]
     }
     
     // MARK: - Setters

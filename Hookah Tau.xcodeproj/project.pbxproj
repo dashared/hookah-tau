@@ -22,6 +22,7 @@
 		12230AF423900BCB004A01E5 /* EstablishmentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12230AF323900BCB004A01E5 /* EstablishmentService.swift */; };
 		12230AF723900D44004A01E5 /* EstablishmentResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12230AF623900D44004A01E5 /* EstablishmentResolver.swift */; };
 		12230AFA23901029004A01E5 /* DataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12230AF923901029004A01E5 /* DataStorage.swift */; };
+		12230AFC239034D3004A01E5 /* SecondStepReservationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12230AFB239034D3004A01E5 /* SecondStepReservationViewController.swift */; };
 		123615CF235510BC00D1122A /* ProfileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 123615CE235510BC00D1122A /* ProfileView.xib */; };
 		123615D12355141600D1122A /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123615D02355141600D1122A /* ProfileView.swift */; };
 		12387337234BB98700D1F1AB /* CodeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12387336234BB98700D1F1AB /* CodeView.xib */; };
@@ -71,7 +72,6 @@
 		12EB698123661CB300E4D1CE /* AddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12EB698023661CB300E4D1CE /* AddressCell.swift */; };
 		12EE4A76234BB8FE005B4D1A /* CodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12EE4A75234BB8FE005B4D1A /* CodeView.swift */; };
 		12F73B022357AD7B007D4476 /* ProfileChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F73B012357AD7B007D4476 /* ProfileChangeViewController.swift */; };
-		12F9652723868DA300FCA696 /* SecondStepReservationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F9652623868DA300FCA696 /* SecondStepReservationViewController.swift */; };
 		12F9652A23868E6000FCA696 /* SecondStepView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12F9652923868E6000FCA696 /* SecondStepView.xib */; };
 		12F9652C23868E7200FCA696 /* SecondStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F9652B23868E7200FCA696 /* SecondStepView.swift */; };
 		12F9652E23869F3100FCA696 /* SecondStepReservationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F9652D23869F3100FCA696 /* SecondStepReservationCoordinator.swift */; };
@@ -140,6 +140,7 @@
 		12230AF323900BCB004A01E5 /* EstablishmentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstablishmentService.swift; sourceTree = "<group>"; };
 		12230AF623900D44004A01E5 /* EstablishmentResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstablishmentResolver.swift; sourceTree = "<group>"; };
 		12230AF923901029004A01E5 /* DataStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStorage.swift; sourceTree = "<group>"; };
+		12230AFB239034D3004A01E5 /* SecondStepReservationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondStepReservationViewController.swift; sourceTree = "<group>"; };
 		123615CE235510BC00D1122A /* ProfileView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileView.xib; sourceTree = "<group>"; };
 		123615D02355141600D1122A /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		12387336234BB98700D1F1AB /* CodeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CodeView.xib; sourceTree = "<group>"; };
@@ -188,7 +189,6 @@
 		12EB698023661CB300E4D1CE /* AddressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCell.swift; sourceTree = "<group>"; };
 		12EE4A75234BB8FE005B4D1A /* CodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeView.swift; sourceTree = "<group>"; };
 		12F73B012357AD7B007D4476 /* ProfileChangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileChangeViewController.swift; sourceTree = "<group>"; };
-		12F9652623868DA300FCA696 /* SecondStepReservationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SecondStepReservationViewController.swift; path = "Hookah Tau/Controllers/Client/Reservations/Steps/Second/SecondStepReservationViewController.swift"; sourceTree = SOURCE_ROOT; };
 		12F9652923868E6000FCA696 /* SecondStepView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SecondStepView.xib; sourceTree = "<group>"; };
 		12F9652B23868E7200FCA696 /* SecondStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondStepView.swift; sourceTree = "<group>"; };
 		12F9652D23869F3100FCA696 /* SecondStepReservationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondStepReservationCoordinator.swift; sourceTree = "<group>"; };
@@ -256,7 +256,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		120BFC7A2389194B001EBE89 /* Third */ = {
+		120BFC7A2389194B001EBE89 /* 3 */ = {
 			isa = PBXGroup;
 			children = (
 				120BFC7623891925001EBE89 /* ThirdStepReservationViewController.swift */,
@@ -264,7 +264,7 @@
 				120BFC7B23891965001EBE89 /* ThirdStepView.swift */,
 				120BFC7D23891975001EBE89 /* ThirdStepView.xib */,
 			);
-			path = Third;
+			path = 3;
 			sourceTree = "<group>";
 		};
 		12118B9A2368187B006BAEE3 /* Authorization api */ = {
@@ -443,14 +443,14 @@
 			isa = PBXGroup;
 			children = (
 				12230AEF239008F8004A01E5 /* Common */,
-				12BD95B4237EC23A009614D8 /* First */,
-				12F9652823868E4900FCA696 /* Second */,
-				120BFC7A2389194B001EBE89 /* Third */,
+				12BD95B4237EC23A009614D8 /* 1 */,
+				12F9652823868E4900FCA696 /* 2 */,
+				120BFC7A2389194B001EBE89 /* 3 */,
 			);
 			path = Steps;
 			sourceTree = "<group>";
 		};
-		12BD95B4237EC23A009614D8 /* First */ = {
+		12BD95B4237EC23A009614D8 /* 1 */ = {
 			isa = PBXGroup;
 			children = (
 				12A075F62373535C00D749BB /* FirstStepReservationViewController.swift */,
@@ -458,7 +458,7 @@
 				12BD95B1237EC22B009614D8 /* FirstStepView.swift */,
 				12BD95AF237EBEDE009614D8 /* FirstStepView.xib */,
 			);
-			path = First;
+			path = 1;
 			sourceTree = "<group>";
 		};
 		12C72EDB235367CF00AD7004 /* Tab bar */ = {
@@ -518,15 +518,15 @@
 			path = Code;
 			sourceTree = "<group>";
 		};
-		12F9652823868E4900FCA696 /* Second */ = {
+		12F9652823868E4900FCA696 /* 2 */ = {
 			isa = PBXGroup;
 			children = (
-				12F9652623868DA300FCA696 /* SecondStepReservationViewController.swift */,
+				12230AFB239034D3004A01E5 /* SecondStepReservationViewController.swift */,
 				12F9652D23869F3100FCA696 /* SecondStepReservationCoordinator.swift */,
 				12F9652B23868E7200FCA696 /* SecondStepView.swift */,
 				12F9652923868E6000FCA696 /* SecondStepView.xib */,
 			);
-			path = Second;
+			path = 2;
 			sourceTree = "<group>";
 		};
 		F30369B623367B2300A8EA84 /* Supporting Files */ = {
@@ -925,7 +925,6 @@
 				F3FC7DFD2315C4710080D851 /* BaseCoordinator.swift in Sources */,
 				F3DC59FF233E893400B5E751 /* Extensions+UIFont.swift in Sources */,
 				F3895F53233D5EEB00FA6A37 /* BlackButtonStyle.swift in Sources */,
-				12F9652723868DA300FCA696 /* SecondStepReservationViewController.swift in Sources */,
 				12F9652C23868E7200FCA696 /* SecondStepView.swift in Sources */,
 				120BFC7923891942001EBE89 /* ThirdStepReservationCoordinator.swift in Sources */,
 				12118B9C23682022006BAEE3 /* RegistrationResolver.swift in Sources */,
@@ -946,6 +945,7 @@
 				1205056B2380588C00801618 /* Extenstions+IBDesignable.swift in Sources */,
 				12C72EE1235380D400AD7004 /* ProfileClientViewController.swift in Sources */,
 				F31E20C92348E0F300BEA215 /* AuthorizationViewController.swift in Sources */,
+				12230AFC239034D3004A01E5 /* SecondStepReservationViewController.swift in Sources */,
 				F3851B2923409F8A009EE0B6 /* PhoneView.swift in Sources */,
 				12C72EE3235380EB00AD7004 /* ReservationsViewController.swift in Sources */,
 				12B6A611235B8EC500898B31 /* User.swift in Sources */,
