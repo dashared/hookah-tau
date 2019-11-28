@@ -11,15 +11,34 @@ import UIKit
 
 class MapImageScroll: UIView {
     
-    weak var handler: MapHandler?
+    weak var handler: MapHandler? 
     
     var scrollViewParent: UIScrollView!
     
-    var tables: [Int: TableButton] = [:]
-    
-    func scrollToTable(table: Int) { }
+    var shadowView: UIView!
     
     var img: UIImageView!
+    
+    var tables: [Int: TableButton] = [:]
+    
+    var zoomScale: CGFloat = 1.2
+    
+    func scrollToTable(table: Int) {
+        guard let tableButton = tables[table] else { return }
+        
+        img.bringSubviewToFront(shadowView)
+        img.bringSubviewToFront(tableButton)
+        
+        shadowView.alpha = 1
+        
+        scrollViewParent.zoom(to: tableButton.frame, animated: true)
+        scrollViewParent.setZoomScale(zoomScale, animated: true)
+    }
+    
+    func scrollBack() {
+        img.sendSubviewToBack(shadowView)
+        shadowView.alpha = 0
+    }
     
     func configureFor(_ imageSize: CGSize) {
         self.scrollViewParent.contentSize = imageSize
@@ -62,6 +81,13 @@ class MapImageScroll: UIView {
            self.scrollViewParent.maximumZoomScale = maxScale
            self.scrollViewParent.minimumZoomScale = minScale
        }
+    
+    // Method for handling button taps.
+    func handleTap(button: TableButton, id: Int) {
+        tables.values.forEach { $0.unselect() }
+        button.select()
+        handler?.handleTap(withId: id)
+    }
 }
 
 extension MapImageScroll {

@@ -15,7 +15,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="69" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hzu-lu-5Cc">
-                    <rect key="frame" x="5" y="19.5" width="21" height="20"/>
+                    <rect key="frame" x="5" y="29" width="21" height="20"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="21" id="gdn-d6-auU"/>
                     </constraints>
@@ -26,10 +26,10 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="hzu-lu-5Cc" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="Vwr-KU-m3O"/>
                 <constraint firstItem="hzu-lu-5Cc" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="fhT-nh-ejJ"/>
                 <constraint firstItem="hzu-lu-5Cc" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="5" id="mLo-I1-FSM"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="hzu-lu-5Cc" secondAttribute="trailing" constant="5" id="qSb-Ok-1MH"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="hzu-lu-5Cc" secondAttribute="bottom" constant="10" id="vtm-8d-jCM"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

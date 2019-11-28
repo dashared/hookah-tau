@@ -19,7 +19,7 @@ class FirstStepReservationViewController: BaseViewController {
     
     var firstStepView: FirstStepView?
     
-    var tableId: Int = 1
+    var tableId: Int = 2
     
     var reservationsService: ReservationsService?
     
@@ -33,6 +33,7 @@ class FirstStepReservationViewController: BaseViewController {
                                                              right: 0)
             map.isUserInteractionEnabled = true
             map.scrollViewParent.setZoomScale(0.5, animated: true)
+            map.scrollBack()
             view.sendSubviewToBack(map)
         }
     }
@@ -113,10 +114,10 @@ class FirstStepReservationViewController: BaseViewController {
     func configureMap() {
         if establishmentId == 1 {
             mapView = MapView1.loadFromNib()
-            mapView?.handler = self
-        } else {
-            // mapView = MapView2.loadFromNib()
+        } else if establishmentId == 2 {
+            mapView = MapView2.loadFromNib()
         }
+        mapView?.handler = self
     }
     
     func setupChildContainer() {

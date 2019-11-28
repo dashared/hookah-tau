@@ -47,7 +47,7 @@
                     <rect key="frame" x="0.0" y="97" width="414" height="91"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dh5-kt-LFH">
-                            <rect key="frame" x="0.0" y="20" width="414" height="71"/>
+                            <rect key="frame" x="0.0" y="21" width="414" height="70"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nqq-Xp-Lig">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="1"/>
@@ -57,16 +57,16 @@
                                     </constraints>
                                 </view>
                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="kS7-N4-kdg">
-                                    <rect key="frame" x="16" y="9" width="382" height="53"/>
+                                    <rect key="frame" x="16" y="9" width="382" height="52"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Для брони времени раньше 12:00 свяжитесь с администратором" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6DK-77-Npa">
-                                            <rect key="frame" x="0.0" y="0.0" width="187" height="53"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="187" height="52"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Для брони времени позже 3:00 свяжитесь с администратором" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qz5-ce-S3I">
-                                            <rect key="frame" x="195" y="0.0" width="187" height="53"/>
+                                            <rect key="frame" x="195" y="0.0" width="187" height="52"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
@@ -74,7 +74,7 @@
                                     </subviews>
                                 </stackView>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zqK-OT-P26">
-                                    <rect key="frame" x="0.0" y="70" width="414" height="1"/>
+                                    <rect key="frame" x="0.0" y="69" width="414" height="1"/>
                                     <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="1" id="iUR-sJ-1M1"/>
@@ -93,7 +93,7 @@
                                 <constraint firstItem="kS7-N4-kdg" firstAttribute="top" secondItem="nqq-Xp-Lig" secondAttribute="bottom" constant="8" id="o6k-wD-gGp"/>
                                 <constraint firstAttribute="trailing" secondItem="kS7-N4-kdg" secondAttribute="trailing" constant="16" id="qfN-XY-Uqq"/>
                                 <constraint firstItem="nqq-Xp-Lig" firstAttribute="leading" secondItem="dh5-kt-LFH" secondAttribute="leading" id="qr9-52-TNC"/>
-                                <constraint firstAttribute="height" constant="71" id="tcS-2U-ecA"/>
+                                <constraint firstAttribute="height" constant="70" id="tcS-2U-ecA"/>
                                 <constraint firstItem="zqK-OT-P26" firstAttribute="leading" secondItem="dh5-kt-LFH" secondAttribute="leading" id="yUf-Cj-HmN"/>
                             </constraints>
                         </view>
@@ -157,10 +157,42 @@
                 </scrollView>
                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fvt-zf-8tU" customClass="RadialGradientView" customModule="Hookah_Tau" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="29" width="414" height="59"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="OEF-Kc-d38">
+                            <rect key="frame" x="8" y="5" width="398" height="14.5"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="November" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Mn-Mn-qaI">
+                                    <rect key="frame" x="0.0" y="0.0" width="58.5" height="14.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="January" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rfg-Ts-DX0">
+                                    <rect key="frame" x="353" y="0.0" width="45" height="14.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="December" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fbc-VX-43f">
+                            <rect key="frame" x="176.5" y="5" width="61" height="14.5"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="OEF-Kc-d38" secondAttribute="trailing" constant="8" id="BKe-IX-uiY"/>
+                        <constraint firstItem="OEF-Kc-d38" firstAttribute="leading" secondItem="fvt-zf-8tU" secondAttribute="leading" constant="8" id="Cc6-Iv-RT8"/>
+                        <constraint firstItem="Fbc-VX-43f" firstAttribute="top" secondItem="fvt-zf-8tU" secondAttribute="top" constant="5" id="jj2-kv-wnF"/>
+                        <constraint firstItem="OEF-Kc-d38" firstAttribute="top" secondItem="fvt-zf-8tU" secondAttribute="top" constant="5" id="pmQ-MG-28r"/>
+                        <constraint firstItem="Fbc-VX-43f" firstAttribute="centerX" secondItem="fvt-zf-8tU" secondAttribute="centerX" id="wAj-Z8-AP0"/>
+                    </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="color" keyPath="outsideColor">
-                            <color key="value" white="1" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="value" white="1" alpha="0.88409674657534243" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="color" keyPath="insideColor">
                             <color key="value" white="0.67000000000000004" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -198,10 +230,13 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="currentMonthLabel" destination="Fbc-VX-43f" id="CJr-eH-QMp"/>
                 <outlet property="datesScrollView" destination="Y9G-UI-WV7" id="dbT-BM-Ckq"/>
                 <outlet property="datesStackView" destination="52e-LM-cF6" id="6Ni-IN-sm4"/>
                 <outlet property="earlierThan12Label" destination="6DK-77-Npa" id="ftP-Jz-gzw"/>
                 <outlet property="laterThan3Label" destination="qz5-ce-S3I" id="dzR-7k-uDq"/>
+                <outlet property="nextMonthLabel" destination="Rfg-Ts-DX0" id="rpk-ci-pzX"/>
+                <outlet property="previousMonthLabel" destination="5Mn-Mn-qaI" id="c0S-Yz-e83"/>
                 <outlet property="scrollViewIntervals" destination="a6N-9A-8y5" id="uDW-QY-gNF"/>
                 <outlet property="stackViewIntervals" destination="z9p-OK-tL7" id="0Mj-wX-kq7"/>
             </connections>

@@ -53,9 +53,24 @@ extension Date {
     
     static func getDateFromCurrent(days: Int = 0, periods: Int? = nil) -> Date? {
         let date = Date()
+        
+        let utcDate = date.getUTCDate()
+        
+        let newDate = Calendar.current.date(byAdding: .day, value: days, to: utcDate)
+        
+        // case if periods are important
+        if let minutes = periods, let date = newDate {
+            return date.changeTime(periods: minutes)
+        }
+        
+        return newDate
+    }
+    
+    /// Get UTC format of date
+    func getUTCDate() -> Date {
         let calendar = Calendar.current
         
-        let day = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: date)
+        let day = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: self)
             
         var dateCalendars = DateComponents()
         dateCalendars.hour = day.hour!
@@ -65,17 +80,7 @@ extension Date {
         dateCalendars.year = day.year!
         dateCalendars.timeZone = TimeZone(abbreviation: "GMT")
         
-        let utcDate = Calendar.current.date(from: dateCalendars)!
-        
-        let newDate = calendar.date(byAdding: .day, value: days, to: utcDate)
-        
-        // case if periods are important
-        if let minutes = periods, let date = newDate {
-            return date.changeTime(periods: minutes)
-        }
-        
-        
-        return newDate
+        return Calendar.current.date(from: dateCalendars)!
     }
     
     func changeTime(periods: Int) -> Date? {
@@ -122,5 +127,21 @@ extension Date {
         let diffInMins = Calendar.current.dateComponents([.minute], from: self, to: startDate).minute!
         let periods = diffInMins / 10
         return periods
+    }
+    
+    func getPrevCurrentNextMonth() -> (String, String, String) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        dateFormatter.dateFormat = "LLLL"
+        let current = dateFormatter.string(from: self)
+        
+        let nextDate = Calendar.current.date(byAdding: .month, value: 1, to: self)!
+        let next = dateFormatter.string(from: nextDate)
+        
+        let prevDate = Calendar.current.date(byAdding: .month, value: -1, to: self)!
+        let prev = dateFormatter.string(from: prevDate)
+        
+        print("\(prevDate) \(self) \(nextDate)")
+        return (prev, current, next)
     }
 }

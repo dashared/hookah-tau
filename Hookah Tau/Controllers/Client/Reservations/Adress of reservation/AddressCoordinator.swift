@@ -31,11 +31,14 @@ class AddressCoordinator: BaseCoordinator {
     /// TODO: pass some data
     func chooseTableAndTime(inEstablishment id: Int) {
         let reservationCoordinator = FirstStepReservationCoordinator(navigationController: navigationController)
+        reservationCoordinator.establishment = id
+        
         addDependency(reservationCoordinator)
         reservationCoordinator.didFinish = { [weak self] in
             self?.removeDependency(reservationCoordinator)
             self?.navigationController?.popViewController(animated: true)
         }
+        
         reservationCoordinator.start()
     }
 }

@@ -23,6 +23,15 @@ class SecondStepReservationViewController: BaseViewController {
     
     var model: SecondStepModel?
     
+    /// address of the building to display in nav bar title
+    var address: String = "Покровский бр., 11"
+    
+    var reservation: Reservation? {
+        didSet {
+            // todo: засетить все
+        }
+    }
+    
     /// booked periods for this table for this date
     var bookedPeriods: [ReservationPeriod] = [] {
         didSet {
@@ -34,7 +43,6 @@ class SecondStepReservationViewController: BaseViewController {
         let button = Button()
         let style = BlackButtonStyle()
         style.apply(to: button, withTitle: "ПОДТВЕРДИТЬ")
-        //button.addTarget(self, action: #selector(doneChanging), for: .touchUpInside)
         return button
     }()
     
@@ -50,6 +58,7 @@ class SecondStepReservationViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setupNavBar()
         setupMap()
         setupChildContainer()
         setupButtons()
@@ -57,6 +66,11 @@ class SecondStepReservationViewController: BaseViewController {
     }
     
     // MARK: - Setup
+    
+    func setupNavBar() {
+        navigationItem.hidesBackButton = true
+        navigationItem.title = address
+    }
 
     func setupChildContainer() {
         
@@ -67,13 +81,30 @@ class SecondStepReservationViewController: BaseViewController {
     }
     
     func setupMap() {
-        view.addSubviewThatFills(mapView)
+        guard let map = mapView else { return }
+        view.addSubview(map)
+        
+        NSLayoutConstraint.activate([
+            map.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
+            map.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
+            map.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
+            map.bottomAnchor.constraint(equalTo: childContentView.topAnchor, constant: 0)
+        ])
+        
+        let width = view.frame.width
+        
+        mapView?.scrollViewParent.contentInset = UIEdgeInsets(top: 100, left: width / 2, bottom: 0, right: width / 2)
+        mapView?.scrollViewParent.setContentOffset(CGPoint(x: 0, y: 100), animated: false)
         
         mapView?.isUserInteractionEnabled = false
-        mapView?.scrollToTable(table: model?.table ?? 0)
         
-        guard let map = mapView else { return  }
         view.sendSubviewToBack(map)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        mapView?.scrollToTable(table: model?.table ?? 0)
     }
     
     func setupButtons() {
@@ -81,9 +112,16 @@ class SecondStepReservationViewController: BaseViewController {
                                 rightBtn: confirmButton,
                                 constant: -childContentView.frame.height - 20)
         cancelButton.addTarget(self, action: #selector(cancelChange), for: .touchUpInside)
+        confirmButton.addTarget(self, action: #selector(book), for: .touchUpInside)
     }
+    
+    // MARK: - Button handlers
     
     @objc func cancelChange() {
         coordinator?.cancel(mapView)
+    }
+    
+    @objc func book() {
+        coordinator?.book()
     }
 }

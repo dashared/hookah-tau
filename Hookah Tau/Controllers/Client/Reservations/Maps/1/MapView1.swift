@@ -16,6 +16,20 @@ class MapView1: MapImageScroll, UIScrollViewDelegate {
     
     // MARK: - Properties
     
+    @IBOutlet weak var shadow: UIView! {
+        didSet {
+            super.shadowView = shadow
+            shadow.alpha = 0
+        }
+    }
+    
+    override var handler: MapHandler? {
+        didSet {
+            handleTap(button: firstTable, id: 1)
+        }
+    }
+    
+    
     @IBOutlet weak var scrollView: UIScrollView! {
         didSet {
             super.scrollViewParent = scrollView
@@ -33,9 +47,9 @@ class MapView1: MapImageScroll, UIScrollViewDelegate {
             let style = TableButtonStyle()
             style.apply(to: firstTable)
             firstTable.transform = CGAffineTransform(rotationAngle: CGFloat(-Double.pi / 4));
-            firstTable.select()
         }
     }
+    
     
     @IBOutlet weak var secondTable: TableButton! {
         didSet {
@@ -94,6 +108,7 @@ class MapView1: MapImageScroll, UIScrollViewDelegate {
         self.scrollView.delegate = self
         self.scrollView.delaysContentTouches = false
         
+        image.addSubview(shadow)
         image.addSubview(firstTable)
         image.addSubview(secondTable)
         image.addSubview(trirdTable)
@@ -116,52 +131,40 @@ class MapView1: MapImageScroll, UIScrollViewDelegate {
     }
     
     @IBAction func chooseSecondTable(_ sender: TableButton) {
-        tables.values.forEach { $0.unselect() }
-        secondTable.select()
-        handler?.handleTap(withId: 2)
+        handleTap(button: sender, id: 2)
     }
     
     @IBAction func chooseFifthTable(_ sender: TableButton) {
-        tables.values.forEach { $0.unselect() }
-        fifthTable.select()
-        handler?.handleTap(withId: 5)
+        handleTap(button: sender, id: 5)
     }
     
     @IBAction func choseSeventhTable(_ sender: TableButton) {
+        handleTap(button: sender, id: 7)
     }
     
     @IBAction func chooseFirstTable(_ sender: TableButton) {
-        tables.values.forEach { $0.unselect() }
-        firstTable.select()
-        handler?.handleTap(withId: 1)
+        handleTap(button: sender, id: 1)
     }
     
     @IBAction func chooseThirdTable(_ sender: TableButton) {
+        handleTap(button: sender, id: 3)
     }
     
     @IBAction func choose4thTable(_ sender: TableButton) {
+        handleTap(button: sender, id: 4)
     }
     
     @IBAction func choose6thTable(_ sender: TableButton) {
+        handleTap(button: sender, id: 6)
     }
     
     @IBAction func choose8thTable(_ sender: TableButton) {
+        handleTap(button: sender, id: 8)
     }
-    
     
     // MARK: - Scroll view
     
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         self.image
-    }
-    
-    
-    override func scrollToTable(table: Int) {
-        guard let tableButton = tables[table] else { return }
-        
-        scrollView.setZoomScale(1.2, animated: true)
-        scrollView.setContentOffset(tableButton.frame.origin, animated: true)
-        
-        scrollView.scrollRectToVisible(tableButton.frame, animated: true)
     }
 }

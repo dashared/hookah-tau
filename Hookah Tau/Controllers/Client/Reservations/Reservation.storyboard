@@ -72,5 +72,46 @@
             </objects>
             <point key="canvasLocation" x="706" y="-38"/>
         </scene>
+        <!--Third Step Reservation View Controller-->
+        <scene sceneID="zRo-J6-3SG">
+            <objects>
+                <viewController storyboardIdentifier="ThirdStepReservationViewController" id="BZu-JB-b3i" customClass="ThirdStepReservationViewController" customModule="Hookah_Tau" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3b8-mw-Gl1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e2X-iN-FVj">
+                                <rect key="frame" x="0.0" y="502" width="414" height="394"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="394" id="5U9-DA-Asv"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lUx-gC-C8T">
+                                <rect key="frame" x="0.0" y="44" width="414" height="458"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="e2X-iN-FVj" firstAttribute="top" secondItem="lUx-gC-C8T" secondAttribute="bottom" id="3gm-hP-Bdu"/>
+                            <constraint firstItem="e2X-iN-FVj" firstAttribute="trailing" secondItem="gXx-re-YYI" secondAttribute="trailing" id="3mf-Ee-0xt"/>
+                            <constraint firstItem="e2X-iN-FVj" firstAttribute="leading" secondItem="gXx-re-YYI" secondAttribute="leading" id="H2H-uv-zpb"/>
+                            <constraint firstItem="gXx-re-YYI" firstAttribute="trailing" secondItem="lUx-gC-C8T" secondAttribute="trailing" id="N8u-eH-14m"/>
+                            <constraint firstAttribute="bottom" secondItem="e2X-iN-FVj" secondAttribute="bottom" id="nQM-9e-gfE"/>
+                            <constraint firstItem="lUx-gC-C8T" firstAttribute="leading" secondItem="gXx-re-YYI" secondAttribute="leading" id="oir-mE-qlS"/>
+                            <constraint firstItem="gXx-re-YYI" firstAttribute="top" secondItem="lUx-gC-C8T" secondAttribute="top" id="zDp-B5-m8M"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="gXx-re-YYI"/>
+                    </view>
+                    <connections>
+                        <outlet property="containerView" destination="e2X-iN-FVj" id="6Zy-M4-sSA"/>
+                        <outlet property="contentForMap" destination="lUx-gC-C8T" id="LBl-cs-Yav"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="En2-ct-Lfj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1457.9710144927537" y="-38.169642857142854"/>
+        </scene>
     </scenes>
 </document>

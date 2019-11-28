@@ -11,7 +11,18 @@ import Foundation
 
 struct Reservation: MyCodable {
     
-    var uuid: UUID
+    var uuid: String
+    var establishment: Int
+    var startTime: String
+    var endTime: String
+    var numberOfGuests: Int
+    var reservedTable: Int
+    
+}
+
+/// `Reservation` without `uuid`
+struct ReservationData: MyCodable {
+    
     var establishment: Int
     var startTime: String
     var endTime: String

@@ -14,6 +14,8 @@ class FirstStepReservationCoordinator: BaseCoordinator {
     
     var didFinish: (() -> Void)?
     
+    var establishment: Int = 1
+    
     // MARK: - Lifecycle
     
     override func start() {
@@ -21,6 +23,8 @@ class FirstStepReservationCoordinator: BaseCoordinator {
         let reservationVC = storyboard.instantiateViewController(withIdentifier: "ReservationViewController") as! FirstStepReservationViewController
         
         reservationVC.coordinator = self
+        reservationVC.establishmentId = establishment
+        
         navigationController?.pushViewController(reservationVC, animated: true)
     }
     

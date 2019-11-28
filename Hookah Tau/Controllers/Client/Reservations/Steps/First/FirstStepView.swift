@@ -30,6 +30,10 @@ class FirstStepView: UIView {
     var fullDate: Date? = Date.getDateFromCurrent() {
         didSet {
             guard let date = fullDate, let _ = chosenPoint else { return }
+            
+            let (prev, curr, next) = date.getPrevCurrentNextMonth()
+            setupMonth(prev, curr, next)
+            
             mapUpdater?.update(date)
         }
     }
@@ -52,22 +56,41 @@ class FirstStepView: UIView {
     
     var bookingsForDates: [Date: [ReservationPeriod]] = [:] {
         didSet {
-            guard let date = fullDate?.getDMY(), let reservPeriods = bookingsForDates[date] else { return }
+            guard
+                let date = fullDate?.getDMY(),
+                let reservPeriods = bookingsForDates[date]
+            else { return }
+            
             setUpBookingsForIntervals(reservations: reservPeriods)
         }
     }
+    
+    // intervals
 
     @IBOutlet weak var scrollViewIntervals: UIScrollView!
     
     @IBOutlet weak var stackViewIntervals: UIStackView!
     
+    // dates
+    
     @IBOutlet weak var datesStackView: UIStackView!
     
     @IBOutlet weak var datesScrollView: UIScrollView!
     
+    // note labels
+    
     @IBOutlet weak var earlierThan12Label: UILabel!
     
     @IBOutlet weak var laterThan3Label: UILabel!
+    
+    // months
+    
+    @IBOutlet weak var previousMonthLabel: UILabel!
+    
+    @IBOutlet weak var currentMonthLabel: UILabel!
+    
+    @IBOutlet weak var nextMonthLabel: UILabel!
+    
     
     
     var bookingsViewsForDate: [UIView] = []
@@ -156,6 +179,12 @@ class FirstStepView: UIView {
             view.addSubviewThatFills(dateView)
             datesStackView.addArrangedSubview(view)
         }
+    }
+    
+    func setupMonth(_ prev: String, _ curr: String, _ next: String) {
+        currentMonthLabel.text = curr
+        previousMonthLabel.text = prev
+        nextMonthLabel.text = next
     }
 }
 

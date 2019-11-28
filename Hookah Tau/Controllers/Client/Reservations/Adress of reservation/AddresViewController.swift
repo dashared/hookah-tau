@@ -16,7 +16,7 @@ class AddresViewController: BaseViewController {
     
     var tableView: UITableView?
     
-    var dataSource: [Int]? = [1]
+    var dataSource: [Int]? = [1, 2]
     
     // MARK: - Lifecycle
     

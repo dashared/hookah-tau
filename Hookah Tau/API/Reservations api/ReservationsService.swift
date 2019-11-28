@@ -75,4 +75,43 @@ class ReservationsService {
             }
         }
     }
+    
+    func createReservation(data: ReservationData,
+                           completion: @escaping ((Result<Reservation, GeneralError>) -> Void)) {
+        // for 1 time use
+        struct Response: MyCodable {
+            var reservationUUID: String
+        }
+        
+        // local map for output
+        func map(data: ReservationData, id: String) -> Reservation {
+            
+            return Reservation(uuid: id,
+                               establishment: data.establishment,
+                               startTime: data.startTime,
+                               endTime: data.endTime,
+                               numberOfGuests: data.numberOfGuests,
+                               reservedTable: data.reservedTable)
+        }
+        
+        let resolver = CreateReservationResolver<Response>(data: data)
+        let request = ApiRequest(resolver: resolver, httpMethod: .post)
+        
+        apiClient.load(request: request.request) { result in
+            switch result {
+            case .failure(let err):
+                completion(.failure(err))
+            case .success(let response):
+                guard
+                    let d = response.data,
+                    let id = resolver.targetClass().fromJSONToSelf(data: d)?.reservationUUID
+                else {
+                    completion(.failure(GeneralError.decodeError))
+                    return
+                }
+                
+                completion(.success(map(data: data, id: id)))
+            }
+        }
+    }
 }
