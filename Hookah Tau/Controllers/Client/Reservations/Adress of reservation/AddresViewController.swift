@@ -59,6 +59,13 @@ extension AddresViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: addressCellIdentifier,
                                                  for: indexPath) as! AddressCell
         
+        guard
+            let val = dataSource?[indexPath.row],
+            let model = TotalStorage.standard.getEstablishment(val)
+        else { return cell }
+        
+        cell.bind(withModel: model)
+        
         return cell
     }
     
@@ -73,6 +80,24 @@ extension AddresViewController: UITableViewDelegate, UITableViewDataSource {
         coordinator?.chooseTableAndTime(inEstablishment: id)
     }
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
     
-    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        guard
+            let val = dataSource?[indexPath.row],
+            let phone = TotalStorage.standard.getEstablishment(val)?.admin,
+            let urlPhone = URL(string: "tel://79\(phone)")
+        else { return nil }
+        
+        let editButton = UITableViewRowAction(style: .normal, title: "🤙🏻") { _,_  in
+            UIApplication.shared.open(urlPhone)
+        }
+        
+        editButton.backgroundColor = .black
+        
+        return [editButton]
+    }
 }

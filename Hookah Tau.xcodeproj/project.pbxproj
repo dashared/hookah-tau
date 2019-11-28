@@ -18,6 +18,10 @@
 		12219CEF2353A63F0057DDEE /* ReservationsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12219CEE2353A63E0057DDEE /* ReservationsCoordinator.swift */; };
 		12230AEA238FD8B3004A01E5 /* MapView2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12230AE9238FD8B3004A01E5 /* MapView2.xib */; };
 		12230AEC238FD8C5004A01E5 /* MapView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12230AEB238FD8C5004A01E5 /* MapView2.swift */; };
+		12230AF123900974004A01E5 /* TotalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12230AF023900974004A01E5 /* TotalStorage.swift */; };
+		12230AF423900BCB004A01E5 /* EstablishmentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12230AF323900BCB004A01E5 /* EstablishmentService.swift */; };
+		12230AF723900D44004A01E5 /* EstablishmentResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12230AF623900D44004A01E5 /* EstablishmentResolver.swift */; };
+		12230AFA23901029004A01E5 /* DataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12230AF923901029004A01E5 /* DataStorage.swift */; };
 		123615CF235510BC00D1122A /* ProfileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 123615CE235510BC00D1122A /* ProfileView.xib */; };
 		123615D12355141600D1122A /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123615D02355141600D1122A /* ProfileView.swift */; };
 		12387337234BB98700D1F1AB /* CodeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12387336234BB98700D1F1AB /* CodeView.xib */; };
@@ -73,7 +77,6 @@
 		12F9652E23869F3100FCA696 /* SecondStepReservationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F9652D23869F3100FCA696 /* SecondStepReservationCoordinator.swift */; };
 		12FC40382382C93D00AB593B /* TableButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FC40372382C93C00AB593B /* TableButtonStyle.swift */; };
 		12FC403A2382CB6F00AB593B /* TableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FC40392382CB6F00AB593B /* TableButton.swift */; };
-		12FE4042236B8B050012391E /* DataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FE4041236B8B050012391E /* DataStorage.swift */; };
 		F30369B5233679EA00A8EA84 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F30369B4233679EA00A8EA84 /* LaunchScreen.storyboard */; };
 		F30369BE2336924D00A8EA84 /* ClientTabbarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30369BD2336924D00A8EA84 /* ClientTabbarCoordinator.swift */; };
 		F30369C02336925800A8EA84 /* ClientTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30369BF2336925800A8EA84 /* ClientTabbarController.swift */; };
@@ -133,6 +136,10 @@
 		12219CEE2353A63E0057DDEE /* ReservationsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReservationsCoordinator.swift; sourceTree = "<group>"; };
 		12230AE9238FD8B3004A01E5 /* MapView2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapView2.xib; sourceTree = "<group>"; };
 		12230AEB238FD8C5004A01E5 /* MapView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView2.swift; sourceTree = "<group>"; };
+		12230AF023900974004A01E5 /* TotalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalStorage.swift; sourceTree = "<group>"; };
+		12230AF323900BCB004A01E5 /* EstablishmentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstablishmentService.swift; sourceTree = "<group>"; };
+		12230AF623900D44004A01E5 /* EstablishmentResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstablishmentResolver.swift; sourceTree = "<group>"; };
+		12230AF923901029004A01E5 /* DataStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStorage.swift; sourceTree = "<group>"; };
 		123615CE235510BC00D1122A /* ProfileView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileView.xib; sourceTree = "<group>"; };
 		123615D02355141600D1122A /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		12387336234BB98700D1F1AB /* CodeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CodeView.xib; sourceTree = "<group>"; };
@@ -187,7 +194,6 @@
 		12F9652D23869F3100FCA696 /* SecondStepReservationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondStepReservationCoordinator.swift; sourceTree = "<group>"; };
 		12FC40372382C93C00AB593B /* TableButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableButtonStyle.swift; sourceTree = "<group>"; };
 		12FC40392382CB6F00AB593B /* TableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableButton.swift; sourceTree = "<group>"; };
-		12FE4041236B8B050012391E /* DataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorage.swift; sourceTree = SOURCE_ROOT; };
 		F30369B4233679EA00A8EA84 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F30369BD2336924D00A8EA84 /* ClientTabbarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientTabbarCoordinator.swift; sourceTree = "<group>"; };
 		F30369BF2336925800A8EA84 /* ClientTabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientTabbarController.swift; sourceTree = "<group>"; };
@@ -255,8 +261,8 @@
 			children = (
 				120BFC7623891925001EBE89 /* ThirdStepReservationViewController.swift */,
 				120BFC7823891942001EBE89 /* ThirdStepReservationCoordinator.swift */,
-				120BFC7D23891975001EBE89 /* ThirdStepView.xib */,
 				120BFC7B23891965001EBE89 /* ThirdStepView.swift */,
+				120BFC7D23891975001EBE89 /* ThirdStepView.xib */,
 			);
 			path = Third;
 			sourceTree = "<group>";
@@ -324,6 +330,43 @@
 			path = 2;
 			sourceTree = "<group>";
 		};
+		12230AEF239008F8004A01E5 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				12BD95B7237EDB01009614D8 /* TimePointView.swift */,
+				12BD95B5237ED8AB009614D8 /* TimePointView.xib */,
+				12D8FA2E237F00E200305F57 /* DateView.swift */,
+				12D8FA2C237F003800305F57 /* DateView.xib */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		12230AF223900BB6004A01E5 /* Establishments api */ = {
+			isa = PBXGroup;
+			children = (
+				12230AF323900BCB004A01E5 /* EstablishmentService.swift */,
+				12230AF523900D32004A01E5 /* Resolvers */,
+			);
+			path = "Establishments api";
+			sourceTree = "<group>";
+		};
+		12230AF523900D32004A01E5 /* Resolvers */ = {
+			isa = PBXGroup;
+			children = (
+				12230AF623900D44004A01E5 /* EstablishmentResolver.swift */,
+			);
+			path = Resolvers;
+			sourceTree = "<group>";
+		};
+		12230AF823901000004A01E5 /* DB */ = {
+			isa = PBXGroup;
+			children = (
+				12230AF923901029004A01E5 /* DataStorage.swift */,
+				12230AF023900974004A01E5 /* TotalStorage.swift */,
+			);
+			path = DB;
+			sourceTree = "<group>";
+		};
 		123615D22355141D00D1122A /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -379,6 +422,7 @@
 				12838EAF236777D400CEF108 /* ServerError.swift */,
 				12838EB523677FB900CEF108 /* ApiRequest.swift */,
 				12838EB72367834900CEF108 /* MyCodable.swift */,
+				12230AF223900BB6004A01E5 /* Establishments api */,
 				124D007D2372229500AE76B9 /* Reservations api */,
 				12118B9A2368187B006BAEE3 /* Authorization api */,
 			);
@@ -398,6 +442,7 @@
 		12BD95B3237EC231009614D8 /* Steps */ = {
 			isa = PBXGroup;
 			children = (
+				12230AEF239008F8004A01E5 /* Common */,
 				12BD95B4237EC23A009614D8 /* First */,
 				12F9652823868E4900FCA696 /* Second */,
 				120BFC7A2389194B001EBE89 /* Third */,
@@ -408,14 +453,10 @@
 		12BD95B4237EC23A009614D8 /* First */ = {
 			isa = PBXGroup;
 			children = (
-				12BD95AF237EBEDE009614D8 /* FirstStepView.xib */,
-				12D8FA2C237F003800305F57 /* DateView.xib */,
-				12D8FA2E237F00E200305F57 /* DateView.swift */,
-				12BD95B5237ED8AB009614D8 /* TimePointView.xib */,
-				12BD95B7237EDB01009614D8 /* TimePointView.swift */,
-				12BD95B1237EC22B009614D8 /* FirstStepView.swift */,
 				12A075F62373535C00D749BB /* FirstStepReservationViewController.swift */,
 				12A075FC237357E900D749BB /* FirstStepReservationCoordinator.swift */,
+				12BD95B1237EC22B009614D8 /* FirstStepView.swift */,
+				12BD95AF237EBEDE009614D8 /* FirstStepView.xib */,
 			);
 			path = First;
 			sourceTree = "<group>";
@@ -482,8 +523,8 @@
 			children = (
 				12F9652623868DA300FCA696 /* SecondStepReservationViewController.swift */,
 				12F9652D23869F3100FCA696 /* SecondStepReservationCoordinator.swift */,
-				12F9652923868E6000FCA696 /* SecondStepView.xib */,
 				12F9652B23868E7200FCA696 /* SecondStepView.swift */,
+				12F9652923868E6000FCA696 /* SecondStepView.xib */,
 			);
 			path = Second;
 			sourceTree = "<group>";
@@ -649,7 +690,7 @@
 		F3FC7DCB2315BE610080D851 /* Hookah Tau */ = {
 			isa = PBXGroup;
 			children = (
-				12FE4041236B8B050012391E /* DataStorage.swift */,
+				12230AF823901000004A01E5 /* DB */,
 				F3FC7DCC2315BE610080D851 /* AppDelegate.swift */,
 				F3DC59FE233E893400B5E751 /* Extensions+UIFont.swift */,
 				F31E20C62348DDB900BEA215 /* Extensions+UIView.swift */,
@@ -840,6 +881,7 @@
 			files = (
 				12EA99482362B684005D9FE9 /* AddresViewController.swift in Sources */,
 				124D007F237222B200AE76B9 /* ReservationsResolver.swift in Sources */,
+				12230AF723900D44004A01E5 /* EstablishmentResolver.swift in Sources */,
 				1246B719235CD3AD004CBFA1 /* NoReservationsView.swift in Sources */,
 				F3895F4A233D323700FA6A37 /* CodeCoordinator.swift in Sources */,
 				12838EB4236779C700CEF108 /* ApiResolver.swift in Sources */,
@@ -849,6 +891,7 @@
 				F3851B2E2340A444009EE0B6 /* TitleTextView.swift in Sources */,
 				12EA99462362B674005D9FE9 /* AddressCoordinator.swift in Sources */,
 				12B6A613235B9B4300898B31 /* BaseViewController.swift in Sources */,
+				12230AFA23901029004A01E5 /* DataStorage.swift in Sources */,
 				F3FC7DFF2315C8D70080D851 /* NameCoordinator.swift in Sources */,
 				120BFC7C23891965001EBE89 /* ThirdStepView.swift in Sources */,
 				F3FC7DCF2315BE610080D851 /* NameViewController.swift in Sources */,
@@ -859,10 +902,10 @@
 				12EB698123661CB300E4D1CE /* AddressCell.swift in Sources */,
 				F3895F48233D2EEA00FA6A37 /* CodeSmsViewController.swift in Sources */,
 				12219CEF2353A63F0057DDEE /* ReservationsCoordinator.swift in Sources */,
+				12230AF423900BCB004A01E5 /* EstablishmentService.swift in Sources */,
 				12A07601237359BB00D749BB /* MapView1.swift in Sources */,
 				12BD95B8237EDB01009614D8 /* TimePointView.swift in Sources */,
 				12838EB2236779A000CEF108 /* AuthResolver.swift in Sources */,
-				12FE4042236B8B050012391E /* DataStorage.swift in Sources */,
 				12A075F72373535C00D749BB /* FirstStepReservationViewController.swift in Sources */,
 				1246B71C235CDF3A004CBFA1 /* ReservationCell.swift in Sources */,
 				12A075FD237357E900D749BB /* FirstStepReservationCoordinator.swift in Sources */,
@@ -894,6 +937,7 @@
 				12EA994E2362FCE8005D9FE9 /* AddressView.swift in Sources */,
 				F3895F4C233D347E00FA6A37 /* PhoneNumberViewController.swift in Sources */,
 				12EE4A76234BB8FE005B4D1A /* CodeView.swift in Sources */,
+				12230AF123900974004A01E5 /* TotalStorage.swift in Sources */,
 				12BD95B2237EC22B009614D8 /* FirstStepView.swift in Sources */,
 				F3EBE2472340FE87000FEE1A /* NameTextView.swift in Sources */,
 				120BFC7723891925001EBE89 /* ThirdStepReservationViewController.swift in Sources */,
