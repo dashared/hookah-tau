@@ -56,13 +56,32 @@ class ReservationsService {
         }
     }
     
-    func updateReservation() {
+    func updateReservation(startTime: Date,
+                           numberOfGuests: Int,
+                           endTime: Date,
+                           uuid: String,
+                           completion: @escaping ((Bool) -> Void)) {
         
+        let reservation = ChangeReservationResolver.Request(startTime: startTime,
+                                                            uuid: uuid,
+                                                            numberOfGuests: numberOfGuests,
+                                                            endTime: endTime)
+        
+        let resolver = ChangeReservationResolver(data: reservation)
+        let request = ApiRequest(resolver: resolver, httpMethod: .put)
+        
+        apiClient.load(request: request.request) { result in
+            switch result {
+            case .failure:
+                completion(false)
+                return
+            case .success:
+                completion(true)
+                return
+            }
+        }
     }
     
-    func createReservation() {
-        
-    }
     
     func getAllReservations(establishmentID: Int,
                             completion: @escaping ((Result<AllReservations, GeneralError>) -> Void)) {

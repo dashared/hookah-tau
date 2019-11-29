@@ -35,7 +35,8 @@ class SecondStepView: UIView {
         didSet {
             guard let model = model else { return }
             totalBookingLabel.text = "Забронировать \(model.table) столик на \(Int(guestSlider.value)) человека \(model.startTime)?"
-            
+
+            setUpIntervals(model.startTime)
             setUpReservedIntervals(model.reservedintervals)
             setUpBookingPeriod(model.startTime)
         }
@@ -75,8 +76,6 @@ class SecondStepView: UIView {
         scrollView.delegate = self
         
         scrollView.showsHorizontalScrollIndicator = false
-        
-        setUpIntervals()
     }
     
     @IBAction func sliderValueChanged(_ sender: UISlider) {
@@ -92,8 +91,15 @@ class SecondStepView: UIView {
     
     // MARK: - Setup
     
-    func setUpIntervals() {
-        for period in 0...Constants.day10MinPeriods {
+    func setUpIntervals(_ stTime: Date) {
+        let isAdmin = DataStorage.standard.getUserModel()?.isAdmin ?? false
+        
+        let (startPoint, _) = isAdmin ? stTime.getAdminStartingAndEndPoint() : stTime.getClientStartingAndEndPoint()
+        
+        let startingPoint = isAdmin ? startPoint.getAdminsStartingPoint() : Constants.clientStartingPoint
+        let endingPoint = startingPoint + (isAdmin ? Constants.adminDuration : Constants.clientDuration)
+        
+        for period in startingPoint...endingPoint {
             let timePointView = TimePointView.loadFromNib()
             timePointView?.setUp(withTimePoint: period)
             let view = UIView(frame: CGRect(x: 0, y: 0, width: 35, height: 106))
@@ -188,7 +194,11 @@ extension SecondStepView: UIScrollViewDelegate {
 
 extension SecondStepView {
     enum Constants {
-        static let day10MinPeriods = 90
         static let timepointWidth = 11
+        
+        static let adminDuration = 288
+        static let clientDuration = 90
+        // 12:00 = 12 * 6
+        static let clientStartingPoint = 72
     }
 }

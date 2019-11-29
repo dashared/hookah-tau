@@ -145,3 +145,44 @@ extension Date {
         return (prev, current, next)
     }
 }
+
+// MARK: - Admin vs Client
+
+extension Date {
+    
+    /// Идем на день назад, чтобы найти точку начала с которой может забронировать администратор
+    func getAdminStartingAndEndPoint() -> (Date, Date) {
+        let utcDate = self.getUTCDate()
+        
+        let startDate = Calendar.current.date(byAdding: .day, value: -1, to: utcDate)!
+        let endDate = Calendar.current.date(byAdding: .day, value: 1, to: utcDate)!
+        
+        return (startDate, endDate)
+    }
+    
+    func getAdminsStartingPoint() -> Int {
+        let comp = Calendar.current.dateComponents([.hour, .minute], from: self)
+        return (comp.hour! * 6 + comp.minute! / 10)
+    }
+    
+    func getClientStartingAndEndPoint() -> (Date, Date) {
+        let utcDate = self.getUTCDate()
+        
+        // час
+        let hour = Calendar.current.dateComponents([.hour], from: utcDate).hour!
+        
+        if hour >= 0 && hour <= 3 { // [ 00:00 ... 3:00 ]
+            let endDate = utcDate.set(hours: 3, minutes: 0, seconds: 0)! // 3 00
+            let start = Calendar.current.date(byAdding: .day, value: -1, to: utcDate)!
+            let startDate = start.set(hours: 12, minutes: 0, seconds: 0)! // 12 00
+            
+            return (startDate, endDate)
+        } else { // [12:00 ... 23:50]
+            let startDate = utcDate.set(hours: 12, minutes: 0, seconds: 0)! // 12 00
+            let end = Calendar.current.date(byAdding: .day, value: 1, to: utcDate)!
+            let endDate = end.set(hours: 3, minutes: 0, seconds: 0)! // 3 00
+            
+            return (startDate, endDate)
+        }
+    }
+}

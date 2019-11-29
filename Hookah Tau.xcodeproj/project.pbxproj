@@ -16,6 +16,7 @@
 		12118B9C23682022006BAEE3 /* RegistrationResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12118B9B23682022006BAEE3 /* RegistrationResolver.swift */; };
 		12118B9E23682049006BAEE3 /* PhoneCodeResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12118B9D23682049006BAEE3 /* PhoneCodeResolver.swift */; };
 		1212048C23914CFD00CAF162 /* DeleteReservationResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1212048B23914CFD00CAF162 /* DeleteReservationResolver.swift */; };
+		1212048E23915A0A00CAF162 /* ChangeReservationResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1212048D23915A0A00CAF162 /* ChangeReservationResolver.swift */; };
 		12219CEF2353A63F0057DDEE /* ReservationsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12219CEE2353A63E0057DDEE /* ReservationsCoordinator.swift */; };
 		12230AEA238FD8B3004A01E5 /* MapView2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12230AE9238FD8B3004A01E5 /* MapView2.xib */; };
 		12230AEC238FD8C5004A01E5 /* MapView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12230AEB238FD8C5004A01E5 /* MapView2.swift */; };
@@ -135,6 +136,7 @@
 		12118B9B23682022006BAEE3 /* RegistrationResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationResolver.swift; sourceTree = "<group>"; };
 		12118B9D23682049006BAEE3 /* PhoneCodeResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneCodeResolver.swift; sourceTree = "<group>"; };
 		1212048B23914CFD00CAF162 /* DeleteReservationResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteReservationResolver.swift; sourceTree = "<group>"; };
+		1212048D23915A0A00CAF162 /* ChangeReservationResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeReservationResolver.swift; sourceTree = "<group>"; };
 		12219CEE2353A63E0057DDEE /* ReservationsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReservationsCoordinator.swift; sourceTree = "<group>"; };
 		12230AE9238FD8B3004A01E5 /* MapView2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapView2.xib; sourceTree = "<group>"; };
 		12230AEB238FD8C5004A01E5 /* MapView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView2.swift; sourceTree = "<group>"; };
@@ -413,6 +415,7 @@
 				124D007E237222B200AE76B9 /* ReservationsResolver.swift */,
 				12B4447B238EF25C000B6B16 /* CreateReservationResolver.swift */,
 				1212048B23914CFD00CAF162 /* DeleteReservationResolver.swift */,
+				1212048D23915A0A00CAF162 /* ChangeReservationResolver.swift */,
 			);
 			path = Resolvers;
 			sourceTree = "<group>";
@@ -949,6 +952,7 @@
 				1205056B2380588C00801618 /* Extenstions+IBDesignable.swift in Sources */,
 				12C72EE1235380D400AD7004 /* ProfileClientViewController.swift in Sources */,
 				F31E20C92348E0F300BEA215 /* AuthorizationViewController.swift in Sources */,
+				1212048E23915A0A00CAF162 /* ChangeReservationResolver.swift in Sources */,
 				12230AFC239034D3004A01E5 /* SecondStepReservationViewController.swift in Sources */,
 				F3851B2923409F8A009EE0B6 /* PhoneView.swift in Sources */,
 				12C72EE3235380EB00AD7004 /* ReservationsViewController.swift in Sources */,
