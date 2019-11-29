@@ -22,10 +22,11 @@ class Button: UIButton {
 
     override var isEnabled: Bool {
         didSet {
-            //alpha = isEnabled ? 1 : 0.8
+            alpha = isEnabled ? 1 : 0.8
         }
     }
     
+    /// State when chosen table is Booked
     public var availiable = true {
         willSet {
             willUpdateBookingState(newValue: availiable)
@@ -51,12 +52,12 @@ class Button: UIButton {
     }
     
     private func willUpdateBookingState(newValue avaliable: Bool) {
-        isEnabled = !avaliable
+        isEnabled = avaliable
         
-        if availiable {
-            style?.changeToAvailiableState(button: self)
-        } else {
-            style?.changeToBookedState(button: self)
-        }
+//        if availiable {
+//            style?.changeToAvailiableState(button: self)
+//        } else {
+//            style?.changeToBookedState(button: self)
+//        }
     }
 }

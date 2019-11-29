@@ -25,7 +25,7 @@ class TableStyle {
         let stripe = CALayer()
 
         stripe.frame = CGRect(x: 0, y: -10, width: 2, height: 500)
-        stripe.backgroundColor = UIColor.black.cgColor
+        stripe.backgroundColor = UIColor.white.cgColor
         stripe.transform = CATransform3DMakeRotation(0.52, 0, 0, 1.0)
 
         replicatorLayer.instanceCount = 60

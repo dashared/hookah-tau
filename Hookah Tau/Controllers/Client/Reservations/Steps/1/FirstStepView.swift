@@ -16,7 +16,7 @@ class FirstStepView: UIView {
     
     weak var mapUpdater: MapUpdater?
     
-    var chosenPoint: Int? = 0 {
+    var chosenPoint: Int? {
         didSet {
             guard
                 let periods = chosenPoint,
@@ -27,7 +27,7 @@ class FirstStepView: UIView {
         }
     }
     
-    var fullDate: Date? = Date.getDateFromCurrent() {
+    var fullDate: Date? {
         didSet {
             guard let date = fullDate, let _ = chosenPoint else { return }
             
@@ -57,11 +57,10 @@ class FirstStepView: UIView {
     var bookingsForDates: [Date: [ReservationPeriod]] = [:] {
         didSet {
             guard
-                let date = fullDate?.getDMY(),
-                let reservPeriods = bookingsForDates[date]
+                let date = fullDate?.getDMY()
             else { return }
             
-            setUpBookingsForIntervals(reservations: reservPeriods)
+            setUpBookingsForIntervals(reservations: bookingsForDates[date] ?? [])
         }
     }
     
@@ -125,8 +124,9 @@ class FirstStepView: UIView {
         bookingsViewsForDate = []
         
         for reservation in reservations {
-            let uiview = UIView(frame: CGRect(x: 0, y: 0, width: Constants.widthTimePoint * reservation.duration, height: 71))
-            uiview.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+            let uiview = UIView(frame: CGRect(x: 0, y: 0, width: Constants.widthTimePoint * reservation.duration, height: Constants.heightIntervals))
+            uiview.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 0.5)
+            
             
             uiview.translatesAutoresizingMaskIntoConstraints = false
             scrollViewIntervals.addSubview(uiview)
@@ -135,11 +135,11 @@ class FirstStepView: UIView {
             let startDate = Date.getDateFromCurrent(days: date)!.set(hours: 12, minutes: 0, seconds: 0)!
             
             NSLayoutConstraint.activate([
-                uiview.topAnchor.constraint(equalToSystemSpacingBelow: scrollViewIntervals.topAnchor, multiplier: 0),
                 uiview.bottomAnchor.constraint(equalToSystemSpacingBelow: scrollViewIntervals.bottomAnchor, multiplier: 0),
                 uiview.leftAnchor.constraint(equalTo: scrollViewIntervals.leftAnchor,
                                              constant: CGFloat(Constants.widthTimePoint / 2 + Constants.widthTimePoint * reservation.startTime.getMinutesPeriods(fromStart: startDate))),
-                uiview.widthAnchor.constraint(equalToConstant: CGFloat(Constants.widthTimePoint * reservation.duration))
+                uiview.widthAnchor.constraint(equalToConstant: CGFloat(Constants.widthTimePoint * reservation.duration)),
+                uiview.heightAnchor.constraint(equalToConstant: CGFloat(Constants.heightIntervals))
             ])
             
             bookingsViewsForDate.append(uiview)
@@ -247,5 +247,6 @@ extension FirstStepView {
         static let daysCount = 14
         static let widthTimePoint = 11
         static let widthDate = 31
+        static let heightIntervals = 70
     }
 }

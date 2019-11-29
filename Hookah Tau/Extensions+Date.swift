@@ -124,7 +124,7 @@ extension Date {
     }
     
     func getMinutesPeriods(fromStart startDate: Date) -> Int {
-        let diffInMins = Calendar.current.dateComponents([.minute], from: self, to: startDate).minute!
+        let diffInMins = Calendar.current.dateComponents([.minute], from: startDate, to: self).minute!
         let periods = diffInMins / 10
         return periods
     }

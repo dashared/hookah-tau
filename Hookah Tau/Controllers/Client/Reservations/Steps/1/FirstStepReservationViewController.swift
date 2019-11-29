@@ -59,7 +59,6 @@ class FirstStepReservationViewController: BaseViewController {
         let button = Button()
         let style = BlackButtonStyle()
         style.apply(to: button, withTitle: "ПОЗВОНИТЬ")
-        //button.addTarget(self, action: #selector(cancelChange), for: .touchUpInside)
         return button
     }()
     
@@ -88,6 +87,7 @@ class FirstStepReservationViewController: BaseViewController {
                                 constant: -childContentView.frame.height - 20)
         
         continueButton.addTarget(self, action: #selector(continueBooking), for: .touchUpInside)
+        callButton.addTarget(self, action: #selector(call(phone:)), for: .touchUpInside)
     }
     
     func performUpdate() {
@@ -150,6 +150,14 @@ class FirstStepReservationViewController: BaseViewController {
         coordinator?.makeReservation(model: model,
                                      mapView: map)
     }
+    
+    @objc func call(phone: String) {
+        guard
+            let phone = TotalStorage.standard.getEstablishment(establishmentId)?.admin,
+            let urlPhone = URL(string: "tel://79\(phone)") else { return }
+    
+        UIApplication.shared.open(urlPhone)
+    }
 }
 
 extension FirstStepReservationViewController: MapHandler {
@@ -162,6 +170,13 @@ extension FirstStepReservationViewController: MapHandler {
 extension FirstStepReservationViewController: MapUpdater {
     func update(_ date: Date) {
         let areBooked = allReservations?.intervals[date.getDMY()]?[date] ?? []
+        
+        if Set(areBooked).contains(tableId) {
+            continueButton.availiable = false
+        } else {
+            continueButton.availiable = true
+        }
+        
         mapView?.performUpdate(inactive: areBooked)
     }
 }
