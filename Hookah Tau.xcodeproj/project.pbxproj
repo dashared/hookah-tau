@@ -15,6 +15,7 @@
 		120BFC7E23891975001EBE89 /* ThirdStepView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 120BFC7D23891975001EBE89 /* ThirdStepView.xib */; };
 		12118B9C23682022006BAEE3 /* RegistrationResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12118B9B23682022006BAEE3 /* RegistrationResolver.swift */; };
 		12118B9E23682049006BAEE3 /* PhoneCodeResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12118B9D23682049006BAEE3 /* PhoneCodeResolver.swift */; };
+		1212048C23914CFD00CAF162 /* DeleteReservationResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1212048B23914CFD00CAF162 /* DeleteReservationResolver.swift */; };
 		12219CEF2353A63F0057DDEE /* ReservationsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12219CEE2353A63E0057DDEE /* ReservationsCoordinator.swift */; };
 		12230AEA238FD8B3004A01E5 /* MapView2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12230AE9238FD8B3004A01E5 /* MapView2.xib */; };
 		12230AEC238FD8C5004A01E5 /* MapView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12230AEB238FD8C5004A01E5 /* MapView2.swift */; };
@@ -133,6 +134,7 @@
 		120BFC7D23891975001EBE89 /* ThirdStepView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ThirdStepView.xib; sourceTree = "<group>"; };
 		12118B9B23682022006BAEE3 /* RegistrationResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationResolver.swift; sourceTree = "<group>"; };
 		12118B9D23682049006BAEE3 /* PhoneCodeResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneCodeResolver.swift; sourceTree = "<group>"; };
+		1212048B23914CFD00CAF162 /* DeleteReservationResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteReservationResolver.swift; sourceTree = "<group>"; };
 		12219CEE2353A63E0057DDEE /* ReservationsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReservationsCoordinator.swift; sourceTree = "<group>"; };
 		12230AE9238FD8B3004A01E5 /* MapView2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapView2.xib; sourceTree = "<group>"; };
 		12230AEB238FD8C5004A01E5 /* MapView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView2.swift; sourceTree = "<group>"; };
@@ -410,6 +412,7 @@
 			children = (
 				124D007E237222B200AE76B9 /* ReservationsResolver.swift */,
 				12B4447B238EF25C000B6B16 /* CreateReservationResolver.swift */,
+				1212048B23914CFD00CAF162 /* DeleteReservationResolver.swift */,
 			);
 			path = Resolvers;
 			sourceTree = "<group>";
@@ -908,6 +911,7 @@
 				12838EB2236779A000CEF108 /* AuthResolver.swift in Sources */,
 				12A075F72373535C00D749BB /* FirstStepReservationViewController.swift in Sources */,
 				1246B71C235CDF3A004CBFA1 /* ReservationCell.swift in Sources */,
+				1212048C23914CFD00CAF162 /* DeleteReservationResolver.swift in Sources */,
 				12A075FD237357E900D749BB /* FirstStepReservationCoordinator.swift in Sources */,
 				124D0081237222C900AE76B9 /* ReservationsService.swift in Sources */,
 				1246B720235CDF9E004CBFA1 /* ReservationView.swift in Sources */,

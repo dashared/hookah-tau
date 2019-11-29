@@ -91,7 +91,6 @@ class FirstStepView: UIView {
     @IBOutlet weak var nextMonthLabel: UILabel!
     
     
-    
     var bookingsViewsForDate: [UIView] = []
     
     
@@ -111,12 +110,33 @@ class FirstStepView: UIView {
     func setUpIntervalStackView() {
         
         for period in 0...Constants.day10MinPeriods {
+            
             let timePointView = TimePointView.loadFromNib()
             timePointView?.setUp(withTimePoint: period)
             let view = UIView(frame: CGRect(x: 0, y: 0, width: 35, height: 92))
             view.addSubviewThatFills(timePointView)
             stackViewIntervals.addArrangedSubview(view)
         }
+        
+        setupClosingInterval()
+    }
+    
+    /// Вьюшка, обозначающая часы закрытия кальянки
+    func setupClosingInterval() {
+        let offset = CGFloat(Constants.startClosingTime * Constants.widthTimePoint)
+        let width = CGFloat(Constants.closingDuration * Constants.widthTimePoint)
+        let height = CGFloat(Constants.heightIntervals)
+        let closingTimeView = UIView(frame: CGRect(x: 0, y: 0, width: width, height: height))
+        closingTimeView.translatesAutoresizingMaskIntoConstraints = false
+        scrollViewIntervals.addSubview(closingTimeView)
+        closingTimeView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 0.5)
+        
+        NSLayoutConstraint.activate([
+            closingTimeView.leftAnchor.constraint(equalTo: scrollViewIntervals.leftAnchor, constant: offset),
+            closingTimeView.bottomAnchor.constraint(equalToSystemSpacingBelow: scrollViewIntervals.bottomAnchor, multiplier: 0),
+            closingTimeView.heightAnchor.constraint(equalToConstant: height),
+            closingTimeView.widthAnchor.constraint(equalToConstant: width)
+        ])
     }
     
     func setUpBookingsForIntervals(reservations: [ReservationPeriod]) {
@@ -132,13 +152,19 @@ class FirstStepView: UIView {
             scrollViewIntervals.addSubview(uiview)
             
             guard let date = date else { return }
-            let startDate = Date.getDateFromCurrent(days: date)!.set(hours: 12, minutes: 0, seconds: 0)!
+            let startDate = Date.getDateFromCurrent(days: date)!.set(hours: 0, minutes: 0, seconds: 0)!
             
+            let s = reservation.startTime.getMinutesPeriods(fromStart: startDate) * Constants.widthTimePoint
+            let d = reservation.duration * Constants.widthTimePoint
+            
+            let startTime = s < 0 ? 0 : s
+            let duration = (s + d) > Constants.widthOfIntervals ? Constants.widthOfIntervals - s : d
+                
             NSLayoutConstraint.activate([
                 uiview.bottomAnchor.constraint(equalToSystemSpacingBelow: scrollViewIntervals.bottomAnchor, multiplier: 0),
                 uiview.leftAnchor.constraint(equalTo: scrollViewIntervals.leftAnchor,
-                                             constant: CGFloat(Constants.widthTimePoint / 2 + Constants.widthTimePoint * reservation.startTime.getMinutesPeriods(fromStart: startDate))),
-                uiview.widthAnchor.constraint(equalToConstant: CGFloat(Constants.widthTimePoint * reservation.duration)),
+                                             constant: CGFloat(Constants.widthTimePoint / 2 + startTime)),
+                uiview.widthAnchor.constraint(equalToConstant: CGFloat(duration)),
                 uiview.heightAnchor.constraint(equalToConstant: CGFloat(Constants.heightIntervals))
             ])
             
@@ -243,10 +269,14 @@ extension FirstStepView: UIScrollViewDelegate {
 
 extension FirstStepView {
     enum Constants {
-        static let day10MinPeriods = 90
+        /// 24 ч * 60 минут / 10 минут в периоде; [00:00 ... 23:50]
+        static let day10MinPeriods = 143
         static let daysCount = 14
         static let widthTimePoint = 11
         static let widthDate = 31
         static let heightIntervals = 70
+        static let closingDuration = 54
+        static let startClosingTime = 18
+        static let widthOfIntervals = 1573
     }
 }

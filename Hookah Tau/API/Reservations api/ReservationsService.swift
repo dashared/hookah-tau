@@ -40,8 +40,20 @@ class ReservationsService {
         }
     }
     
-    func deleteReservation() {
+    func deleteReservation(uuid: String, completion: @escaping ((Bool) -> Void)) {
+        let resolver = DeleteReservationResolver(uuid: uuid)
+        let request = ApiRequest(resolver: resolver, httpMethod: .delete)
         
+        apiClient.load(request: request.request) { result in
+            switch result {
+            case .failure:
+                completion(false)
+                return
+            case .success:
+                completion(true)
+                return
+            }
+        }
     }
     
     func updateReservation() {

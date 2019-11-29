@@ -16,7 +16,14 @@ class ReservationsViewController: BaseViewController {
     
     var activeReservations: [Reservation] = [] {
         didSet {
-            setUpContentView()
+            guard let empty = noReservationsView else { return }
+            if activeReservations.isEmpty {
+                contentView.bringSubviewToFront(empty)
+            } else {
+                contentView.sendSubviewToBack(empty)
+            }
+            
+            tableView?.reloadData()
         }
     }
     
@@ -32,7 +39,11 @@ class ReservationsViewController: BaseViewController {
     
     var noReservationsView: NoReservationsView?
     
-    var tableView: UITableView?
+    var tableView: UITableView? = {
+        let tableView = UITableView()
+        tableView.backgroundColor = .white
+        return tableView
+    }()
     
     // MARK: - Lifecycle
 
@@ -44,6 +55,8 @@ class ReservationsViewController: BaseViewController {
         reservationsService = ReservationsService(apiClient: APIClient.shared)
         
         performUpdate()
+        
+        setUpContentView()
     }
     
     // MARK: - Setup
@@ -51,16 +64,14 @@ class ReservationsViewController: BaseViewController {
     func setUpContentView() {
         self.view.addSubviewThatFills(contentView)
         
-        if activeReservations.isEmpty {
-            noReservationsView = NoReservationsView.loadFromNib()
-            contentView.addSubviewThatFills(noReservationsView)
-            noReservationsView?.makeReservationButton?.addTarget(self, action: #selector(tapToMakeReservation), for: .touchUpInside)
-        } else {
-            tableView = UITableView()
-            contentView.addSubviewThatFills(tableView)
-            tableView?.reloadData()
-        }
-    
+        // empty
+        noReservationsView = NoReservationsView.loadFromNib()
+        contentView.addSubviewThatFills(noReservationsView)
+        noReservationsView?.makeReservationButton?.addTarget(self, action: #selector(tapToMakeReservation), for: .touchUpInside)
+
+        // table
+        contentView.addSubviewThatFills(tableView)
+
         setUpTableView()
     }
     
@@ -98,6 +109,18 @@ class ReservationsViewController: BaseViewController {
         })
     }
     
+    func deleteReservation(uuid: String, completion: @escaping (([Reservation]?) -> Void)) {
+        reservationsService?.deleteReservation(uuid: uuid) { result in
+            if result {
+                let newReservations = self.activeReservations.filter { $0.uuid != uuid }
+                completion(newReservations)
+                return
+            }
+            
+            completion(nil)
+        }
+    }
+    
 }
 
 extension ReservationsViewController: UITableViewDelegate, UITableViewDataSource {
@@ -118,5 +141,33 @@ extension ReservationsViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return 180.0
+    }
+    
+    // Update
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        let uuid = activeReservations[indexPath.row].uuid
+        let cancelButton = UITableViewRowAction(style: .normal, title: "❌") { _,_  in
+            
+            self.deleteReservation(uuid: uuid) { optionalNewVal in
+                if let newval = optionalNewVal {
+                    self.tableView?.beginUpdates()
+                    self.tableView?.deleteRows(at: [indexPath], with: .automatic)
+                    self.activeReservations = newval
+                    self.tableView?.endUpdates()
+                } else {
+                    self.displayAlert(with: "Не удалось удалить вашу бронь! Попробуйте еще раз!")
+                }
+            }
+        }
+        
+        cancelButton.backgroundColor = .black
+        
+        return [cancelButton]
     }
 }

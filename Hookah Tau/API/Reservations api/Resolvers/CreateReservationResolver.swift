@@ -20,6 +20,10 @@ class CreateReservationResolver<Response: Codable>: ApiResolver {
         self.data = data
     }
     
+    func parameters() -> MyCodable? {
+        return data
+    }
+    
     func targetClass() -> Response.Type {
         return Response.self
     }

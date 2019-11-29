@@ -47,6 +47,6 @@ class TimePointView: UIView {
     // MARK: - Static
     
     static func getTextTimeFromTimePoint(_ time: Int) -> String {
-        return "\((Int(time / 6) + 12) % 24):00"
+        return "\(Int(time / 6) % 24):00"
     }
 }
