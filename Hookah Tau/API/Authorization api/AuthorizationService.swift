@@ -104,6 +104,7 @@ class AuthorizationService {
             return
         }
         let cookies = HTTPCookie.cookies(withResponseHeaderFields: fieldss, for: url)
-        HTTPCookieStorage.shared.setCookie(cookies[0])
+        HTTPCookieStorage.shared.setCookies(cookies, for: url, mainDocumentURL: nil)
+        DataStorage.standard.setCookies(cookies, forURL: url)
     }
 }

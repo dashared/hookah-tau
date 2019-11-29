@@ -61,7 +61,7 @@ class TableButtonStyle {
     }
     
     func setBooked(button: TableButton) {
-        TableStyle.setStripes(for: button)
+        button.backgroundColor = Booked.fillColor
     }
     
     func setAvaliable(button: TableButton) {

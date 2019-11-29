@@ -126,7 +126,7 @@ class FirstStepView: UIView {
         
         for reservation in reservations {
             let uiview = UIView(frame: CGRect(x: 0, y: 0, width: Constants.widthTimePoint * reservation.duration, height: 71))
-            uiview.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.5)
+            uiview.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
             
             uiview.translatesAutoresizingMaskIntoConstraints = false
             scrollViewIntervals.addSubview(uiview)
