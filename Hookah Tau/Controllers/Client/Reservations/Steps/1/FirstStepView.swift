@@ -50,17 +50,21 @@ class FirstStepView: UIView {
             guard
                 let date = fullDate?.getDMY()
             else { return }
-            setUpBookingsForIntervals(reservations: bookingsForDates[date] ?? [])
+            
+            let bookings = HFunc.main.filterPeriodsInDate(bookingsForDates, date)
+            setUpBookingsForIntervals(reservations: bookings)
         }
     }
     
-    var bookingsForDates: [Date: [ReservationPeriod]] = [:] {
+    var bookingsForDates: [ReservationPeriod] = [] {
         didSet {
             guard
                 let date = fullDate?.getDMY()
             else { return }
             
-            setUpBookingsForIntervals(reservations: bookingsForDates[date] ?? [])
+            let bookings = HFunc.main.filterPeriodsInDate(bookingsForDates, date)
+
+            setUpBookingsForIntervals(reservations: bookings)
         }
     }
     
@@ -158,7 +162,12 @@ class FirstStepView: UIView {
             let d = reservation.duration * Constants.widthTimePoint
             
             let startTime = s < 0 ? 0 : s
-            let duration = (s + d) > Constants.widthOfIntervals ? Constants.widthOfIntervals - s : d
+            var duration = 0
+            if s < 0 {
+                duration = reservation.endTime.getMinutesPeriods(fromStart: startDate) * Constants.widthTimePoint
+            } else {
+                duration = (s + d) > Constants.widthOfIntervals ? Constants.widthOfIntervals - s : d
+            }
                 
             NSLayoutConstraint.activate([
                 uiview.bottomAnchor.constraint(equalToSystemSpacingBelow: scrollViewIntervals.bottomAnchor, multiplier: 0),
@@ -184,14 +193,14 @@ class FirstStepView: UIView {
         
         datesScrollView.setContentOffset(CGPoint(x: abs(Constants.widthDate * Constants.daysCount / 2 - Int(edges.left)) + 8, y: 0),
                                          animated: true)
-        scrollViewIntervals.setContentOffset(CGPoint(x: abs(Constants.widthTimePoint * Constants.day10MinPeriods / 2 - Int(edges.left)) + 5, y: 0),
+        scrollViewIntervals.setContentOffset(CGPoint(x: abs(Constants.widthTimePoint * Constants.day10MinPeriods / 2 - Int(edges.left)) + 7, y: 0),
                                              animated: true)
     }
     
     
     /// Method for setting up `stackViewIntervals` with appropriate busy intervals of chosen table
     /// - Parameter data: Map of booked periods by key - date - is provided
-    func setUp(_ data: [Date: [ReservationPeriod]]) {
+    func setUp(_ data: [ReservationPeriod]) {
         bookingsForDates = data
     }
     

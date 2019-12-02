@@ -129,7 +129,7 @@ class FirstStepReservationViewController: BaseViewController {
     }
     
     func updateChildViewControllerWithChosenId(_ id: Int) {
-        let reservationsForTable = allReservations?.reservations[id] ?? [:]
+        let reservationsForTable = allReservations?.reservations[id] ?? []
         firstStepView?.setUp(reservationsForTable)
     }
     
@@ -138,9 +138,10 @@ class FirstStepReservationViewController: BaseViewController {
     @objc func continueBooking() {
         let map = mapView
         
-        guard let startTime = firstStepView?.fullDate  else { return }
+        guard let startTime = firstStepView?.fullDate else { return }
         
-        let reservPeriods = allReservations?.reservations[tableId]?[startTime.getDMY()] ?? []
+        let reservPeriods = HFunc.main.filterPeriodsInDate(allReservations?.reservations[tableId] ?? [],
+                                                           startTime)
         
         let model = SecondStepModel(establishment: establishmentId,
                                     table: tableId,
@@ -169,7 +170,7 @@ extension FirstStepReservationViewController: MapHandler {
 
 extension FirstStepReservationViewController: MapUpdater {
     func update(_ date: Date) {
-        let areBooked = allReservations?.intervals[date.getDMY()]?[date] ?? []
+        let areBooked =  allReservations?.intervals[date] ?? []
         
         if Set(areBooked).contains(tableId) {
             continueButton.availiable = false

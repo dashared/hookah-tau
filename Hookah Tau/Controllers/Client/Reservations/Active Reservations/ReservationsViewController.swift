@@ -19,8 +19,10 @@ class ReservationsViewController: BaseViewController {
             guard let empty = noReservationsView else { return }
             if activeReservations.isEmpty {
                 contentView.bringSubviewToFront(empty)
+                empty.alpha = 1
             } else {
                 contentView.sendSubviewToBack(empty)
+                tableView?.alpha = 1
             }
             
             tableView?.reloadData()
@@ -54,9 +56,19 @@ class ReservationsViewController: BaseViewController {
         
         reservationsService = ReservationsService(apiClient: APIClient.shared)
         
-        performUpdate()
-        
         setUpContentView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tabBarController?.tabBar.isHidden = false
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        performUpdate()
     }
     
     // MARK: - Setup
@@ -68,6 +80,8 @@ class ReservationsViewController: BaseViewController {
         noReservationsView = NoReservationsView.loadFromNib()
         contentView.addSubviewThatFills(noReservationsView)
         noReservationsView?.makeReservationButton?.addTarget(self, action: #selector(tapToMakeReservation), for: .touchUpInside)
+        
+        noReservationsView?.alpha = 0
 
         // table
         contentView.addSubviewThatFills(tableView)
@@ -78,6 +92,8 @@ class ReservationsViewController: BaseViewController {
     func setUpTableView() {
         tableView?.delegate = self
         tableView?.dataSource = self
+        
+        tableView?.alpha = 0
         
         tableView?.register(ReservationCell.self, forCellReuseIdentifier: reservationCell)
     }
@@ -133,6 +149,11 @@ extension ReservationsViewController: UITableViewDelegate, UITableViewDataSource
         let cell = tableView.dequeueReusableCell(withIdentifier: reservationCell, for: indexPath) as! ReservationCell
         cell.bind(withModel: activeReservations[indexPath.row])
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let reservation = activeReservations[indexPath.row]
+        coordinator?.viewReservation(reservation)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

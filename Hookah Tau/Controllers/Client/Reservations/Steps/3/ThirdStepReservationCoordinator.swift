@@ -12,12 +12,12 @@ class ThirdStepReservationCoordinator: BaseCoordinator {
     
     // MARK: - Properties
     
-    var didFinish: ((MapImageScroll) -> Void)?
+    var didFinish: ((MapImageScroll?) -> Void)?
     
-    /// callback to change created booking
-    var wantsToBeChanged: ((Reservation) -> Void)?
+    var mapView: MapImageScroll?
     
-    var mapView: UIView?
+    /// Объект регистрации, созданной или существующей
+    var resrvation: Reservation?
     
     // MARK: - Lifecycle
     
@@ -26,13 +26,19 @@ class ThirdStepReservationCoordinator: BaseCoordinator {
         let reservationVC = storyboard.instantiateViewController(withIdentifier: "ThirdStepReservationViewController") as! ThirdStepReservationViewController
         
         reservationVC.coordinator = self
-    
+        reservationVC.mapView = mapView
+        reservationVC.reservation = resrvation
         
         navigationController?.pushViewController(reservationVC, animated: false)
     }
     
-    /// You need to pass `uuid` of the booking to be changed
-    func change(_ reservation: Reservation) {
-        wantsToBeChanged?(reservation)
+    /// You need to pass reservation object and map describing booked table
+    func change(_ reservation: Reservation, _ map: MapImageScroll) {
+        //
+    }
+    
+    /// Goes back to `allReservations` screen
+    func close() {
+        didFinish?(nil)
     }
 }

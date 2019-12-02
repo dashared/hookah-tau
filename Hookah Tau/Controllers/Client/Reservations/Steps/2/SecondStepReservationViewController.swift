@@ -65,6 +65,13 @@ class SecondStepReservationViewController: BaseViewController {
     
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tabBarController?.tabBar.isHidden = true
+    }
+    
+    
     // MARK: - Setup
     
     func setupNavBar() {
@@ -122,6 +129,6 @@ class SecondStepReservationViewController: BaseViewController {
     }
     
     @objc func book() {
-        coordinator?.book()
+        coordinator?.book(mapView)
     }
 }

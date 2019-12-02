@@ -19,6 +19,8 @@ class SecondStepReservationCoordinator: BaseCoordinator {
     
     var mapView: MapImageScroll?
     
+    var onBooking: ((MapImageScroll, Reservation) -> Void)?
+    
     var vc: SecondStepReservationViewController?
     
     // MARK: - Lifecycle
@@ -40,7 +42,7 @@ class SecondStepReservationCoordinator: BaseCoordinator {
         didFinish?(mapView)
     }
     
-    func book() {
+    func book(_ mapView: MapImageScroll?) {
         let coordinator = ThirdStepReservationCoordinator(navigationController: navigationController)
         addDependency(coordinator)
         
@@ -52,13 +54,7 @@ class SecondStepReservationCoordinator: BaseCoordinator {
             }
         }
         
-        coordinator.wantsToBeChanged = { [weak self] reservation in
-            self?.navigationController?.popViewController(animated: false)
-            self?.removeDependency(coordinator)
-            
-            
-        }
-        
+        coordinator.mapView = mapView
         coordinator.start()
     }
 }

@@ -13,8 +13,8 @@ struct Reservation: MyCodable {
     
     var uuid: String
     var establishment: Int
-    var startTime: String
-    var endTime: String
+    var startTime: Date
+    var endTime: Date
     var numberOfGuests: Int
     var reservedTable: Int
     
@@ -24,8 +24,8 @@ struct Reservation: MyCodable {
 struct ReservationData: MyCodable {
     
     var establishment: Int
-    var startTime: String
-    var endTime: String
+    var startTime: Date
+    var endTime: Date
     var numberOfGuests: Int
     var reservedTable: Int
     

@@ -84,20 +84,10 @@ extension Date {
     }
     
     func changeTime(periods: Int) -> Date? {
-        let hours = (periods * 10 / 60 + 12) % 24
+        let hours = (periods * 10 / 60) % 24
         let min = (periods * 10) % 60
 
-        let day = Calendar.current.dateComponents([.year, .month, .day], from: self)
-        
-        var dateCalendars = DateComponents()
-        dateCalendars.hour = hours
-        dateCalendars.minute = min
-        dateCalendars.day = day.day!
-        dateCalendars.month = day.month!
-        dateCalendars.year = day.year!
-        dateCalendars.timeZone = TimeZone(abbreviation: "GMT")
-    
-        return Calendar.current.date(from: dateCalendars)
+        return self.set(hours: hours, minutes: min, seconds: 0)
     }
     
     func getDay() -> Int {

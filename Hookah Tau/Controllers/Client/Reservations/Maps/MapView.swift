@@ -26,6 +26,7 @@ class MapImageScroll: UIView {
     func scrollToTable(table: Int) {
         guard let tableButton = tables[table] else { return }
         
+        tableButton.select()
         img.bringSubviewToFront(shadowView)
         img.bringSubviewToFront(tableButton)
         

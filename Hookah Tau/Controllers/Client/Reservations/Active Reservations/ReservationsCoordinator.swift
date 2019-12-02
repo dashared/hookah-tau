@@ -29,4 +29,18 @@ class ReservationsCoordinator: BaseCoordinator {
         }
         addressCoordinator.start()
     }
+    
+    func viewReservation(_ reservation: Reservation) {
+        let thirdStepRCoordinator = ThirdStepReservationCoordinator(navigationController: navigationController)
+        addDependency(thirdStepRCoordinator)
+        
+        thirdStepRCoordinator.resrvation = reservation
+        
+        thirdStepRCoordinator.didFinish = { [weak self] map in
+            self?.removeDependency(thirdStepRCoordinator)
+            self?.navigationController?.popViewController(animated: true)
+        }
+        
+        thirdStepRCoordinator.start()
+    }
 }
