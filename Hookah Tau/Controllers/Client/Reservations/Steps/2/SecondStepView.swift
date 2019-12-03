@@ -173,8 +173,7 @@ class SecondStepView: UIView {
     }
     
     
-    
-    private func setUpBookingPeriod(_ startTime: Date) {
+    private func setUpBookingPeriod(_ startTime: Date, _ endTime: Date? = nil) {
         self.scrollView.addSubview(startPoint)
         self.scrollView.addSubview(endPoint)
         self.scrollView.addSubview(fillInterval)
@@ -188,8 +187,14 @@ class SecondStepView: UIView {
         startLeadingConstraint = startPoint.leftAnchor.constraint(equalTo: scrollView.leftAnchor,
                                                                   constant: startConstr)
         
-        endLeadingConstraint = endPoint.leftAnchor.constraint(equalTo: scrollView.leftAnchor,
-                                                              constant:startConstr + Constants.minBookingLength)
+        if let end = endTime {
+            let endConstr = CGFloat(end.getMinutesPeriods(fromStart: startDate) * Constants.widthTimePoint)
+            endLeadingConstraint = endPoint.leftAnchor.constraint(equalTo: scrollView.leftAnchor,
+                                                                  constant: endConstr)
+        } else {
+            endLeadingConstraint = endPoint.leftAnchor.constraint(equalTo: scrollView.leftAnchor,
+                                                                  constant:startConstr + Constants.minBookingLength)
+        }
         
         NSLayoutConstraint.activate([
             

@@ -162,7 +162,10 @@ extension Date {
     }
     
     func getAdminsStartingPoint() -> Int {
-        let comp = Calendar.current.dateComponents([.hour, .minute], from: self)
+        var calendar = Calendar.current
+        calendar.timeZone = TimeZone(abbreviation: "UTC")!
+        
+        let comp = calendar.dateComponents([.hour, .minute], from: self)
         return (comp.hour! * 6 + comp.minute! / 10)
     }
     
