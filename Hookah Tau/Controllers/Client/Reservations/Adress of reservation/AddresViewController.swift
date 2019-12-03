@@ -24,6 +24,7 @@ class AddresViewController: BaseViewController {
         view.backgroundColor = .white
         navigationItem.title = "Заведения"
         
+        navigationController?.navigationBar.prefersLargeTitles = true
         setUpTableView()
     }
     

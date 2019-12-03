@@ -31,6 +31,9 @@ class ThirdStepReservationViewController: BaseViewController {
                 else { return }
             
             navigationItem.title = data.address
+            
+            guard let res = reservation else { return }
+            thirdStepView?.bind(withModel: res)
         }
     }
     
@@ -63,6 +66,7 @@ class ThirdStepReservationViewController: BaseViewController {
         setupMap()
         
         reservationService = ReservationsService(apiClient: APIClient.shared)
+        navigationController?.navigationBar.prefersLargeTitles = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -78,21 +82,25 @@ class ThirdStepReservationViewController: BaseViewController {
             return
         }
         
+        let width = view.frame.width
         if reservation.establishment == 1 {
             mapView = MapView1.loadFromNib()
+            mapView?.scrollViewParent.contentInset = UIEdgeInsets(top: 0,
+                                                                  left: width / 2,
+                                                                  bottom: 200,
+                                                                  right: width / 2)
+
+            mapView?.scrollViewParent.setContentOffset(CGPoint(x: 0, y: 50), animated: false)
         } else {
             mapView = MapView2.loadFromNib()
+            mapView?.scrollViewParent.setContentOffset(CGPoint(x: 0, y: -100), animated: false)
+            mapView?.scrollViewParent.contentInset = UIEdgeInsets(top: 100,
+                                                                  left: width / 2,
+                                                                  bottom: 100,
+                                                                  right: width / 2)
         }
         
         contentForMap.addSubviewThatFills(mapView)
-        
-        let width = view.frame.width
-        mapView?.scrollViewParent.contentInset = UIEdgeInsets(top: 0,
-                                                              left: width / 2,
-                                                              bottom: 300,
-                                                              right: width / 2)
-        
-        mapView?.scrollViewParent.setContentOffset(CGPoint(x: 0, y: -100), animated: false)
         
         mapView?.isUserInteractionEnabled = false
         mapView?.scrollToTable(table: reservation.reservedTable)

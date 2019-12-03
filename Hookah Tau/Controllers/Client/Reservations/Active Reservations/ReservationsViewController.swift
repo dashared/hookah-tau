@@ -55,7 +55,7 @@ class ReservationsViewController: BaseViewController {
         setUpNavigationBar()
         
         reservationsService = ReservationsService(apiClient: APIClient.shared)
-        
+        navigationController?.navigationBar.prefersLargeTitles = true
         setUpContentView()
     }
     

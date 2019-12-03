@@ -113,5 +113,37 @@
             </objects>
             <point key="canvasLocation" x="1457.9710144927537" y="-38.169642857142854"/>
         </scene>
+        <!--Change Reservation View Controller-->
+        <scene sceneID="zZt-Ob-8J3">
+            <objects>
+                <viewController storyboardIdentifier="ChangeReservationViewController" id="qmR-St-vh2" customClass="ChangeReservationViewController" customModule="Hookah_Tau" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mnl-c9-WGz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kon-kQ-rMb">
+                                <rect key="frame" x="0.0" y="502" width="414" height="394"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="394" id="Ppm-PI-ASV"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="kon-kQ-rMb" firstAttribute="leading" secondItem="Oj9-9F-isg" secondAttribute="leading" id="5wF-Rc-6Na"/>
+                            <constraint firstAttribute="bottom" secondItem="kon-kQ-rMb" secondAttribute="bottom" id="IAO-aj-hyT"/>
+                            <constraint firstItem="kon-kQ-rMb" firstAttribute="trailing" secondItem="Oj9-9F-isg" secondAttribute="trailing" id="cZG-IB-ohm"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Oj9-9F-isg"/>
+                    </view>
+                    <connections>
+                        <outlet property="childContentView" destination="kon-kQ-rMb" id="5DH-RF-lEQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H8g-xl-PmS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2350.7246376811595" y="-38.169642857142854"/>
+        </scene>
     </scenes>
 </document>
