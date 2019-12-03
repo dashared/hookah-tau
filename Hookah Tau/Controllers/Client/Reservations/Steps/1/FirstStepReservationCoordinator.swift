@@ -28,10 +28,6 @@ class FirstStepReservationCoordinator: BaseCoordinator {
         navigationController?.pushViewController(reservationVC, animated: true)
     }
     
-    func callAdmin() {
-        
-    }
-    
     func makeReservation(model: SecondStepModel,
                          mapView: MapImageScroll?) {
         
@@ -43,7 +39,13 @@ class FirstStepReservationCoordinator: BaseCoordinator {
         
         addDependency(reservationCoordinator)
         
-        reservationCoordinator.didFinish = { [weak self] mapView in
+        reservationCoordinator.didFinish = {
+            self.navigationController?.popViewController(animated: false)
+            self.removeDependency(reservationCoordinator)
+            self.didFinish?()
+        }
+        
+        reservationCoordinator.goBack = { [weak self] mapView in
             
             self?.navigationController?.popViewController(animated: false)
             self?.removeDependency(reservationCoordinator)

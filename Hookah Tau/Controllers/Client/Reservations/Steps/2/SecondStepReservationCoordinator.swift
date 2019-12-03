@@ -13,7 +13,9 @@ class SecondStepReservationCoordinator: BaseCoordinator {
     
     // MARK: - Properties
     
-    var didFinish: ((MapImageScroll?) -> Void)?
+    var didFinish: (() -> Void)?
+    
+    var goBack: ((MapImageScroll?) -> Void)?
     
     var model: SecondStepModel?
     
@@ -39,19 +41,17 @@ class SecondStepReservationCoordinator: BaseCoordinator {
     }
     
     func cancel(_ mapView: MapImageScroll?) {
-        didFinish?(mapView)
+        goBack?(mapView)
     }
     
     func book(_ mapView: MapImageScroll?, reservation: Reservation) {
         let coordinator = ThirdStepReservationCoordinator(navigationController: navigationController)
         addDependency(coordinator)
         
-        coordinator.didFinish = { [weak self] mapView in
+        coordinator.didFinish = { [weak self] in
             self?.navigationController?.popViewController(animated: false)
             self?.removeDependency(coordinator)
-            if let vv = self?.navigationController?.topViewController as? SecondStepReservationViewController {
-                vv.mapView = mapView
-            }
+            self?.didFinish?()
         }
         
         coordinator.mapView = mapView

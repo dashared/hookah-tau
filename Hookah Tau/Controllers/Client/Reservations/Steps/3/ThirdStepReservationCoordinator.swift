@@ -12,7 +12,7 @@ class ThirdStepReservationCoordinator: BaseCoordinator {
     
     // MARK: - Properties
     
-    var didFinish: ((MapImageScroll?) -> Void)?
+    var didFinish: (() -> Void)?
     
     var mapView: MapImageScroll?
     
@@ -39,6 +39,6 @@ class ThirdStepReservationCoordinator: BaseCoordinator {
     
     /// Goes back to `allReservations` screen
     func close() {
-        didFinish?(nil)
+        didFinish?()
     }
 }

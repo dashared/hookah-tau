@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -15,10 +16,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="bJ1-1q-VXq">
-                    <rect key="frame" x="20" y="20" width="374" height="121.5"/>
+                    <rect key="frame" x="20" y="20" width="374" height="131.5"/>
                     <subviews>
-                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="Dkh-B7-3Dl">
-                            <rect key="frame" x="16.5" y="0.0" width="341.5" height="82.5"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Dkh-B7-3Dl">
+                            <rect key="frame" x="16.5" y="0.0" width="341.5" height="92.5"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Забронировать 7 столик на 3 человека 29 марта с 3:00 до 5:30?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7M9-lI-egu">
                                     <rect key="frame" x="0.0" y="0.0" width="341.5" height="41"/>
@@ -27,18 +28,18 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Минимальное количество кальянов: 2" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zMP-Wa-N6b">
-                                    <rect key="frame" x="11" y="62" width="319" height="20.5"/>
+                                    <rect key="frame" x="11" y="72" width="319" height="20.5"/>
                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
                         </stackView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PHb-Nt-9I2">
-                            <rect key="frame" x="47" y="92.5" width="280.5" height="29"/>
+                        <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PHb-Nt-9I2">
+                            <rect key="frame" x="47" y="102.5" width="280.5" height="29"/>
                             <string key="text">Если Вам нужно что-то особенное, Вы можете 
-связаться с администратором.</string>
-                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+связаться с администратором. </string>
+                            <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="12"/>
                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -130,7 +131,7 @@
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="RJE-Hk-KNh" secondAttribute="bottom" constant="36" id="0W3-e2-hCU"/>
                 <constraint firstItem="9c7-IZ-n2p" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="94y-7J-ksb"/>
-                <constraint firstItem="9c7-IZ-n2p" firstAttribute="top" secondItem="bJ1-1q-VXq" secondAttribute="bottom" constant="30" id="9TT-vO-7PZ"/>
+                <constraint firstItem="9c7-IZ-n2p" firstAttribute="top" secondItem="bJ1-1q-VXq" secondAttribute="bottom" constant="20" id="9TT-vO-7PZ"/>
                 <constraint firstItem="RJE-Hk-KNh" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="AgS-kP-UNE"/>
                 <constraint firstItem="RJE-Hk-KNh" firstAttribute="top" secondItem="9c7-IZ-n2p" secondAttribute="bottom" constant="20" id="FAI-xj-uWk"/>
                 <constraint firstAttribute="trailing" secondItem="bJ1-1q-VXq" secondAttribute="trailing" constant="20" id="OCH-eC-kP5"/>
@@ -147,9 +148,10 @@
                 <outlet property="intervalsStackView" destination="IIO-je-eBt" id="gaP-LX-Xed"/>
                 <outlet property="numberOfGuestsLabel" destination="QuY-68-2ax" id="DvK-dr-c3J"/>
                 <outlet property="scrollView" destination="zk1-3E-2kS" id="b8R-jY-2Q3"/>
+                <outlet property="specialLabel" destination="PHb-Nt-9I2" id="hXL-Je-dax"/>
                 <outlet property="totalBookingLabel" destination="7M9-lI-egu" id="7YU-yI-Gm4"/>
             </connections>
-            <point key="canvasLocation" x="137.59999999999999" y="70.164917541229386"/>
+            <point key="canvasLocation" x="-8" y="70"/>
         </view>
     </objects>
 </document>

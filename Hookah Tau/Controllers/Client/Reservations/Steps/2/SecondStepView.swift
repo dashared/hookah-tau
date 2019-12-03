@@ -24,6 +24,23 @@ class SecondStepView: UIView {
     
     @IBOutlet weak var infoLabel: UILabel!
     
+    @IBOutlet weak var specialLabel: UILabel! {
+        didSet {
+            let m = NSMutableAttributedString(string: "Если Вам нужно что-то особенное, Вы можете связаться с администратором ")
+        
+            let image1Attachment = NSTextAttachment()
+            image1Attachment.bounds = CGRect(x: 0, y: -3, width: 15, height: 15)
+            image1Attachment.image = #imageLiteral(resourceName: "phone")
+            let image1String = NSMutableAttributedString(attachment: image1Attachment)
+            m.append(image1String)
+            specialLabel.attributedText = m
+            
+            let gr = UITapGestureRecognizer(target: self, action: #selector(callAlmin))
+            specialLabel.addGestureRecognizer(gr)
+        }
+    }
+    
+    
     @IBOutlet weak var numberOfGuestsLabel: UILabel!
     
     @IBOutlet weak var guestSlider: UISlider!
@@ -122,6 +139,15 @@ class SecondStepView: UIView {
                                endTime: d.endTime,
                                numberOfGuests: value,
                                reservedTable: d.reservedTable)
+    }
+    
+    @objc func callAlmin() {
+        guard
+            let m = model?.establishment,
+            let phone = TotalStorage.standard.getEstablishment(m)?.admin,
+                let urlPhone = URL(string: "tel://79\(phone)") else { return }
+        
+            UIApplication.shared.open(urlPhone)
     }
     
     func getNumberOfCalians(_ sliderValue: Int) -> String {

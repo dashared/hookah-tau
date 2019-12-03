@@ -127,7 +127,7 @@ class FirstStepView: UIView {
     
     /// Вьюшка, обозначающая часы закрытия кальянки
     func setupClosingInterval() {
-        let offset = CGFloat(Constants.startClosingTime * Constants.widthTimePoint)
+        let offset = CGFloat(Constants.startClosingTime * Constants.widthTimePoint + Constants.widthTimePoint / 2)
         let width = CGFloat(Constants.closingDuration * Constants.widthTimePoint)
         let height = CGFloat(Constants.heightIntervals)
         let closingTimeView = UIView(frame: CGRect(x: 0, y: 0, width: width, height: height))

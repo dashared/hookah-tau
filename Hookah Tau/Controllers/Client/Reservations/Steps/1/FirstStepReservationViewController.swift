@@ -87,7 +87,7 @@ class FirstStepReservationViewController: BaseViewController {
                                 constant: -childContentView.frame.height - 20)
         
         continueButton.addTarget(self, action: #selector(continueBooking), for: .touchUpInside)
-        callButton.addTarget(self, action: #selector(call(phone:)), for: .touchUpInside)
+        callButton.addTarget(self, action: #selector(call), for: .touchUpInside)
     }
     
     func performUpdate() {
@@ -156,7 +156,7 @@ class FirstStepReservationViewController: BaseViewController {
                                      mapView: map)
     }
     
-    @objc func call(phone: String) {
+    @objc func call() {
         guard
             let phone = TotalStorage.standard.getEstablishment(establishmentId)?.admin,
             let urlPhone = URL(string: "tel://79\(phone)") else { return }
@@ -173,10 +173,14 @@ extension FirstStepReservationViewController: MapHandler {
 }
 
 extension FirstStepReservationViewController: MapUpdater {
+    ///
     func update(_ date: Date) {
-        let areBooked =  allReservations?.intervals[date] ?? []
+        let areBooked = allReservations?.intervals[date] ?? []
         
-        if Set(areBooked).contains(tableId) {
+        let isAdmin = DataStorage.standard.getUserModel()?.isAdmin ?? false
+        let closed = isAdmin || date.isInClosingHours()
+        
+        if Set(areBooked).contains(tableId) || closed {
             continueButton.availiable = false
         } else {
             continueButton.availiable = true

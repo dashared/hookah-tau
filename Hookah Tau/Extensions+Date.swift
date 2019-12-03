@@ -187,6 +187,33 @@ extension Date {
             return (startDate, endDate)
         }
     }
+    
+    /// Определяем попадает ли в промежуток между [3:00, 12:00)
+    func isInClosingHours() -> Bool {
+        var calendar = Calendar.current
+        calendar.timeZone = TimeZone(abbreviation: "UTC")!
+        
+        let day = calendar.dateComponents([.hour, .day, .month, .year, .minute], from: self)
+        
+        var dateCalendars = DateComponents()
+        dateCalendars.hour = 3
+        dateCalendars.minute = 0
+        dateCalendars.day = day.day!
+        dateCalendars.month = day.month!
+        dateCalendars.year = day.year!
+        dateCalendars.timeZone = TimeZone(abbreviation: "GMT")
+        
+        let startClosing = calendar.date(from: dateCalendars)!
+        
+        dateCalendars.hour = 11
+        dateCalendars.minute = 50
+        
+        let endClosing = calendar.date(from: dateCalendars)!
+        
+        let intervalClosing = DateInterval(start: startClosing, end: endClosing)
+        
+        return intervalClosing.contains(self)
+    }
 }
 
 extension Date {

@@ -36,7 +36,8 @@ class AddressCoordinator: BaseCoordinator {
         addDependency(reservationCoordinator)
         reservationCoordinator.didFinish = { [weak self] in
             self?.removeDependency(reservationCoordinator)
-            self?.navigationController?.popViewController(animated: true)
+            self?.navigationController?.popViewController(animated: false)
+            self?.didFinish?()
         }
         
         reservationCoordinator.start()

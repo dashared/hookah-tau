@@ -36,7 +36,7 @@ class ReservationsCoordinator: BaseCoordinator {
         
         thirdStepRCoordinator.resrvation = reservation
         
-        thirdStepRCoordinator.didFinish = { [weak self] map in
+        thirdStepRCoordinator.didFinish = { [weak self] in
             self?.removeDependency(thirdStepRCoordinator)
             self?.navigationController?.popViewController(animated: true)
         }
