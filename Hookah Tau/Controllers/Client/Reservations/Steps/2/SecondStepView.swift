@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// стол, начало, интервалы (???), establishment
 struct SecondStepModel {
     var establishment: Int
     var table: Int
@@ -31,10 +32,23 @@ class SecondStepView: UIView {
     
     @IBOutlet weak var intervalsStackView: UIStackView!
     
+    var data: ReservationData? {
+        didSet {
+            guard let d = data else { return }
+            let (date, time) = Date.format(d.startTime, d.endTime)
+            totalBookingLabel.text = "Забронировать \(d.reservedTable) столик на \(d.numberOfGuests) человека \(date) \(time)?"
+        }
+    }
+    
     var model: SecondStepModel? {
         didSet {
             guard let model = model else { return }
-            totalBookingLabel.text = "Забронировать \(model.table) столик на \(Int(guestSlider.value)) человека \(model.startTime)?"
+            
+            data = ReservationData(establishment: model.establishment,
+                                   startTime: model.startTime,
+                                   endTime: model.startTime.addHours(2),
+                                   numberOfGuests: Int(guestSlider.value),
+                                   reservedTable: model.table)
 
             setUpIntervals(model.startTime)
             setUpReservedIntervals(model.reservedintervals)
@@ -45,23 +59,25 @@ class SecondStepView: UIView {
     var startLeadingConstraint: NSLayoutConstraint!
     var endLeadingConstraint: NSLayoutConstraint!
     
-    var startPoint: UIView = {
-        var view = UIView()
-        view.backgroundColor = .blue
+    var startPoint: UIImageView = {
+        var view = UIImageView()
+        view.isUserInteractionEnabled = true
+        view.image = #imageLiteral(resourceName: "handle_left")
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    var endPoint: UIView = {
-        var view = UIView()
-        view.backgroundColor = .red
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
+    var endPoint: UIImageView = {
+       var view = UIImageView()
+       view.isUserInteractionEnabled = true
+       view.image = #imageLiteral(resourceName: "fff")
+       view.translatesAutoresizingMaskIntoConstraints = false
+       return view
     }()
     
     var fillInterval: UIView = {
         var view = UIView()
-        view.backgroundColor = #colorLiteral(red: 0.476841867, green: 0.5048075914, blue: 1, alpha: 0.604880137)
+        view.backgroundColor = #colorLiteral(red: 0, green: 0.5921568627, blue: 1, alpha: 0.3426262843)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -82,7 +98,14 @@ class SecondStepView: UIView {
         let value = Int(sender.value)
         numberOfGuestsLabel.text = "Количество гостей: \(value)"
         infoLabel.text = getNumberOfCalians(value)
-        totalBookingLabel.text = "Забронировать \(model?.table ?? 0) столик на \(value) человека 29 марта с 3:00 до 5:30?"
+        
+        guard let d = data else { return }
+        
+        data = ReservationData(establishment: d.establishment,
+                               startTime: d.startTime,
+                               endTime: d.endTime,
+                               numberOfGuests: value,
+                               reservedTable: d.reservedTable)
     }
     
     func getNumberOfCalians(_ sliderValue: Int) -> String {
@@ -108,31 +131,35 @@ class SecondStepView: UIView {
         }
     }
     
+    
+    
     private func setUpBookingPeriod(_ startTime: Date) {
         self.scrollView.addSubview(startPoint)
         self.scrollView.addSubview(endPoint)
         self.scrollView.addSubview(fillInterval)
         
-        let startDate = startTime.set(hours: 12, minutes: 0, seconds: 0)!
+        let startDate = startTime.set(hours: 12, minutes: 0, seconds: 0)!// for client
         
-        let startConstr = CGFloat(startDate.getMinutesPeriods(fromStart: startTime) * Constants.timepointWidth)
+        let startConstr = CGFloat(startTime.getMinutesPeriods(fromStart: startDate) * Constants.timepointWidth)
         
-        scrollView.setContentOffset(CGPoint(x: startConstr, y: 0), animated: true)
+        scrollView.setContentOffset(CGPoint(x: startConstr - 50, y: 0), animated: true)
         
         startLeadingConstraint = startPoint.leftAnchor.constraint(equalTo: scrollView.leftAnchor,
                                                                   constant: startConstr)
+        
         endLeadingConstraint = endPoint.leftAnchor.constraint(equalTo: scrollView.leftAnchor,
                                                               constant:startConstr + CGFloat(10 * Constants.timepointWidth))
         
         NSLayoutConstraint.activate([
-            startPoint.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 0),
-            endPoint.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 0),
             
             startPoint.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 0),
             endPoint.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 0),
             
-            startPoint.widthAnchor.constraint(equalToConstant: 7),
-            endPoint.widthAnchor.constraint(equalToConstant: 7),
+            startPoint.widthAnchor.constraint(equalToConstant: Constants.pointWidth),
+            endPoint.widthAnchor.constraint(equalToConstant: Constants.pointWidth),
+            
+            startPoint.heightAnchor.constraint(equalToConstant: Constants.pointHeight),
+            endPoint.heightAnchor.constraint(equalToConstant: Constants.pointHeight),
             
             startLeadingConstraint,
             endLeadingConstraint,
@@ -140,7 +167,7 @@ class SecondStepView: UIView {
             fillInterval.leftAnchor.constraint(equalTo: startPoint.rightAnchor, constant: 0),
             fillInterval.rightAnchor.constraint(equalTo: endPoint.leftAnchor, constant: 0),
             
-            fillInterval.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 0),
+            fillInterval.heightAnchor.constraint(equalToConstant: Constants.pointHeight),
             fillInterval.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 0)
         ])
         
@@ -166,19 +193,53 @@ class SecondStepView: UIView {
     // MARK: - Pan
     
     @objc func handlePanStart(recognizer:UIPanGestureRecognizer) {
+        guard let d = data else { return }
+        
           let translation = recognizer.translation(in: self.intervalsStackView)
           if let view = recognizer.view {
             startLeadingConstraint.constant += translation.x
+            
+            let offset = Int(startLeadingConstraint.constant) % Constants.timepointWidth
+            if offset == 0 {
+                
+                let startDate = d.startTime.set(hours: 12, minutes: 0, seconds: 0)!// for client
+                let p = Int(startLeadingConstraint.constant) / Constants.timepointWidth
+                let start = startDate.addPeriods(p)
+                
+                data = ReservationData(establishment: d.establishment,
+                                       startTime: start,
+                                       endTime: d.endTime,
+                                       numberOfGuests: d.numberOfGuests,
+                                       reservedTable: d.reservedTable)
+            }
+            
             view.setNeedsUpdateConstraints()
           }
-            
+        
+        
           recognizer.setTranslation(CGPoint.zero, in: self.intervalsStackView)
     }
     
     @objc func handlePanEnd(recognizer:UIPanGestureRecognizer) {
+        guard let d = data else { return }
+        
           let translation = recognizer.translation(in: self.intervalsStackView)
           if let view = recognizer.view {
             endLeadingConstraint.constant += translation.x
+            
+            let offset = Int(endLeadingConstraint.constant) % Constants.timepointWidth
+            if offset == 0 {
+                let startDate = d.startTime.set(hours: 12, minutes: 0, seconds: 0)!// for client
+                let p = Int(endLeadingConstraint.constant) / Constants.timepointWidth
+                let end = startDate.addPeriods(p)
+                
+                data = ReservationData(establishment: d.establishment,
+                                       startTime: d.startTime,
+                                       endTime: end,
+                                       numberOfGuests: d.numberOfGuests,
+                                       reservedTable: d.reservedTable)
+            }
+            
             view.setNeedsUpdateConstraints()
           }
             
@@ -200,5 +261,8 @@ extension SecondStepView {
         static let clientDuration = 90
         // 12:00 = 12 * 6
         static let clientStartingPoint = 72
+        
+        static let pointWidth: CGFloat = 19
+        static let pointHeight: CGFloat = 86
     }
 }

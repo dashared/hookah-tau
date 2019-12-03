@@ -31,23 +31,8 @@ class ReservationView: UIView {
         adressLabel?.text = establishment.address
         maxPeopleLabel?.text = "\(model.numberOfGuests) " + (2...4 ~= model.numberOfGuests ? "человека" : "человек")
         
-        let (date, time) = format(model.startTime, model.endTime)
+        let (date, time) = Date.format(model.startTime, model.endTime)
         dateLabel?.text = date
         timeLabel?.text = time
-    }
-    
-    private func format(_ startDate: Date, _ endDate: Date) -> (date: String, time: String) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.calendar = Calendar.current
-        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
-        dateFormatter.dateFormat = "d MMMM"
-        dateFormatter.locale = Locale(identifier: "ru_RU")
-
-        let dateStr = "\(dateFormatter.string(from: startDate))"
-        
-        dateFormatter.dateFormat = "HH:mm"
-        let timeStr = "\(dateFormatter.string(from: startDate)) — \(dateFormatter.string(from: endDate))"
-        
-        return (dateStr, timeStr)
     }
 }

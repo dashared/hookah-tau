@@ -99,6 +99,17 @@ extension Date {
         return set(hours: 0, minutes: 0, seconds: 0)!
     }
     
+    func addHours(_ h: Int) -> Date {
+        return self.addingTimeInterval(Double(h) * 60.0 * 60.0)
+    }
+    
+    func addPeriods(_ p: Int) -> Date {
+        let h = (p * 10 / 60) % 24
+        let m = (p * 10) % 60
+        
+        return self.addingTimeInterval(Double(h) * 60.0 * 60.0 + Double(m) * 60.0)
+    }
+ 
     func set(hours: Int, minutes: Int, seconds: Int) -> Date? {
 
         let dateFormatter = DateFormatter()
@@ -174,5 +185,22 @@ extension Date {
             
             return (startDate, endDate)
         }
+    }
+}
+
+extension Date {
+    static func format(_ startDate: Date, _ endDate: Date) -> (date: String, time: String) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.calendar = Calendar.current
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        dateFormatter.dateFormat = "d MMMM"
+        dateFormatter.locale = Locale(identifier: "ru_RU")
+
+        let dateStr = "\(dateFormatter.string(from: startDate))"
+        
+        dateFormatter.dateFormat = "HH:mm"
+        let timeStr = "\(dateFormatter.string(from: startDate)) — \(dateFormatter.string(from: endDate))"
+        
+        return (dateStr, timeStr)
     }
 }

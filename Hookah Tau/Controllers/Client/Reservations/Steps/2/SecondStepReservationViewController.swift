@@ -12,11 +12,15 @@ class SecondStepReservationViewController: BaseViewController {
 
     // MARK: - Properties
     
-    weak var coordinator: SecondStepReservationCoordinator?
-    
     @IBOutlet weak var childContentView: UIView!
     
     var secondStepView: SecondStepView?
+    
+    /// координатор
+    weak var coordinator: SecondStepReservationCoordinator?
+    
+    /// service для создания бронирования
+    var reservationService: ReservationsService?
     
     /// map view from the previous screen
     var mapView: MapImageScroll? 
@@ -25,12 +29,6 @@ class SecondStepReservationViewController: BaseViewController {
     
     /// address of the building to display in nav bar title
     var address: String = "Покровский бр., 11"
-    
-    var reservation: Reservation? {
-        didSet {
-            // todo: засетить все
-        }
-    }
     
     /// booked periods for this table for this date
     var bookedPeriods: [ReservationPeriod] = [] {
@@ -63,6 +61,7 @@ class SecondStepReservationViewController: BaseViewController {
         setupChildContainer()
         setupButtons()
     
+        reservationService = ReservationsService(apiClient: APIClient.shared)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -100,11 +99,12 @@ class SecondStepReservationViewController: BaseViewController {
         
         let width = view.frame.width
         
-        mapView?.scrollViewParent.contentInset = UIEdgeInsets(top: 100, left: width / 2, bottom: 0, right: width / 2)
         mapView?.scrollViewParent.setContentOffset(CGPoint(x: 0, y: 100), animated: false)
-        
+        mapView?.scrollViewParent.contentInset = UIEdgeInsets(top: 100,
+                                                              left: width / 2,
+                                                              bottom: 0,
+                                                              right: width / 2)
         mapView?.isUserInteractionEnabled = false
-        
         view.sendSubviewToBack(map)
     }
     
@@ -129,6 +129,9 @@ class SecondStepReservationViewController: BaseViewController {
     }
     
     @objc func book() {
+//        guard let data = ReservationData(establishment: model?.establishment,
+//                                         startTime: , endTime: <#T##Date#>, numberOfGuests: <#T##Int#>, reservedTable: <#T##Int#>)
+        
         coordinator?.book(mapView)
     }
 }
