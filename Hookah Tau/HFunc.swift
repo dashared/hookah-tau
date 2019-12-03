@@ -15,7 +15,25 @@ class HFunc {
     
     static let main = HFunc()
     
+    
+    /// Filtering function to get every periods which intersects with given date
+    /// - Parameter periods: all periods of bookings (for a particular table)
+    /// - Parameter today: date
+    func filterPeriodsInDate(_ periods: [ReservationPeriod], _ today: Date) -> [ReservationPeriod] {
+        return periods.filter(filterPeriod(today))
+    }
+    
+    
+    /// Filtering func to get every intersecting period for the table. Useful for 2nd booning screen
+    /// - Parameter periods: Periods for the table
+    /// - Parameter start: for client 12:00, for admin t - 24h
+    /// - Parameter end: for client 3:00, for admin t + 24h
+    func filterPeriodsStartEndDates(_ periods: [ReservationPeriod], _ start: Date, _ end: Date) -> [ReservationPeriod] {
+        return periods.filter(filterInInterval(start, end))
+    }
+    
     private func filterPeriod(_ today: Date) -> ((ReservationPeriod) -> Bool) {
+        
         func datePredicate(_ start: Date, _ end: Date, _ current: Date) -> Bool  {
             var calendar = Calendar.current
             calendar.timeZone = TimeZone(identifier: "GMT")!
@@ -29,11 +47,15 @@ class HFunc {
         return { (period: ReservationPeriod) in datePredicate(period.startTime, period.endTime, today) }
     }
     
-    
-    /// Filtering function to get every periods which intersects with given date
-    /// - Parameter periods: all periods of bookings (for a particular table)
-    /// - Parameter today: date
-    func filterPeriodsInDate(_ periods: [ReservationPeriod], _ today: Date) -> [ReservationPeriod] {
-        return periods.filter(filterPeriod(today))
+    private func filterInInterval(_ start: Date, _ end: Date) -> ((ReservationPeriod) -> Bool) {
+        
+        let dateInterval = DateInterval(start: start, end: end)
+        func intervalChecking(_ sp: Date, _ ep: Date) -> Bool {
+            let innerInterval = DateInterval(start: sp, end: ep)
+            
+            return dateInterval.intersects(innerInterval)
+        }
+        
+        return { (period: ReservationPeriod) in intervalChecking(period.startTime, period.endTime) }
     }
 }

@@ -30,13 +30,6 @@ class SecondStepReservationViewController: BaseViewController {
     /// address of the building to display in nav bar title
     var address: String = "Покровский бр., 11"
     
-    /// booked periods for this table for this date
-    var bookedPeriods: [ReservationPeriod] = [] {
-        didSet {
-            secondStepView?.setUpReservedIntervals(bookedPeriods)
-        }
-    }
-    
     let confirmButton: Button = {
         let button = Button()
         let style = BlackButtonStyle()
@@ -99,10 +92,10 @@ class SecondStepReservationViewController: BaseViewController {
         
         let width = view.frame.width
         
-        mapView?.scrollViewParent.setContentOffset(CGPoint(x: 0, y: 100), animated: false)
+        mapView?.scrollViewParent.setContentOffset(CGPoint(x: 0, y: -100), animated: false)
         mapView?.scrollViewParent.contentInset = UIEdgeInsets(top: 100,
                                                               left: width / 2,
-                                                              bottom: 0,
+                                                              bottom: 100,
                                                               right: width / 2)
         mapView?.isUserInteractionEnabled = false
         view.sendSubviewToBack(map)
@@ -129,9 +122,21 @@ class SecondStepReservationViewController: BaseViewController {
     }
     
     @objc func book() {
-//        guard let data = ReservationData(establishment: model?.establishment,
-//                                         startTime: , endTime: <#T##Date#>, numberOfGuests: <#T##Int#>, reservedTable: <#T##Int#>)
+        guard let booking = secondStepView?.data else { return }
+        confirmButton.loading = true
         
-        coordinator?.book(mapView)
+        print(booking)
+        
+        reservationService?.createReservation(data: booking, completion: { [weak self] (result) in
+            switch result {
+            case .failure:
+                self?.displayAlert(with: "Не удалось совершить бронирование :(")
+                
+            case .success(let reservation):
+                self?.coordinator?.book(self?.mapView, reservation: reservation)
+            }
+
+            self?.confirmButton.loading = false
+        })
     }
 }

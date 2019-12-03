@@ -42,7 +42,7 @@ class SecondStepReservationCoordinator: BaseCoordinator {
         didFinish?(mapView)
     }
     
-    func book(_ mapView: MapImageScroll?) {
+    func book(_ mapView: MapImageScroll?, reservation: Reservation) {
         let coordinator = ThirdStepReservationCoordinator(navigationController: navigationController)
         addDependency(coordinator)
         
@@ -55,6 +55,8 @@ class SecondStepReservationCoordinator: BaseCoordinator {
         }
         
         coordinator.mapView = mapView
+        coordinator.resrvation = reservation
+        
         coordinator.start()
     }
 }

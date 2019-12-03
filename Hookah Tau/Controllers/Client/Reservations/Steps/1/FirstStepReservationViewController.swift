@@ -139,9 +139,13 @@ class FirstStepReservationViewController: BaseViewController {
         let map = mapView
         
         guard let startTime = firstStepView?.fullDate else { return }
+        let isAdmin = DataStorage.standard.getUserModel()?.isAdmin ?? false
         
-        let reservPeriods = HFunc.main.filterPeriodsInDate(allReservations?.reservations[tableId] ?? [],
-                                                           startTime)
+        let (start, end) = isAdmin ? startTime.getAdminStartingAndEndPoint() : startTime.getClientStartingAndEndPoint()
+        
+        let reservPeriods = HFunc.main.filterPeriodsStartEndDates(allReservations?.reservations[tableId] ?? [],
+                                                                  start,
+                                                                  end)
         
         let model = SecondStepModel(establishment: establishmentId,
                                     table: tableId,

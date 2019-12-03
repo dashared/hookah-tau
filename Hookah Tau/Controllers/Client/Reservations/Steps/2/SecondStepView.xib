@@ -62,7 +62,7 @@
                     </subviews>
                 </stackView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RJE-Hk-KNh">
-                    <rect key="frame" x="0.0" y="268" width="414" height="106"/>
+                    <rect key="frame" x="0.0" y="252" width="414" height="106"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dmc-2e-y3T">
                             <rect key="frame" x="0.0" y="21" width="414" height="85"/>
@@ -128,10 +128,11 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="RJE-Hk-KNh" secondAttribute="bottom" constant="36" id="0W3-e2-hCU"/>
                 <constraint firstItem="9c7-IZ-n2p" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="94y-7J-ksb"/>
                 <constraint firstItem="9c7-IZ-n2p" firstAttribute="top" secondItem="bJ1-1q-VXq" secondAttribute="bottom" constant="30" id="9TT-vO-7PZ"/>
                 <constraint firstItem="RJE-Hk-KNh" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="AgS-kP-UNE"/>
-                <constraint firstItem="RJE-Hk-KNh" firstAttribute="top" secondItem="9c7-IZ-n2p" secondAttribute="bottom" constant="36" id="FAI-xj-uWk"/>
+                <constraint firstItem="RJE-Hk-KNh" firstAttribute="top" secondItem="9c7-IZ-n2p" secondAttribute="bottom" constant="20" id="FAI-xj-uWk"/>
                 <constraint firstAttribute="trailing" secondItem="bJ1-1q-VXq" secondAttribute="trailing" constant="20" id="OCH-eC-kP5"/>
                 <constraint firstItem="bJ1-1q-VXq" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="PCm-nY-M6p"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="9c7-IZ-n2p" secondAttribute="trailing" constant="20.5" id="Rh7-V2-v2u"/>

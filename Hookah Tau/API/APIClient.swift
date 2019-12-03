@@ -50,6 +50,7 @@ class APIClient {
                 }
             case 422:
                 if let data = response.data, let error = SE.fromJSONToSelf(data: data) {
+                    print(error)
                     return GeneralError.serverError(error)
                 }
                 

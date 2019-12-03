@@ -167,20 +167,21 @@ extension Date {
     }
     
     func getClientStartingAndEndPoint() -> (Date, Date) {
-        let utcDate = self.getUTCDate()
-        
         // час
-        let hour = Calendar.current.dateComponents([.hour], from: utcDate).hour!
+        var calendar = Calendar.current
+        calendar.timeZone = TimeZone(abbreviation: "UTC")!
+        
+        let hour = calendar.dateComponents([.hour], from: self).hour!
         
         if hour >= 0 && hour <= 3 { // [ 00:00 ... 3:00 ]
-            let endDate = utcDate.set(hours: 3, minutes: 0, seconds: 0)! // 3 00
-            let start = Calendar.current.date(byAdding: .day, value: -1, to: utcDate)!
+            let endDate = self.set(hours: 3, minutes: 0, seconds: 0)! // 3 00
+            let start = calendar.date(byAdding: .day, value: -1, to: self)!
             let startDate = start.set(hours: 12, minutes: 0, seconds: 0)! // 12 00
             
             return (startDate, endDate)
         } else { // [12:00 ... 23:50]
-            let startDate = utcDate.set(hours: 12, minutes: 0, seconds: 0)! // 12 00
-            let end = Calendar.current.date(byAdding: .day, value: 1, to: utcDate)!
+            let startDate = self.set(hours: 12, minutes: 0, seconds: 0)! // 12 00
+            let end = calendar.date(byAdding: .day, value: 1, to: self)!
             let endDate = end.set(hours: 3, minutes: 0, seconds: 0)! // 3 00
             
             return (startDate, endDate)

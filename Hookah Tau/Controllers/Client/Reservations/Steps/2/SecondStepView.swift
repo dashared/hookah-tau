@@ -18,7 +18,7 @@ struct SecondStepModel {
 
 class SecondStepView: UIView {
     
-    // MARK: - Properties
+    // MARK: - IBAOutlets
     
     @IBOutlet weak var totalBookingLabel: UILabel!
     
@@ -32,6 +32,14 @@ class SecondStepView: UIView {
     
     @IBOutlet weak var intervalsStackView: UIStackView!
     
+     // MARK: - Peoperties
+    
+    /// Время начала вертелки.
+    /// Для клиента это 12:00 смены (надо вызвать метод для получения текущей смены).
+    /// Для администратора это `t`  - 24h
+    var startDate: Date?
+    
+    /// Модель вьюшки
     var data: ReservationData? {
         didSet {
             guard let d = data else { return }
@@ -40,6 +48,7 @@ class SecondStepView: UIView {
         }
     }
     
+    /// Модель с которой мы приходим в эту вьюшку
     var model: SecondStepModel? {
         didSet {
             guard let model = model else { return }
@@ -50,12 +59,20 @@ class SecondStepView: UIView {
                                    numberOfGuests: Int(guestSlider.value),
                                    reservedTable: model.table)
 
-            setUpIntervals(model.startTime)
-            setUpReservedIntervals(model.reservedintervals)
+            // isAdmin
+            let isAdmin = DataStorage.standard.getUserModel()?.isAdmin ?? false
+            
+            let (start, _) = isAdmin ? model.startTime.getAdminStartingAndEndPoint() : model.startTime.getClientStartingAndEndPoint()
+            
+            startDate = start
+            
+            setUpIntervals(isAdmin)
+            setUpReservedIntervals(model.reservedintervals, isAdmin)
             setUpBookingPeriod(model.startTime)
         }
     }
     
+    // констрейнты начала и конца интервала
     var startLeadingConstraint: NSLayoutConstraint!
     var endLeadingConstraint: NSLayoutConstraint!
     
@@ -70,19 +87,18 @@ class SecondStepView: UIView {
     var endPoint: UIImageView = {
        var view = UIImageView()
        view.isUserInteractionEnabled = true
-       view.image = #imageLiteral(resourceName: "fff")
+       view.image = #imageLiteral(resourceName: "Group")
        view.translatesAutoresizingMaskIntoConstraints = false
        return view
     }()
     
+    /// Интервал
     var fillInterval: UIView = {
         var view = UIView()
         view.backgroundColor = #colorLiteral(red: 0, green: 0.5921568627, blue: 1, alpha: 0.3426262843)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    
-    var duration: Int? = 1
     
     // MARK: - Lifecycle
 
@@ -114,10 +130,9 @@ class SecondStepView: UIView {
     
     // MARK: - Setup
     
-    func setUpIntervals(_ stTime: Date) {
-        let isAdmin = DataStorage.standard.getUserModel()?.isAdmin ?? false
-        
-        let (startPoint, _) = isAdmin ? stTime.getAdminStartingAndEndPoint() : stTime.getClientStartingAndEndPoint()
+    /// Тут происходит установка интервалов. Разное для клиента и админа
+    func setUpIntervals(_ isAdmin: Bool) {
+        guard let startPoint = startDate else { return }
         
         let startingPoint = isAdmin ? startPoint.getAdminsStartingPoint() : Constants.clientStartingPoint
         let endingPoint = startingPoint + (isAdmin ? Constants.adminDuration : Constants.clientDuration)
@@ -138,9 +153,9 @@ class SecondStepView: UIView {
         self.scrollView.addSubview(endPoint)
         self.scrollView.addSubview(fillInterval)
         
-        let startDate = startTime.set(hours: 12, minutes: 0, seconds: 0)!// for client
+        guard let startDate = startDate else { return }
         
-        let startConstr = CGFloat(startTime.getMinutesPeriods(fromStart: startDate) * Constants.timepointWidth)
+        let startConstr = CGFloat(startTime.getMinutesPeriods(fromStart: startDate) * Constants.widthTimePoint)
         
         scrollView.setContentOffset(CGPoint(x: startConstr - 50, y: 0), animated: true)
         
@@ -148,7 +163,7 @@ class SecondStepView: UIView {
                                                                   constant: startConstr)
         
         endLeadingConstraint = endPoint.leftAnchor.constraint(equalTo: scrollView.leftAnchor,
-                                                              constant:startConstr + CGFloat(10 * Constants.timepointWidth))
+                                                              constant:startConstr + Constants.minBookingLength)
         
         NSLayoutConstraint.activate([
             
@@ -178,8 +193,39 @@ class SecondStepView: UIView {
         endPoint.addGestureRecognizer(scrollViewPanEndGesture)
     }
     
-    func setUpReservedIntervals(_ reservations: [ReservationPeriod]) {
+    func setUpReservedIntervals(_ reservations: [ReservationPeriod], _ isAdmin: Bool) {
+
+        for reservation in reservations {
+            let uiview = UIView(frame: CGRect(x: 0, y: 0, width: Constants.widthTimePoint * reservation.duration, height: Constants.heightIntervals))
+            uiview.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 0.5)
+            
+            
+            uiview.translatesAutoresizingMaskIntoConstraints = false
+            scrollView.addSubview(uiview)
         
+            guard let startDate = startDate else { return }
+            
+            let s = reservation.startTime.getMinutesPeriods(fromStart: startDate) * Constants.widthTimePoint
+            let d = reservation.duration * Constants.widthTimePoint
+            
+            let startTime = s < 0 ? 0 : s
+            
+            let total = (isAdmin ? Constants.adminDuration : Constants.clientDuration) * Constants.widthTimePoint
+            var duration = 0
+            if s < 0 {
+                duration = reservation.endTime.getMinutesPeriods(fromStart: startDate) * Constants.widthTimePoint
+            } else {
+                duration = (s + d) > total ? total - s : d
+            }
+                
+            NSLayoutConstraint.activate([
+                uiview.bottomAnchor.constraint(equalToSystemSpacingBelow: scrollView.bottomAnchor, multiplier: 0),
+                uiview.leftAnchor.constraint(equalTo: scrollView.leftAnchor,
+                                             constant: CGFloat(Constants.widthTimePoint / 2 + startTime)),
+                uiview.widthAnchor.constraint(equalToConstant: CGFloat(duration)),
+                uiview.heightAnchor.constraint(equalToConstant: CGFloat(Constants.heightIntervals))
+            ])
+        }
     }
 
     func bind(model: SecondStepModel) {
@@ -193,57 +239,60 @@ class SecondStepView: UIView {
     // MARK: - Pan
     
     @objc func handlePanStart(recognizer:UIPanGestureRecognizer) {
-        guard let d = data else { return }
         
-          let translation = recognizer.translation(in: self.intervalsStackView)
-          if let view = recognizer.view {
+        let translation = recognizer.translation(in: self.intervalsStackView)
+        let duration = abs(startLeadingConstraint.constant + translation.x - endLeadingConstraint.constant)
+        
+          if let view = recognizer.view, duration >= Constants.minBookingLength {
             startLeadingConstraint.constant += translation.x
             
-            let offset = Int(startLeadingConstraint.constant) % Constants.timepointWidth
-            if offset == 0 {
-                
-                let startDate = d.startTime.set(hours: 12, minutes: 0, seconds: 0)!// for client
-                let p = Int(startLeadingConstraint.constant) / Constants.timepointWidth
-                let start = startDate.addPeriods(p)
-                
-                data = ReservationData(establishment: d.establishment,
-                                       startTime: start,
-                                       endTime: d.endTime,
-                                       numberOfGuests: d.numberOfGuests,
-                                       reservedTable: d.reservedTable)
-            }
+            changeTime(startLeadingConstraint, .start)
             
             view.setNeedsUpdateConstraints()
           }
         
-        
-          recognizer.setTranslation(CGPoint.zero, in: self.intervalsStackView)
+        recognizer.setTranslation(CGPoint.zero, in: self.intervalsStackView)
     }
     
     @objc func handlePanEnd(recognizer:UIPanGestureRecognizer) {
-        guard let d = data else { return }
         
-          let translation = recognizer.translation(in: self.intervalsStackView)
-          if let view = recognizer.view {
+        let translation = recognizer.translation(in: self.intervalsStackView)
+        let duration = abs(startLeadingConstraint.constant - (endLeadingConstraint.constant + translation.x))
+
+        if let view = recognizer.view, duration >= Constants.minBookingLength {
             endLeadingConstraint.constant += translation.x
             
-            let offset = Int(endLeadingConstraint.constant) % Constants.timepointWidth
-            if offset == 0 {
-                let startDate = d.startTime.set(hours: 12, minutes: 0, seconds: 0)!// for client
-                let p = Int(endLeadingConstraint.constant) / Constants.timepointWidth
-                let end = startDate.addPeriods(p)
-                
+            changeTime(endLeadingConstraint, .end)
+            view.setNeedsUpdateConstraints()
+        }
+            
+        recognizer.setTranslation(CGPoint.zero, in: self.intervalsStackView)
+    }
+    
+    func changeTime(_ constraint: NSLayoutConstraint, _ period: Period) {
+        guard let startDate = startDate, let d = data else { return }
+        
+        let offset = Int(constraint.constant) % Constants.widthTimePoint
+        
+        if offset == 0 {
+            let p = Int(constraint.constant) / Constants.widthTimePoint
+            let time = startDate.addPeriods(p)
+            
+            switch period {
+            case .start:
+                data = ReservationData(establishment: d.establishment,
+                                       startTime: time,
+                                       endTime: d.endTime,
+                                       numberOfGuests: d.numberOfGuests,
+                                       reservedTable: d.reservedTable)
+            case .end:
                 data = ReservationData(establishment: d.establishment,
                                        startTime: d.startTime,
-                                       endTime: end,
+                                       endTime: time,
                                        numberOfGuests: d.numberOfGuests,
                                        reservedTable: d.reservedTable)
             }
-            
-            view.setNeedsUpdateConstraints()
-          }
-            
-          recognizer.setTranslation(CGPoint.zero, in: self.intervalsStackView)
+        }
     }
 }
 
@@ -255,7 +304,7 @@ extension SecondStepView: UIScrollViewDelegate {
 
 extension SecondStepView {
     enum Constants {
-        static let timepointWidth = 11
+        static let widthTimePoint = 11
         
         static let adminDuration = 288
         static let clientDuration = 90
@@ -263,6 +312,15 @@ extension SecondStepView {
         static let clientStartingPoint = 72
         
         static let pointWidth: CGFloat = 19
-        static let pointHeight: CGFloat = 86
+        static let pointHeight: CGFloat = 85
+        
+        static let minBookingLength: CGFloat = 132
+        
+        static let heightIntervals = 85
+    }
+    
+    enum Period {
+        case start
+        case end
     }
 }
