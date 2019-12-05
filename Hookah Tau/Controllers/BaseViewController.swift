@@ -16,7 +16,10 @@ class BaseViewController: UIViewController {
     
     // MARK: - Buttons
     
-    func addStackViewWithButtons(leftBtn: Button? = nil, rightBtn: Button? = nil) {
+    func addStackViewWithButtons(leftBtn: Button? = nil,
+                                 rightBtn: Button? = nil,
+                                 constant: CGFloat = -20) {
+        
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.backgroundColor = .red
@@ -25,7 +28,14 @@ class BaseViewController: UIViewController {
         leftBtn?.translatesAutoresizingMaskIntoConstraints = false
         rightBtn?.translatesAutoresizingMaskIntoConstraints = false
         
-        bottomConstraint = NSLayoutConstraint(item: stackView, attribute: .bottom, relatedBy: .equal, toItem: view.safeAreaLayoutGuide, attribute: .bottom, multiplier: 1, constant: -20)
+        bottomConstraint = NSLayoutConstraint(item: stackView,
+                                              attribute: .bottom,
+                                              relatedBy: .equal,
+                                              toItem: view.safeAreaLayoutGuide,
+                                              attribute: .bottom,
+                                              multiplier: 1,
+                                              constant: constant)
+        
         guard let bottomContraint = bottomConstraint else { return }
         view.addConstraint(bottomContraint)
         
@@ -100,8 +110,8 @@ class BaseViewController: UIViewController {
     
     // MARK: - Alert
      
-    func displayAlert(forError error: GeneralError) {
-        var title: String? = "MEOW"
+    func displayAlert(forError error: GeneralError = GeneralError.noData, with message: String? = nil) {
+        var title: String? = message != nil ? error.localizedDescription : message
         switch error {
         case .serverError(let se):
             title = se.error

@@ -39,6 +39,14 @@ class BlackButtonStyle: NSObject {
         button.addSubviewThatFills(view)
     }
     
+    func changeToBookedState(button: Button) {
+        TableStyle.setStripes(for: button)
+    }
+    
+    func changeToAvailiableState(button: Button) {
+        button.layer.sublayers?.removeAll()
+    }
+    
     func backToNormalStyle(button: Button) {
         subviewLayer?.removeFromSuperview()
     }

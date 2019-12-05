@@ -34,7 +34,7 @@ class ApiRequest {
         let url = URL(string: APIClient.BaseUrls.staging + (resolver.groupName ?? "") + resolver.name)!
         self.request = URLRequest(url: url)
         
-        self.request.httpBody = resolver.parameters().toJSONData()
+        self.request.httpBody = resolver.parameters()?.toJSONData()
         self.request.setValue("application/json;charset=utf-8",
                                forHTTPHeaderField: "Content-Type")
         self.request.httpMethod = httpMethod.rawValue

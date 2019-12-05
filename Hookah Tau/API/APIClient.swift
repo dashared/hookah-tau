@@ -50,6 +50,7 @@ class APIClient {
                 }
             case 422:
                 if let data = response.data, let error = SE.fromJSONToSelf(data: data) {
+                    print(error)
                     return GeneralError.serverError(error)
                 }
                 
@@ -57,6 +58,10 @@ class APIClient {
             default:
                 return GeneralError.somethingWentCompletelyWrong
             }
+        }
+        
+        if let _ = response.error {
+            return GeneralError.alamofireError
         }
         
         return GeneralError.somethingWentCompletelyWrong

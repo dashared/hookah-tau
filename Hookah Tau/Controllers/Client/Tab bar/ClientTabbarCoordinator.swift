@@ -41,6 +41,10 @@ class ClientTabbarCoordinator: BaseCoordinator {
         return { navigationController in
             if navigationController.viewControllers.isEmpty {
                 let profileCoordinator = ProfileCoordinator(navigationController: navigationController)
+                profileCoordinator.didEndFlow = { [weak self, weak profileCoordinator] in
+                    self?.removeDependency(profileCoordinator)
+                    self?.didEndFlow?()
+                }
                 self.addDependency(profileCoordinator)
                 profileCoordinator.start()
             }

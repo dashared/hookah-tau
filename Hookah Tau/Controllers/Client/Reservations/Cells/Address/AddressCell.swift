@@ -27,6 +27,10 @@ class AddressCell: UITableViewCell {
         
         selectionStyle = .none
     }
+
+    func bind(withModel model: TotalStorage.EstablishmentData) {
+        addressView?.bind(withModel: model)
+    }
     
     required init?(coder aDecoder: NSCoder)
     {

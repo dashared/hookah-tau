@@ -33,8 +33,7 @@ class ReservationCell: UITableViewCell {
     
     // MARK: - Data
 
-    func bind(withModel model: Int) {
-        
+    func bind(withModel model: Reservation) {
+        reservationCellView?.bind(withModel: model)
     }
-
 }

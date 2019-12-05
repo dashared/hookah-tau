@@ -40,7 +40,7 @@ class RegistrationResolver<Response: MyCodable>: ApiResolver {
         self.phoneNumber = phoneNumber
     }
     
-    func parameters() -> MyCodable {
+    func parameters() -> MyCodable? {
         return Request(name: uname,
                        phoneNumber: phoneNumber,
                        code: code)

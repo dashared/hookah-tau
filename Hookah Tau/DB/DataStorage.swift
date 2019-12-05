@@ -6,7 +6,7 @@
 //  Copyright © 2019 Daria Rednikina. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 /// Класс для хранения промежуточного состояния регистрации,
 /// данных пользователя, ...
@@ -17,6 +17,7 @@ class DataStorage {
         case phone
         case isAdmin
         case loggedIn
+        case cookies
     }
     
     private init() {}
@@ -41,6 +42,43 @@ class DataStorage {
         UserDefaults.standard.setValue(isAdmin, forKey: Keys.isAdmin.rawValue)
     }
     
+    
+    /// Метод для установки куков в хранилище
+    /// - Parameter cookies: куки
+    /// - Parameter url: url для куков
+    func setCookies(_ cookies: [HTTPCookie], forURL url: URL) {
+        let cookiesStorage = HTTPCookieStorage.shared
+        let userDefaults = UserDefaults.standard
+
+        var cookieDict = [String: AnyObject]()
+
+        for cookie in cookiesStorage.cookies(for: url)! {
+            cookieDict[cookie.name] = cookie.properties as AnyObject?
+        }
+
+        userDefaults.set(cookieDict, forKey: Keys.cookies.rawValue)
+    }
+    
+    
+    /// Достаем из хранилища и устанавливаем куки
+    /// Если не выходит, то вовзращаем false
+    func getCookies() -> Bool {
+        let cookiesStorage = HTTPCookieStorage.shared
+        let userDefaults = UserDefaults.standard
+
+        if let cookieDictionary = userDefaults.dictionary(forKey: Keys.cookies.rawValue) {
+            
+            for (_, cookieProperties) in cookieDictionary {
+                if let cookie = HTTPCookie(properties: cookieProperties as! [HTTPCookiePropertyKey : Any] ) {
+                    cookiesStorage.setCookie(cookie)
+                }
+            }
+            return true
+        }
+        
+        return false
+    }
+    
     func getUserModel() -> User? {
         guard
             let name = UserDefaults.standard.string(forKey: Keys.name.rawValue),
@@ -52,4 +90,11 @@ class DataStorage {
         return User(name: name, phoneNumber: phone, isAdmin: isAdmin)
     }
     
+    func isLoggedIn() -> Bool {
+        return UserDefaults.standard.bool(forKey: Keys.loggedIn.rawValue) && getCookies()
+    }
+    
+    func setLoggedInState(_ value: Bool) {
+        UserDefaults.standard.set(value, forKey: Keys.loggedIn.rawValue)
+    }
 }

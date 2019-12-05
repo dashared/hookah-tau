@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--First Step Reservation View Controller-->
+        <scene sceneID="EKz-nU-dQ1">
+            <objects>
+                <viewController storyboardIdentifier="ReservationViewController" id="Fha-pE-okd" customClass="FirstStepReservationViewController" customModule="Hookah_Tau" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cwG-Fa-gXD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RRF-jh-Xme">
+                                <rect key="frame" x="0.0" y="671" width="414" height="225"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="225" id="43Q-xl-4hv"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="RRF-jh-Xme" firstAttribute="leading" secondItem="MXi-ad-tf6" secondAttribute="leading" id="Bs8-yy-Zht"/>
+                            <constraint firstAttribute="bottom" secondItem="RRF-jh-Xme" secondAttribute="bottom" id="KZv-en-hrr"/>
+                            <constraint firstItem="RRF-jh-Xme" firstAttribute="trailing" secondItem="MXi-ad-tf6" secondAttribute="trailing" id="ehP-xe-Opz"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="MXi-ad-tf6"/>
+                    </view>
+                    <connections>
+                        <outlet property="childContentView" destination="RRF-jh-Xme" id="blV-8a-srQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TB1-Hv-wQ6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-140.57971014492756" y="-38.169642857142854"/>
+        </scene>
+        <!--Second Step Reservation View Controller-->
+        <scene sceneID="NON-tn-ls5">
+            <objects>
+                <viewController storyboardIdentifier="SecondStepReservationViewController" id="OAC-Ui-1o4" customClass="SecondStepReservationViewController" customModule="Hookah_Tau" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dZe-8U-Rs6">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NBJ-7w-vpV">
+                                <rect key="frame" x="0.0" y="502" width="414" height="394"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="394" id="KKm-d5-Srx"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="NBJ-7w-vpV" firstAttribute="leading" secondItem="YKO-1X-SYz" secondAttribute="leading" id="ZCK-Y0-Dnb"/>
+                            <constraint firstItem="NBJ-7w-vpV" firstAttribute="trailing" secondItem="YKO-1X-SYz" secondAttribute="trailing" id="ulb-DD-Mmh"/>
+                            <constraint firstAttribute="bottom" secondItem="NBJ-7w-vpV" secondAttribute="bottom" id="zEI-rl-4r7"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="YKO-1X-SYz"/>
+                    </view>
+                    <connections>
+                        <outlet property="childContentView" destination="NBJ-7w-vpV" id="aa6-nY-PUA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rVf-H4-jP0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="706" y="-38"/>
+        </scene>
+        <!--Third Step Reservation View Controller-->
+        <scene sceneID="zRo-J6-3SG">
+            <objects>
+                <viewController storyboardIdentifier="ThirdStepReservationViewController" id="BZu-JB-b3i" customClass="ThirdStepReservationViewController" customModule="Hookah_Tau" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3b8-mw-Gl1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e2X-iN-FVj">
+                                <rect key="frame" x="0.0" y="556" width="414" height="340"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="340" id="5U9-DA-Asv"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lUx-gC-C8T">
+                                <rect key="frame" x="0.0" y="44" width="414" height="512"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="e2X-iN-FVj" firstAttribute="top" secondItem="lUx-gC-C8T" secondAttribute="bottom" id="3gm-hP-Bdu"/>
+                            <constraint firstItem="e2X-iN-FVj" firstAttribute="trailing" secondItem="gXx-re-YYI" secondAttribute="trailing" id="3mf-Ee-0xt"/>
+                            <constraint firstItem="e2X-iN-FVj" firstAttribute="leading" secondItem="gXx-re-YYI" secondAttribute="leading" id="H2H-uv-zpb"/>
+                            <constraint firstItem="gXx-re-YYI" firstAttribute="trailing" secondItem="lUx-gC-C8T" secondAttribute="trailing" id="N8u-eH-14m"/>
+                            <constraint firstAttribute="bottom" secondItem="e2X-iN-FVj" secondAttribute="bottom" id="nQM-9e-gfE"/>
+                            <constraint firstItem="lUx-gC-C8T" firstAttribute="leading" secondItem="gXx-re-YYI" secondAttribute="leading" id="oir-mE-qlS"/>
+                            <constraint firstItem="gXx-re-YYI" firstAttribute="top" secondItem="lUx-gC-C8T" secondAttribute="top" id="zDp-B5-m8M"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="gXx-re-YYI"/>
+                    </view>
+                    <connections>
+                        <outlet property="containerView" destination="e2X-iN-FVj" id="6Zy-M4-sSA"/>
+                        <outlet property="contentForMap" destination="lUx-gC-C8T" id="LBl-cs-Yav"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="En2-ct-Lfj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1457.9710144927537" y="-38.169642857142854"/>
+        </scene>
+        <!--Change Reservation View Controller-->
+        <scene sceneID="zZt-Ob-8J3">
+            <objects>
+                <viewController storyboardIdentifier="ChangeReservationViewController" id="qmR-St-vh2" customClass="ChangeReservationViewController" customModule="Hookah_Tau" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mnl-c9-WGz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kon-kQ-rMb">
+                                <rect key="frame" x="0.0" y="502" width="414" height="394"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="394" id="Ppm-PI-ASV"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Dy-xy-vQH">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="502"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="kon-kQ-rMb" firstAttribute="leading" secondItem="Oj9-9F-isg" secondAttribute="leading" id="5wF-Rc-6Na"/>
+                            <constraint firstAttribute="bottom" secondItem="kon-kQ-rMb" secondAttribute="bottom" id="IAO-aj-hyT"/>
+                            <constraint firstItem="kon-kQ-rMb" firstAttribute="top" secondItem="6Dy-xy-vQH" secondAttribute="bottom" id="W6B-dA-vrO"/>
+                            <constraint firstItem="6Dy-xy-vQH" firstAttribute="leading" secondItem="Oj9-9F-isg" secondAttribute="leading" id="WKh-xt-L3z"/>
+                            <constraint firstItem="kon-kQ-rMb" firstAttribute="trailing" secondItem="Oj9-9F-isg" secondAttribute="trailing" id="cZG-IB-ohm"/>
+                            <constraint firstItem="6Dy-xy-vQH" firstAttribute="top" secondItem="mnl-c9-WGz" secondAttribute="top" id="iK5-6K-mEo"/>
+                            <constraint firstItem="6Dy-xy-vQH" firstAttribute="trailing" secondItem="Oj9-9F-isg" secondAttribute="trailing" id="rrY-dK-bTz"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Oj9-9F-isg"/>
+                    </view>
+                    <connections>
+                        <outlet property="childContentView" destination="kon-kQ-rMb" id="5DH-RF-lEQ"/>
+                        <outlet property="mapContentView" destination="6Dy-xy-vQH" id="5Cu-uI-WT3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H8g-xl-PmS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2350.7246376811595" y="-38.169642857142854"/>
+        </scene>
+    </scenes>
+</document>

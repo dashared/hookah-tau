@@ -16,7 +16,7 @@ class AddresViewController: BaseViewController {
     
     var tableView: UITableView?
     
-    var dataSource: [Int]? = [1]
+    var dataSource: [Int]? = [1, 2]
     
     // MARK: - Lifecycle
     
@@ -24,7 +24,14 @@ class AddresViewController: BaseViewController {
         view.backgroundColor = .white
         navigationItem.title = "Заведения"
         
+        navigationController?.navigationBar.prefersLargeTitles = true
         setUpTableView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+           
+        tabBarController?.tabBar.isHidden = false
     }
     
     // MARK: - Setup
@@ -53,6 +60,13 @@ extension AddresViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: addressCellIdentifier,
                                                  for: indexPath) as! AddressCell
         
+        guard
+            let val = dataSource?[indexPath.row],
+            let model = TotalStorage.standard.getEstablishment(val)
+        else { return cell }
+        
+        cell.bind(withModel: model)
+        
         return cell
     }
     
@@ -60,4 +74,31 @@ extension AddresViewController: UITableViewDelegate, UITableViewDataSource {
         return 168.0
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let establishment = dataSource?[indexPath.row]
+        guard let id = establishment else { return }
+        
+        coordinator?.chooseTableAndTime(inEstablishment: id)
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        guard
+            let val = dataSource?[indexPath.row],
+            let phone = TotalStorage.standard.getEstablishment(val)?.admin,
+            let urlPhone = URL(string: "tel://79\(phone)")
+        else { return nil }
+        
+        let editButton = UITableViewRowAction(style: .normal, title: "🤙🏻") { _,_  in
+            UIApplication.shared.open(urlPhone)
+        }
+        
+        editButton.backgroundColor = .black
+        
+        return [editButton]
+    }
 }

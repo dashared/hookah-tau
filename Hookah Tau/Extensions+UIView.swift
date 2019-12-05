@@ -59,6 +59,22 @@ extension UIView {
         setNeedsLayout()
         layoutIfNeeded()
     }
+    
+    func centerSubview(_ view: UIView?) {
+        guard let view = view else {
+            assert(false, "View mustn't be nil")
+            return
+        }
+
+        view.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(view)
+
+        view.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        view.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+
+        setNeedsLayout()
+        layoutIfNeeded()
+    }
 }
 
 

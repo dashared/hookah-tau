@@ -15,5 +15,11 @@ protocol ApiResolver: class {
     var groupName: String? { get }
     
     /// Parameter for request
-    func parameters() -> MyCodable
+    func parameters() -> MyCodable?
+}
+
+extension ApiResolver {
+    var groupName: String? { return nil }
+    
+    func parameters() -> MyCodable? { return nil }
 }
