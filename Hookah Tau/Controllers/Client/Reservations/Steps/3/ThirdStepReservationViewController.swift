@@ -129,11 +129,10 @@ class ThirdStepReservationViewController: BaseViewController {
     
     @objc func change() {
         guard
-            let res = reservation,
-            let map = mapView
+            let res = reservation
             else { return }
         
-        coordinator?.change(res, map)
+        coordinator?.change(res)
     }
     
     @objc func cancelBooking() {

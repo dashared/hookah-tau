@@ -128,17 +128,26 @@
                                     <constraint firstAttribute="height" constant="394" id="Ppm-PI-ASV"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Dy-xy-vQH">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="502"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="kon-kQ-rMb" firstAttribute="leading" secondItem="Oj9-9F-isg" secondAttribute="leading" id="5wF-Rc-6Na"/>
                             <constraint firstAttribute="bottom" secondItem="kon-kQ-rMb" secondAttribute="bottom" id="IAO-aj-hyT"/>
+                            <constraint firstItem="kon-kQ-rMb" firstAttribute="top" secondItem="6Dy-xy-vQH" secondAttribute="bottom" id="W6B-dA-vrO"/>
+                            <constraint firstItem="6Dy-xy-vQH" firstAttribute="leading" secondItem="Oj9-9F-isg" secondAttribute="leading" id="WKh-xt-L3z"/>
                             <constraint firstItem="kon-kQ-rMb" firstAttribute="trailing" secondItem="Oj9-9F-isg" secondAttribute="trailing" id="cZG-IB-ohm"/>
+                            <constraint firstItem="6Dy-xy-vQH" firstAttribute="top" secondItem="mnl-c9-WGz" secondAttribute="top" id="iK5-6K-mEo"/>
+                            <constraint firstItem="6Dy-xy-vQH" firstAttribute="trailing" secondItem="Oj9-9F-isg" secondAttribute="trailing" id="rrY-dK-bTz"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Oj9-9F-isg"/>
                     </view>
                     <connections>
                         <outlet property="childContentView" destination="kon-kQ-rMb" id="5DH-RF-lEQ"/>
+                        <outlet property="mapContentView" destination="6Dy-xy-vQH" id="5Cu-uI-WT3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H8g-xl-PmS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

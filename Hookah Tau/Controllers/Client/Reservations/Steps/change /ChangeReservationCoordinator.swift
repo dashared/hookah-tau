@@ -14,8 +14,6 @@ class ChangeReservationCoordinator: BaseCoordinator {
     
     var reservation: Reservation?
     
-    var map: MapImageScroll?
-    
     var didFinish: ((Reservation) -> Void)?
     
     // MARK: - Lifecycle

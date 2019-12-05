@@ -13,6 +13,7 @@ struct SecondStepModel {
     var establishment: Int
     var table: Int
     var startTime: Date
+    var endTime: Date? = nil
     var reservedintervals: [ReservationPeriod]
 }
 
@@ -72,7 +73,7 @@ class SecondStepView: UIView {
             
             data = ReservationData(establishment: model.establishment,
                                    startTime: model.startTime,
-                                   endTime: model.startTime.addHours(2),
+                                   endTime: model.endTime ?? model.startTime.addHours(2),
                                    numberOfGuests: Int(guestSlider.value),
                                    reservedTable: model.table)
 
@@ -85,7 +86,7 @@ class SecondStepView: UIView {
             
             setUpIntervals(isAdmin)
             setUpReservedIntervals(model.reservedintervals, isAdmin)
-            setUpBookingPeriod(model.startTime)
+            setUpBookingPeriod(model.startTime, model.endTime)
         }
     }
     

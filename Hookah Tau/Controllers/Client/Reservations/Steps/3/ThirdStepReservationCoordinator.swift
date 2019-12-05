@@ -36,11 +36,10 @@ class ThirdStepReservationCoordinator: BaseCoordinator {
     }
     
     /// You need to pass reservation object and map describing booked table
-    func change(_ reservation: Reservation, _ map: MapImageScroll) {
+    func change(_ reservation: Reservation) {
         let changeCoordinator = ChangeReservationCoordinator(navigationController: navigationController)
         
         changeCoordinator.reservation = reservation
-        changeCoordinator.map = map
         
         changeCoordinator.didFinish = { [weak self] res in
             self?.removeDependency(changeCoordinator)
