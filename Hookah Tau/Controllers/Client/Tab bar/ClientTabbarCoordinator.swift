@@ -8,9 +8,9 @@
 
 import UIKit
 
+typealias TabbarClosure = ((UINavigationController) -> ())
+
 class ClientTabbarCoordinator: BaseCoordinator {
-    
-    typealias TabbarClosure = ((UINavigationController) -> ())
     
     // MARK: - Lifecycle
     
@@ -37,7 +37,7 @@ class ClientTabbarCoordinator: BaseCoordinator {
         }
     }
     
-    private func runProfileFlow() -> TabbarClosure{
+    private func runProfileFlow() -> TabbarClosure {
         return { navigationController in
             if navigationController.viewControllers.isEmpty {
                 let profileCoordinator = ProfileCoordinator(navigationController: navigationController)
