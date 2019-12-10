@@ -39,6 +39,7 @@ class AuthorizationService {
                 }
                 
                 completion(.success(decodedData.isUserRegistered))
+                return
             }
         }
     }
@@ -65,6 +66,7 @@ class AuthorizationService {
                 
                 self.setCookies(response: response)
                 completion(.success(decodedData))
+                return
             }
         }
     }
@@ -94,6 +96,7 @@ class AuthorizationService {
                 
                 self.setCookies(response: response)
                 completion(.success(decodedData))
+                return
             }
         }
     }

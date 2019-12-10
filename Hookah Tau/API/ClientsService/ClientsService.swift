@@ -37,4 +37,30 @@ class ClientsService {
             }
         }
     }
+    
+    func loadReservationsForUser(withUUID uuid: String,
+                                 completion: @escaping ((Result<[Reservation], GeneralError>) -> Void)) {
+        let resolver = ClientReservationsResolver<UserReservationsResponce>(userId: uuid)
+        let request = ApiRequest(resolver: resolver, httpMethod: .get)
+        
+        apiClient.load(request: request.request) { (res) in
+            switch res {
+            case .failure(let err):
+                completion(.failure(err))
+                return
+            case .success(let responce):
+                guard
+                     let d = responce.data,
+                     let decData = resolver.targetClass().fromJSONToSelf(data: d)
+                    else {
+                        completion(.failure(GeneralError.decodeError))
+                        return
+                }
+                
+                completion(.success(decData.reservations))
+                return
+            }
+        }
+        
+    }
 }

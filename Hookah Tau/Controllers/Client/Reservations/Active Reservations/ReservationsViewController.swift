@@ -8,8 +8,6 @@
 
 import UIKit
 
-let reservationCell = "ReservationCell"
-
 class ReservationsViewController: BaseViewController {
     
     // MARK: - Properties

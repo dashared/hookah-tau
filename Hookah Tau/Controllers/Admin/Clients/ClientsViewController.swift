@@ -20,6 +20,8 @@ class ClientsViewController: UITableViewController {
     
     var clientsService: ClientsService?
     
+    weak var coordinator: ClientsCoordinator?
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -56,5 +58,10 @@ class ClientsViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataSource.count
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let user = dataSource[indexPath.row]
+        coordinator?.openUserProfile(user)
     }
 }
