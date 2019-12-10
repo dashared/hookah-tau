@@ -8,8 +8,17 @@
 
 import Foundation
 
+/// Используется в запросах при регистрации пользователя
 struct User: MyCodable {
     var name: String
+    var phoneNumber: String
+    var isAdmin: Bool
+}
+
+/// При запросах на список пользователей в аккаунте администратора
+struct FullUser: MyCodable {
+    var uuid: String
+    var name: String?
     var phoneNumber: String
     var isAdmin: Bool
 }

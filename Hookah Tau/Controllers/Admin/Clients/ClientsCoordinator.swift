@@ -6,12 +6,21 @@
 //  Copyright © 2019 Daria Rednikina. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 
 class ClientsCoordinator: BaseCoordinator {
     
     override func start() {
-        //
+        let storyboard = UIStoryboard(name: "ClientList", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "ClientsViewController") as? ClientsViewController
+        
+        guard let vc = viewController else { return }
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    /// TODO
+    func openUserProfile(withUUID uuid: String) {
+        
     }
 }

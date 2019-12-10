@@ -27,7 +27,6 @@ class AdminTabbarCoordinator: BaseCoordinator {
     }
     
     private func runReservationsFlow() -> TabbarClosure {
-        print("reserv")
         return { [unowned self] navigationController in
             if navigationController.viewControllers.isEmpty {
                 
@@ -36,19 +35,30 @@ class AdminTabbarCoordinator: BaseCoordinator {
     }
     
     private func runClientsFlow() -> TabbarClosure {
-        print("client")
         return { [unowned self] navigationController in
             if navigationController.viewControllers.isEmpty {
+                let clientsCoordinator = ClientsCoordinator(navigationController: navigationController)
+                self.addDependency(clientsCoordinator)
                 
+                clientsCoordinator.didEndFlow = {
+                    self.removeDependency(clientsCoordinator)
+                }
+                
+                clientsCoordinator.start()
             }
         }
     }
     
     private func runProfileFlow() -> TabbarClosure {
-        print("prof")
         return { [unowned self] navigationController in
             if navigationController.viewControllers.isEmpty {
-                
+                let profileCoordinator = ProfileCoordinator(navigationController: navigationController)
+                profileCoordinator.didEndFlow = { [weak self, weak profileCoordinator] in
+                    self?.removeDependency(profileCoordinator)
+                    self?.didEndFlow?()
+                }
+                self.addDependency(profileCoordinator)
+                profileCoordinator.start()
             }
         }
     }

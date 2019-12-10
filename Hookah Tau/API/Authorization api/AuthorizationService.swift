@@ -80,7 +80,9 @@ class AuthorizationService {
         apiClient.load(request: request.request) { result in
             switch result {
             case .failure(let err):
+                print(err)
                 completion(.failure(err))
+                return
             case .success(let response):
                 guard
                     let unwrappedData = response.data,

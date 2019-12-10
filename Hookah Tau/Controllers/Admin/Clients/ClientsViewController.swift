@@ -8,12 +8,53 @@
 
 import UIKit
 
-class ClientsViewController: UIViewController {
-
+class ClientsViewController: UITableViewController {
+    
+    // MARK: - Properties
+    
+    var dataSource: [FullUser] = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
+    var clientsService: ClientsService?
+    
+    // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        navigationItem.title = "Клиенты"
+        clientsService = ClientsService(apiClient: APIClient.shared)
+        loadClients()
     }
 
+    /// Загружаем клиентов кальянки
+    func loadClients() {
+        clientsService?.loadClientsList(completion: { [ weak self ] (res) in
+            switch res {
+            case .failure(let err):
+                print(err)
+            case .success(let arr):
+                self?.dataSource = arr
+            }
+        })
+    }
+    
+    
+    // MARK: - Tableview
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: clientTableViewCellId, for: indexPath) as! ClientTableViewCell
+        
+        let userModel = dataSource[indexPath.row]
+        cell.bind(withModel: userModel)
+        
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return dataSource.count
+    }
 }
