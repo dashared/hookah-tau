@@ -47,3 +47,18 @@ struct ReservationData: MyCodable {
     var reservedTable: Int
    
 }
+
+/// Структура для получения респонса на `GET /admin/reservations/{establishment id}`
+struct ReservationWithUser: MyCodable {
+    
+    var uuis: String
+    var establishment: Int
+    var startTime: Date
+    var endTime: Date
+    var numberOfGuests: Int
+    var reservedTable: Int
+    var owner: FullUser
+    
+}
+
+

@@ -18,6 +18,7 @@ class DataStorage {
         case isAdmin
         case loggedIn
         case cookies
+        case chosenEstablishment // only for admin
     }
     
     private init() {}
@@ -42,6 +43,15 @@ class DataStorage {
         UserDefaults.standard.setValue(isAdmin, forKey: Keys.isAdmin.rawValue)
     }
     
+    /// Сохраняем выбранный администратором establishmentId
+    func setupEstablishmentChoice(id: Int) {
+        UserDefaults.standard.setValue(id, forKey: Keys.chosenEstablishment.rawValue)
+    }
+    
+    func getEstablishmentChoice() -> Int? {
+        let val = UserDefaults.standard.integer(forKey: Keys.chosenEstablishment.rawValue)
+        return val == 0 ? nil : val
+    }
     
     /// Метод для установки куков в хранилище
     /// - Parameter cookies: куки
@@ -95,6 +105,11 @@ class DataStorage {
     }
     
     func setLoggedInState(_ value: Bool) {
+        if !value {
+            UserDefaults.standard.removeObject(forKey: Keys.name.rawValue)
+            UserDefaults.standard.removeObject(forKey: Keys.phone.rawValue)
+            UserDefaults.standard.removeObject(forKey: Keys.cookies.rawValue)
+        }
         UserDefaults.standard.set(value, forKey: Keys.loggedIn.rawValue)
     }
 }

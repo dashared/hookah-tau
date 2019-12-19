@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol AddressMapper: class {
+    func chooseAddress(establishmentId id: Int)
+}
+
 class AddressCoordinator: BaseCoordinator {
     
     // MARK: - Properties
@@ -29,7 +33,7 @@ class AddressCoordinator: BaseCoordinator {
     
     /// continue with reservation
     /// TODO: pass some data
-    func chooseTableAndTime(inEstablishment id: Int) {
+    private func chooseTableAndTime(inEstablishment id: Int) {
         let reservationCoordinator = FirstStepReservationCoordinator(navigationController: navigationController)
         reservationCoordinator.establishment = id
         
@@ -41,5 +45,11 @@ class AddressCoordinator: BaseCoordinator {
         }
         
         reservationCoordinator.start()
+    }
+}
+
+extension AddressCoordinator: AddressMapper {
+    func chooseAddress(establishmentId id: Int) {
+        chooseTableAndTime(inEstablishment: id)
     }
 }

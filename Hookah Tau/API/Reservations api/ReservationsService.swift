@@ -145,4 +145,28 @@ class ReservationsService {
             }
         }
     }
+    
+    func getAdminReservations(establishmentId: Int, completion: @escaping ((Result<[ReservationWithUser], GeneralError>)-> Void)) {
+        let resolver = AReservationsResolver<AReservationResponse>(establishmentId: establishmentId)
+        let request = ApiRequest(resolver: resolver, httpMethod: .get)
+        
+        apiClient.load(request: request.request) { (res) in
+            switch res {
+            case .failure(let err):
+                completion(.failure(err))
+                return
+            case .success(let response):
+                guard
+                    let d = response.data,
+                    let decodedData = resolver.targetClass().fromJSONToSelf(data: d)
+                    else {
+                        completion(.failure(GeneralError.decodeError))
+                        return
+                }
+                
+                completion(.success(decodedData.newAdmin))
+                return
+            }
+        }
+    }
 }

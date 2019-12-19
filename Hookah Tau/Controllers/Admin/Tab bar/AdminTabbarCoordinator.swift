@@ -29,7 +29,14 @@ class AdminTabbarCoordinator: BaseCoordinator {
     private func runReservationsFlow() -> TabbarClosure {
         return { [unowned self] navigationController in
             if navigationController.viewControllers.isEmpty {
+                let addressCoordinator = AdminAddressCoordinator(navigationController: navigationController)
+                self.addDependency(addressCoordinator)
                 
+                addressCoordinator.didEndFlow = {
+                    self.removeDependency(addressCoordinator)
+                }
+                
+                addressCoordinator.start()
             }
         }
     }

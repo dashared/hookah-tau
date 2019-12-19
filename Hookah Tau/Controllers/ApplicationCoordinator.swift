@@ -72,6 +72,7 @@ extension ApplicationCoordinator {
             let isAdmin = DataStorage.standard.getUserModel()?.isAdmin ?? false
             
             if !isAuthorized {
+                DataStorage.standard.setLoggedInState(false)
                 return .auth
             }
             
