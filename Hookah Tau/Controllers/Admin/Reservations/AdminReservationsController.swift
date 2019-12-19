@@ -8,21 +8,37 @@
 
 import UIKit
 
-class AdminReservationsController: UITableViewController {
+class AdminReservationsController: BaseViewController {
     
     // MARK:- Properties
     
     /// Establishment id
     var id: Int?
+    
+    var tableView: UITableView? = {
+        let tableView = UITableView()
+        tableView.backgroundColor = .white
+        return tableView
+    }()
+    
+    var contentView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    var noReservationsView: AdminNoReservationsView?
+    
     var reservationsService: ReservationsService?
+    
     var activeReservations: [ReservationWithUser] = [] {
         didSet {
-            //guard let empty = noReservationsView else { return }
+            guard let empty = noReservationsView else { return }
             if activeReservations.isEmpty {
-                //contentView.bringSubviewToFront(empty)
-                //empty.alpha = 1
+                contentView.bringSubviewToFront(empty)
+                empty.alpha = 1
             } else {
-                //contentView.sendSubviewToBack(empty)
+                contentView.sendSubviewToBack(empty)
                 tableView?.alpha = 1
             }
             
@@ -34,12 +50,46 @@ class AdminReservationsController: UITableViewController {
         super.viewDidLoad()
 
         reservationsService = ReservationsService(apiClient: APIClient.shared)
+        setUpContentView()
+        setupNavBar()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         performUpdate()
+    }
+    
+    // MARK:- Setup
+    
+    func setupNavBar() {
+        self.navigationItem.title = "Брони"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(book))
+    }
+    
+    func setUpContentView() {
+        self.view.addSubviewThatFills(contentView)
+        
+        // empty
+        noReservationsView = AdminNoReservationsView.loadFromNib()
+        contentView.addSubviewThatFills(noReservationsView)
+        noReservationsView?.bookButton?.addTarget(self, action: #selector(book), for: .touchUpInside)
+        
+        noReservationsView?.alpha = 0
+
+        // table
+        contentView.addSubviewThatFills(tableView)
+
+        setUpTableView()
+    }
+    
+    func setUpTableView() {
+        tableView?.delegate = self
+        tableView?.dataSource = self
+        
+        tableView?.alpha = 0
+        
+        tableView?.register(AdminReservationCell.self, forCellReuseIdentifier: adminReservationCellId)
     }
     
     func performUpdate() {
@@ -51,27 +101,36 @@ class AdminReservationsController: UITableViewController {
             case .success(let reservations):
                 self?.activeReservations = reservations
             case .failure(let err):
-                //self?.displayAlert(forError: err)
-                print(err)
+                self?.displayAlert(forError: err)
             }
         })
     }
-
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return activeReservations.count
-    }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "AdminReservationCell", for: indexPath) as! AdminReservationCell
+    // MARK:- Button handler
+    
+    @objc func book() {
         
-        cell.bind(withModel: activeReservations[indexPath.row])
-        return cell
     }
 
+}
+
+
+// MARK: - Table view data source
+
+extension AdminReservationsController: UITableViewDelegate, UITableViewDataSource {
+
+       func numberOfSections(in tableView: UITableView) -> Int {
+           return 1
+       }
+
+       func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+           return activeReservations.count
+       }
+       
+       func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+           let cell = tableView.dequeueReusableCell(withIdentifier: adminReservationCellId, for: indexPath) as! AdminReservationCell
+           
+           cell.bind(withModel: activeReservations[indexPath.row])
+           return cell
+       }
 }

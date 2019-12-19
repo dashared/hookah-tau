@@ -16,11 +16,11 @@ struct AReservationResponse: MyCodable {
 class AReservationsResolver<Response: MyCodable>: ApiResolver {
     
     var name: String {
-        return "/admin"
+        return "/reservations/\(establishmentId)"
     }
     
     var groupName: String? {
-        return "/reservations/\(establishmentId)"
+        return "/admin"
     }
     
     var establishmentId: Int

@@ -8,7 +8,38 @@
 
 import UIKit
 
+let adminReservationCellId = "AdminReservationCell"
+
 class AdminReservationCell: UITableViewCell {
+    // MARK: - Properties
+
+    var reservationCellView: AdminReservationCellView?
+    
+    // MARK: - Init
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?)
+    {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        reservationCellView = AdminReservationCellView.loadFromNib()
+        contentView.addSubviewThatFills(reservationCellView)
+        
+        self.selectionStyle = .none
+    }
+    
+    required init?(coder aDecoder: NSCoder)
+    {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Data
+
+    func bind(withModel model: ReservationWithUser) {
+        reservationCellView?.bind(withModel: model)
+    }
+}
+
+class AdminReservationCellView: UIView {
     
     // MARK:- IBAOutlets
     
