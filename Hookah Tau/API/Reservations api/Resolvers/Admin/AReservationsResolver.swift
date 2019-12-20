@@ -9,7 +9,7 @@
 import Foundation
 
 struct AReservationResponse: MyCodable {
-    var newAdmin: [ReservationWithUser]
+    var reservations: [ReservationWithUser]
 }
 
 /// `/admin/reservations/{establishment id}`

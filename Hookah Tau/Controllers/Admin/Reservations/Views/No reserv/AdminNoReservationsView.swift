@@ -15,7 +15,7 @@ class AdminNoReservationsView: UIView {
     @IBOutlet weak var bookButton: Button? {
         didSet {
             let style = BlackButtonStyle()
-            style.apply(to: bookButton)
+            style.apply(to: bookButton, withTitle: "ЗАБРОНИРОВАТЬ")
         }
     }
     

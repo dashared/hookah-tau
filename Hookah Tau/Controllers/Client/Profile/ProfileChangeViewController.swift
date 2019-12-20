@@ -23,6 +23,8 @@ class ProfileChangeViewController: BaseViewController {
     
     var changeView: ChangeView?
     
+    var settingsService: SettingsService?
+    
     var contentView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -57,6 +59,8 @@ class ProfileChangeViewController: BaseViewController {
         
         setUpView()
         setUpKeyboard()
+        
+        settingsService = SettingsService(apiClient: APIClient.shared)
     }
     
     func setUpView() {
@@ -86,15 +90,30 @@ class ProfileChangeViewController: BaseViewController {
         var userModel = model.userModel
         switch model.editingOption {
         case .invite:
-            print("New person is added")
-            return
+            addNewAdmin(phone: text.toApiPhoneNumberFormat())
         case .name:
+            // TODO:-f
             userModel.name = text
+            coordinator?.update(withModel: userModel)
         case .phone:
+            // TODO:-
             userModel.phoneNumber = text
+            coordinator?.update(withModel: userModel)
         }
         
-        coordinator?.update(withModel: userModel)
     }
 
+    func addNewAdmin(phone: String) {
+        doneButton.loading = true
+        
+        settingsService?.addOtherAdmin(phone: phone) { [weak self] res in
+            if res {
+                self?.coordinator?.update(withModel: nil)
+            } else {
+                self?.displayAlert(with: "Что-то пошло не так!\nПопробуй еще раз")
+            }
+            
+            self?.doneButton.loading = false
+        }
+    }
 }

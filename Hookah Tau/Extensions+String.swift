@@ -28,4 +28,9 @@ extension String {
         }
         return result
     }
+    
+    /// Gets +7 9(XX) XXX-XX-XX returns XXXXXXXXX
+    func toApiPhoneNumberFormat() -> String {
+        return String(self.filter{ $0.isNumber }.dropFirst(2))
+    }
 }

@@ -51,7 +51,7 @@ struct ReservationData: MyCodable {
 /// Структура для получения респонса на `GET /admin/reservations/{establishment id}`
 struct ReservationWithUser: MyCodable {
     
-    var uuis: String
+    var uuid: String
     var establishment: Int
     var startTime: Date
     var endTime: Date

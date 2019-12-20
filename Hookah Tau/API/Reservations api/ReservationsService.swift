@@ -164,7 +164,7 @@ class ReservationsService {
                         return
                 }
                 
-                completion(.success(decodedData.newAdmin))
+                completion(.success(decodedData.reservations))
                 return
             }
         }

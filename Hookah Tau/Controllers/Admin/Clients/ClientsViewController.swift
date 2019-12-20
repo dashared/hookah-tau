@@ -14,6 +14,7 @@ class ClientsViewController: UITableViewController {
     
     var dataSource: [FullUser] = [] {
         didSet {
+            print(dataSource)
             tableView.reloadData()
         }
     }
@@ -29,6 +30,10 @@ class ClientsViewController: UITableViewController {
 
         navigationItem.title = "Клиенты"
         clientsService = ClientsService(apiClient: APIClient.shared)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         loadClients()
     }
 
