@@ -60,14 +60,20 @@ class ReservationsService {
                            numberOfGuests: Int,
                            endTime: Date,
                            uuid: String,
+                           isAdmin: Bool,
                            completion: @escaping ((Bool) -> Void)) {
         
         let reservation = ChangeReservationResolver.Request(startTime: startTime,
                                                             uuid: uuid,
                                                             numberOfGuests: numberOfGuests,
                                                             endTime: endTime)
+        var resolver: ApiResolver!
+        if isAdmin {
+            resolver = AChangeReservationResolver(data: reservation)
+        } else {
+            resolver = ChangeReservationResolver(data: reservation)
+        }
         
-        let resolver = ChangeReservationResolver(data: reservation)
         let request = ApiRequest(resolver: resolver, httpMethod: .put)
         
         apiClient.load(request: request.request) { result in
@@ -148,6 +154,30 @@ class ReservationsService {
     
     func getAdminReservations(establishmentId: Int, completion: @escaping ((Result<[ReservationWithUser], GeneralError>)-> Void)) {
         let resolver = AReservationsResolver<AReservationResponse>(establishmentId: establishmentId)
+        let request = ApiRequest(resolver: resolver, httpMethod: .get)
+        
+        apiClient.load(request: request.request) { (res) in
+            switch res {
+            case .failure(let err):
+                completion(.failure(err))
+                return
+            case .success(let response):
+                guard
+                    let d = response.data,
+                    let decodedData = resolver.targetClass().fromJSONToSelf(data: d)
+                    else {
+                        completion(.failure(GeneralError.decodeError))
+                        return
+                }
+                
+                completion(.success(decodedData.reservations))
+                return
+            }
+        }
+    }
+    
+    func getReservationsAround(uuid: String, completion: @escaping((Result<[ReservationPeriod], GeneralError>) -> Void)) {
+        let resolver = ReservationsAroundResolver<ReservationsAroundResponse>(reservationId: uuid)
         let request = ApiRequest(resolver: resolver, httpMethod: .get)
         
         apiClient.load(request: request.request) { (res) in

@@ -21,18 +21,13 @@ class AdminReservationView: UIView {
     @IBOutlet weak var cancelButton: Button? {
         didSet {
             let style = BlackButtonStyle()
-            style.apply(to: cancelButton)
+            style.apply(to: cancelButton, withTitle: "ОТМЕНИТЬ")
         }
     }
     
     @IBOutlet weak var nameLabel: UILabel?
     
-    @IBOutlet weak var callButton: Button? {
-        didSet {
-            let style = BlackButtonStyle()
-            style.apply(to: callButton)
-        }
-    }
+    @IBOutlet weak var callButton: Button?
     
     @IBOutlet weak var numberOfGuestLabel: UILabel?
     
@@ -48,9 +43,30 @@ class AdminReservationView: UIView {
     /// Обновляем каждый раз когда меняется время и дата
     var data: ReservationData?
     
+    var model: ReservationWithUser?
+    
     // MARK: - Setup
     
-    func bind(withModel model: ReservationData) {
+    func bind(withModel model: ReservationWithUser) {
+        let style = BlackButtonStyle()
+        style.apply(to: callButton, withTitle: model.owner.phoneNumber.formattedNumber())
+        
+        
+        let (date, time) = Date.format(model.startTime, model.endTime)
+        dateLabel?.text = date
+        timeLabel?.text = time
+        
+        tableLabel?.text = "\(model.reservedTable) столик"
+        nameLabel?.text = "\(model.owner.name ?? "❔")"
+        
+        data = ReservationData(establishment: model.establishment,
+                                          startTime: model.startTime,
+                                          endTime: model.endTime,
+                                          numberOfGuests: model.numberOfGuests,
+                                          reservedTable: model.reservedTable)
+    }
+    
+    func bind(withIntervals intervals: [ReservationPeriod]) {
         
     }
     

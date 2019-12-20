@@ -137,6 +137,7 @@ class ChangeReservationViewController: BaseViewController {
                                               numberOfGuests: r.numberOfGuests,
                                               endTime: r.endTime,
                                               uuid: uuid,
+                                              isAdmin: false,
                                               completion: { [weak self] (res) in
                                                 if res {
                                                     self?.coordinator?.finish(Reservation(uuid: uuid, reservationData: r))

@@ -21,6 +21,7 @@ class AdminAddressCoordinator: BaseCoordinator {
     
     private func openReservations(forEstablishment id: Int) {
         let reservationsCoordinator = AdminReservationsCoordinator(navigationController: navigationController)
+        addDependency(reservationsCoordinator)
         reservationsCoordinator.establishmentId = id
         reservationsCoordinator.start()
     }

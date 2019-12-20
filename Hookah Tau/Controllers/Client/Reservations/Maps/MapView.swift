@@ -33,6 +33,7 @@ class MapImageScroll: UIView {
         shadowView.alpha = 1
         
         scrollViewParent.zoom(to: tableButton.frame, animated: true)
+        scrollViewParent.contentOffset = CGPoint(x: scrollViewParent.contentOffset.x, y: scrollViewParent.contentOffset.y + 100)
         scrollViewParent.setZoomScale(zoomScale, animated: true)
     }
     

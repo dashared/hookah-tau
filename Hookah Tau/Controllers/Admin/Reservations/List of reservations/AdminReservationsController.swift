@@ -31,6 +31,8 @@ class AdminReservationsController: BaseViewController {
     
     var reservationsService: ReservationsService?
     
+    weak var coordinator: AdminReservationsCoordinator?
+    
     var activeReservations: [ReservationWithUser] = [] {
         didSet {
             guard let empty = noReservationsView else { return }
@@ -58,6 +60,7 @@ class AdminReservationsController: BaseViewController {
         super.viewDidAppear(animated)
         
         performUpdate()
+        tabBarController?.tabBar.isHidden = false
     }
     
     // MARK:- Setup
@@ -119,18 +122,24 @@ class AdminReservationsController: BaseViewController {
 
 extension AdminReservationsController: UITableViewDelegate, UITableViewDataSource {
 
-       func numberOfSections(in tableView: UITableView) -> Int {
-           return 1
-       }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
 
-       func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-           return activeReservations.count
-       }
-       
-       func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-           let cell = tableView.dequeueReusableCell(withIdentifier: adminReservationCellId, for: indexPath) as! AdminReservationCell
-           
-           cell.bind(withModel: activeReservations[indexPath.row])
-           return cell
-       }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return activeReservations.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: adminReservationCellId, for: indexPath) as! AdminReservationCell
+        
+        cell.bind(withModel: activeReservations[indexPath.row])
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let reservation = activeReservations[indexPath.row]
+        coordinator?.seeExistingReservation(data: reservation)
+    }
+
 }

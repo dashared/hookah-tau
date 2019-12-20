@@ -25,7 +25,7 @@ class ProfileTableViewController: UITableViewController {
     @IBOutlet weak var copyButton: Button! {
         didSet {
             let style = BlackButtonStyle()
-            style.apply(to: copyButton, withTitle: "скопировать")
+            style.apply(to: copyButton, withTitle: "СКОПИРОВАТЬ")
         }
     }
     
