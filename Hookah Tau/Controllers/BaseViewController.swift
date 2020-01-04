@@ -111,7 +111,7 @@ class BaseViewController: UIViewController {
     // MARK: - Alert
      
     func displayAlert(forError error: GeneralError = GeneralError.noData, with message: String? = nil) {
-        var title: String? = message != nil ? error.localizedDescription : message
+        var title: String? = message == nil ? error.localizedDescription : message
         switch error {
         case .serverError(let se):
             title = se.error

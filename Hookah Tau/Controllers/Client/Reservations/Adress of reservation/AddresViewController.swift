@@ -12,7 +12,7 @@ class AddresViewController: BaseViewController {
     
     // MARK: - Properties
     
-    weak var coordinator: AddressCoordinator?
+    weak var coordinator: AddressMapper?
     
     var tableView: UITableView?
     
@@ -78,7 +78,7 @@ extension AddresViewController: UITableViewDelegate, UITableViewDataSource {
         let establishment = dataSource?[indexPath.row]
         guard let id = establishment else { return }
         
-        coordinator?.chooseTableAndTime(inEstablishment: id)
+        coordinator?.chooseAddress(establishmentId: id)
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

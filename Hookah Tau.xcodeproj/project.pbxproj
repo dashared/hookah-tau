@@ -28,6 +28,10 @@
 		123615CF235510BC00D1122A /* ProfileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 123615CE235510BC00D1122A /* ProfileView.xib */; };
 		123615D12355141600D1122A /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123615D02355141600D1122A /* ProfileView.swift */; };
 		12387337234BB98700D1F1AB /* CodeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12387336234BB98700D1F1AB /* CodeView.xib */; };
+		123D25F0239E3E11002FA32B /* AdminAddressCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123D25EF239E3E11002FA32B /* AdminAddressCoordinator.swift */; };
+		123D25F2239E3E44002FA32B /* ClientsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123D25F1239E3E44002FA32B /* ClientsCoordinator.swift */; };
+		123D25F4239E3FF5002FA32B /* ClientsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123D25F3239E3FF5002FA32B /* ClientsViewController.swift */; };
+		123D25F7239E5839002FA32B /* ClientTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123D25F6239E5839002FA32B /* ClientTableViewCell.swift */; };
 		1246B717235CD186004CBFA1 /* NoReservationsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1246B716235CD186004CBFA1 /* NoReservationsView.xib */; };
 		1246B719235CD3AD004CBFA1 /* NoReservationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1246B718235CD3AD004CBFA1 /* NoReservationsView.swift */; };
 		1246B71C235CDF3A004CBFA1 /* ReservationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1246B71B235CDF3A004CBFA1 /* ReservationCell.swift */; };
@@ -53,6 +57,24 @@
 		12A075FD237357E900D749BB /* FirstStepReservationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A075FC237357E900D749BB /* FirstStepReservationCoordinator.swift */; };
 		12A075FF237358F200D749BB /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A075FE237358F200D749BB /* MapView.swift */; };
 		12A07601237359BB00D749BB /* MapView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A07600237359BB00D749BB /* MapView1.swift */; };
+		12B3A79823ABADB9009E2FA6 /* AdminReservationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12B3A79723ABADB9009E2FA6 /* AdminReservationView.xib */; };
+		12B3A79A23ABB4E2009E2FA6 /* IntervalPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12B3A79923ABB4E2009E2FA6 /* IntervalPickerView.xib */; };
+		12B3A79C23ABB8ED009E2FA6 /* IntervalPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B3A79B23ABB8ED009E2FA6 /* IntervalPickerView.swift */; };
+		12B3A79F23ABCA21009E2FA6 /* AdminReservationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B3A79E23ABCA21009E2FA6 /* AdminReservationView.swift */; };
+		12B3A7A323ABD594009E2FA6 /* AdminReservationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B3A7A223ABD594009E2FA6 /* AdminReservationsController.swift */; };
+		12B3A7A523ABDA25009E2FA6 /* AdminReservationsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B3A7A423ABDA25009E2FA6 /* AdminReservationsCoordinator.swift */; };
+		12B3A7A823ABDDB1009E2FA6 /* AdminReservationCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B3A7A723ABDDB1009E2FA6 /* AdminReservationCellView.swift */; };
+		12B3A7AA23ABDDC1009E2FA6 /* AdminReservations.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12B3A7A923ABDDC1009E2FA6 /* AdminReservations.storyboard */; };
+		12B3A7AD23ABEABF009E2FA6 /* AReservationsResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B3A7AC23ABEABF009E2FA6 /* AReservationsResolver.swift */; };
+		12B3A7AF23AC1872009E2FA6 /* AdminNoReservationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B3A7AE23AC1872009E2FA6 /* AdminNoReservationsView.swift */; };
+		12B3A7B123AC1885009E2FA6 /* AdminNoReservationsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12B3A7B023AC1885009E2FA6 /* AdminNoReservationsView.xib */; };
+		12B3A7B423AC1D09009E2FA6 /* AdminReservationCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12B3A7B323AC1D09009E2FA6 /* AdminReservationCellView.xib */; };
+		12B3A7B723ACCD07009E2FA6 /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B3A7B623ACCD07009E2FA6 /* SettingsService.swift */; };
+		12B3A7B923ACCD83009E2FA6 /* AddOtherAdminResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B3A7B823ACCD83009E2FA6 /* AddOtherAdminResolver.swift */; };
+		12B3A7BC23ACFD75009E2FA6 /* ReservationsAroundResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B3A7BB23ACFD75009E2FA6 /* ReservationsAroundResolver.swift */; };
+		12B3A7BE23AD0049009E2FA6 /* AdminReservationEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B3A7BD23AD0048009E2FA6 /* AdminReservationEditingViewController.swift */; };
+		12B3A7C023AD0749009E2FA6 /* AdminReservationEditingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B3A7BF23AD0749009E2FA6 /* AdminReservationEditingCoordinator.swift */; };
+		12B3A7C423AD2FCD009E2FA6 /* AChangeReservationResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B3A7C323AD2FCD009E2FA6 /* AChangeReservationResolver.swift */; };
 		12B4447C238EF25C000B6B16 /* CreateReservationResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B4447B238EF25C000B6B16 /* CreateReservationResolver.swift */; };
 		12B6A60F235B857A00898B31 /* ProfileChangeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B6A60E235B857A00898B31 /* ProfileChangeCoordinator.swift */; };
 		12B6A611235B8EC500898B31 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B6A610235B8EC500898B31 /* User.swift */; };
@@ -63,6 +85,10 @@
 		12BD95B2237EC22B009614D8 /* FirstStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BD95B1237EC22B009614D8 /* FirstStepView.swift */; };
 		12BD95B6237ED8AC009614D8 /* TimePointView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12BD95B5237ED8AB009614D8 /* TimePointView.xib */; };
 		12BD95B8237EDB01009614D8 /* TimePointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BD95B7237EDB01009614D8 /* TimePointView.swift */; };
+		12BE4B332399A52E00FC974B /* AdminTabbarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BE4B322399A52E00FC974B /* AdminTabbarCoordinator.swift */; };
+		12BE4B352399A60A00FC974B /* AdminTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BE4B342399A60A00FC974B /* AdminTabbarController.swift */; };
+		12BE4B372399A98200FC974B /* Admin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12BE4B362399A98200FC974B /* Admin.storyboard */; };
+		12C0B4BB239E5A3A00562BA3 /* ClientList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12C0B4BA239E5A3A00562BA3 /* ClientList.storyboard */; };
 		12C72EDF23537D1B00AD7004 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C72EDE23537D1B00AD7004 /* ProfileCoordinator.swift */; };
 		12C72EE1235380D400AD7004 /* ProfileClientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C72EE0235380D400AD7004 /* ProfileClientViewController.swift */; };
 		12C72EE3235380EB00AD7004 /* ReservationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C72EE2235380EB00AD7004 /* ReservationsViewController.swift */; };
@@ -70,6 +96,12 @@
 		12D8FA2F237F00E200305F57 /* DateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D8FA2E237F00E200305F57 /* DateView.swift */; };
 		12D8FA31237F08C700305F57 /* AllReservations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D8FA30237F08C700305F57 /* AllReservations.swift */; };
 		12DBEEB223539F2100AF1BB6 /* Client.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12DBEEB123539F2100AF1BB6 /* Client.storyboard */; };
+		12E35071239FA8CA004BB188 /* Extensions+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E35070239FA8CA004BB188 /* Extensions+String.swift */; };
+		12E35074239FAF52004BB188 /* ClientsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E35073239FAF52004BB188 /* ClientsService.swift */; };
+		12E35078239FAFA4004BB188 /* ClientsListResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E35077239FAFA4004BB188 /* ClientsListResolver.swift */; };
+		12E3507B239FCFB2004BB188 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E3507A239FCFB2004BB188 /* ProfileTableViewController.swift */; };
+		12E3507D239FD1F3004BB188 /* ClientReservationsResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E3507C239FD1F3004BB188 /* ClientReservationsResolver.swift */; };
+		12E3507F239FDFC2004BB188 /* ClientProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E3507E239FDFC2004BB188 /* ClientProfileCoordinator.swift */; };
 		12EA99462362B674005D9FE9 /* AddressCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12EA99452362B674005D9FE9 /* AddressCoordinator.swift */; };
 		12EA99482362B684005D9FE9 /* AddresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12EA99472362B684005D9FE9 /* AddresViewController.swift */; };
 		12EA994C2362F8EF005D9FE9 /* AddressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12EA994B2362F8EF005D9FE9 /* AddressView.xib */; };
@@ -151,6 +183,10 @@
 		123615CE235510BC00D1122A /* ProfileView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileView.xib; sourceTree = "<group>"; };
 		123615D02355141600D1122A /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		12387336234BB98700D1F1AB /* CodeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CodeView.xib; sourceTree = "<group>"; };
+		123D25EF239E3E11002FA32B /* AdminAddressCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminAddressCoordinator.swift; sourceTree = "<group>"; };
+		123D25F1239E3E44002FA32B /* ClientsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientsCoordinator.swift; sourceTree = "<group>"; };
+		123D25F3239E3FF5002FA32B /* ClientsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientsViewController.swift; sourceTree = "<group>"; };
+		123D25F6239E5839002FA32B /* ClientTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientTableViewCell.swift; sourceTree = "<group>"; };
 		1246B716235CD186004CBFA1 /* NoReservationsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoReservationsView.xib; sourceTree = "<group>"; };
 		1246B718235CD3AD004CBFA1 /* NoReservationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoReservationsView.swift; sourceTree = "<group>"; };
 		1246B71B235CDF3A004CBFA1 /* ReservationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationCell.swift; sourceTree = "<group>"; };
@@ -175,6 +211,24 @@
 		12A075FC237357E900D749BB /* FirstStepReservationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstStepReservationCoordinator.swift; sourceTree = "<group>"; };
 		12A075FE237358F200D749BB /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		12A07600237359BB00D749BB /* MapView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView1.swift; sourceTree = "<group>"; };
+		12B3A79723ABADB9009E2FA6 /* AdminReservationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdminReservationView.xib; sourceTree = "<group>"; };
+		12B3A79923ABB4E2009E2FA6 /* IntervalPickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IntervalPickerView.xib; sourceTree = "<group>"; };
+		12B3A79B23ABB8ED009E2FA6 /* IntervalPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntervalPickerView.swift; sourceTree = "<group>"; };
+		12B3A79E23ABCA21009E2FA6 /* AdminReservationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminReservationView.swift; sourceTree = "<group>"; };
+		12B3A7A223ABD594009E2FA6 /* AdminReservationsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminReservationsController.swift; sourceTree = "<group>"; };
+		12B3A7A423ABDA25009E2FA6 /* AdminReservationsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminReservationsCoordinator.swift; sourceTree = "<group>"; };
+		12B3A7A723ABDDB1009E2FA6 /* AdminReservationCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminReservationCellView.swift; sourceTree = "<group>"; };
+		12B3A7A923ABDDC1009E2FA6 /* AdminReservations.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AdminReservations.storyboard; sourceTree = "<group>"; };
+		12B3A7AC23ABEABF009E2FA6 /* AReservationsResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AReservationsResolver.swift; sourceTree = "<group>"; };
+		12B3A7AE23AC1872009E2FA6 /* AdminNoReservationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminNoReservationsView.swift; sourceTree = "<group>"; };
+		12B3A7B023AC1885009E2FA6 /* AdminNoReservationsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdminNoReservationsView.xib; sourceTree = "<group>"; };
+		12B3A7B323AC1D09009E2FA6 /* AdminReservationCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdminReservationCellView.xib; sourceTree = "<group>"; };
+		12B3A7B623ACCD07009E2FA6 /* SettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
+		12B3A7B823ACCD83009E2FA6 /* AddOtherAdminResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOtherAdminResolver.swift; sourceTree = "<group>"; };
+		12B3A7BB23ACFD75009E2FA6 /* ReservationsAroundResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationsAroundResolver.swift; sourceTree = "<group>"; };
+		12B3A7BD23AD0048009E2FA6 /* AdminReservationEditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminReservationEditingViewController.swift; sourceTree = "<group>"; };
+		12B3A7BF23AD0749009E2FA6 /* AdminReservationEditingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminReservationEditingCoordinator.swift; sourceTree = "<group>"; };
+		12B3A7C323AD2FCD009E2FA6 /* AChangeReservationResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AChangeReservationResolver.swift; sourceTree = "<group>"; };
 		12B4447B238EF25C000B6B16 /* CreateReservationResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateReservationResolver.swift; sourceTree = "<group>"; };
 		12B6A60E235B857A00898B31 /* ProfileChangeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileChangeCoordinator.swift; sourceTree = "<group>"; };
 		12B6A610235B8EC500898B31 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -185,6 +239,10 @@
 		12BD95B1237EC22B009614D8 /* FirstStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstStepView.swift; sourceTree = "<group>"; };
 		12BD95B5237ED8AB009614D8 /* TimePointView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimePointView.xib; sourceTree = "<group>"; };
 		12BD95B7237EDB01009614D8 /* TimePointView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePointView.swift; sourceTree = "<group>"; };
+		12BE4B322399A52E00FC974B /* AdminTabbarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminTabbarCoordinator.swift; sourceTree = "<group>"; };
+		12BE4B342399A60A00FC974B /* AdminTabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminTabbarController.swift; sourceTree = "<group>"; };
+		12BE4B362399A98200FC974B /* Admin.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Admin.storyboard; sourceTree = "<group>"; };
+		12C0B4BA239E5A3A00562BA3 /* ClientList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ClientList.storyboard; sourceTree = "<group>"; };
 		12C72EDE23537D1B00AD7004 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
 		12C72EE0235380D400AD7004 /* ProfileClientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileClientViewController.swift; sourceTree = "<group>"; };
 		12C72EE2235380EB00AD7004 /* ReservationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationsViewController.swift; sourceTree = "<group>"; };
@@ -192,6 +250,12 @@
 		12D8FA2E237F00E200305F57 /* DateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateView.swift; sourceTree = "<group>"; };
 		12D8FA30237F08C700305F57 /* AllReservations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllReservations.swift; sourceTree = "<group>"; };
 		12DBEEB123539F2100AF1BB6 /* Client.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Client.storyboard; sourceTree = "<group>"; };
+		12E35070239FA8CA004BB188 /* Extensions+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+String.swift"; sourceTree = "<group>"; };
+		12E35073239FAF52004BB188 /* ClientsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientsService.swift; sourceTree = "<group>"; };
+		12E35077239FAFA4004BB188 /* ClientsListResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientsListResolver.swift; sourceTree = "<group>"; };
+		12E3507A239FCFB2004BB188 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
+		12E3507C239FD1F3004BB188 /* ClientReservationsResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientReservationsResolver.swift; sourceTree = "<group>"; };
+		12E3507E239FDFC2004BB188 /* ClientProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientProfileCoordinator.swift; sourceTree = "<group>"; };
 		12EA99452362B674005D9FE9 /* AddressCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCoordinator.swift; sourceTree = "<group>"; };
 		12EA99472362B684005D9FE9 /* AddresViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddresViewController.swift; sourceTree = "<group>"; };
 		12EA994B2362F8EF005D9FE9 /* AddressView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressView.xib; sourceTree = "<group>"; };
@@ -388,6 +452,45 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		123D25EC239E3D47002FA32B /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		123D25ED239E3D50002FA32B /* Reservations */ = {
+			isa = PBXGroup;
+			children = (
+				12B3A79623ABAD9A009E2FA6 /* Views */,
+				12B3A7C123AD0751009E2FA6 /* Editing */,
+				12B3A7C223AD0762009E2FA6 /* List of reservations */,
+				123D25EF239E3E11002FA32B /* AdminAddressCoordinator.swift */,
+				12B3A7A923ABDDC1009E2FA6 /* AdminReservations.storyboard */,
+			);
+			path = Reservations;
+			sourceTree = "<group>";
+		};
+		123D25EE239E3D61002FA32B /* Clients */ = {
+			isa = PBXGroup;
+			children = (
+				12E35079239FCF91004BB188 /* Profile */,
+				123D25F5239E57D6002FA32B /* Cells */,
+				123D25F1239E3E44002FA32B /* ClientsCoordinator.swift */,
+				123D25F3239E3FF5002FA32B /* ClientsViewController.swift */,
+				12C0B4BA239E5A3A00562BA3 /* ClientList.storyboard */,
+			);
+			path = Clients;
+			sourceTree = "<group>";
+		};
+		123D25F5239E57D6002FA32B /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				123D25F6239E5839002FA32B /* ClientTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		1246B71A235CD4C5004CBFA1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -418,10 +521,12 @@
 		124D00822372233000AE76B9 /* Resolvers */ = {
 			isa = PBXGroup;
 			children = (
+				12B3A7AB23ABEAAB009E2FA6 /* Admin */,
 				124D007E237222B200AE76B9 /* ReservationsResolver.swift */,
 				12B4447B238EF25C000B6B16 /* CreateReservationResolver.swift */,
 				1212048B23914CFD00CAF162 /* DeleteReservationResolver.swift */,
 				1212048D23915A0A00CAF162 /* ChangeReservationResolver.swift */,
+				12B3A7BB23ACFD75009E2FA6 /* ReservationsAroundResolver.swift */,
 			);
 			path = Resolvers;
 			sourceTree = "<group>";
@@ -438,16 +543,100 @@
 		12838EB923679AEB00CEF108 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				12B3A7B523ACCCD0009E2FA6 /* Settings */,
 				12838EA8236764A600CEF108 /* APIClient.swift */,
 				12838EB3236779C700CEF108 /* ApiResolver.swift */,
 				12838EAF236777D400CEF108 /* ServerError.swift */,
 				12838EB523677FB900CEF108 /* ApiRequest.swift */,
 				12838EB72367834900CEF108 /* MyCodable.swift */,
+				12E35072239FAF41004BB188 /* ClientsService */,
 				12230AF223900BB6004A01E5 /* Establishments api */,
 				124D007D2372229500AE76B9 /* Reservations api */,
 				12118B9A2368187B006BAEE3 /* Authorization api */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		12B3A79623ABAD9A009E2FA6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				12B3A7B223AC1A1F009E2FA6 /* No reserv */,
+				12B3A79723ABADB9009E2FA6 /* AdminReservationView.xib */,
+				12B3A79E23ABCA21009E2FA6 /* AdminReservationView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		12B3A79D23ABB8F4009E2FA6 /* Picker view */ = {
+			isa = PBXGroup;
+			children = (
+				12B3A79923ABB4E2009E2FA6 /* IntervalPickerView.xib */,
+				12B3A79B23ABB8ED009E2FA6 /* IntervalPickerView.swift */,
+			);
+			path = "Picker view";
+			sourceTree = "<group>";
+		};
+		12B3A7A623ABDD92009E2FA6 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				12B3A7A723ABDDB1009E2FA6 /* AdminReservationCellView.swift */,
+				12B3A7B323AC1D09009E2FA6 /* AdminReservationCellView.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		12B3A7AB23ABEAAB009E2FA6 /* Admin */ = {
+			isa = PBXGroup;
+			children = (
+				12B3A7AC23ABEABF009E2FA6 /* AReservationsResolver.swift */,
+				12B3A7C323AD2FCD009E2FA6 /* AChangeReservationResolver.swift */,
+			);
+			path = Admin;
+			sourceTree = "<group>";
+		};
+		12B3A7B223AC1A1F009E2FA6 /* No reserv */ = {
+			isa = PBXGroup;
+			children = (
+				12B3A7AE23AC1872009E2FA6 /* AdminNoReservationsView.swift */,
+				12B3A7B023AC1885009E2FA6 /* AdminNoReservationsView.xib */,
+			);
+			path = "No reserv";
+			sourceTree = "<group>";
+		};
+		12B3A7B523ACCCD0009E2FA6 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				12B3A7B623ACCD07009E2FA6 /* SettingsService.swift */,
+				12B3A7BA23ACCD88009E2FA6 /* Resolvers */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		12B3A7BA23ACCD88009E2FA6 /* Resolvers */ = {
+			isa = PBXGroup;
+			children = (
+				12B3A7B823ACCD83009E2FA6 /* AddOtherAdminResolver.swift */,
+			);
+			path = Resolvers;
+			sourceTree = "<group>";
+		};
+		12B3A7C123AD0751009E2FA6 /* Editing */ = {
+			isa = PBXGroup;
+			children = (
+				12B3A7BF23AD0749009E2FA6 /* AdminReservationEditingCoordinator.swift */,
+				12B3A7BD23AD0048009E2FA6 /* AdminReservationEditingViewController.swift */,
+			);
+			name = Editing;
+			sourceTree = "<group>";
+		};
+		12B3A7C223AD0762009E2FA6 /* List of reservations */ = {
+			isa = PBXGroup;
+			children = (
+				12B3A7A623ABDD92009E2FA6 /* Cell */,
+				12B3A7A223ABD594009E2FA6 /* AdminReservationsController.swift */,
+				12B3A7A423ABDA25009E2FA6 /* AdminReservationsCoordinator.swift */,
+			);
+			path = "List of reservations";
 			sourceTree = "<group>";
 		};
 		12BD95AE237EBE52009614D8 /* Maps */ = {
@@ -483,6 +672,16 @@
 			path = 1;
 			sourceTree = "<group>";
 		};
+		12BE4B312399A51500FC974B /* Tab bar */ = {
+			isa = PBXGroup;
+			children = (
+				12BE4B322399A52E00FC974B /* AdminTabbarCoordinator.swift */,
+				12BE4B342399A60A00FC974B /* AdminTabbarController.swift */,
+				12BE4B362399A98200FC974B /* Admin.storyboard */,
+			);
+			path = "Tab bar";
+			sourceTree = "<group>";
+		};
 		12C72EDB235367CF00AD7004 /* Tab bar */ = {
 			isa = PBXGroup;
 			children = (
@@ -491,6 +690,33 @@
 				12DBEEB123539F2100AF1BB6 /* Client.storyboard */,
 			);
 			path = "Tab bar";
+			sourceTree = "<group>";
+		};
+		12E35072239FAF41004BB188 /* ClientsService */ = {
+			isa = PBXGroup;
+			children = (
+				12E35073239FAF52004BB188 /* ClientsService.swift */,
+				12E35075239FAF8F004BB188 /* Resolvers */,
+			);
+			path = ClientsService;
+			sourceTree = "<group>";
+		};
+		12E35075239FAF8F004BB188 /* Resolvers */ = {
+			isa = PBXGroup;
+			children = (
+				12E35077239FAFA4004BB188 /* ClientsListResolver.swift */,
+				12E3507C239FD1F3004BB188 /* ClientReservationsResolver.swift */,
+			);
+			path = Resolvers;
+			sourceTree = "<group>";
+		};
+		12E35079239FCF91004BB188 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				12E3507A239FCFB2004BB188 /* ProfileTableViewController.swift */,
+				12E3507E239FDFC2004BB188 /* ClientProfileCoordinator.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		12EA99492362B9F5005D9FE9 /* Adress of reservation */ = {
@@ -566,6 +792,7 @@
 				F3FC7DFC2315C4710080D851 /* BaseCoordinator.swift */,
 				F3FC7DFA2315C25D0080D851 /* ApplicationCoordinator.swift */,
 				12B6A612235B9B4300898B31 /* BaseViewController.swift */,
+				12B3A79D23ABB8F4009E2FA6 /* Picker view */,
 				F30369BB2336845F00A8EA84 /* Admin */,
 				F30369BA2336845400A8EA84 /* Client */,
 				F30369B82336842600A8EA84 /* Authentication */,
@@ -609,6 +836,10 @@
 		F30369BB2336845F00A8EA84 /* Admin */ = {
 			isa = PBXGroup;
 			children = (
+				123D25ED239E3D50002FA32B /* Reservations */,
+				123D25EE239E3D61002FA32B /* Clients */,
+				123D25EC239E3D47002FA32B /* Profile */,
+				12BE4B312399A51500FC974B /* Tab bar */,
 			);
 			path = Admin;
 			sourceTree = "<group>";
@@ -718,6 +949,7 @@
 				F31E20C62348DDB900BEA215 /* Extensions+UIView.swift */,
 				12050568238048CE00801618 /* Extensions+Date.swift */,
 				1205056A2380588C00801618 /* Extenstions+IBDesignable.swift */,
+				12E35070239FA8CA004BB188 /* Extensions+String.swift */,
 				125AE5202395753400F847BD /* HFunc.swift */,
 				12838EB923679AEB00CEF108 /* API */,
 				F30369BC2336861100A8EA84 /* Models */,
@@ -859,8 +1091,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3199E5B233FE08200F3C17A /* PhoneView.xib in Resources */,
+				12B3A7AA23ABDDC1009E2FA6 /* AdminReservations.storyboard in Resources */,
+				12B3A7B423AC1D09009E2FA6 /* AdminReservationCellView.xib in Resources */,
+				12C0B4BB239E5A3A00562BA3 /* ClientList.storyboard in Resources */,
+				12BE4B372399A98200FC974B /* Admin.storyboard in Resources */,
 				12DBEEB223539F2100AF1BB6 /* Client.storyboard in Resources */,
 				12D8FA2D237F003800305F57 /* DateView.xib in Resources */,
+				12B3A79A23ABB4E2009E2FA6 /* IntervalPickerView.xib in Resources */,
 				12387337234BB98700D1F1AB /* CodeView.xib in Resources */,
 				12B6A615235BB36C00898B31 /* ChangeView.xib in Resources */,
 				F3851B2C2340A280009EE0B6 /* TitleTextView.xib in Resources */,
@@ -874,6 +1111,8 @@
 				12BD95B0237EBEDF009614D8 /* FirstStepView.xib in Resources */,
 				F30369B5233679EA00A8EA84 /* LaunchScreen.storyboard in Resources */,
 				1246B717235CD186004CBFA1 /* NoReservationsView.xib in Resources */,
+				12B3A7B123AC1885009E2FA6 /* AdminNoReservationsView.xib in Resources */,
+				12B3A79823ABADB9009E2FA6 /* AdminReservationView.xib in Resources */,
 				F3FC7DD42315BE630080D851 /* Assets.xcassets in Resources */,
 				12EA994C2362F8EF005D9FE9 /* AddressView.xib in Resources */,
 				F3EBE2452340FDA7000FEE1A /* NameTextView.xib in Resources */,
@@ -907,6 +1146,8 @@
 				12230AF723900D44004A01E5 /* EstablishmentResolver.swift in Sources */,
 				1246B719235CD3AD004CBFA1 /* NoReservationsView.swift in Sources */,
 				F3895F4A233D323700FA6A37 /* CodeCoordinator.swift in Sources */,
+				12B3A7B923ACCD83009E2FA6 /* AddOtherAdminResolver.swift in Sources */,
+				12E3507F239FDFC2004BB188 /* ClientProfileCoordinator.swift in Sources */,
 				12838EB4236779C700CEF108 /* ApiResolver.swift in Sources */,
 				12838EA9236764A600CEF108 /* APIClient.swift in Sources */,
 				123615D12355141600D1122A /* ProfileView.swift in Sources */,
@@ -915,13 +1156,20 @@
 				125AE51F2395585300F847BD /* ChangeReservationViewController.swift in Sources */,
 				12EA99462362B674005D9FE9 /* AddressCoordinator.swift in Sources */,
 				12B6A613235B9B4300898B31 /* BaseViewController.swift in Sources */,
+				12BE4B332399A52E00FC974B /* AdminTabbarCoordinator.swift in Sources */,
 				12230AFA23901029004A01E5 /* DataStorage.swift in Sources */,
+				12B3A7A823ABDDB1009E2FA6 /* AdminReservationCellView.swift in Sources */,
 				F3FC7DFF2315C8D70080D851 /* NameCoordinator.swift in Sources */,
+				123D25F7239E5839002FA32B /* ClientTableViewCell.swift in Sources */,
 				120BFC7C23891965001EBE89 /* ThirdStepView.swift in Sources */,
+				123D25F0239E3E11002FA32B /* AdminAddressCoordinator.swift in Sources */,
 				F3FC7DCF2315BE610080D851 /* NameViewController.swift in Sources */,
+				12B3A79F23ABCA21009E2FA6 /* AdminReservationView.swift in Sources */,
 				12838EB82367834900CEF108 /* MyCodable.swift in Sources */,
 				F3DC5A05233E89D500B5E751 /* Button.swift in Sources */,
 				F3FC7DFB2315C25D0080D851 /* ApplicationCoordinator.swift in Sources */,
+				12B3A7BE23AD0049009E2FA6 /* AdminReservationEditingViewController.swift in Sources */,
+				12BE4B352399A60A00FC974B /* AdminTabbarController.swift in Sources */,
 				12FC403A2382CB6F00AB593B /* TableButton.swift in Sources */,
 				12EB698123661CB300E4D1CE /* AddressCell.swift in Sources */,
 				F3895F48233D2EEA00FA6A37 /* CodeSmsViewController.swift in Sources */,
@@ -932,33 +1180,46 @@
 				12BD95B8237EDB01009614D8 /* TimePointView.swift in Sources */,
 				12838EB2236779A000CEF108 /* AuthResolver.swift in Sources */,
 				12A075F72373535C00D749BB /* FirstStepReservationViewController.swift in Sources */,
+				12E35078239FAFA4004BB188 /* ClientsListResolver.swift in Sources */,
 				1246B71C235CDF3A004CBFA1 /* ReservationCell.swift in Sources */,
+				12E3507B239FCFB2004BB188 /* ProfileTableViewController.swift in Sources */,
 				1212048C23914CFD00CAF162 /* DeleteReservationResolver.swift in Sources */,
 				12A075FD237357E900D749BB /* FirstStepReservationCoordinator.swift in Sources */,
 				124D0081237222C900AE76B9 /* ReservationsService.swift in Sources */,
 				1246B720235CDF9E004CBFA1 /* ReservationView.swift in Sources */,
+				12B3A7A523ABDA25009E2FA6 /* AdminReservationsCoordinator.swift in Sources */,
+				123D25F4239E3FF5002FA32B /* ClientsViewController.swift in Sources */,
 				12050569238048CE00801618 /* Extensions+Date.swift in Sources */,
 				124D007C23721FD400AE76B9 /* Reservation.swift in Sources */,
 				12D8FA2F237F00E200305F57 /* DateView.swift in Sources */,
+				123D25F2239E3E44002FA32B /* ClientsCoordinator.swift in Sources */,
 				12F9652E23869F3100FCA696 /* SecondStepReservationCoordinator.swift in Sources */,
 				F3895F4E233D348B00FA6A37 /* PhoneCoordinator.swift in Sources */,
 				12B6A617235BB37D00898B31 /* ChangeView.swift in Sources */,
 				12230AEC238FD8C5004A01E5 /* MapView2.swift in Sources */,
+				12B3A7A323ABD594009E2FA6 /* AdminReservationsController.swift in Sources */,
 				F3FC7DCD2315BE610080D851 /* AppDelegate.swift in Sources */,
 				12838EB623677FB900CEF108 /* ApiRequest.swift in Sources */,
 				12118B9E23682049006BAEE3 /* PhoneCodeResolver.swift in Sources */,
 				F30369BE2336924D00A8EA84 /* ClientTabbarCoordinator.swift in Sources */,
 				F3FC7DFD2315C4710080D851 /* BaseCoordinator.swift in Sources */,
+				12E35071239FA8CA004BB188 /* Extensions+String.swift in Sources */,
 				F3DC59FF233E893400B5E751 /* Extensions+UIFont.swift in Sources */,
 				F3895F53233D5EEB00FA6A37 /* BlackButtonStyle.swift in Sources */,
 				12F9652C23868E7200FCA696 /* SecondStepView.swift in Sources */,
 				120BFC7923891942001EBE89 /* ThirdStepReservationCoordinator.swift in Sources */,
+				12B3A7BC23ACFD75009E2FA6 /* ReservationsAroundResolver.swift in Sources */,
 				12118B9C23682022006BAEE3 /* RegistrationResolver.swift in Sources */,
+				12B3A7C423AD2FCD009E2FA6 /* AChangeReservationResolver.swift in Sources */,
 				F30369C02336925800A8EA84 /* ClientTabbarController.swift in Sources */,
+				12B3A7C023AD0749009E2FA6 /* AdminReservationEditingCoordinator.swift in Sources */,
 				F31E20C72348DDB900BEA215 /* Extensions+UIView.swift in Sources */,
 				F3851B302340A513009EE0B6 /* RegistationViewModel.swift in Sources */,
+				12B3A7AF23AC1872009E2FA6 /* AdminNoReservationsView.swift in Sources */,
 				12838EAE2367701300CEF108 /* AuthorizationService.swift in Sources */,
+				12B3A7B723ACCD07009E2FA6 /* SettingsService.swift in Sources */,
 				12C72EDF23537D1B00AD7004 /* ProfileCoordinator.swift in Sources */,
+				12E3507D239FD1F3004BB188 /* ClientReservationsResolver.swift in Sources */,
 				12EA994E2362FCE8005D9FE9 /* AddressView.swift in Sources */,
 				F3895F4C233D347E00FA6A37 /* PhoneNumberViewController.swift in Sources */,
 				12EE4A76234BB8FE005B4D1A /* CodeView.swift in Sources */,
@@ -969,6 +1230,7 @@
 				F3DC5A01233E896300B5E751 /* ButtonStyle.swift in Sources */,
 				12A075FF237358F200D749BB /* MapView.swift in Sources */,
 				1205056B2380588C00801618 /* Extenstions+IBDesignable.swift in Sources */,
+				12E35074239FAF52004BB188 /* ClientsService.swift in Sources */,
 				12C72EE1235380D400AD7004 /* ProfileClientViewController.swift in Sources */,
 				F31E20C92348E0F300BEA215 /* AuthorizationViewController.swift in Sources */,
 				1212048E23915A0A00CAF162 /* ChangeReservationResolver.swift in Sources */,
@@ -976,8 +1238,10 @@
 				F3851B2923409F8A009EE0B6 /* PhoneView.swift in Sources */,
 				12C72EE3235380EB00AD7004 /* ReservationsViewController.swift in Sources */,
 				12B6A611235B8EC500898B31 /* User.swift in Sources */,
+				12B3A7AD23ABEABF009E2FA6 /* AReservationsResolver.swift in Sources */,
 				12B4447C238EF25C000B6B16 /* CreateReservationResolver.swift in Sources */,
 				12B6A60F235B857A00898B31 /* ProfileChangeCoordinator.swift in Sources */,
+				12B3A79C23ABB8ED009E2FA6 /* IntervalPickerView.swift in Sources */,
 				12FC40382382C93D00AB593B /* TableButtonStyle.swift in Sources */,
 				12D8FA31237F08C700305F57 /* AllReservations.swift in Sources */,
 				12838EB0236777D400CEF108 /* ServerError.swift in Sources */,
@@ -1138,14 +1402,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9Z6LFGKA9G;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = 23S94LRHD8;
 				INFOPLIST_FILE = "Hookah Tau/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.hookahtau.Hookah-Tau";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hookahtau.Hookah-Tau1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1157,14 +1422,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9Z6LFGKA9G;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = 23S94LRHD8;
 				INFOPLIST_FILE = "Hookah Tau/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.hookahtau.Hookah-Tau";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hookahtau.Hookah-Tau1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -8,6 +8,8 @@
 
 import UIKit
 
+let reservationCell = "ReservationCell"
+
 class ReservationCell: UITableViewCell {
     
     // MARK: - Properties

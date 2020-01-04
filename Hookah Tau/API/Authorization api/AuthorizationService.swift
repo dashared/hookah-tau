@@ -39,6 +39,7 @@ class AuthorizationService {
                 }
                 
                 completion(.success(decodedData.isUserRegistered))
+                return
             }
         }
     }
@@ -65,6 +66,7 @@ class AuthorizationService {
                 
                 self.setCookies(response: response)
                 completion(.success(decodedData))
+                return
             }
         }
     }
@@ -80,7 +82,9 @@ class AuthorizationService {
         apiClient.load(request: request.request) { result in
             switch result {
             case .failure(let err):
+                print(err)
                 completion(.failure(err))
+                return
             case .success(let response):
                 guard
                     let unwrappedData = response.data,
@@ -92,6 +96,7 @@ class AuthorizationService {
                 
                 self.setCookies(response: response)
                 completion(.success(decodedData))
+                return
             }
         }
     }

@@ -42,7 +42,13 @@ class ApplicationCoordinator: BaseCoordinator {
     }
 
     private func runAdminFlow() {
-
+        let tabbarCoordinator = AdminTabbarCoordinator(navigationController: navigationController)
+        tabbarCoordinator.didEndFlow = { [weak self, weak tabbarCoordinator] in
+            self?.start()
+            self?.removeDependency(tabbarCoordinator)
+        }
+        addDependency(tabbarCoordinator)
+        tabbarCoordinator.start()
     }
 
     private func runClientFlow() {
@@ -66,6 +72,7 @@ extension ApplicationCoordinator {
             let isAdmin = DataStorage.standard.getUserModel()?.isAdmin ?? false
             
             if !isAuthorized {
+                DataStorage.standard.setLoggedInState(false)
                 return .auth
             }
             

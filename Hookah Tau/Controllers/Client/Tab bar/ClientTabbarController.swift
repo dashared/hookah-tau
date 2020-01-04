@@ -10,18 +10,18 @@ import Foundation
 import UIKit
 
 protocol TabbarView: class {
-    var onReservationFlowSelect: ((UINavigationController) -> ())? { get set }
-    var onProfileFlowSelect: ((UINavigationController) -> ())? { get set }
-    var onViewDidLoad: ((UINavigationController) -> ())? { get set }
+    var onReservationFlowSelect: TabbarClosure? { get set }
+    var onProfileFlowSelect: TabbarClosure? { get set }
+    var onViewDidLoad: TabbarClosure? { get set }
 }
 
 final class ClientTabbarController: UITabBarController, UITabBarControllerDelegate, TabbarView {
     
     // MARK: - Properties
     
-    var onReservationFlowSelect: ((UINavigationController) -> ())?
-    var onProfileFlowSelect: ((UINavigationController) -> ())?
-    var onViewDidLoad: ((UINavigationController) -> ())?
+    var onReservationFlowSelect: TabbarClosure?
+    var onProfileFlowSelect: TabbarClosure?
+    var onViewDidLoad: TabbarClosure?
     
     
     // MARK: - Lifecycle

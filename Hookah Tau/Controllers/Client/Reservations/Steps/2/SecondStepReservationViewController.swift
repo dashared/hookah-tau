@@ -84,7 +84,7 @@ class SecondStepReservationViewController: BaseViewController {
         view.addSubview(map)
         
         NSLayoutConstraint.activate([
-            map.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
+            map.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
             map.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
             map.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
             map.bottomAnchor.constraint(equalTo: childContentView.topAnchor, constant: 0)
@@ -92,10 +92,10 @@ class SecondStepReservationViewController: BaseViewController {
         
         let width = view.frame.width
         
-        mapView?.scrollViewParent.setContentOffset(CGPoint(x: 0, y: -100), animated: false)
-        mapView?.scrollViewParent.contentInset = UIEdgeInsets(top: 100,
+        mapView?.scrollViewParent.setContentOffset(CGPoint(x: 0, y: 100), animated: false)
+        mapView?.scrollViewParent.contentInset = UIEdgeInsets(top: 0,
                                                               left: width / 2,
-                                                              bottom: 100,
+                                                              bottom: -100,
                                                               right: width / 2)
         mapView?.isUserInteractionEnabled = false
         view.sendSubviewToBack(map)
