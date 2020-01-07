@@ -33,6 +33,8 @@ class AdminReservationsController: BaseViewController {
     
     weak var coordinator: AdminReservationsCoordinator?
     
+    var refrControl: UIRefreshControl?
+    
     var activeReservations: [ReservationWithUser] = [] {
         didSet {
             guard let empty = noReservationsView else { return }
@@ -52,6 +54,7 @@ class AdminReservationsController: BaseViewController {
         super.viewDidLoad()
 
         reservationsService = ReservationsService(apiClient: APIClient.shared)
+        setupRefreshControl()
         setUpContentView()
         setupNavBar()
     }
@@ -106,6 +109,7 @@ class AdminReservationsController: BaseViewController {
             case .failure(let err):
                 self?.displayAlert(forError: err)
             }
+            self?.refrControl?.endRefreshing()
         })
     }
     
@@ -125,6 +129,18 @@ class AdminReservationsController: BaseViewController {
             
             completion(nil)
         }
+    }
+    
+    // MARK: - Refresh control
+    
+    @objc func refreshData( _ ff: UIRefreshControl) {
+        performUpdate()
+    }
+    
+    func setupRefreshControl() {
+        refrControl = UIRefreshControl()
+        tableView?.refreshControl = refrControl
+        refrControl?.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
     }
 
 }
