@@ -124,7 +124,7 @@ class ReservationsViewController: BaseViewController {
     }
     
     func deleteReservation(uuid: String, completion: @escaping (([Reservation]?) -> Void)) {
-        reservationsService?.deleteReservation(uuid: uuid) { result in
+        reservationsService?.deleteReservation(isAdmin: false, uuid: uuid) { result in
             if result {
                 let newReservations = self.activeReservations.filter { $0.uuid != uuid }
                 completion(newReservations)

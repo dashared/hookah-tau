@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileTableViewController: UITableViewController {
+class ProfileTableViewController: BaseTableViewController {
     
     // MARK: - IBAOutlets
 
@@ -33,6 +33,8 @@ class ProfileTableViewController: UITableViewController {
     
     var clientsService: ClientsService?
     
+    var reservationsService: ReservationsService?
+    
     var user: FullUser? {
         didSet {
             guard let u = user else { return }
@@ -56,6 +58,7 @@ class ProfileTableViewController: UITableViewController {
         tableView?.register(ReservationCell.self, forCellReuseIdentifier: reservationCell)
         
         clientsService = ClientsService(apiClient: APIClient.shared)
+        reservationsService = ReservationsService(apiClient: APIClient.shared)
         loadReservations()
     }
     
@@ -71,8 +74,33 @@ class ProfileTableViewController: UITableViewController {
             }
         })
     }
+    
+    @objc func callUser() {
+        guard
+            let u = user,
+            let urlPhone = URL(string: "tel://79\(u.phoneNumber)")
+        else { return }
+        
+        UIApplication.shared.open(urlPhone)
+    }
+    
+    func deleteReservation(uuid: String, completion: @escaping (([Reservation]?) -> Void)) {
+        reservationsService?.deleteReservation(isAdmin: true, uuid: uuid) { result in
+            if result {
+                let newReservations = self.dataSource.filter { $0.uuid != uuid }
+                completion(newReservations)
+                return
+            }
+            
+            completion(nil)
+        }
+    }
 
-    // MARK: - Table view data source
+}
+
+// MARK: - Table view data source
+
+extension ProfileTableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataSource.count
@@ -86,13 +114,31 @@ class ProfileTableViewController: UITableViewController {
         return cell
     }
     
-    @objc func callUser() {
-        guard
-            let u = user,
-            let urlPhone = URL(string: "tel://79\(u.phoneNumber)")
-        else { return }
-        
-        UIApplication.shared.open(urlPhone)
+    // Update
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
     }
-
+    
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        let uuid = dataSource[indexPath.row].uuid
+        let cancelButton = UITableViewRowAction(style: .normal, title: "❌") { _,_  in
+            
+            self.deleteReservation(uuid: uuid) { optionalNewVal in
+                if let newval = optionalNewVal {
+                    self.tableView?.beginUpdates()
+                    self.tableView?.deleteRows(at: [indexPath], with: .automatic)
+                    self.dataSource = newval
+                    self.tableView?.endUpdates()
+                } else {
+                    self.displayAlert(with: "Не удалось удалить вашу бронь! Попробуйте еще раз!")
+                }
+            }
+        }
+        
+        cancelButton.backgroundColor = .black
+        
+        return [cancelButton]
+    }
 }

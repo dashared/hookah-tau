@@ -40,8 +40,14 @@ class ReservationsService {
         }
     }
     
-    func deleteReservation(uuid: String, completion: @escaping ((Bool) -> Void)) {
-        let resolver = DeleteReservationResolver(uuid: uuid)
+    func deleteReservation(isAdmin: Bool, uuid: String, completion: @escaping ((Bool) -> Void)) {
+        var resolver: ApiResolver!
+        if isAdmin {
+            resolver = ADeleteReservationResolver(uuid: uuid)
+        } else {
+            resolver = DeleteReservationResolver(uuid: uuid)
+        }
+    
         let request = ApiRequest(resolver: resolver, httpMethod: .delete)
         
         apiClient.load(request: request.request) { result in

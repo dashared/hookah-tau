@@ -95,6 +95,8 @@
 		12D8FA2D237F003800305F57 /* DateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12D8FA2C237F003800305F57 /* DateView.xib */; };
 		12D8FA2F237F00E200305F57 /* DateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D8FA2E237F00E200305F57 /* DateView.swift */; };
 		12D8FA31237F08C700305F57 /* AllReservations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D8FA30237F08C700305F57 /* AllReservations.swift */; };
+		12D928AF23C47DCF0051724D /* ADeleteReservationResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D928AE23C47DCF0051724D /* ADeleteReservationResolver.swift */; };
+		12D928B123C486380051724D /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D928B023C486380051724D /* BaseTableViewController.swift */; };
 		12DBEEB223539F2100AF1BB6 /* Client.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12DBEEB123539F2100AF1BB6 /* Client.storyboard */; };
 		12E35071239FA8CA004BB188 /* Extensions+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E35070239FA8CA004BB188 /* Extensions+String.swift */; };
 		12E35074239FAF52004BB188 /* ClientsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E35073239FAF52004BB188 /* ClientsService.swift */; };
@@ -249,6 +251,8 @@
 		12D8FA2C237F003800305F57 /* DateView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DateView.xib; sourceTree = "<group>"; };
 		12D8FA2E237F00E200305F57 /* DateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateView.swift; sourceTree = "<group>"; };
 		12D8FA30237F08C700305F57 /* AllReservations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllReservations.swift; sourceTree = "<group>"; };
+		12D928AE23C47DCF0051724D /* ADeleteReservationResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ADeleteReservationResolver.swift; sourceTree = "<group>"; };
+		12D928B023C486380051724D /* BaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
 		12DBEEB123539F2100AF1BB6 /* Client.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Client.storyboard; sourceTree = "<group>"; };
 		12E35070239FA8CA004BB188 /* Extensions+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+String.swift"; sourceTree = "<group>"; };
 		12E35073239FAF52004BB188 /* ClientsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientsService.swift; sourceTree = "<group>"; };
@@ -590,6 +594,7 @@
 			children = (
 				12B3A7AC23ABEABF009E2FA6 /* AReservationsResolver.swift */,
 				12B3A7C323AD2FCD009E2FA6 /* AChangeReservationResolver.swift */,
+				12D928AE23C47DCF0051724D /* ADeleteReservationResolver.swift */,
 			);
 			path = Admin;
 			sourceTree = "<group>";
@@ -792,6 +797,7 @@
 				F3FC7DFC2315C4710080D851 /* BaseCoordinator.swift */,
 				F3FC7DFA2315C25D0080D851 /* ApplicationCoordinator.swift */,
 				12B6A612235B9B4300898B31 /* BaseViewController.swift */,
+				12D928B023C486380051724D /* BaseTableViewController.swift */,
 				12B3A79D23ABB8F4009E2FA6 /* Picker view */,
 				F30369BB2336845F00A8EA84 /* Admin */,
 				F30369BA2336845400A8EA84 /* Client */,
@@ -1171,6 +1177,7 @@
 				12B3A7BE23AD0049009E2FA6 /* AdminReservationEditingViewController.swift in Sources */,
 				12BE4B352399A60A00FC974B /* AdminTabbarController.swift in Sources */,
 				12FC403A2382CB6F00AB593B /* TableButton.swift in Sources */,
+				12D928AF23C47DCF0051724D /* ADeleteReservationResolver.swift in Sources */,
 				12EB698123661CB300E4D1CE /* AddressCell.swift in Sources */,
 				F3895F48233D2EEA00FA6A37 /* CodeSmsViewController.swift in Sources */,
 				12219CEF2353A63F0057DDEE /* ReservationsCoordinator.swift in Sources */,
@@ -1236,6 +1243,7 @@
 				1212048E23915A0A00CAF162 /* ChangeReservationResolver.swift in Sources */,
 				12230AFC239034D3004A01E5 /* SecondStepReservationViewController.swift in Sources */,
 				F3851B2923409F8A009EE0B6 /* PhoneView.swift in Sources */,
+				12D928B123C486380051724D /* BaseTableViewController.swift in Sources */,
 				12C72EE3235380EB00AD7004 /* ReservationsViewController.swift in Sources */,
 				12B6A611235B8EC500898B31 /* User.swift in Sources */,
 				12B3A7AD23ABEABF009E2FA6 /* AReservationsResolver.swift in Sources */,

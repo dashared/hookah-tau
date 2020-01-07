@@ -139,7 +139,7 @@ class ThirdStepReservationViewController: BaseViewController {
         guard let res = reservation else { return }
         
         cancelButton.loading = true
-        reservationService?.deleteReservation(uuid: res.uuid, completion: { [weak self] (result) in
+        reservationService?.deleteReservation(isAdmin: false, uuid: res.uuid, completion: { [weak self] (result) in
             self?.cancelButton.loading = false
             
             if result {

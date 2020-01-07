@@ -114,6 +114,18 @@ class AdminReservationsController: BaseViewController {
     @objc func book() {
         
     }
+    
+    func deleteReservation(uuid: String, completion: @escaping (([ReservationWithUser]?) -> Void)) {
+        reservationsService?.deleteReservation(isAdmin: true, uuid: uuid) { result in
+            if result {
+                let newReservations = self.activeReservations.filter { $0.uuid != uuid }
+                completion(newReservations)
+                return
+            }
+            
+            completion(nil)
+        }
+    }
 
 }
 
@@ -140,6 +152,44 @@ extension AdminReservationsController: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let reservation = activeReservations[indexPath.row]
         coordinator?.seeExistingReservation(data: reservation)
+    }
+    
+    // Dimesions
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 180.0
+    }
+    
+    // Update
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        let uuid = activeReservations[indexPath.row].uuid
+        let cancelButton = UITableViewRowAction(style: .normal, title: "❌") { _,_  in
+            
+            self.deleteReservation(uuid: uuid) { optionalNewVal in
+                if let newval = optionalNewVal {
+                    self.tableView?.beginUpdates()
+                    self.tableView?.deleteRows(at: [indexPath], with: .automatic)
+                    self.activeReservations = newval
+                    self.tableView?.endUpdates()
+                } else {
+                    self.displayAlert(with: "Не удалось удалить вашу бронь! Попробуйте еще раз!")
+                }
+            }
+        }
+        
+        cancelButton.backgroundColor = .black
+        
+        return [cancelButton]
     }
 
 }
