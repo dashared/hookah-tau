@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
+        <!--Профиль-->
         <scene sceneID="b0t-Wu-VhQ">
             <objects>
                 <viewController id="qqN-qg-VJ7" customClass="UINavigationController" sceneMemberID="viewController">
@@ -18,13 +18,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="WgY-fu-N23"/>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="contacts" id="vPo-1j-5WO"/>
+                    <tabBarItem key="tabBarItem" title="Профиль" image="person" id="vPo-1j-5WO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zv0-gE-V7c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-166" y="195"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Брони-->
         <scene sceneID="nQv-Ks-RjM">
             <objects>
                 <viewController id="MGt-zZ-AbL" customClass="UINavigationController" sceneMemberID="viewController">
@@ -34,7 +34,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="vjZ-Ji-o7T"/>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="mostViewed" id="B7T-zH-VfU"/>
+                    <tabBarItem key="tabBarItem" title="Брони" image="stack" id="B7T-zH-VfU"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W83-e1-iNk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -59,4 +59,8 @@
             <point key="canvasLocation" x="-1081" y="-130"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="person" width="25" height="24"/>
+        <image name="stack" width="25" height="24"/>
+    </resources>
 </document>

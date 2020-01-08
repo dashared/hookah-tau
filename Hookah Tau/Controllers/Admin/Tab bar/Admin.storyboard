@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
+        <!--Клиенты-->
         <scene sceneID="Q3i-Bo-7ns">
             <objects>
                 <viewController id="Ifn-72-mgx" customClass="UINavigationController" sceneMemberID="viewController">
@@ -18,13 +18,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="yHG-bf-ndj"/>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="downloads" id="9K1-uc-72H"/>
+                    <tabBarItem key="tabBarItem" title="Клиенты" image="peoplee" id="9K1-uc-72H"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8X9-ca-bCi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1061" y="-327"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Профиль-->
         <scene sceneID="cAb-sw-24k">
             <objects>
                 <viewController id="Jsm-cH-XbJ" customClass="UINavigationController" sceneMemberID="viewController">
@@ -34,13 +34,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="f96-UV-eoi"/>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="contacts" id="ziF-T0-lg1"/>
+                    <tabBarItem key="tabBarItem" title="Профиль" image="person" id="ziF-T0-lg1"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qqi-vY-Mog" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1061" y="433"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Брони-->
         <scene sceneID="p6D-Gs-DUK">
             <objects>
                 <viewController id="Tc3-UW-Fwi" customClass="UINavigationController" sceneMemberID="viewController">
@@ -50,7 +50,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="z8c-Ub-USh"/>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="mostViewed" id="szW-oN-ixR"/>
+                    <tabBarItem key="tabBarItem" title="Брони" image="stack" id="szW-oN-ixR"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1ST-zr-4Zs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -76,4 +76,9 @@
             <point key="canvasLocation" x="-817" y="-251"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="peoplee" width="51" height="25"/>
+        <image name="person" width="25" height="24"/>
+        <image name="stack" width="25" height="24"/>
+    </resources>
 </document>
