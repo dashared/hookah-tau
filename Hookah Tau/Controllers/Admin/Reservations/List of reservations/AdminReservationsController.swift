@@ -35,6 +35,8 @@ class AdminReservationsController: BaseViewController {
     
     var refrControl: UIRefreshControl?
     
+    var activityIndicator: UIActivityIndicatorView?
+    
     var activeReservations: [ReservationWithUser] = [] {
         didSet {
             guard let empty = noReservationsView else { return }
@@ -45,7 +47,7 @@ class AdminReservationsController: BaseViewController {
                 contentView.sendSubviewToBack(empty)
                 tableView?.alpha = 1
             }
-            
+            activityIndicator?.stopAnimating()
             tableView?.reloadData()
         }
     }
@@ -76,6 +78,10 @@ class AdminReservationsController: BaseViewController {
     
     func setUpContentView() {
         self.view.addSubviewThatFills(contentView)
+        
+        activityIndicator = UIActivityIndicatorView()
+        contentView.addSubviewThatFills(activityIndicator)
+        activityIndicator?.startAnimating()
         
         // empty
         noReservationsView = AdminNoReservationsView.loadFromNib()

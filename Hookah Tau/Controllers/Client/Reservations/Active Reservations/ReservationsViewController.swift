@@ -23,6 +23,7 @@ class ReservationsViewController: BaseViewController {
                 tableView?.alpha = 1
             }
             
+            activityIndicator.stopAnimating()
             tableView?.reloadData()
         }
     }
@@ -44,6 +45,8 @@ class ReservationsViewController: BaseViewController {
         tableView.backgroundColor = .white
         return tableView
     }()
+    
+    var activityIndicator = UIActivityIndicatorView()
     
     // MARK: - Lifecycle
 
@@ -73,6 +76,9 @@ class ReservationsViewController: BaseViewController {
     
     func setUpContentView() {
         self.view.addSubviewThatFills(contentView)
+        
+        contentView.addSubviewThatFills(activityIndicator)
+        activityIndicator.startAnimating()
         
         // empty
         noReservationsView = NoReservationsView.loadFromNib()
