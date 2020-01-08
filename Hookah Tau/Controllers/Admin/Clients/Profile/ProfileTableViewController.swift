@@ -63,6 +63,11 @@ class ProfileTableViewController: BaseTableViewController {
         loadReservations()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        tabBarController?.tabBar.isHidden = true
+    }
+    
     func loadReservations() {
         guard let uuid = user?.uuid else { return }
         clientsService?.loadReservationsForUser(withUUID: uuid,
@@ -127,6 +132,15 @@ extension ProfileTableViewController {
         cell.bind(withModel: dataSource[indexPath.row])
         
         return cell
+    }
+    
+    // tap
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let u = user else { return }
+        let r = dataSource[indexPath.row]
+        let reservation = ReservationWithUser(reservation: r, user: u)
+        coodinator?.seeExistingReservation(data: reservation)
     }
     
     // Update

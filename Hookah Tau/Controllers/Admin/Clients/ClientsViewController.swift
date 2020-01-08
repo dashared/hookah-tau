@@ -31,6 +31,11 @@ class ClientsViewController: UITableViewController {
         clientsService = ClientsService(apiClient: APIClient.shared)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = false
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         loadClients()
