@@ -68,6 +68,7 @@ class AdminReservationEditingViewController: BaseViewController {
                                 constant: -mainContentView.frame.height - 10)
         
         saveButton.addTarget(self, action: #selector(saveReservation), for: .touchUpInside)
+        reservationView?.cancelButton?.addTarget(self, action: #selector(cancelReservation), for: .touchUpInside)
     }
 
     func setupContentViews() {
@@ -81,6 +82,8 @@ class AdminReservationEditingViewController: BaseViewController {
             mapView = MapView2.loadFromNib()
         }
         
+        navigationItem.title = TotalStorage.standard.getEstablishment(model.establishment)?.address
+    
         mapView?.isUserInteractionEnabled = false
         
         tableContentView.addSubviewThatFills(mapView)
@@ -134,6 +137,20 @@ class AdminReservationEditingViewController: BaseViewController {
                                                 }
                                                 
                                                 self?.saveButton.loading = false
+        })
+    }
+    
+    @objc func cancelReservation() {
+        guard
+        let uuid = reservationData?.uuid
+        else { return }
+        
+        reservationService?.deleteReservation(isAdmin: true, uuid: uuid, completion: { [weak self] (res) in
+            if res {
+                self?.coordinator?.didEndFlow?()
+            } else {
+                self?.displayAlert(with: "Что-то пошло не так!\nПопробуешь еще раз?")
+            }
         })
     }
 }

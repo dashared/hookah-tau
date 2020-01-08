@@ -12,9 +12,8 @@ class ClientsViewController: UITableViewController {
     
     // MARK: - Properties
     
-    var dataSource: [FullUser] = [] {
+    var dataSource: [Client] = [] {
         didSet {
-            print(dataSource)
             tableView.reloadData()
         }
     }
@@ -30,6 +29,11 @@ class ClientsViewController: UITableViewController {
 
         navigationItem.title = "Клиенты"
         clientsService = ClientsService(apiClient: APIClient.shared)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = false
     }
     
     override func viewDidAppear(_ animated: Bool) {

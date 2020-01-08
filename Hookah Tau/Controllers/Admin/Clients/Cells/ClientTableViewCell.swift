@@ -35,10 +35,11 @@ class ClientTableViewCell: UITableViewCell {
     
     // MARK: - Bind
     
-    func bind(withModel model: FullUser) {
+    func bind(withModel model: Client) {
         let name = model.name ?? "❔"
         nameLabel.text = model.isAdmin ? "👑 " + name : name
         phoneNumberLabel.text = model.phoneNumber.formattedNumber()
+        numberOfReservationsLabel.text = "\(model.reservationCount)"
     }
 
 }

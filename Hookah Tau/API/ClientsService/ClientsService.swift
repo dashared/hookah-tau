@@ -15,7 +15,7 @@ class ClientsService {
         self.apiClient = apiClient
     }
     
-    func loadClientsList(completion: @escaping ((Result<[FullUser], GeneralError>) -> Void)) {
+    func loadClientsList(completion: @escaping ((Result<[Client], GeneralError>) -> Void)) {
         let resolver = ClientsListResolver<ClientsResponce>()
         let request = ApiRequest(resolver: resolver, httpMethod: .get)
         

@@ -23,8 +23,6 @@ class SecondStepView: UIView {
     
     @IBOutlet weak var totalBookingLabel: UILabel!
     
-    @IBOutlet weak var infoLabel: UILabel!
-    
     @IBOutlet weak var specialLabel: UILabel! {
         didSet {
             let m = NSMutableAttributedString(string: "Если Вам нужно что-то особенное, Вы можете связаться с администратором ")
@@ -131,7 +129,6 @@ class SecondStepView: UIView {
     @IBAction func sliderValueChanged(_ sender: UISlider) {
         let value = Int(sender.value)
         numberOfGuestsLabel.text = "Количество гостей: \(value)"
-        infoLabel.text = getNumberOfCalians(value)
         
         guard let d = data else { return }
         
@@ -149,10 +146,6 @@ class SecondStepView: UIView {
                 let urlPhone = URL(string: "tel://79\(phone)") else { return }
         
             UIApplication.shared.open(urlPhone)
-    }
-    
-    func getNumberOfCalians(_ sliderValue: Int) -> String {
-        return "Минимальное количество кальянов: \(sliderValue > 6 ? 2 : 1)"
     }
     
     // MARK: - Setup

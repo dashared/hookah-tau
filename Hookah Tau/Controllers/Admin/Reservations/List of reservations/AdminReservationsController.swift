@@ -33,6 +33,10 @@ class AdminReservationsController: BaseViewController {
     
     weak var coordinator: AdminReservationsCoordinator?
     
+    var refrControl: UIRefreshControl?
+    
+    var activityIndicator: UIActivityIndicatorView?
+    
     var activeReservations: [ReservationWithUser] = [] {
         didSet {
             guard let empty = noReservationsView else { return }
@@ -43,7 +47,7 @@ class AdminReservationsController: BaseViewController {
                 contentView.sendSubviewToBack(empty)
                 tableView?.alpha = 1
             }
-            
+            activityIndicator?.stopAnimating()
             tableView?.reloadData()
         }
     }
@@ -52,6 +56,7 @@ class AdminReservationsController: BaseViewController {
         super.viewDidLoad()
 
         reservationsService = ReservationsService(apiClient: APIClient.shared)
+        setupRefreshControl()
         setUpContentView()
         setupNavBar()
     }
@@ -67,11 +72,16 @@ class AdminReservationsController: BaseViewController {
     
     func setupNavBar() {
         self.navigationItem.title = "Брони"
+        navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(book))
     }
     
     func setUpContentView() {
         self.view.addSubviewThatFills(contentView)
+        
+        activityIndicator = UIActivityIndicatorView()
+        contentView.addSubviewThatFills(activityIndicator)
+        activityIndicator?.startAnimating()
         
         // empty
         noReservationsView = AdminNoReservationsView.loadFromNib()
@@ -106,6 +116,7 @@ class AdminReservationsController: BaseViewController {
             case .failure(let err):
                 self?.displayAlert(forError: err)
             }
+            self?.refrControl?.endRefreshing()
         })
     }
     
@@ -113,6 +124,30 @@ class AdminReservationsController: BaseViewController {
     
     @objc func book() {
         
+    }
+    
+    func deleteReservation(uuid: String, completion: @escaping (([ReservationWithUser]?) -> Void)) {
+        reservationsService?.deleteReservation(isAdmin: true, uuid: uuid) { result in
+            if result {
+                let newReservations = self.activeReservations.filter { $0.uuid != uuid }
+                completion(newReservations)
+                return
+            }
+            
+            completion(nil)
+        }
+    }
+    
+    // MARK: - Refresh control
+    
+    @objc func refreshData( _ ff: UIRefreshControl) {
+        performUpdate()
+    }
+    
+    func setupRefreshControl() {
+        refrControl = UIRefreshControl()
+        tableView?.refreshControl = refrControl
+        refrControl?.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
     }
 
 }
@@ -140,6 +175,44 @@ extension AdminReservationsController: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let reservation = activeReservations[indexPath.row]
         coordinator?.seeExistingReservation(data: reservation)
+    }
+    
+    // Dimesions
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 180.0
+    }
+    
+    // Update
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        let uuid = activeReservations[indexPath.row].uuid
+        let cancelButton = UITableViewRowAction(style: .normal, title: "❌") { _,_  in
+            
+            self.deleteReservation(uuid: uuid) { optionalNewVal in
+                if let newval = optionalNewVal {
+                    self.tableView?.beginUpdates()
+                    self.tableView?.deleteRows(at: [indexPath], with: .automatic)
+                    self.activeReservations = newval
+                    self.tableView?.endUpdates()
+                } else {
+                    self.displayAlert(with: "Не удалось удалить вашу бронь! Попробуйте еще раз!")
+                }
+            }
+        }
+        
+        cancelButton.backgroundColor = .black
+        
+        return [cancelButton]
     }
 
 }

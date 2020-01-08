@@ -23,6 +23,7 @@ class ReservationsViewController: BaseViewController {
                 tableView?.alpha = 1
             }
             
+            activityIndicator.stopAnimating()
             tableView?.reloadData()
         }
     }
@@ -44,6 +45,8 @@ class ReservationsViewController: BaseViewController {
         tableView.backgroundColor = .white
         return tableView
     }()
+    
+    var activityIndicator = UIActivityIndicatorView()
     
     // MARK: - Lifecycle
 
@@ -74,6 +77,9 @@ class ReservationsViewController: BaseViewController {
     func setUpContentView() {
         self.view.addSubviewThatFills(contentView)
         
+        contentView.addSubviewThatFills(activityIndicator)
+        activityIndicator.startAnimating()
+        
         // empty
         noReservationsView = NoReservationsView.loadFromNib()
         contentView.addSubviewThatFills(noReservationsView)
@@ -85,6 +91,7 @@ class ReservationsViewController: BaseViewController {
         contentView.addSubviewThatFills(tableView)
 
         setUpTableView()
+        setupRefreshControl()
     }
     
     func setUpTableView() {
@@ -120,11 +127,12 @@ class ReservationsViewController: BaseViewController {
             case .failure(let err):
                 self?.displayAlert(forError: err)
             }
+            self?.refrControl?.endRefreshing()
         })
     }
     
     func deleteReservation(uuid: String, completion: @escaping (([Reservation]?) -> Void)) {
-        reservationsService?.deleteReservation(uuid: uuid) { result in
+        reservationsService?.deleteReservation(isAdmin: false, uuid: uuid) { result in
             if result {
                 let newReservations = self.activeReservations.filter { $0.uuid != uuid }
                 completion(newReservations)
@@ -135,6 +143,19 @@ class ReservationsViewController: BaseViewController {
         }
     }
     
+    // MARK: - Refresh control
+    
+    var refrControl: UIRefreshControl?
+    
+    func setupRefreshControl() {
+        refrControl = UIRefreshControl()
+        tableView?.refreshControl = refrControl
+        refrControl?.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
+    }
+    
+    @objc func refreshData( _ ff: UIRefreshControl) {
+        performUpdate()
+    }
 }
 
 extension ReservationsViewController: UITableViewDelegate, UITableViewDataSource {

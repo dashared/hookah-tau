@@ -9,7 +9,7 @@
 import Foundation
 
 struct ClientsResponce: MyCodable {
-    var clients: [FullUser]
+    var clients: [Client]
 }
 
 class ClientsListResolver<Responce: MyCodable>: ApiResolver {

@@ -59,6 +59,15 @@ struct ReservationWithUser: MyCodable {
     var reservedTable: Int
     var owner: FullUser
     
+    init(reservation: Reservation, user: FullUser) {
+        self.uuid = reservation.uuid
+        self.establishment = reservation.establishment
+        self.startTime = reservation.startTime
+        self.endTime = reservation.endTime
+        self.numberOfGuests = reservation.numberOfGuests
+        self.reservedTable = reservation.reservedTable
+        self.owner = user
+    }
 }
 
 

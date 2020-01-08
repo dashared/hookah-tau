@@ -21,9 +21,12 @@ class ClientsCoordinator: BaseCoordinator {
     }
     
     /// TODO
-    func openUserProfile(_ profile: FullUser) {
+    func openUserProfile(_ profile: Client) {
         let profileCoordinator = ClientProfileCoordinator(navigationController: navigationController)
-        profileCoordinator.user = profile
+        profileCoordinator.user = FullUser(uuid: profile.uuid,
+                                           name: profile.name,
+                                           phoneNumber: profile.phoneNumber,
+                                           isAdmin: profile.isAdmin)
         
         self.addDependency(profileCoordinator)
         profileCoordinator.didEndFlow = {
