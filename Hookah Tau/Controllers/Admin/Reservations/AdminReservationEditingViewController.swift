@@ -82,6 +82,8 @@ class AdminReservationEditingViewController: BaseViewController {
             mapView = MapView2.loadFromNib()
         }
         
+        navigationItem.title = TotalStorage.standard.getEstablishment(model.establishment)?.address
+    
         mapView?.isUserInteractionEnabled = false
         
         tableContentView.addSubviewThatFills(mapView)

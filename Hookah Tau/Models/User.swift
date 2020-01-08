@@ -15,10 +15,19 @@ struct User: MyCodable {
     var isAdmin: Bool
 }
 
-/// При запросах на список пользователей в аккаунте администратора
+/// При запросах на список пользователей в аккаунте администратора.
 struct FullUser: MyCodable {
     var uuid: String
     var name: String?
     var phoneNumber: String
     var isAdmin: Bool
+}
+
+/// `GET /admin/clients`
+struct Client: MyCodable {
+    var uuid: String
+    var name: String?
+    var phoneNumber: String
+    var isAdmin: Bool
+    var reservationCount: Int
 }

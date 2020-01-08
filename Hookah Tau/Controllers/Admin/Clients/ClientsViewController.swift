@@ -12,9 +12,8 @@ class ClientsViewController: UITableViewController {
     
     // MARK: - Properties
     
-    var dataSource: [FullUser] = [] {
+    var dataSource: [Client] = [] {
         didSet {
-            print(dataSource)
             tableView.reloadData()
         }
     }

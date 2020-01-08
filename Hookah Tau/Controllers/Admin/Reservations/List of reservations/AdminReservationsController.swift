@@ -70,6 +70,7 @@ class AdminReservationsController: BaseViewController {
     
     func setupNavBar() {
         self.navigationItem.title = "Брони"
+        navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(book))
     }
     
