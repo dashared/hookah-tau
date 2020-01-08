@@ -26,6 +26,7 @@ class ProfileTableViewController: BaseTableViewController {
         didSet {
             let style = BlackButtonStyle()
             style.apply(to: copyButton, withTitle: "СКОПИРОВАТЬ")
+            copyButton.addTarget(self, action: #selector(copyNumber(_:)), for: .touchUpInside)
         }
     }
     
@@ -74,15 +75,7 @@ class ProfileTableViewController: BaseTableViewController {
             }
         })
     }
-    
-    @objc func callUser() {
-        guard
-            let u = user,
-            let urlPhone = URL(string: "tel://79\(u.phoneNumber)")
-        else { return }
-        
-        UIApplication.shared.open(urlPhone)
-    }
+
     
     func deleteReservation(uuid: String, completion: @escaping (([Reservation]?) -> Void)) {
         reservationsService?.deleteReservation(isAdmin: true, uuid: uuid) { result in
@@ -94,6 +87,28 @@ class ProfileTableViewController: BaseTableViewController {
             
             completion(nil)
         }
+    }
+    
+    // MARK: - Button handlers
+    
+    @objc func callUser() {
+        guard
+            let u = user,
+            let urlPhone = URL(string: "tel://79\(u.phoneNumber)")
+        else { return }
+        
+        UIApplication.shared.open(urlPhone)
+    }
+    
+    @objc func copyNumber(_ sender: UIButton) {
+        guard
+            let u = user
+        else { return }
+        //Copy a string to the pasteboard.
+        UIPasteboard.general.string = "79\(u.phoneNumber)"
+        
+        //Alert
+        self.displayAlert(with: "Номер скопирован!")
     }
 
 }
