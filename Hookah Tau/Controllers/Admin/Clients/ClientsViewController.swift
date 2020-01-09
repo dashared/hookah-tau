@@ -18,9 +18,21 @@ class ClientsViewController: BaseTableViewController {
         }
     }
     
+    var filteredDataSource: [Client] = []
+    
     var clientsService: ClientsService?
     
     weak var coordinator: ClientsCoordinator?
+    
+    var searchControl: UISearchController?
+    
+    var isFiltering: Bool {
+        return searchControl?.isActive ?? false && !searchBarIsEmpty()
+    }
+    
+    func searchBarIsEmpty() -> Bool {
+        return searchControl?.searchBar.text?.isEmpty ?? true
+    }
     
     // MARK: - Lifecycle
     
@@ -28,6 +40,7 @@ class ClientsViewController: BaseTableViewController {
         super.viewDidLoad()
 
         setupNavigationBar()
+        setupSearchController()
         clientsService = ClientsService(apiClient: APIClient.shared)
     }
     
@@ -47,6 +60,15 @@ class ClientsViewController: BaseTableViewController {
         
         navigationItem.title = "Клиенты"
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareCSVFile))
+    }
+    
+    func setupSearchController() {
+        searchControl = UISearchController(searchResultsController: nil)
+        navigationItem.searchController = searchControl
+        navigationItem.hidesSearchBarWhenScrolling = false
+        searchControl?.obscuresBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        searchControl?.searchResultsUpdater = self
     }
     
     // MARK: - Api calls
@@ -100,7 +122,17 @@ class ClientsViewController: BaseTableViewController {
             if res {
                 self.tableView?.beginUpdates()
                 self.tableView?.reloadRows(at: [indexPath], with: .automatic)
-                self.dataSource[indexPath.row].isBlocked = !wasBlocked
+                if self.isFiltering {
+                    self.filteredDataSource[indexPath.row].isBlocked = !wasBlocked
+                    let changed = self.filteredDataSource[indexPath.row]
+                    let filtered = self.dataSource.map { (one: Client) -> Client in
+                        if one.uuid == changed.uuid {
+                            return changed
+                        } else { return one } }
+                    self.dataSource = filtered
+                } else {
+                    self.dataSource[indexPath.row].isBlocked = !wasBlocked
+                }
                 self.tableView?.endUpdates()
             } else {
                 self.displayAlert(with: "Не удалось \(wasBlocked ? "удалить" : "добавить") пользователя \(wasBlocked ? "из" : "в") чс! Попробуйте еще раз!")
@@ -117,19 +149,20 @@ extension ClientsViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: clientTableViewCellId, for: indexPath) as! ClientTableViewCell
         
-        let userModel = dataSource[indexPath.row]
+        let userModel = isFiltering ? filteredDataSource[indexPath.row] : dataSource[indexPath.row]
         cell.bind(withModel: userModel)
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSource.count
+        return isFiltering ? filteredDataSource.count : dataSource.count
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let user = dataSource[indexPath.row]
+        let user = isFiltering ? filteredDataSource[indexPath.row] : dataSource[indexPath.row]
         coordinator?.openUserProfile(user)
+        searchControl?.dismiss(animated: true, completion: nil)
     }
     
     // Update
@@ -140,7 +173,7 @@ extension ClientsViewController {
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
-        let user = dataSource[indexPath.row]
+        let user = isFiltering ? filteredDataSource[indexPath.row] : dataSource[indexPath.row]
         let blockButton = UITableViewRowAction(style: .normal, title: "\(!user.isBlocked ? "🙅🏻‍♀️" : "👍🏻")") { _,_  in
             
             self.updateUserBlockStatus(wasBlocked: user.isBlocked, phone: user.phoneNumber, indexPath: indexPath)
@@ -149,5 +182,17 @@ extension ClientsViewController {
         blockButton.backgroundColor = .black
         
         return [blockButton]
+    }
+}
+
+extension ClientsViewController: UISearchResultsUpdating {
+    func filterContentForSearchText(_ searchText: String, scope: String = "All")
+    {
+        filteredDataSource = dataSource.filter { ($0.name?.lowercased().contains(searchText.lowercased()) ?? false) || ($0.phoneNumber.lowercased().contains(searchText.lowercased())) }
+        tableView.reloadData()
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchController.searchBar.text ?? "")
     }
 }
