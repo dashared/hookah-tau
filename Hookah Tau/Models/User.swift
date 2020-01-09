@@ -30,4 +30,13 @@ struct Client: MyCodable {
     var phoneNumber: String
     var isAdmin: Bool
     var reservationCount: Int
+    var isBlocked: Bool
+    
+    static var csvHeading: String {
+        return "uuid, name, phone, isAdmin, reservationCount, isBlocked\n"
+    }
+    
+    var toString: String {
+        return "\(uuid), \(name ?? "❔"), \(phoneNumber), \(isAdmin), \(reservationCount), \(isBlocked)"
+    }
 }

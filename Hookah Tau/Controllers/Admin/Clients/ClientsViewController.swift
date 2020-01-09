@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ClientsViewController: UITableViewController {
+class ClientsViewController: BaseTableViewController {
     
     // MARK: - Properties
     
@@ -27,7 +27,7 @@ class ClientsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.title = "Клиенты"
+        setupNavigationBar()
         clientsService = ClientsService(apiClient: APIClient.shared)
     }
     
@@ -40,6 +40,16 @@ class ClientsViewController: UITableViewController {
         super.viewDidAppear(animated)
         loadClients()
     }
+    
+    // MARK: - Setup
+    
+    func setupNavigationBar() {
+        
+        navigationItem.title = "Клиенты"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareCSVFile))
+    }
+    
+    // MARK: - Api calls
 
     /// Загружаем клиентов кальянки
     func loadClients() {
@@ -53,8 +63,39 @@ class ClientsViewController: UITableViewController {
         })
     }
     
+    // MARK: - Button handlers
     
-    // MARK: - Tableview
+    /// https://developer.apple.com/design/human-interface-guidelines/ios/views/activity-views/
+    @objc func shareCSVFile() {
+        //Your CSV text
+        let str = HFunc.main.exportClientsToCSV(dataSource)
+        let filename = getDocumentsDirectory().appendingPathComponent("clients.csv")
+
+        do {
+            try str.write(toFile: filename, atomically: true, encoding: String.Encoding.utf8)
+
+            let fileData = NSURL(fileURLWithPath: filename)
+
+            let objectsToShare = [fileData]
+            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+
+            self.present(activityVC, animated: true, completion: nil)
+
+        } catch {
+            self.displayAlert(with: "По какой-то причине не могу сохранить файл!")
+        }
+    }
+    
+    func getDocumentsDirectory() -> NSString {
+        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+        let documentsDirectory = paths[0]
+        return documentsDirectory as NSString
+    }
+}
+
+// MARK: - Tableview
+
+extension ClientsViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: clientTableViewCellId, for: indexPath) as! ClientTableViewCell
