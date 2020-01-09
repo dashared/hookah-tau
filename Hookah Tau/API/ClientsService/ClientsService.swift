@@ -63,4 +63,21 @@ class ClientsService {
         }
         
     }
+    
+    /// Метод для удаления или добавления пользователя в чс
+    func changeBlockList(whatToDo: CrudMethod, phone: String, completion: @escaping ((Bool) -> Void)) {
+        let resolver = BlocklistPutResolver(blockList: [phone])
+        let request = ApiRequest(resolver: resolver, httpMethod: whatToDo)
+        
+        apiClient.load(request: request.request) { (res) in
+            switch res {
+            case .failure:
+                completion(false)
+                return
+            case .success:
+                completion(true)
+                return
+            }
+        }
+    }
 }

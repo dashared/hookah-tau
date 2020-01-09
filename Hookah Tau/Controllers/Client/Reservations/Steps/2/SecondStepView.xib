@@ -123,7 +123,7 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="RJE-Hk-KNh" secondAttribute="bottom" constant="36" id="0W3-e2-hCU"/>
+                <constraint firstAttribute="bottom" secondItem="RJE-Hk-KNh" secondAttribute="bottom" constant="36" id="0W3-e2-hCU"/>
                 <constraint firstItem="9c7-IZ-n2p" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="94y-7J-ksb"/>
                 <constraint firstItem="9c7-IZ-n2p" firstAttribute="top" secondItem="bJ1-1q-VXq" secondAttribute="bottom" constant="20" id="9TT-vO-7PZ"/>
                 <constraint firstItem="RJE-Hk-KNh" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="AgS-kP-UNE"/>
@@ -131,7 +131,7 @@
                 <constraint firstAttribute="trailing" secondItem="bJ1-1q-VXq" secondAttribute="trailing" constant="20" id="OCH-eC-kP5"/>
                 <constraint firstItem="bJ1-1q-VXq" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="PCm-nY-M6p"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="9c7-IZ-n2p" secondAttribute="trailing" constant="20.5" id="Rh7-V2-v2u"/>
-                <constraint firstItem="bJ1-1q-VXq" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="20" id="SnG-Cy-hHq"/>
+                <constraint firstItem="bJ1-1q-VXq" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="SnG-Cy-hHq"/>
                 <constraint firstItem="RJE-Hk-KNh" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="fW0-Tt-MpN"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

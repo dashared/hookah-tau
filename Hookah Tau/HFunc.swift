@@ -15,6 +15,9 @@ class HFunc {
     
     static let main = HFunc()
     
+    func exportClientsToCSV(_ arr: [Client]) -> String {
+        return arr.reduce(Client.csvHeading) { return funcToMapClientsIntoString($0, $1) }
+    }
     
     /// Filtering function to get every periods which intersects with given date
     /// - Parameter periods: all periods of bookings (for a particular table)
@@ -57,5 +60,9 @@ class HFunc {
         }
         
         return { (period: ReservationPeriod) in intervalChecking(period.startTime, period.endTime) }
+    }
+    
+    private func funcToMapClientsIntoString(_ acc: String, _ el: Client) -> String {
+        return acc + el.toString + "\n"
     }
 }
