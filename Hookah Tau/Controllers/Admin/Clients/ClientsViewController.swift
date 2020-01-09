@@ -91,6 +91,23 @@ class ClientsViewController: BaseTableViewController {
         let documentsDirectory = paths[0]
         return documentsDirectory as NSString
     }
+    
+    // MARK: - Change blocklist status
+    
+    func updateUserBlockStatus(wasBlocked: Bool, phone: String, indexPath: IndexPath) {
+        let crudMethod = wasBlocked ? CrudMethod.delete : CrudMethod.put
+        clientsService?.changeBlockList(whatToDo: crudMethod, phone: phone, completion: { (res) in
+            if res {
+                self.tableView?.beginUpdates()
+                self.tableView?.reloadRows(at: [indexPath], with: .automatic)
+                self.dataSource[indexPath.row].isBlocked = !wasBlocked
+                self.tableView?.endUpdates()
+            } else {
+                self.displayAlert(with: "Не удалось \(wasBlocked ? "удалить" : "добавить") пользователя \(wasBlocked ? "из" : "в") чс! Попробуйте еще раз!")
+                return
+            }
+        })
+    }
 }
 
 // MARK: - Tableview
@@ -113,5 +130,24 @@ extension ClientsViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let user = dataSource[indexPath.row]
         coordinator?.openUserProfile(user)
+    }
+    
+    // Update
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        let user = dataSource[indexPath.row]
+        let blockButton = UITableViewRowAction(style: .normal, title: "\(!user.isBlocked ? "🙅🏻‍♀️" : "👍🏻")") { _,_  in
+            
+            self.updateUserBlockStatus(wasBlocked: user.isBlocked, phone: user.phoneNumber, indexPath: indexPath)
+        }
+        
+        blockButton.backgroundColor = .black
+        
+        return [blockButton]
     }
 }

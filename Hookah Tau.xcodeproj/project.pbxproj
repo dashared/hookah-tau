@@ -97,6 +97,7 @@
 		12D8FA31237F08C700305F57 /* AllReservations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D8FA30237F08C700305F57 /* AllReservations.swift */; };
 		12D928AF23C47DCF0051724D /* ADeleteReservationResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D928AE23C47DCF0051724D /* ADeleteReservationResolver.swift */; };
 		12D928B123C486380051724D /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D928B023C486380051724D /* BaseTableViewController.swift */; };
+		12D928B323C7464B0051724D /* BlocklistPutResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D928B223C7464B0051724D /* BlocklistPutResolver.swift */; };
 		12DBEEB223539F2100AF1BB6 /* Client.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12DBEEB123539F2100AF1BB6 /* Client.storyboard */; };
 		12E35071239FA8CA004BB188 /* Extensions+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E35070239FA8CA004BB188 /* Extensions+String.swift */; };
 		12E35074239FAF52004BB188 /* ClientsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E35073239FAF52004BB188 /* ClientsService.swift */; };
@@ -253,6 +254,7 @@
 		12D8FA30237F08C700305F57 /* AllReservations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllReservations.swift; sourceTree = "<group>"; };
 		12D928AE23C47DCF0051724D /* ADeleteReservationResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ADeleteReservationResolver.swift; sourceTree = "<group>"; };
 		12D928B023C486380051724D /* BaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
+		12D928B223C7464B0051724D /* BlocklistPutResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlocklistPutResolver.swift; sourceTree = "<group>"; };
 		12DBEEB123539F2100AF1BB6 /* Client.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Client.storyboard; sourceTree = "<group>"; };
 		12E35070239FA8CA004BB188 /* Extensions+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+String.swift"; sourceTree = "<group>"; };
 		12E35073239FAF52004BB188 /* ClientsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientsService.swift; sourceTree = "<group>"; };
@@ -711,6 +713,7 @@
 			children = (
 				12E35077239FAFA4004BB188 /* ClientsListResolver.swift */,
 				12E3507C239FD1F3004BB188 /* ClientReservationsResolver.swift */,
+				12D928B223C7464B0051724D /* BlocklistPutResolver.swift */,
 			);
 			path = Resolvers;
 			sourceTree = "<group>";
@@ -1154,6 +1157,7 @@
 				F3895F4A233D323700FA6A37 /* CodeCoordinator.swift in Sources */,
 				12B3A7B923ACCD83009E2FA6 /* AddOtherAdminResolver.swift in Sources */,
 				12E3507F239FDFC2004BB188 /* ClientProfileCoordinator.swift in Sources */,
+				12D928B323C7464B0051724D /* BlocklistPutResolver.swift in Sources */,
 				12838EB4236779C700CEF108 /* ApiResolver.swift in Sources */,
 				12838EA9236764A600CEF108 /* APIClient.swift in Sources */,
 				123615D12355141600D1122A /* ProfileView.swift in Sources */,

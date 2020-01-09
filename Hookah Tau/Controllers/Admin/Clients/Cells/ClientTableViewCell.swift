@@ -20,6 +20,11 @@ class ClientTableViewCell: UITableViewCell {
     
     @IBOutlet weak var numberOfReservationsLabel: UILabel!
     
+    @IBOutlet weak var blockListImage: UIImageView!
+    
+    @IBOutlet weak var isAdminImage: UIImageView!
+    
+    
     // MARK: - Lifecycle
 
     override func awakeFromNib() {
@@ -36,8 +41,9 @@ class ClientTableViewCell: UITableViewCell {
     // MARK: - Bind
     
     func bind(withModel model: Client) {
-        let name = model.name ?? "❔"
-        nameLabel.text = model.isAdmin ? "👑 " + name : name
+        blockListImage.isHidden = !model.isBlocked
+        isAdminImage.isHidden = !model.isAdmin
+        nameLabel.text = model.name ?? "❔"
         phoneNumberLabel.text = model.phoneNumber.formattedNumber()
         numberOfReservationsLabel.text = "\(model.reservationCount)"
     }
