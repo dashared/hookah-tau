@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -106,14 +106,14 @@
                     </constraints>
                 </view>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TriangleDown" translatesAutoresizingMaskIntoConstraints="NO" id="5dC-Lq-opV">
-                    <rect key="frame" x="184.5" y="0.0" width="45" height="29"/>
+                    <rect key="frame" x="184.66666666666666" y="0.0" width="45" height="29"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="45" id="Tsw-fS-8qs"/>
                         <constraint firstAttribute="height" constant="29" id="YWD-ja-gD5"/>
                     </constraints>
                 </imageView>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TriangleUp" translatesAutoresizingMaskIntoConstraints="NO" id="Igw-O9-W92">
-                    <rect key="frame" x="184.5" y="196" width="45" height="29"/>
+                    <rect key="frame" x="184.66666666666666" y="196" width="45" height="29"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="29" id="AdE-yJ-WLL"/>
                         <constraint firstAttribute="width" constant="45" id="Eaa-P8-3mv"/>
@@ -159,16 +159,16 @@
                     <rect key="frame" x="0.0" y="29" width="414" height="59"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="OEF-Kc-d38">
-                            <rect key="frame" x="8" y="5" width="398" height="14.5"/>
+                            <rect key="frame" x="8" y="5.0000000000000009" width="398" height="14.333333333333336"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="November" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Mn-Mn-qaI">
-                                    <rect key="frame" x="0.0" y="0.0" width="58.5" height="14.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="58.333333333333336" height="14.333333333333334"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="January" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rfg-Ts-DX0">
-                                    <rect key="frame" x="353" y="0.0" width="45" height="14.5"/>
+                                    <rect key="frame" x="353" y="0.0" width="45" height="14.333333333333334"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
@@ -176,7 +176,7 @@
                             </subviews>
                         </stackView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="December" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fbc-VX-43f">
-                            <rect key="frame" x="176.5" y="5" width="61" height="14.5"/>
+                            <rect key="frame" x="176.66666666666666" y="5.0000000000000009" width="60.666666666666657" height="14.333333333333336"/>
                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
@@ -204,28 +204,28 @@
             <constraints>
                 <constraint firstItem="Y9G-UI-WV7" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="22z-Ck-vsZ"/>
                 <constraint firstItem="a6N-9A-8y5" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="5c8-YB-dSB"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="954-g3-FZD" secondAttribute="bottom" constant="37" id="C3k-Mb-wT4"/>
+                <constraint firstAttribute="bottom" secondItem="954-g3-FZD" secondAttribute="bottom" constant="37" id="C3k-Mb-wT4"/>
                 <constraint firstItem="Y9G-UI-WV7" firstAttribute="top" secondItem="5dC-Lq-opV" secondAttribute="bottom" id="E97-Lg-K2s"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="fvt-zf-8tU" secondAttribute="trailing" id="Eeh-zB-KWe"/>
                 <constraint firstItem="a6N-9A-8y5" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="F03-yv-41V"/>
                 <constraint firstItem="pgz-8G-Kx4" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="G0y-2f-SkS"/>
                 <constraint firstItem="5dC-Lq-opV" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="If5-v7-UAj"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="pgz-8G-Kx4" secondAttribute="bottom" constant="137" id="Lgn-Nv-wjD"/>
+                <constraint firstAttribute="bottom" secondItem="pgz-8G-Kx4" secondAttribute="bottom" constant="137" id="Lgn-Nv-wjD"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="954-g3-FZD" secondAttribute="trailing" id="MGt-d4-Win"/>
                 <constraint firstItem="fvt-zf-8tU" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="SaI-rP-2em"/>
                 <constraint firstItem="Igw-O9-W92" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="TtM-Bc-V1U"/>
-                <constraint firstItem="Igw-O9-W92" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="V9u-Eu-VME"/>
+                <constraint firstItem="Igw-O9-W92" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" id="V9u-Eu-VME"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="pgz-8G-Kx4" secondAttribute="trailing" id="Z6D-PY-Jrh"/>
                 <constraint firstItem="Igw-O9-W92" firstAttribute="top" secondItem="a6N-9A-8y5" secondAttribute="bottom" constant="8" id="f4D-nq-HMa"/>
                 <constraint firstItem="Y9G-UI-WV7" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="gZw-8a-dTG"/>
                 <constraint firstItem="954-g3-FZD" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="itw-0z-3i7"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="fvt-zf-8tU" secondAttribute="bottom" constant="137" id="lOx-ke-O6a"/>
+                <constraint firstAttribute="bottom" secondItem="fvt-zf-8tU" secondAttribute="bottom" constant="137" id="lOx-ke-O6a"/>
                 <constraint firstItem="z9p-OK-tL7" firstAttribute="top" secondItem="52e-LM-cF6" secondAttribute="bottom" constant="9" id="ldj-Qh-p0k"/>
-                <constraint firstItem="fvt-zf-8tU" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="29" id="pSg-dd-INI"/>
-                <constraint firstItem="pgz-8G-Kx4" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="29" id="vfO-LG-tqR"/>
-                <constraint firstItem="954-g3-FZD" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="97" id="vhK-2E-j3k"/>
-                <constraint firstItem="5dC-Lq-opV" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="xOt-l0-Vzy"/>
-                <constraint firstItem="a6N-9A-8y5" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="97" id="yyf-QB-vfF"/>
+                <constraint firstItem="fvt-zf-8tU" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="29" id="pSg-dd-INI"/>
+                <constraint firstItem="pgz-8G-Kx4" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="29" id="vfO-LG-tqR"/>
+                <constraint firstItem="954-g3-FZD" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="97" id="vhK-2E-j3k"/>
+                <constraint firstItem="5dC-Lq-opV" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="xOt-l0-Vzy"/>
+                <constraint firstItem="a6N-9A-8y5" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="97" id="yyf-QB-vfF"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
