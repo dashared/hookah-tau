@@ -12,6 +12,8 @@ class AdminNoReservationsView: UIView {
 
     // MARK: - IBAOutlets
     
+    @IBOutlet weak var titleLabel: UILabel?
+    
     @IBOutlet weak var bookButton: Button? {
         didSet {
             let style = BlackButtonStyle()
@@ -19,4 +21,7 @@ class AdminNoReservationsView: UIView {
         }
     }
     
+    func setup(withTitle title: String) {
+        titleLabel?.text = title
+    }
 }

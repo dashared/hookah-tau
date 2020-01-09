@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileTableViewController: BaseTableViewController {
+class ProfileTableViewController: BaseViewController {
     
     // MARK: - IBAOutlets
 
@@ -30,24 +30,41 @@ class ProfileTableViewController: BaseTableViewController {
         }
     }
     
+    
+    @IBOutlet weak var contentView: UIView!
+    
     // MARK: - properties
+    
+    var tableView: UITableView?
     
     var clientsService: ClientsService?
     
     var reservationsService: ReservationsService?
     
-    var user: FullUser? {
-        didSet {
-            guard let u = user else { return }
-            navigationItem.title = u.name
-        }
-    }
+    var user: FullUser?
     
     weak var coodinator: ClientProfileCoordinator?
     
+    var noReserationsYetView: AdminNoReservationsView?
+    
+    var activityIndicator: UIActivityIndicatorView?
+    
+    var refreshControl: UIRefreshControl?
+    
     var dataSource: [Reservation] = [] {
         didSet {
-            tableView.reloadData()
+            guard let empty = noReserationsYetView else { return }
+            if dataSource.isEmpty {
+                empty.alpha = 1
+                tableView?.alpha = 0
+            } else {
+                empty.alpha = 0
+                tableView?.alpha = 1
+            }
+            
+            refreshControl?.endRefreshing()
+            activityIndicator?.stopAnimating()
+            tableView?.reloadData()
         }
     }
     
@@ -56,10 +73,12 @@ class ProfileTableViewController: BaseTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableView?.register(ReservationCell.self, forCellReuseIdentifier: reservationCell)
-        
         clientsService = ClientsService(apiClient: APIClient.shared)
         reservationsService = ReservationsService(apiClient: APIClient.shared)
+        
+        setupNavBar()
+        setupTable()
+        setupActivityIndicator()
         loadReservations()
     }
     
@@ -68,13 +87,55 @@ class ProfileTableViewController: BaseTableViewController {
         tabBarController?.tabBar.isHidden = true
     }
     
+    // MARK: - Setup
+    
+    func setupNavBar() {
+        guard let u = user else { return }
+        navigationItem.title = u.name
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(book))
+    }
+    
+    func setupTable() {
+        tableView = UITableView()
+        
+        // refresh control
+        refreshControl = UIRefreshControl()
+        refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        tableView?.refreshControl = refreshControl
+        
+        tableView?.dataSource = self
+        tableView?.delegate = self
+        
+        noReserationsYetView = AdminNoReservationsView.loadFromNib()
+        noReserationsYetView?.setup(withTitle: "У этого пользователя пока нет ни одной брони :(")
+        noReserationsYetView?.bookButton?.addTarget(self, action: #selector(book), for: .touchUpInside)
+        contentView.addSubviewThatFills(noReserationsYetView)
+        noReserationsYetView?.alpha = 0
+        
+        tableView?.register(ReservationCell.self, forCellReuseIdentifier: reservationCell)
+        
+        contentView.addSubviewThatFills(tableView)
+        
+        tableView?.alpha = 0
+    }
+    
+    func setupActivityIndicator() {
+        
+        activityIndicator = UIActivityIndicatorView()
+        view.addSubviewThatFills(activityIndicator)
+        activityIndicator?.startAnimating()
+        
+    }
+    
+    // MARK: - Api calls
+    
     func loadReservations() {
         guard let uuid = user?.uuid else { return }
         clientsService?.loadReservationsForUser(withUUID: uuid,
                                                 completion: { [weak self] (res) in
             switch res {
             case .failure(let err):
-                print(err)
+                self?.displayAlert(forError: err)
             case .success(let data):
                 self?.dataSource = data
             }
@@ -115,18 +176,25 @@ class ProfileTableViewController: BaseTableViewController {
         //Alert
         self.displayAlert(with: "Номер скопирован!")
     }
-
+    
+    @objc func refresh() {
+        loadReservations()
+    }
+    
+    @objc func book() {
+        
+    }
 }
 
 // MARK: - Table view data source
 
-extension ProfileTableViewController {
+extension ProfileTableViewController: UITableViewDelegate, UITableViewDataSource {
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataSource.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reservationCell, for: indexPath) as! ReservationCell
         
         cell.bind(withModel: dataSource[indexPath.row])
@@ -136,7 +204,7 @@ extension ProfileTableViewController {
     
     // tap
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let u = user else { return }
         let r = dataSource[indexPath.row]
         let reservation = ReservationWithUser(reservation: r, user: u)
@@ -145,11 +213,11 @@ extension ProfileTableViewController {
     
     // Update
     
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
-    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
         let uuid = dataSource[indexPath.row].uuid
         let cancelButton = UITableViewRowAction(style: .normal, title: "❌") { _,_  in
