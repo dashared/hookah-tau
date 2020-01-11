@@ -80,4 +80,27 @@ class ClientsService {
             }
         }
     }
+    
+    /// Метод для изменения статуса админки
+    func changeAdmin(crud: CrudMethod, data: String, completion: @escaping ((Bool) -> Void)) {
+        var resolver: ApiResolver!
+        if crud == .put {
+            resolver = AddOtherAdminResolver(phone: data)
+        } else {
+            resolver = DeleteOtherAdminResolver(uuid: data)
+        }
+        
+        let request = ApiRequest(resolver: resolver, httpMethod: crud)
+        
+        apiClient.load(request: request.request) { result in
+            switch result {
+            case .failure:
+                completion(false)
+                return
+            case .success:
+                completion(true)
+                return
+            }
+        }
+    }
 }

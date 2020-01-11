@@ -192,7 +192,7 @@ extension ReservationsViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
         let uuid = activeReservations[indexPath.row].uuid
-        let cancelButton = UITableViewRowAction(style: .normal, title: "❌") { _,_  in
+        let cancelButton = UITableViewRowAction(style: .normal, title: "отменить бронь") { _,_  in
             
             self.deleteReservation(uuid: uuid) { optionalNewVal in
                 if let newval = optionalNewVal {
