@@ -33,13 +33,6 @@ class AdminReservationEditingViewController: BaseViewController {
             setupReservationViewWithIntervals()
         }
     }
-    
-    var saveButton: Button = {
-        let button = Button()
-        let style = BlackButtonStyle()
-        style.apply(to: button, withTitle: "СОХРАНИТЬ")
-        return button
-    }()
 
     // MARK:- Lifecycle
     
@@ -64,10 +57,8 @@ class AdminReservationEditingViewController: BaseViewController {
     // MARK: - Setup
     
     func setupButtons() {
-        addStackViewWithButtons(rightBtn: saveButton,
-                                constant: -mainContentView.frame.height - 10)
         
-        saveButton.addTarget(self, action: #selector(saveReservation), for: .touchUpInside)
+        reservationView?.saveButton?.addTarget(self, action: #selector(saveReservation), for: .touchUpInside)
         reservationView?.cancelButton?.addTarget(self, action: #selector(cancelReservation), for: .touchUpInside)
     }
 
@@ -122,7 +113,7 @@ class AdminReservationEditingViewController: BaseViewController {
             let uuid = reservationData?.uuid
             else { return }
         
-        saveButton.loading = true
+        reservationView?.saveButton?.loading = true
         
         reservationService?.updateReservation(startTime: r.startTime,
                                               numberOfGuests: r.numberOfGuests,
@@ -136,7 +127,7 @@ class AdminReservationEditingViewController: BaseViewController {
                                                     self?.displayAlert(with: "Что-то пошло не так! Попробуешь еще раз?")
                                                 }
                                                 
-                                                self?.saveButton.loading = false
+                                                self?.reservationView?.saveButton?.loading = false
         })
     }
     

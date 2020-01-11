@@ -32,14 +32,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uNU-TW-vfq">
-                                <rect key="frame" x="0.0" y="206" width="375" height="441"/>
+                                <rect key="frame" x="0.0" y="262" width="375" height="385"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="441" id="wfZ-i9-ruU"/>
+                                    <constraint firstAttribute="height" constant="385" id="wfZ-i9-ruU"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ghQ-Jv-1Uo">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="198"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="254"/>
                                 <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                         </subviews>

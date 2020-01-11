@@ -39,6 +39,13 @@ class AdminReservationView: UIView {
     
     @IBOutlet weak var intervalsStackView: UIStackView!
     
+    @IBOutlet weak var saveButton: Button? {
+        didSet {
+            let style = BlackButtonStyle()
+            style.apply(to: saveButton, withTitle: "СОХРАНИТЬ")
+        }
+    }
+    
     // MARK: - Properties
     
     // констрейнты начала и конца интервала
