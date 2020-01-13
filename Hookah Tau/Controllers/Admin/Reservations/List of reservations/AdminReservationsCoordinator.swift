@@ -35,4 +35,17 @@ class AdminReservationsCoordinator: BaseCoordinator {
         }
         reservationCoordinator.start()
     }
+    
+    /// Сюда мы идем после нажатия кнопочки "Забронировать" или плюсика справа сверху
+    func book(inEstablishment establishmentId: Int) {
+        let reservationCoordinator = AdminFirstStepReservationViewCoordinator(navigationController: navigationController)
+        reservationCoordinator.establishment = establishmentId
+        addDependency(reservationCoordinator)
+        reservationCoordinator.didFinish = { [weak self] in
+            self?.removeDependency(reservationCoordinator)
+            self?.navigationController?.popViewController(animated: true)
+        }
+        
+        reservationCoordinator.start()
+    }
 }

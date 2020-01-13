@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FirstStepReservationCoordinator: BaseCoordinator {
+class FirstStepReservationCoordinator: BaseCoordinator, FirstStepReservationProtocol {
     
     // MARK: - Properties
     
@@ -27,6 +27,13 @@ class FirstStepReservationCoordinator: BaseCoordinator {
         
         navigationController?.pushViewController(reservationVC, animated: true)
     }
+    
+    var user: UserType {
+        get {
+            return .client
+        }
+    }
+    
     
     func makeReservation(model: SecondStepModel,
                          mapView: MapImageScroll?) {

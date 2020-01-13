@@ -70,4 +70,9 @@ struct ReservationWithUser: MyCodable {
     }
 }
 
+struct AdminCreateReservation: MyCodable {
+    var reservation: ReservationData
+    var user: String
+}
+
 

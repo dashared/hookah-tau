@@ -97,7 +97,7 @@ class BaseViewController: UIViewController {
     }
     
     @objc
-    private func handleKeyboardNotifications(notification: NSNotification){
+    func handleKeyboardNotifications(notification: NSNotification){
         if let userInfo = notification.userInfo {
             let keyBoardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
             bottomConstraint?.constant = notification.name == UIResponder.keyboardWillShowNotification ? -keyBoardFrame.height + view.safeAreaInsets.bottom - 20 : 0

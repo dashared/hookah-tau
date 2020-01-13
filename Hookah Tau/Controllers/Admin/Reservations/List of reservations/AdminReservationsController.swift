@@ -123,7 +123,8 @@ class AdminReservationsController: BaseViewController {
     // MARK:- Button handler
     
     @objc func book() {
-        
+        guard let establishmentId = id else { return }
+        coordinator?.book(inEstablishment: establishmentId)
     }
     
     func deleteReservation(uuid: String, completion: @escaping (([ReservationWithUser]?) -> Void)) {

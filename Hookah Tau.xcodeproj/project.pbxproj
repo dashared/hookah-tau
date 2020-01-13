@@ -51,6 +51,10 @@
 		12838EB4236779C700CEF108 /* ApiResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12838EB3236779C700CEF108 /* ApiResolver.swift */; };
 		12838EB623677FB900CEF108 /* ApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12838EB523677FB900CEF108 /* ApiRequest.swift */; };
 		12838EB82367834900CEF108 /* MyCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12838EB72367834900CEF108 /* MyCodable.swift */; };
+		129F162723CC838200EE13FC /* AdminFirstStepReservationViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129F162623CC838200EE13FC /* AdminFirstStepReservationViewCoordinator.swift */; };
+		129F162C23CC8D2E00EE13FC /* AdminSecondStepReservationViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129F162B23CC8D2E00EE13FC /* AdminSecondStepReservationViewCoordinator.swift */; };
+		129F162E23CC8DB900EE13FC /* AdminSecondStepReservationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129F162D23CC8DB900EE13FC /* AdminSecondStepReservationViewController.swift */; };
+		129F163023CC8EF600EE13FC /* PhoneTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129F162F23CC8EF600EE13FC /* PhoneTextField.swift */; };
 		12A075F72373535C00D749BB /* FirstStepReservationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A075F62373535C00D749BB /* FirstStepReservationViewController.swift */; };
 		12A075F9237353F500D749BB /* MapView1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12A075F8237353F500D749BB /* MapView1.xib */; };
 		12A075FB2373561A00D749BB /* Reservation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12A075FA2373561A00D749BB /* Reservation.storyboard */; };
@@ -208,6 +212,10 @@
 		12838EB3236779C700CEF108 /* ApiResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiResolver.swift; sourceTree = "<group>"; };
 		12838EB523677FB900CEF108 /* ApiRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRequest.swift; sourceTree = "<group>"; };
 		12838EB72367834900CEF108 /* MyCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCodable.swift; sourceTree = "<group>"; };
+		129F162623CC838200EE13FC /* AdminFirstStepReservationViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminFirstStepReservationViewCoordinator.swift; sourceTree = "<group>"; };
+		129F162B23CC8D2E00EE13FC /* AdminSecondStepReservationViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminSecondStepReservationViewCoordinator.swift; sourceTree = "<group>"; };
+		129F162D23CC8DB900EE13FC /* AdminSecondStepReservationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminSecondStepReservationViewController.swift; sourceTree = SOURCE_ROOT; };
+		129F162F23CC8EF600EE13FC /* PhoneTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneTextField.swift; sourceTree = "<group>"; };
 		12A075F62373535C00D749BB /* FirstStepReservationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstStepReservationViewController.swift; sourceTree = "<group>"; };
 		12A075F8237353F500D749BB /* MapView1.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapView1.xib; sourceTree = "<group>"; };
 		12A075FA2373561A00D749BB /* Reservation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Reservation.storyboard; sourceTree = "<group>"; };
@@ -468,6 +476,7 @@
 		123D25ED239E3D50002FA32B /* Reservations */ = {
 			isa = PBXGroup;
 			children = (
+				129F162523CC836600EE13FC /* Making a reeservation */,
 				12B3A79623ABAD9A009E2FA6 /* Views */,
 				12B3A7C123AD0751009E2FA6 /* Editing */,
 				12B3A7C223AD0762009E2FA6 /* List of reservations */,
@@ -562,9 +571,27 @@
 			path = API;
 			sourceTree = "<group>";
 		};
+		129F162523CC836600EE13FC /* Making a reeservation */ = {
+			isa = PBXGroup;
+			children = (
+				129F162D23CC8DB900EE13FC /* AdminSecondStepReservationViewController.swift */,
+				129F162623CC838200EE13FC /* AdminFirstStepReservationViewCoordinator.swift */,
+				129F162B23CC8D2E00EE13FC /* AdminSecondStepReservationViewCoordinator.swift */,
+			);
+			path = "Making a reeservation";
+			sourceTree = "<group>";
+		};
+		129F162823CC89EA00EE13FC /* Phone number */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Phone number";
+			sourceTree = "<group>";
+		};
 		12B3A79623ABAD9A009E2FA6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				129F162823CC89EA00EE13FC /* Phone number */,
 				12B3A7B223AC1A1F009E2FA6 /* No reserv */,
 				12B3A79723ABADB9009E2FA6 /* AdminReservationView.xib */,
 				12B3A79E23ABCA21009E2FA6 /* AdminReservationView.swift */,
@@ -812,6 +839,7 @@
 				F3DC5A04233E89D500B5E751 /* Button.swift */,
 				12FC40372382C93C00AB593B /* TableButtonStyle.swift */,
 				12FC40392382CB6F00AB593B /* TableButton.swift */,
+				129F162F23CC8EF600EE13FC /* PhoneTextField.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1136,6 +1164,8 @@
 			files = (
 				12EA99482362B684005D9FE9 /* AddresViewController.swift in Sources */,
 				124D007F237222B200AE76B9 /* ReservationsResolver.swift in Sources */,
+				129F163023CC8EF600EE13FC /* PhoneTextField.swift in Sources */,
+				129F162C23CC8D2E00EE13FC /* AdminSecondStepReservationViewCoordinator.swift in Sources */,
 				12230AF723900D44004A01E5 /* EstablishmentResolver.swift in Sources */,
 				1246B719235CD3AD004CBFA1 /* NoReservationsView.swift in Sources */,
 				F3895F4A233D323700FA6A37 /* CodeCoordinator.swift in Sources */,
@@ -1166,10 +1196,12 @@
 				12BE4B352399A60A00FC974B /* AdminTabbarController.swift in Sources */,
 				12FC403A2382CB6F00AB593B /* TableButton.swift in Sources */,
 				12D928AF23C47DCF0051724D /* ADeleteReservationResolver.swift in Sources */,
+				129F162E23CC8DB900EE13FC /* AdminSecondStepReservationViewController.swift in Sources */,
 				12EB698123661CB300E4D1CE /* AddressCell.swift in Sources */,
 				F3895F48233D2EEA00FA6A37 /* CodeSmsViewController.swift in Sources */,
 				12219CEF2353A63F0057DDEE /* ReservationsCoordinator.swift in Sources */,
 				12230AF423900BCB004A01E5 /* EstablishmentService.swift in Sources */,
+				129F162723CC838200EE13FC /* AdminFirstStepReservationViewCoordinator.swift in Sources */,
 				12A07601237359BB00D749BB /* MapView1.swift in Sources */,
 				125AE5212395753400F847BD /* HFunc.swift in Sources */,
 				12BD95B8237EDB01009614D8 /* TimePointView.swift in Sources */,
