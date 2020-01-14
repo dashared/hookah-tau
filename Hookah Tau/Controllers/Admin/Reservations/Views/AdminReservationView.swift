@@ -116,7 +116,7 @@ class AdminReservationView: UIView {
         
         startDate = start
         
-        setUpIntervals(model.owner.isAdmin)
+        setUpIntervals()
         
         guestSlider?.maximumValue = Float((TotalStorage.standard.getTable(establishment: model.establishment, table: model.reservedTable)?.maxGuestNumber ?? 2) + 1)
     }
@@ -165,11 +165,11 @@ class AdminReservationView: UIView {
     // MARK: - Setup
     
     /// Тут происходит установка интервалов. Разное для клиента и админа
-    func setUpIntervals(_ isAdmin: Bool) {
+    func setUpIntervals() {
         guard let startPoint = startDate else { return }
         
-        let startingPoint = isAdmin ? startPoint.getAdminsStartingPoint() : Constants.clientStartingPoint
-        let endingPoint = startingPoint + (isAdmin ? Constants.adminDuration : Constants.clientDuration)
+        let startingPoint = startPoint.getAdminsStartingPoint()
+        let endingPoint = Constants.adminDuration
         
         for period in startingPoint...endingPoint {
             let timePointView = TimePointView.loadFromNib()
