@@ -51,7 +51,7 @@ struct ReservationData: MyCodable {
 /// Структура для получения респонса на `GET /admin/reservations/{establishment id}`
 struct ReservationWithUser: MyCodable {
     
-    var uuid: String
+    var uuid: String?
     var establishment: Int
     var startTime: Date
     var endTime: Date
@@ -68,11 +68,20 @@ struct ReservationWithUser: MyCodable {
         self.reservedTable = reservation.reservedTable
         self.owner = user
     }
+    
+    init(uuid: String?, establishment: Int, startTime: Date, endTime: Date, numberOfGuests: Int, reservedTable: Int, owner: FullUser) {
+        self.uuid = uuid
+        self.establishment = establishment
+        self.startTime = startTime
+        self.endTime = endTime
+        self.numberOfGuests = numberOfGuests
+        self.reservedTable = reservedTable
+        self.owner = owner
+    }
 }
 
 struct AdminCreateReservation: MyCodable {
     var reservation: ReservationData
     var user: String
 }
-
 

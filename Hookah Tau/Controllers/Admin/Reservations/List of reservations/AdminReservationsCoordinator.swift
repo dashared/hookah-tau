@@ -12,6 +12,8 @@ class AdminReservationsCoordinator: BaseCoordinator {
     
     // MARK: - Properties
     
+    var didFinish: (() -> Void)?
+    
     var establishmentId: Int?
     
     // MARK: - Lifecycle
@@ -42,8 +44,9 @@ class AdminReservationsCoordinator: BaseCoordinator {
         reservationCoordinator.establishment = establishmentId
         addDependency(reservationCoordinator)
         reservationCoordinator.didFinish = { [weak self] in
+            self?.navigationController?.popViewController(animated: false)
             self?.removeDependency(reservationCoordinator)
-            self?.navigationController?.popViewController(animated: true)
+            self?.didFinish?()
         }
         
         reservationCoordinator.start()

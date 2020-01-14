@@ -24,6 +24,8 @@ class AdminSecondStepReservationViewController: BaseViewController {
     
     var mapScrollView: MapImageScroll?
     
+    var clientsService: ClientsService?
+    
     weak var coordinator: AdminSecondStepReservationViewCoordinator?
     
     let continueButton: Button = {
@@ -49,6 +51,7 @@ class AdminSecondStepReservationViewController: BaseViewController {
         setupButtons()
         setUpKeyboard()
         
+        clientsService = ClientsService(apiClient: APIClient.shared)
         phoneTextField.becomeFirstResponder()
     }
     
@@ -90,7 +93,28 @@ class AdminSecondStepReservationViewController: BaseViewController {
     }
     
     @objc func continueBooking() {
+        continueButton.loading = true
         
+        guard let phone = phoneTextField.text?.toApiPhoneNumberFormat(), phone.count == 9 else {
+            displayAlert(with: "Сначала укажи номер!")
+            return
+        }
+        
+        clientsService?.getClientByPhoneNumber(userPhone: phone, completion: { [unowned self] (res) in
+            switch res {
+            case .failure(let err):
+                switch err {
+                case .notFound:
+                    self.coordinator?.continueReservation(with: nil, phone: phone)
+                default:
+                    self.displayAlert(with: "Что-то пошло не так! Попробуй еще раз :)")
+                }
+            case .success(let user):
+                self.coordinator?.continueReservation(with: user, phone: phone)
+            }
+            
+            self.continueButton.loading = false
+        })
     }
        
 

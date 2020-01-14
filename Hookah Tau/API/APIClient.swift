@@ -48,6 +48,8 @@ class APIClient {
                     let json = String(data: data, encoding: String.Encoding.utf8)
                     print("Failure Response: \(String(describing: json))")
                 }
+            case 404:
+                return GeneralError.notFound
             case 422:
                 if let data = response.data, let error = SE.fromJSONToSelf(data: data) {
                     print(error)

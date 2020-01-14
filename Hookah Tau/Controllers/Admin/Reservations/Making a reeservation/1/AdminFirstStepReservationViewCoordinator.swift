@@ -53,8 +53,16 @@ extension AdminFirstStepReservationViewCoordinator: FirstStepReservationProtocol
    
     func makeReservation(model: SecondStepModel, mapView: MapImageScroll?) {
         let reservationCoordinaotor = AdminSecondStepReservationViewCoordinator(navigationController: navigationController)
+        reservationCoordinaotor.model = model
         reservationCoordinaotor.map = mapView
+        
         addDependency(reservationCoordinaotor)
+        reservationCoordinaotor.didFinish = { [weak self] in
+            self?.navigationController?.popViewController(animated: false)
+            self?.removeDependency(reservationCoordinaotor)
+            self?.didFinish?()
+        }
+        
         reservationCoordinaotor.start()
     }
 }

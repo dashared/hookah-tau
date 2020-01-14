@@ -103,4 +103,27 @@ class ClientsService {
             }
         }
     }
+    
+    func getClientByPhoneNumber(userPhone: String, completion: @escaping ((Result<FullUser, GeneralError>) -> Void)) {
+        let resolver = GetClientByPhoneNumberResolver<ClientInResponce>(userPhone: userPhone)
+        let request = ApiRequest(resolver: resolver, httpMethod: .get)
+        
+        apiClient.load(request: request.request) { (result) in
+            switch result {
+            case .failure(let err):
+                completion(.failure(err))
+                return
+            case .success(let responce):
+                guard
+                     let d = responce.data,
+                     let decData = resolver.targetClass().fromJSONToSelf(data: d)
+                    else {
+                        completion(.failure(GeneralError.decodeError))
+                        return
+                }
+                
+                completion(.success(decData.client))
+            }
+        }
+    }
 }

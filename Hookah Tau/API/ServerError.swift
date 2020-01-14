@@ -16,6 +16,7 @@ enum GeneralError: Error {
     case serverError(SE)
     case decodeError
     case noData
+    case notFound
     case Error400
     case somethingWentCompletelyWrong
     case alamofireError

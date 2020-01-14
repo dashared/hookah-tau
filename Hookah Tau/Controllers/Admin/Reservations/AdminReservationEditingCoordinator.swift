@@ -9,9 +9,11 @@
 import UIKit
 
 
-class AdminReservationEditingCoordinator: BaseCoordinator {
+class AdminReservationEditingCoordinator: BaseCoordinator, ShowReservationCoordinator {
     
     // MARK: - Peoperties
+    
+    var didFinish: (() -> Void)?
     
     var reservationData: ReservationWithUser?
     
