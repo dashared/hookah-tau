@@ -79,12 +79,17 @@ class ProfileTableViewController: BaseViewController {
         setupNavBar()
         setupTable()
         setupActivityIndicator()
-        loadReservations()
+        //loadReservations()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+        super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = true
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        loadReservations()
     }
     
     // MARK: - Setup
@@ -183,7 +188,16 @@ class ProfileTableViewController: BaseViewController {
     }
     
     @objc func book() {
+        guard
+            let phone = user?.phoneNumber,
+            let user = user
+        else { return }
         
+        let fullUser = FullUser(uuid: user.uuid,
+                                name: user.name,
+                                phoneNumber: user.phoneNumber,
+                                isAdmin: user.isAdmin)
+        coodinator?.createReservation(forUserWithPhone: phone, user: fullUser)
     }
 }
 

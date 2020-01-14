@@ -28,6 +28,12 @@ class AdminFirstStepReservationViewCoordinator: BaseCoordinator{
     
     var establishment: Int = 1
     
+    var phone: String?
+    
+    var fullUser: FullUser?
+    
+    var model: SecondStepModel?
+    
     // MARK: - Lifecycle
     
     override func start() {
@@ -52,6 +58,39 @@ extension AdminFirstStepReservationViewCoordinator: FirstStepReservationProtocol
     }
    
     func makeReservation(model: SecondStepModel, mapView: MapImageScroll?) {
+        self.model = model
+        
+        if let p = phone {
+            goToFinalStep(with: fullUser, phone: p)
+        } else {
+            goToSecondStep(model: model, mapView: mapView)
+        }
+    }
+    
+    func goToFinalStep(with user: FullUser?, phone phoneNumber: String) {
+        let finalStepCoordinator = AdminFinalStepReservationCoordinator(navigationController: navigationController)
+        finalStepCoordinator.model = self.model
+        
+        addDependency(finalStepCoordinator)
+        finalStepCoordinator.didFinish = { [weak self] in
+            self?.navigationController?.popViewController(animated: false)
+            self?.removeDependency(finalStepCoordinator)
+            self?.didFinish?()
+        }
+        
+        if let u = user {
+            finalStepCoordinator.user = u
+        } else {
+            finalStepCoordinator.user = FullUser(uuid: nil,
+                                                 name: nil,
+                                                 phoneNumber: phoneNumber,
+                                                 isAdmin: true)
+        }
+        
+        finalStepCoordinator.start()
+    }
+    
+    func goToSecondStep(model: SecondStepModel, mapView: MapImageScroll?) {
         let reservationCoordinaotor = AdminSecondStepReservationViewCoordinator(navigationController: navigationController)
         reservationCoordinaotor.model = model
         reservationCoordinaotor.map = mapView

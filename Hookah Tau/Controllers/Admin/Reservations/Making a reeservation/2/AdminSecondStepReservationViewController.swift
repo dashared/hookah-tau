@@ -22,6 +22,8 @@ class AdminSecondStepReservationViewController: BaseViewController {
     
     // MARK: - Properties
     
+    var table: Int?
+    
     var mapScrollView: MapImageScroll?
     
     var clientsService: ClientsService?
@@ -58,7 +60,8 @@ class AdminSecondStepReservationViewController: BaseViewController {
     // MARK: - Set up
     
     func setupMap() {
-        mapScrollView?.scrollToTable(table: 8)
+        guard let t = table else { return }
+        mapScrollView?.scrollToTable(table: t)
         mapContainerView.addSubviewThatFills(mapScrollView)
     }
     

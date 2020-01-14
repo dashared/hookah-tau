@@ -24,6 +24,7 @@ class AdminSecondStepReservationViewCoordinator: BaseCoordinator {
         let storyboard = UIStoryboard(name: "AdminReservations", bundle: nil)
         let reservationVC = storyboard.instantiateViewController(withIdentifier: "AdminSecondStepReservationViewController") as! AdminSecondStepReservationViewController
         reservationVC.mapScrollView = map
+        reservationVC.table = model?.table
         reservationVC.coordinator = self
         navigationController?.pushViewController(reservationVC, animated: true)
     }
