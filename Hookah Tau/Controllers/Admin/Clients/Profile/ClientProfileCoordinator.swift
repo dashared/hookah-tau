@@ -11,7 +11,7 @@ import UIKit
 
 class ClientProfileCoordinator: BaseCoordinator {
     
-    var user: FullUser?
+    var user: Client?
     
     override func start() {
         let storyboard = UIStoryboard(name: "ClientList", bundle: nil)

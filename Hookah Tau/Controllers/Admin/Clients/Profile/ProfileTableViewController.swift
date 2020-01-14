@@ -41,7 +41,7 @@ class ProfileTableViewController: BaseViewController {
     
     var reservationsService: ReservationsService?
     
-    var user: FullUser?
+    var user: Client?
     
     weak var coodinator: ClientProfileCoordinator?
     
@@ -91,7 +91,8 @@ class ProfileTableViewController: BaseViewController {
     
     func setupNavBar() {
         guard let u = user else { return }
-        navigationItem.title = u.name
+        
+        navigationItem.title = "\(u.name ?? "❔")\(u.isAdmin ? "👑" : "")\(u.isBlocked ? "❌" : "")"
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(book))
     }
     
@@ -207,7 +208,8 @@ extension ProfileTableViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let u = user else { return }
         let r = dataSource[indexPath.row]
-        let reservation = ReservationWithUser(reservation: r, user: u)
+        let user = FullUser(uuid: u.uuid, name: u.name, phoneNumber: u.phoneNumber, isAdmin: u.isAdmin)
+        let reservation = ReservationWithUser(reservation: r, user: user)
         coodinator?.seeExistingReservation(data: reservation)
     }
     
