@@ -41,7 +41,7 @@ class ProfileTableViewController: BaseViewController {
     
     var reservationsService: ReservationsService?
     
-    var user: FullUser?
+    var user: Client?
     
     weak var coodinator: ClientProfileCoordinator?
     
@@ -79,19 +79,25 @@ class ProfileTableViewController: BaseViewController {
         setupNavBar()
         setupTable()
         setupActivityIndicator()
-        loadReservations()
+        //loadReservations()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+        super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = true
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        loadReservations()
     }
     
     // MARK: - Setup
     
     func setupNavBar() {
         guard let u = user else { return }
-        navigationItem.title = u.name
+        
+        navigationItem.title = "\(u.name ?? "❔")\(u.isAdmin ? "👑" : "")\(u.isBlocked ? "❌" : "")"
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(book))
     }
     
@@ -182,7 +188,16 @@ class ProfileTableViewController: BaseViewController {
     }
     
     @objc func book() {
+        guard
+            let phone = user?.phoneNumber,
+            let user = user
+        else { return }
         
+        let fullUser = FullUser(uuid: user.uuid,
+                                name: user.name,
+                                phoneNumber: user.phoneNumber,
+                                isAdmin: user.isAdmin)
+        coodinator?.createReservation(forUserWithPhone: phone, user: fullUser)
     }
 }
 
@@ -207,7 +222,8 @@ extension ProfileTableViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let u = user else { return }
         let r = dataSource[indexPath.row]
-        let reservation = ReservationWithUser(reservation: r, user: u)
+        let user = FullUser(uuid: u.uuid, name: u.name, phoneNumber: u.phoneNumber, isAdmin: u.isAdmin)
+        let reservation = ReservationWithUser(reservation: r, user: user)
         coodinator?.seeExistingReservation(data: reservation)
     }
     
@@ -220,7 +236,7 @@ extension ProfileTableViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
         let uuid = dataSource[indexPath.row].uuid
-        let cancelButton = UITableViewRowAction(style: .normal, title: "❌") { _,_  in
+        let cancelButton = UITableViewRowAction(style: .normal, title: "отменить бронь") { _,_  in
             
             self.deleteReservation(uuid: uuid) { optionalNewVal in
                 if let newval = optionalNewVal {

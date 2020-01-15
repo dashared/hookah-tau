@@ -17,7 +17,7 @@ struct User: MyCodable {
 
 /// При запросах на список пользователей в аккаунте администратора.
 struct FullUser: MyCodable {
-    var uuid: String
+    var uuid: String?
     var name: String?
     var phoneNumber: String
     var isAdmin: Bool

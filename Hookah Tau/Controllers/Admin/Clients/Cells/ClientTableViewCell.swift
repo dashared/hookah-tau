@@ -20,9 +20,11 @@ class ClientTableViewCell: UITableViewCell {
     
     @IBOutlet weak var numberOfReservationsLabel: UILabel!
     
-    @IBOutlet weak var blockListImage: UIImageView!
     
-    @IBOutlet weak var isAdminImage: UIImageView!
+    @IBOutlet weak var blockListLabel: UILabel!
+    
+    @IBOutlet weak var isAdminLabel: UILabel!
+    
     
     
     // MARK: - Lifecycle
@@ -41,11 +43,11 @@ class ClientTableViewCell: UITableViewCell {
     // MARK: - Bind
     
     func bind(withModel model: Client) {
-        blockListImage.isHidden = !model.isBlocked
-        isAdminImage.isHidden = !model.isAdmin
+        blockListLabel.isHidden = !model.isBlocked
+        isAdminLabel.isHidden = !model.isAdmin
         nameLabel.text = model.name ?? "❔"
         phoneNumberLabel.text = model.phoneNumber.formattedNumber()
-        numberOfReservationsLabel.text = "\(model.reservationCount)"
+        numberOfReservationsLabel.text = model.reservationCount > 99 ? "99+" : "\(model.reservationCount)"
     }
 
 }

@@ -32,14 +32,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uNU-TW-vfq">
-                                <rect key="frame" x="0.0" y="206" width="375" height="441"/>
+                                <rect key="frame" x="0.0" y="262" width="375" height="385"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="441" id="wfZ-i9-ruU"/>
+                                    <constraint firstAttribute="height" constant="385" id="wfZ-i9-ruU"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ghQ-Jv-1Uo">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="198"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="254"/>
                                 <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                         </subviews>
@@ -63,6 +63,70 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LNT-df-eny" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="959.20000000000005" y="158.77061469265368"/>
+        </scene>
+        <!--Admin Second Step Reservation View Controller-->
+        <scene sceneID="VhI-Z9-iqB">
+            <objects>
+                <viewController storyboardIdentifier="AdminSecondStepReservationViewController" id="eNJ-Ja-201" customClass="AdminSecondStepReservationViewController" customModule="Hookah_Tau" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7mk-5I-JJs">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oAV-GW-iea">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="293"/>
+                                <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a4v-ng-lm7">
+                                <rect key="frame" x="0.0" y="293" width="375" height="374"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="1Bb-cO-4qW">
+                                        <rect key="frame" x="20" y="22" width="335" height="88.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Номер клиента" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bME-Wr-gh7">
+                                                <rect key="frame" x="62.5" y="0.0" width="210.5" height="33.5"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="+7 (988) 888-88-88" textAlignment="natural" minimumFontSize="28" translatesAutoresizingMaskIntoConstraints="NO" id="wBC-oa-ekQ" customClass="PhoneTextField" customModule="Hookah_Tau" customModuleProvider="target">
+                                                <rect key="frame" x="13.5" y="46.5" width="308.5" height="42"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="1Bb-cO-4qW" firstAttribute="top" secondItem="a4v-ng-lm7" secondAttribute="top" constant="22" id="7fb-Up-Wmb"/>
+                                    <constraint firstAttribute="trailing" secondItem="1Bb-cO-4qW" secondAttribute="trailing" constant="20" id="934-Ef-0xf"/>
+                                    <constraint firstItem="1Bb-cO-4qW" firstAttribute="leading" secondItem="a4v-ng-lm7" secondAttribute="leading" constant="20" id="sr5-aO-q1p"/>
+                                    <constraint firstAttribute="height" constant="374" id="uRW-2Q-OyM"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="a4v-ng-lm7" firstAttribute="leading" secondItem="8aV-w1-NXE" secondAttribute="leading" id="OjU-Pl-gu1"/>
+                            <constraint firstItem="oAV-GW-iea" firstAttribute="trailing" secondItem="8aV-w1-NXE" secondAttribute="trailing" id="bPj-q1-pY6"/>
+                            <constraint firstItem="oAV-GW-iea" firstAttribute="top" secondItem="8aV-w1-NXE" secondAttribute="top" id="gUc-es-YHL"/>
+                            <constraint firstItem="a4v-ng-lm7" firstAttribute="bottom" secondItem="8aV-w1-NXE" secondAttribute="bottom" id="hZH-fU-zM5"/>
+                            <constraint firstItem="oAV-GW-iea" firstAttribute="leading" secondItem="8aV-w1-NXE" secondAttribute="leading" id="mos-8B-wjS"/>
+                            <constraint firstItem="a4v-ng-lm7" firstAttribute="trailing" secondItem="8aV-w1-NXE" secondAttribute="trailing" id="ntK-1r-AUW"/>
+                            <constraint firstItem="a4v-ng-lm7" firstAttribute="top" secondItem="oAV-GW-iea" secondAttribute="bottom" id="siv-Xa-Nl5"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="8aV-w1-NXE"/>
+                    </view>
+                    <connections>
+                        <outlet property="heightConstraint" destination="uRW-2Q-OyM" id="fmn-uI-ooi"/>
+                        <outlet property="mapContainerView" destination="oAV-GW-iea" id="jmP-q0-WbS"/>
+                        <outlet property="phoneContentView" destination="a4v-ng-lm7" id="W1O-A7-6EP"/>
+                        <outlet property="phoneTextField" destination="wBC-oa-ekQ" id="Btg-A3-tpm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hNg-aQ-v7C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1664.8" y="158.77061469265368"/>
         </scene>
     </scenes>
 </document>

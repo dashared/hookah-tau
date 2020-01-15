@@ -12,6 +12,8 @@ class AdminReservationsCoordinator: BaseCoordinator {
     
     // MARK: - Properties
     
+    var didFinish: (() -> Void)?
+    
     var establishmentId: Int?
     
     // MARK: - Lifecycle
@@ -33,6 +35,20 @@ class AdminReservationsCoordinator: BaseCoordinator {
             self?.removeDependency(reservationCoordinator)
             self?.navigationController?.popViewController(animated: true)
         }
+        reservationCoordinator.start()
+    }
+    
+    /// Сюда мы идем после нажатия кнопочки "Забронировать" или плюсика справа сверху
+    func book(inEstablishment establishmentId: Int) {
+        let reservationCoordinator = AdminFirstStepReservationViewCoordinator(navigationController: navigationController)
+        reservationCoordinator.establishment = establishmentId
+        addDependency(reservationCoordinator)
+        reservationCoordinator.didFinish = { [weak self] in
+            self?.navigationController?.popViewController(animated: false)
+            self?.removeDependency(reservationCoordinator)
+            self?.didFinish?()
+        }
+        
         reservationCoordinator.start()
     }
 }

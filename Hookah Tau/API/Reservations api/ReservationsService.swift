@@ -205,4 +205,27 @@ class ReservationsService {
             }
         }
     }
+    
+    func createReservation(reservation: AdminCreateReservation, completion: @escaping ((Result<String, GeneralError>) -> Void)) {
+        let resolver = ACreateReservationResolver<ACreateAdminResonce>(data: reservation)
+        let request = ApiRequest(resolver: resolver, httpMethod: .post)
+        
+        apiClient.load(request: request.request) { (res) in
+            switch res {
+            case .failure(let err):
+                completion(.failure(err))
+                return
+            case .success(let responce):
+                guard
+                    let d = responce.data,
+                    let decData = resolver.targetClass().fromJSONToSelf(data: d)
+                    else {
+                        completion(.failure(GeneralError.decodeError))
+                        return
+                }
+                
+                completion(.success(decData.reservationUUID))
+            }
+        }
+    }
 }

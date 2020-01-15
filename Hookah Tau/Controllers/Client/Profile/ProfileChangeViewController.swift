@@ -23,7 +23,7 @@ class ProfileChangeViewController: BaseViewController {
     
     var changeView: ChangeView?
     
-    var settingsService: SettingsService?
+    var settingsService: ClientsService?
     
     var contentView: UIView = {
         let view = UIView()
@@ -60,7 +60,7 @@ class ProfileChangeViewController: BaseViewController {
         setUpView()
         setUpKeyboard()
         
-        settingsService = SettingsService(apiClient: APIClient.shared)
+        settingsService = ClientsService(apiClient: APIClient.shared)
     }
     
     func setUpView() {
@@ -106,7 +106,7 @@ class ProfileChangeViewController: BaseViewController {
     func addNewAdmin(phone: String) {
         doneButton.loading = true
         
-        settingsService?.addOtherAdmin(phone: phone) { [weak self] res in
+        settingsService?.changeAdmin(crud: CrudMethod.put, data: phone) { [weak self] res in
             if res {
                 self?.coordinator?.update(withModel: nil)
             } else {

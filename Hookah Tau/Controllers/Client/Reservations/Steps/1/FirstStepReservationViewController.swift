@@ -13,7 +13,7 @@ class FirstStepReservationViewController: BaseViewController {
     
     // MARK: - Properties
     
-    weak var coordinator: FirstStepReservationCoordinator?
+    weak var coordinator: FirstStepReservationProtocol?
     
     @IBOutlet weak var childContentView: UIView!
     
@@ -82,12 +82,21 @@ class FirstStepReservationViewController: BaseViewController {
     }
     
     func setupButtons() {
-        addStackViewWithButtons(leftBtn: callButton,
-                                rightBtn: continueButton,
-                                constant: -childContentView.frame.height - 20)
+        
+        guard let coord = coordinator else { return }
+        
+        if coord.user == .admin {
+            addStackViewWithButtons(rightBtn: continueButton,
+                                    constant: -childContentView.frame.height - 20)
+        } else {
+            addStackViewWithButtons(leftBtn: callButton,
+                                    rightBtn: continueButton,
+                                    constant: -childContentView.frame.height - 20)
+            
+            callButton.addTarget(self, action: #selector(call), for: .touchUpInside)
+        }
         
         continueButton.addTarget(self, action: #selector(continueBooking), for: .touchUpInside)
-        callButton.addTarget(self, action: #selector(call), for: .touchUpInside)
     }
     
     func performUpdate() {
@@ -178,7 +187,7 @@ extension FirstStepReservationViewController: MapUpdater {
         let areBooked = allReservations?.intervals[date] ?? []
         
         let isAdmin = DataStorage.standard.getUserModel()?.isAdmin ?? false
-        let closed = isAdmin || date.isInClosingHours()
+        let closed = !isAdmin && date.isInClosingHours()
         
         if Set(areBooked).contains(tableId) || closed {
             continueButton.availiable = false

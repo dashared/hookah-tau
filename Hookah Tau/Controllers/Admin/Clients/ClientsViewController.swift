@@ -140,6 +140,35 @@ class ClientsViewController: BaseTableViewController {
             }
         })
     }
+    
+    func updateAdminStatus(user: Client, indexPath: IndexPath) {
+        
+        let wasAdmin = user.isAdmin
+        let crudMethod = wasAdmin ? CrudMethod.delete : CrudMethod.put
+        let data = user.isAdmin ? user.uuid : user.phoneNumber
+        
+        clientsService?.changeAdmin(crud: crudMethod, data: data, completion: { (res) in
+            if res {
+                self.tableView?.beginUpdates()
+                self.tableView?.reloadRows(at: [indexPath], with: .automatic)
+                if self.isFiltering {
+                    self.filteredDataSource[indexPath.row].isAdmin = !wasAdmin
+                    let changed = self.filteredDataSource[indexPath.row]
+                    let filtered = self.dataSource.map { (one: Client) -> Client in
+                        if one.uuid == changed.uuid {
+                            return changed
+                        } else { return one } }
+                    self.dataSource = filtered
+                } else {
+                    self.dataSource[indexPath.row].isAdmin = !wasAdmin
+                }
+                self.tableView?.endUpdates()
+            } else {
+                self.displayAlert(with: "Не удалось \(wasAdmin ? "распромоутить" : "запромоутить") пользователя! Попробуйте еще раз!")
+                return
+            }
+        })
+    }
 }
 
 // MARK: - Tableview
@@ -174,7 +203,7 @@ extension ClientsViewController {
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
         let user = isFiltering ? filteredDataSource[indexPath.row] : dataSource[indexPath.row]
-        let blockButton = UITableViewRowAction(style: .normal, title: "\(!user.isBlocked ? "🙅🏻‍♀️" : "👍🏻")") { _,_  in
+        let blockButton = UITableViewRowAction(style: .normal, title: "\(!user.isBlocked ? "в чс" : "убрать из чс")") { _,_  in
             
             self.updateUserBlockStatus(wasBlocked: user.isBlocked, phone: user.phoneNumber, indexPath: indexPath)
         }
@@ -182,6 +211,18 @@ extension ClientsViewController {
         blockButton.backgroundColor = .black
         
         return [blockButton]
+    }
+    
+    override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let user = isFiltering ? filteredDataSource[indexPath.row] : dataSource[indexPath.row]
+        
+        let promote = UIContextualAction(style: .normal, title: "\(!user.isAdmin ? "дать админку" : "забрать админку")") { (_, _, _) in
+            self.updateAdminStatus(user: user, indexPath: indexPath)
+        }
+        promote.backgroundColor = .black
+        
+        return UISwipeActionsConfiguration(actions: [promote])
     }
 }
 

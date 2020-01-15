@@ -24,22 +24,17 @@ class AdminReservationEditingViewController: BaseViewController {
     
     var reservationData: ReservationWithUser?
     
-    weak var coordinator: AdminReservationEditingCoordinator?
+    weak var coordinator: ShowReservationCoordinator?
     
     var reservationService: ReservationsService?
     
     var reservedPeriods: [ReservationPeriod] = [] {
         didSet {
-            setupReservationViewWithIntervals()
+            if let _ = reservationView {
+                setupReservationViewWithIntervals()
+            }
         }
     }
-    
-    var saveButton: Button = {
-        let button = Button()
-        let style = BlackButtonStyle()
-        style.apply(to: button, withTitle: "СОХРАНИТЬ")
-        return button
-    }()
 
     // MARK:- Lifecycle
     
@@ -64,10 +59,8 @@ class AdminReservationEditingViewController: BaseViewController {
     // MARK: - Setup
     
     func setupButtons() {
-        addStackViewWithButtons(rightBtn: saveButton,
-                                constant: -mainContentView.frame.height - 10)
         
-        saveButton.addTarget(self, action: #selector(saveReservation), for: .touchUpInside)
+        reservationView?.saveButton?.addTarget(self, action: #selector(saveReservation), for: .touchUpInside)
         reservationView?.cancelButton?.addTarget(self, action: #selector(cancelReservation), for: .touchUpInside)
     }
 
@@ -100,9 +93,14 @@ class AdminReservationEditingViewController: BaseViewController {
     }
     
     func loadReservedPeriods() {
-        guard let model = reservationData else { return }
+        guard
+            let model = reservationData,
+            let uuid = model.uuid
+        else {
+                setupReservationViewWithIntervals()
+                return }
         
-        reservationService?.getReservationsAround(uuid: model.uuid, completion: { [weak self] (res) in
+        reservationService?.getReservationsAround(uuid: uuid, completion: { [weak self] (res) in
             switch res {
             case .failure(let err):
                 self?.displayAlert(forError: err)
@@ -120,9 +118,12 @@ class AdminReservationEditingViewController: BaseViewController {
         guard
             let r = reservationView?.data,
             let uuid = reservationData?.uuid
-            else { return }
+            else {
+                createReservation()
+                return
+        }
         
-        saveButton.loading = true
+        reservationView?.saveButton?.loading = true
         
         reservationService?.updateReservation(startTime: r.startTime,
                                               numberOfGuests: r.numberOfGuests,
@@ -131,26 +132,56 @@ class AdminReservationEditingViewController: BaseViewController {
                                               isAdmin: true,
                                               completion: { [weak self] (res) in
                                                 if res {
-                                                    self?.coordinator?.didEndFlow?()
+                                                    self?.coordinator?.didFinish?()
                                                 } else {
                                                     self?.displayAlert(with: "Что-то пошло не так! Попробуешь еще раз?")
                                                 }
                                                 
-                                                self?.saveButton.loading = false
+                                                self?.reservationView?.saveButton?.loading = false
+        })
+    }
+    
+    func createReservation() {
+        guard
+            let r = reservationData,
+            let d = reservationData?.owner.phoneNumber else { return }
+        
+        let data = ReservationData(establishment: r.establishment,
+                                   startTime: r.startTime,
+                                   endTime: r.endTime,
+                                   numberOfGuests: r.numberOfGuests,
+                                   reservedTable: r.reservedTable)
+        print(data)
+        reservationService?.createReservation(reservation: AdminCreateReservation(reservation: data, user: d), completion: { (res) in
+            switch res {
+            case .failure(_):
+                self.displayAlert(with: "Что-то пошло не так!\nПопробуешь еще раз?")
+                return
+            case .success(let uuid):
+                self.reservationData?.uuid = uuid
+                self.coordinator?.didFinish?()
+                return
+            }
         })
     }
     
     @objc func cancelReservation() {
         guard
-        let uuid = reservationData?.uuid
-        else { return }
+            let uuid = reservationData?.uuid
+        else {
+            cancelPrereservation()
+            return }
         
         reservationService?.deleteReservation(isAdmin: true, uuid: uuid, completion: { [weak self] (res) in
             if res {
-                self?.coordinator?.didEndFlow?()
+                self?.coordinator?.didFinish?()
             } else {
                 self?.displayAlert(with: "Что-то пошло не так!\nПопробуешь еще раз?")
             }
         })
+    }
+    
+    func cancelPrereservation() {
+        coordinator?.didFinish?()
     }
 }

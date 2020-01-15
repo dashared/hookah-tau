@@ -11,7 +11,7 @@ import UIKit
 
 class ClientProfileCoordinator: BaseCoordinator {
     
-    var user: FullUser?
+    var user: Client?
     
     override func start() {
         let storyboard = UIStoryboard(name: "ClientList", bundle: nil)
@@ -24,8 +24,18 @@ class ClientProfileCoordinator: BaseCoordinator {
     
     
     // Создание бронирования из профиля клиента
-    func createReservation(forUserWithPhone phoneNumber: String) {
+    func createReservation(forUserWithPhone phoneNumber: String, user fullUser: FullUser) {
+        let coordinator = AdminFirstStepReservationViewCoordinator(navigationController: navigationController)
+        coordinator.phone = phoneNumber
+        coordinator.fullUser = fullUser
         
+        addDependency(coordinator)
+        coordinator.didFinish = { [weak self] in
+            self?.removeDependency(coordinator)
+            self?.navigationController?.popViewController(animated: true)
+        }
+        
+        coordinator.start()
     }
     
     // Просмотр (и редактирование) брони
