@@ -43,7 +43,7 @@ class ThirdStepReservationViewController: BaseViewController {
     let cancelButton: Button = {
         let button = Button()
         let style = BlackButtonStyle()
-        style.apply(to: button, withTitle: "ОТМЕНИТЬ БРОНЬ")
+        style.apply(to: button, withTitle: "ОТМЕНИТЬ")
         return button
     }()
     

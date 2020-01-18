@@ -31,7 +31,7 @@ class BaseViewController: UIViewController {
         bottomConstraint = NSLayoutConstraint(item: stackView,
                                               attribute: .bottom,
                                               relatedBy: .equal,
-                                              toItem: view.safeAreaLayoutGuide,
+                                              toItem: view,
                                               attribute: .bottom,
                                               multiplier: 1,
                                               constant: constant)

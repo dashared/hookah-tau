@@ -191,7 +191,7 @@ class FirstStepView: UIView {
         scrollViewIntervals.contentInset = edges
         datesScrollView.contentInset = edges
         
-        datesScrollView.setContentOffset(CGPoint(x: abs(Constants.widthDate * Constants.daysCount / 2 - Int(edges.left)) + 8, y: 0),
+        datesScrollView.setContentOffset(CGPoint(x: abs(Constants.widthDate * Constants.daysCount / 2 - Int(edges.left)) + 15, y: 0),
                                          animated: true)
         scrollViewIntervals.setContentOffset(CGPoint(x: abs(Constants.widthTimePoint * Constants.day10MinPeriods / 2 - Int(edges.left)) + 7, y: 0),
                                              animated: true)
@@ -210,7 +210,7 @@ class FirstStepView: UIView {
         for date in dates {
             let dateView = DateView.loadFromNib()
             dateView?.setUp(with: date)
-            let view = UIView(frame: CGRect(x: 0, y: 0, width: 21, height: 59))
+            let view = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 59))
             view.addSubviewThatFills(dateView)
             datesStackView.addArrangedSubview(view)
         }
@@ -282,7 +282,7 @@ extension FirstStepView {
         static let day10MinPeriods = 143
         static let daysCount = 14
         static let widthTimePoint = 11
-        static let widthDate = 31
+        static let widthDate = 41
         static let heightIntervals = 70
         static let closingDuration = 54
         static let startClosingTime = 18

@@ -104,7 +104,7 @@
                     <constraints>
                         <constraint firstItem="JpA-EH-PLI" firstAttribute="leading" secondItem="ByV-f1-mVO" secondAttribute="leading" id="0Yf-vL-RSK"/>
                         <constraint firstAttribute="trailing" secondItem="JpA-EH-PLI" secondAttribute="trailing" id="N9T-dc-Auk"/>
-                        <constraint firstAttribute="bottom" secondItem="JpA-EH-PLI" secondAttribute="bottom" id="QPT-JY-erJ"/>
+                        <constraint firstItem="gQW-4g-8T5" firstAttribute="bottom" secondItem="JpA-EH-PLI" secondAttribute="bottom" id="QPT-JY-erJ"/>
                         <constraint firstItem="gQW-4g-8T5" firstAttribute="top" secondItem="ByV-f1-mVO" secondAttribute="top" id="Qz6-Bm-fcB"/>
                         <constraint firstAttribute="height" constant="106" id="UWZ-LN-h4r"/>
                         <constraint firstItem="gQW-4g-8T5" firstAttribute="leading" secondItem="ByV-f1-mVO" secondAttribute="leading" id="gZ2-dm-HGX"/>
